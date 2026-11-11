@@ -1,0 +1,20 @@
+{
+  "versao": "2.0.0",
+  "sha256": "b966575102520af7c59361f68b96f2a0f1549f93ad67041545175c41166c9193",
+  "tamanho": 539260,
+  "arquivo": "pacote.html",
+  "publicadaEm": "2026-11-11T13:01:36Z",
+  "novidades": [
+    "Cores novas: branco, preto, azul nos destaques e amarelo nos detalhes.",
+    "Pagamento de verdade no fluxo: Pix com QR Code e prazo, ou débito automático no cartão.",
+    "O profissional só sai de casa com o pagamento confirmado.",
+    "Relatório do mês para o profissional: quanto entrou, quanto vem, de onde veio.",
+    "Agenda com a grade do dia, hora a hora.",
+    "Atividade da conta: tudo que foi feito, com data e hora.",
+    "Reportar um problema em dois toques, com as informações que ajudam a achar o defeito.",
+    "Modo de teste para simular cartão recusado e Pix vencendo.",
+    "Ajuda com busca.",
+    "O app agora se atualiza sozinho: não precisa baixar de novo a cada versão."
+  ],
+  "assinatura": "eYa2jfb4f2KfHQXEYMG1t9Bt33gwoLxZL_kYoBOm0HnsEnIDxy1Nw3YFze_Ol6WRvsoaSf6zfxLvdv2rAY5_pw"
+}
