@@ -1,19 +1,11 @@
 {
-  "versao": "2.1.0",
-  "sha256": "7814a8afee4fd0cbde37b9cabe705d9bfaca4df81414e1e6d2a15fa152de2bce",
-  "tamanho": 579260,
+  "versao": "2.1.1",
+  "sha256": "164f9e35e5bc33af310ab97d7f23657181b232839585d16f32869d6534e51a93",
+  "tamanho": 579479,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-12T05:45:09Z",
+  "publicadaEm": "2026-11-12T05:48:40Z",
   "novidades": [
-    "Visual refeito do zero: branco, preto de verdade, o azul do ícone e amarelo nos detalhes. No escuro o fundo é preto puro, sem cinza.",
-    "No computador o app ocupa a tela: menu na lateral e duas colunas, em vez de uma tira no meio.",
-    "Consertos no catálogo: eletricista, montagem de móveis e pequenos reparos.",
-    "Lista de tarefas: você combina o que precisa ser feito, o profissional marca cada item e você acompanha.",
-    "Mudar a data sem cancelar: o profissional continua o mesmo e o valor não muda.",
-    "Gorjeta na avaliação, que vai inteira para o profissional.",
-    "Profissional pode pausar: sai da busca sem mexer no que já está marcado. E vê o previsto do dia na tela inicial.",
-    "Tira-dúvidas: pergunte do seu jeito e receba a resposta pronta.",
-    "O tema volta a seguir o do aparelho. Para fixar claro ou escuro, é em Configurações."
+    "No computador, a tela de entrada ficava com um fundo cinza em volta no tema escuro. Agora é preto."
   ],
-  "assinatura": "HdLklBTZRkRhbsj_JkjO6DAVwGa4cUflsiOhSOR6uSOH4QZ_u43quGBeUm3ei6I7XzY0ymQxOTk7j1FHNe-bow"
+  "assinatura": "nG26u79-nKvpFuExzyxOPAPgO2uV_jr4F7Mhkr2ReuK3ygt_tw4LBpQSvhHDo8xwm04PLtBuIcFFryeeXe_68g"
 }

@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.1.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.1.1 - arquivo unico">
 <style>
 
 :root {
@@ -1998,7 +1998,7 @@ button.tarefa:active { background: var(--superficie-2); }
   }
   .folha__punho { display: none; }
 
-  body:not(.logado) { background: var(--superficie-2); }
+  body:not(.logado) { background: var(--suave-fundo); }
   body:not(.logado) .app {
     max-width: 500px;
     min-height: 0;
@@ -2345,7 +2345,7 @@ button.tarefa:active { background: var(--superficie-2); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.1.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.1.1";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -11197,7 +11197,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.1.0',
+  versao: '2.1.1',
   storagePrefix: 'dx:',
   schemaVersion: 6,
 };
@@ -11232,6 +11232,14 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.1.1',
+    data: '12/11/2026',
+    titulo: 'Ajuste no tema escuro',
+    itens: [
+      'No computador, a tela de entrada ficava com um fundo cinza em volta no tema escuro. Agora é preto.',
+    ],
+  },
   {
     versao: '2.1.0',
     data: '12/11/2026',
