@@ -1,11 +1,14 @@
 {
-  "versao": "2.2.1",
-  "sha256": "916ad086bf0e85dec6c9748a9efe31c716b9580d6d6d7fbb7a578331432f5288",
-  "tamanho": 613866,
+  "versao": "2.3.0",
+  "sha256": "826aff10efc23801a5bc4afd928704f8dd21a367ed7d579417ab1e4dbc32a3bd",
+  "tamanho": 628937,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-12T16:19:00Z",
+  "publicadaEm": "2026-11-12T23:58:54Z",
   "novidades": [
-    "Amarelo de volta só em detalhe: estrelas, o dia de hoje, a etapa atual do pedido e a porta do ícone. O resto continua branco, preto e azul."
+    "Voltou o visual da 2.1 (contorno preto, botão que afunda, amarelo presente), com os serviços em grade de quatro e o convite para avaliar mais discreto.",
+    "Meus gastos: quanto você gastou, mês a mês, e em quê.",
+    "Avisar alguém: mande a data e a hora do serviço para quem mora com você.",
+    "Indicar o app para um conhecido."
   ],
-  "assinatura": "9plb9CBJfwykBW2v1jk6jAKHVvE72NDZ4U2L86rimcdyTp7viBV9d5GWd010rzfjt9ftzUbZF4gAtNLBLVdTvA"
+  "assinatura": "ZiHJ07VA8T8gm_dgXYYB1Fd_vuIPFnWt5qgH38H0hINRtd8Pva4fiw1aikTja4yLt16cWuVrVQ7d5Zk1issrFA"
 }
