@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.2.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.2.1 - arquivo unico">
 <style>
 
 :root {
@@ -25,13 +25,14 @@
   --marca-contraste: #ffffff;
   --marca-pressao: #1d4ed8;    /* botao apertado */
 
-  --destaque: var(--marca);
-  --destaque-texto: #ffffff;
-  --destaque-suave: var(--marca-suave);
+  --destaque: #facc15;         /* amarelo: so' em detalhe (estrela, hoje, etapa atual) */
+  --destaque-texto: #000000;
+  --destaque-suave: #fff6c9;
+  --estrela-fio: #b78103;      /* contorno da estrela: amarelo puro some no branco */
 
   --painel-fundo: #2563eb;
   --painel-texto: #ffffff;
-  --painel-acento: #ffffff;
+  --painel-acento: #facc15;
   --painel-borda: transparent;
   --painel-rotulo: #ffffff;
 
@@ -98,6 +99,8 @@
   --marca-forte: #8fb4ff;
   --marca-suave: #0f1f47;
   --marca-pressao: #3b76f6;
+  --destaque-suave: #2e2600;
+  --estrela-fio: #facc15;
   --sucesso: #3ecf8e; --sucesso-suave: #06261a;
   --erro: #ff6b57;   --erro-suave: #33100b;
   --sucesso-aviso: #05944f; --alerta-aviso: #1d4ed8; --erro-aviso: #c21500;
@@ -120,6 +123,8 @@
     --marca-forte: #8fb4ff;
     --marca-suave: #0f1f47;
     --marca-pressao: #3b76f6;
+  --destaque-suave: #2e2600;
+  --estrela-fio: #facc15;
     --sucesso: #3ecf8e; --sucesso-suave: #06261a;
     --erro: #ff6b57;   --erro-suave: #33100b;
     --sucesso-aviso: #05944f; --alerta-aviso: #1d4ed8; --erro-aviso: #c21500;
@@ -322,7 +327,7 @@ body.teclado-aberto .abas { display: none; }
 .cartao--clicavel:active { background: var(--superficie-2); }
 .cartao--destaque { border-color: var(--marca); }
 .cartao--chamada { background: var(--marca-suave); border-color: transparent; }
-.cartao--chamada .item__icone { background: var(--marca); color: #fff; }
+.cartao--chamada .item__icone { background: var(--destaque); color: #000; }
 @media (hover: hover) { .cartao--chamada.cartao--clicavel:hover { background: var(--marca-suave); } }
 .cartao--faixa { position: relative; overflow: hidden; }
 .cartao--faixa::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--marca); }
@@ -426,7 +431,7 @@ span.ficha { min-height: 32px; }
 .etiqueta--erro::before { background: var(--erro-fundo); }
 .etiqueta--vivo::before { box-shadow: 0 0 0 3px color-mix(in srgb, var(--marca) 25%, transparent); }
 .selo-novo, .selo-fixo { display: inline-flex; align-items: center; gap: 4px; flex: none; padding: 2px 8px; font-size: .7rem; font-weight: 600; white-space: nowrap; color: var(--marca-forte); background: var(--marca-suave); border-radius: var(--r-sm); }
-.selo-novo { color: #fff; background: var(--marca); }
+.selo-novo { color: #000; background: var(--destaque); }
 .selo-fixo svg, .selo-novo svg { width: 12px; height: 12px; }
 
 .avatar { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--superficie-3); color: var(--texto); font-weight: 600; font-size: var(--t-md); position: relative; }
@@ -440,16 +445,16 @@ span.ficha { min-height: 32px; }
 .avatar--marca { background: var(--marca); color: #fff; }
 
 .estrelas { display: inline-flex; align-items: center; gap: 1px; }
-.estrelas svg { width: 15px; height: 15px; fill: var(--texto); stroke: var(--texto); stroke-width: 1.5; }
+.estrelas svg { width: 15px; height: 15px; fill: var(--destaque); stroke: var(--estrela-fio); stroke-width: 1.5; }
 .estrelas svg.estrelas__vazia { fill: none; stroke: var(--borda-forte); }
 .estrelas--g svg { width: 28px; height: 28px; }
 .nota { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; }
-.nota__estrela { width: 15px; height: 15px; fill: var(--texto); stroke: var(--texto); }
+.nota__estrela { width: 15px; height: 15px; fill: var(--destaque); stroke: var(--estrela-fio); }
 .estrelas-entrada { display: flex; gap: var(--e1); justify-content: center; }
 .estrelas-entrada button { display: grid; place-items: center; width: 54px; height: 54px; color: var(--borda-forte); transition: transform var(--rapido); }
 .estrelas-entrada button svg { width: 40px; height: 40px; stroke-width: 1.5; }
 .estrelas-entrada button:active { transform: scale(1.15); }
-.estrelas-entrada button[data-ativa='true'] svg { fill: var(--marca); stroke: var(--marca); }
+.estrelas-entrada button[data-ativa='true'] svg { fill: var(--destaque); stroke: var(--estrela-fio); }
 
 .lista { display: flex; flex-direction: column; gap: var(--e3); }
 .lista:has(> .item) { gap: 0; }
@@ -460,7 +465,8 @@ button.item:active, a.item:active { opacity: .6; }
 a.item:hover { text-decoration: none; }
 .item__icone { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--superficie-2); color: var(--texto); }
 .item__icone svg { width: 20px; height: 20px; }
-.item__icone--marca, .item__icone--amarelo { background: var(--marca); color: #fff; }
+.item__icone--marca { background: var(--marca); color: #fff; }
+.item__icone--amarelo { background: var(--destaque); color: #000; }
 .item__corpo { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
 .item__titulo { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .item__resumo { font-size: var(--t-sm); color: var(--texto-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -543,7 +549,7 @@ a.item:hover { text-decoration: none; }
 .dia { position: relative; aspect-ratio: 1; max-height: 56px; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: 50%; font-size: var(--t-md); font-weight: 500; color: var(--texto); transition: background var(--rapido); }
 .dia:hover { background: var(--superficie-2); }
 .dia--fora { color: var(--texto-3); opacity: .45; }
-.dia--hoje { color: var(--marca-forte); font-weight: 700; }
+.dia--hoje { font-weight: 700; box-shadow: inset 0 0 0 2px var(--destaque); }
 .dia--escolhido, .dia--escolhido:hover { background: var(--marca); color: #fff; font-weight: 700; }
 .dia__pontos { display: flex; gap: 2px; height: 4px; }
 .dia__ponto { width: 4px; height: 4px; border-radius: 50%; background: var(--marca); }
@@ -616,7 +622,8 @@ details > summary svg { transition: transform var(--normal); }
 
 .heroi { display: grid; gap: 4px; justify-items: start; }
 .heroi__rotulo { font-size: var(--t-sm); font-weight: 500; color: var(--texto-2); }
-.painel-marca .heroi__rotulo { color: var(--painel-texto); opacity: .85; }
+.painel-marca .heroi__rotulo { display: inline-flex; align-items: center; gap: 7px; color: var(--painel-texto); }
+.painel-marca .heroi__rotulo::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--painel-acento); }
 .heroi__valor { font-family: var(--fonte-display); font-size: clamp(2.2rem, 10.5vw, 2.8rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1.05; font-variant-numeric: tabular-nums; }
 .heroi__valor--texto { font-size: clamp(1.5rem, 6.8vw, 1.8rem); line-height: 1.15; letter-spacing: -0.025em; }
 .heroi__apoio { opacity: .92; }
@@ -625,7 +632,8 @@ details > summary svg { transition: transform var(--normal); }
 
 .etapas { display: flex; gap: 4px; margin-top: var(--e4); }
 .etapas__passo { height: 4px; flex: 1; border-radius: 999px; background: color-mix(in srgb, var(--painel-texto, var(--texto)) 30%, transparent); }
-.etapas__passo--feito, .etapas__passo--atual { background: var(--painel-texto, var(--texto)); }
+.etapas__passo--feito { background: var(--painel-texto, var(--texto)); }
+.etapas__passo--atual { background: var(--painel-acento, var(--destaque)); }
 
 .sparkline { position: relative; margin-top: var(--e3); padding-right: 7px; }
 .sparkline__svg { width: 100%; height: 100%; display: block; overflow: visible; }
@@ -639,7 +647,7 @@ details > summary svg { transition: transform var(--normal); }
 .meta__pct { font-weight: 700; }
 .meta__trilha { height: 6px; background: var(--superficie-3); border-radius: var(--r-full); overflow: hidden; }
 .meta__barra { height: 100%; background: var(--marca); border-radius: var(--r-full); transition: width var(--suave); }
-.meta__barra--bateu { background: #05944f; }
+.meta__barra--bateu { background: var(--destaque); }
 .meta__nota { font-size: var(--t-sm); color: var(--texto-2); }
 
 .semana { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
@@ -648,7 +656,7 @@ details > summary svg { transition: transform var(--normal); }
 .semana__numero { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; font-size: var(--t-md); font-weight: 500; }
 .semana__pontos { display: flex; gap: 3px; height: 5px; }
 .semana__ponto { width: 5px; height: 5px; border-radius: 50%; background: var(--marca); }
-.semana__dia--hoje .semana__numero { background: var(--texto); color: var(--fundo); font-weight: 700; }
+.semana__dia--hoje .semana__numero { background: var(--destaque); color: #000; font-weight: 700; }
 .semana__dia--escolhido .semana__numero { background: var(--marca); color: #fff; font-weight: 700; }
 
 .dia-trilho { list-style: none; margin: 0; padding: 0; }
@@ -971,7 +979,7 @@ button.tarefa:active { opacity: .6; }
 :root[data-app='cliente'] {
   --painel-fundo: #2563eb;
   --painel-texto: #ffffff;
-  --painel-acento: #ffffff;
+  --painel-acento: #facc15;
   --painel-borda: transparent;
   --painel-rotulo: #ffffff;
 }
@@ -980,7 +988,7 @@ button.tarefa:active { opacity: .6; }
 :root[data-app='diarista'] {
   --painel-fundo: #000000;
   --painel-texto: #ffffff;
-  --painel-acento: #ffffff;
+  --painel-acento: #facc15;
   --painel-borda: transparent;
   --painel-rotulo: #ffffff;
 }
@@ -1060,7 +1068,7 @@ button.tarefa:active { opacity: .6; }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.2.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.2.1";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -4581,7 +4589,7 @@ function TelaInicio(app) {
           rotulo: 'Disponível para saque',
           valor: dinheiro(carteira.disponivel),
           apoio: carteira.retido > 0 ? `mais ${dinheiro(carteira.retido)} liberando nos próximos dias` : 'nada em espera',
-          tendencia: Sparkline(serie, { cor: 'var(--painel-texto)' }),
+          tendencia: Sparkline(serie, { cor: 'var(--painel-acento)' }),
           acao: h(
             'div',
             { class: 'linha' },
@@ -10741,7 +10749,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.2.0',
+  versao: '2.2.1',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -10776,6 +10784,14 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.2.1',
+    data: '13/11/2026',
+    titulo: 'O amarelo voltou, nos detalhes',
+    itens: [
+      'Amarelo de volta só em detalhe: estrelas, o dia de hoje, a etapa atual do pedido e a porta do ícone. O resto continua branco, preto e azul.',
+    ],
+  },
   {
     versao: '2.2.0',
     data: '13/11/2026',

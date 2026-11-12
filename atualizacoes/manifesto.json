@@ -1,17 +1,11 @@
 {
-  "versao": "2.2.0",
-  "sha256": "c7e4cbf5a2b28ee228ca827a279f8de80bb89eeb70a26328cffea51072047b77",
-  "tamanho": 613022,
+  "versao": "2.2.1",
+  "sha256": "916ad086bf0e85dec6c9748a9efe31c716b9580d6d6d7fbb7a578331432f5288",
+  "tamanho": 613866,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-12T15:29:51Z",
+  "publicadaEm": "2026-11-12T16:19:00Z",
   "novidades": [
-    "Visual novo na linha do Uber: branco, preto, azul e vermelho. O amarelo saiu.",
-    "Hora de chegada: além de manhã ou tarde, você escolhe a hora.",
-    "Tive um problema com o serviço: até 48 horas depois, você relata e o profissional responde, podendo devolver parte do valor.",
-    "Adicionar à agenda: o serviço entra no calendário do celular, com alarme.",
-    "Bloquear um profissional que você não quer mais receber.",
-    "Profissional: dia de folga na agenda, Meus clientes com anotações particulares e lembrete do serviço do dia seguinte.",
-    "Segurança: a atualização automática confere a assinatura toda vez que abre; \"Meus dados\" leva só o que é seu; excluir a conta pede a senha."
+    "Amarelo de volta só em detalhe: estrelas, o dia de hoje, a etapa atual do pedido e a porta do ícone. O resto continua branco, preto e azul."
   ],
-  "assinatura": "63pgcxKDzQKb830PhvcJ7-LdxYAz4zxEESBTp-EqrtTsOeRjCl0qklHja3mEK-RU9ECVchcwBzVHGSIGbRNmOQ"
+  "assinatura": "9plb9CBJfwykBW2v1jk6jAKHVvE72NDZ4U2L86rimcdyTp7viBV9d5GWd010rzfjt9ftzUbZF4gAtNLBLVdTvA"
 }
