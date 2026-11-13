@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.5.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.5.1 - arquivo unico">
 <style>
 
 :root {
@@ -2105,6 +2105,7 @@ button.tarefa:active { background: var(--superficie-2); }
 
 @media (max-width: 979px) {
   body.logado { --abas-altura: calc(90px + var(--seguro-base)); }
+  body.logado .acoes-fixas { box-shadow: 0 24px 0 var(--fundo); }
   .abas {
     left: 12px; right: 12px;
     bottom: calc(10px + var(--seguro-base));
@@ -2238,6 +2239,17 @@ button.tarefa:active { background: var(--superficie-2); }
 .oferta::before { width: 120px; height: 120px; right: auto; left: -40px; bottom: -58px; }
 .oferta--amarela::before, .oferta--amarela::after,
 .oferta--tinta::before, .oferta--tinta::after { opacity: .6; filter: invert(1); }
+
+.cartao__canto { position: absolute; top: var(--e2); right: var(--e2); margin: 0 !important; }
+
+.conteudo:has(> * > .chat__barra) {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: calc(var(--abas-altura, 0px) + var(--e1));
+}
+.conteudo:has(> * > .chat__barra) > * { flex: 1; display: flex; flex-direction: column; }
+.conteudo:has(> * > .chat__barra) > * > .chat__barra { margin-top: auto !important; }
+.conteudo:has(> * > .chat__barra) > * > :nth-last-child(2) { margin-bottom: var(--e4); }
 
 
 @keyframes dx-surgir {
@@ -2639,7 +2651,7 @@ button.tarefa:active { background: var(--superficie-2); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.5.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.5.1";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -5002,7 +5014,7 @@ function TelaPedidos(app, ctx) {
 
   const fichas = h(
     'div',
-    { class: 'fichas', style: { marginBottom: '16px' } },
+    { class: 'fichas', style: { marginBottom: 'var(--e4)' } },
     ...FILTROS.map((f) =>
       Ficha(
         {
@@ -5023,6 +5035,7 @@ function TelaPedidos(app, ctx) {
 
   function desenharAtalho() {
     const fixos = api.assinaturas.minhasAssinaturas({ apenasAtivas: true });
+    atalhoFixos.style.marginBottom = fixos.length ? 'var(--e4)' : '';
     montar(
       atalhoFixos,
       fixos.length
@@ -5380,7 +5393,7 @@ function TelaProfissional(app, ctx) {
   const botaoFavorito = h(
     'button',
     {
-      class: 'barra__acao',
+      class: 'barra__acao cartao__canto',
       type: 'button',
       'aria-label': 'Favoritar',
       onClick: () => {
@@ -5398,7 +5411,7 @@ function TelaProfissional(app, ctx) {
     { class: 'pilha-lg entra' },
 
     Cartao(
-      { class: 'centro pilha' },
+      { class: 'centro pilha', style: { position: 'relative' } },
       h('div', { style: { display: 'flex', justifyContent: 'center' } }, Avatar({ nome: p.nome, foto: p.avatar, tamanho: 'gg', verificado: p.verificado })),
       h(
         'div',
@@ -5409,6 +5422,7 @@ function TelaProfissional(app, ctx) {
       h('div', { style: { display: 'flex', justifyContent: 'center' } }, Estrelas(p.nota, { grande: true })),
       h('p', { class: 'texto-2 t-sm' }, `${p.nota.toFixed(1)} de 5 · ${p.totalAvaliacoes} avaliações · ${p.totalServicos} serviços`),
       p.verificado ? h('span', { class: 'etiqueta etiqueta--info' }, 'Identidade verificada') : null,
+      botaoFavorito,
     ),
 
     p.bio ? h('section', null, Secao('Sobre'), Cartao({ variante: 'suave' }, h('p', { class: 'texto-2' }, p.bio))) : null,
@@ -5416,7 +5430,7 @@ function TelaProfissional(app, ctx) {
     h(
       'section',
       null,
-      Secao('Serviços e precos'),
+      Secao('Serviços e preços'),
       Cartao(
         null,
         ...p.servicos.map((s) =>
@@ -5513,7 +5527,7 @@ function TelaProfissional(app, ctx) {
       aoVoltar: () => app.ir('/profissionais'),
       acoes: [{ icone: 'enviar', rotulo: 'Indicar este profissional', onClick: () => compartilharProfissional(p) }],
     },
-    corpo: h('div', null, h('div', { class: 'linha', style: { justifyContent: 'flex-end' } }, botaoFavorito), corpo),
+    corpo,
   };
 }
 
@@ -12441,7 +12455,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.5.0',
+  versao: '2.5.1',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -12476,6 +12490,18 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.5.1',
+    data: '13/11/2026',
+    titulo: 'Espaços no lugar',
+    itens: [
+      'Meus pedidos: o cartão de serviço fixo não encosta mais nos filtros.',
+      'Perfil do profissional: o coração de favoritar foi para o canto do cartão, em vez de ocupar uma linha sozinho.',
+      'Conversas e Tira-dúvidas: a caixa de escrever fica no rodapé, como em qualquer chat.',
+      'O botão fixo no fim das telas não deixa mais o conteúdo aparecer por baixo.',
+      'Acentos: "há 5 min" e "não é seu".',
+    ],
+  },
   {
     versao: '2.5.0',
     data: '13/11/2026',
@@ -12880,9 +12906,9 @@ function dataAmigavel(d) {
 function tempoRelativo(d) {
   const seg = Math.floor((Date.now() - new Date(d).getTime()) / 1000);
   if (seg < 45) return 'agora';
-  if (seg < 3600) return `ha ${Math.floor(seg / 60)} min`;
-  if (seg < 86400) return `ha ${Math.floor(seg / 3600)} h`;
-  if (seg < 604800) return `ha ${Math.floor(seg / 86400)} d`;
+  if (seg < 3600) return `há ${Math.floor(seg / 60)} min`;
+  if (seg < 86400) return `há ${Math.floor(seg / 3600)} h`;
+  if (seg < 604800) return `há ${Math.floor(seg / 86400)} d`;
   return dataCurta(d);
 }
 
@@ -13819,7 +13845,7 @@ function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
   if (!pedido) {
     return {
       barra: { titulo: 'Conversa', aoVoltar: () => app.ir(voltarPara) },
-      corpo: EstadoVazio({ icone: 'chat', titulo: 'Conversa indisponível', texto: 'Este pedido não existe mais ou não e seu.' }),
+      corpo: EstadoVazio({ icone: 'chat', titulo: 'Conversa indisponível', texto: 'Este pedido não existe mais ou não é seu.' }),
     };
   }
 

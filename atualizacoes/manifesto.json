@@ -1,14 +1,15 @@
 {
-  "versao": "2.5.0",
-  "sha256": "b577d9ed68ce58c9306e73b41c9bd3299ccffb51d48ad7327f89d08620ffaadc",
-  "tamanho": 654867,
+  "versao": "2.5.1",
+  "sha256": "0241f14e354301a0fd95741898f4167456de73859c8871ef551ce151a0676196",
+  "tamanho": 656020,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-13T21:14:20Z",
+  "publicadaEm": "2026-11-13T21:24:20Z",
   "novidades": [
-    "Tela inicial nova: uma barra grande para pedir (\"O que a casa pede?\"), sugestões com desenhos coloridos de cada serviço e selo de promoção.",
-    "Para economizar: cartões de oferta que você desliza para o lado. Tocou, o cupom já entra aplicado no pedido.",
-    "Bolhas de sabão sobem devagar nos blocos de cor: a nossa marca.",
-    "Atalhos novos: Profissionais e Meus gastos direto da tela inicial."
+    "Meus pedidos: o cartão de serviço fixo não encosta mais nos filtros.",
+    "Perfil do profissional: o coração de favoritar foi para o canto do cartão, em vez de ocupar uma linha sozinho.",
+    "Conversas e Tira-dúvidas: a caixa de escrever fica no rodapé, como em qualquer chat.",
+    "O botão fixo no fim das telas não deixa mais o conteúdo aparecer por baixo.",
+    "Acentos: \"há 5 min\" e \"não é seu\"."
   ],
-  "assinatura": "47znMB68bO5wied_-j9fbc4x9adm2B8X5lUaSDz5uhWH2CW3Y_ZT48MBYXxm4LaMIJT2AWnKnHplETTU76GcRg"
+  "assinatura": "R0mtUuCdjpQMKoReB3YaD94fV92dirIgD_kThocls5QHbK68lt0S5gVm5OKmlontBgxmfPZryTI1XJxm8WydcQ"
 }
