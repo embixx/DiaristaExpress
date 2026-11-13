@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.3.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.4.0 - arquivo unico">
 <style>
 
 :root {
@@ -300,15 +300,18 @@ h3 { font-size: var(--t-lg); letter-spacing: -0.015em; }
 .grade-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--e2); }
 
 .grifo {
-  background: linear-gradient(to top, var(--destaque) 0 .32em, transparent .32em);
+  --grifo-altura: .32em;
+  background-image: linear-gradient(to top, var(--destaque) 0 var(--grifo-altura), transparent var(--grifo-altura));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   padding-inline: .06em;
   margin-inline: -.06em;
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
 }
-[data-tema='escuro'] .grifo { background: none; box-shadow: inset 0 -.14em 0 var(--destaque); }
+[data-tema='escuro'] .grifo { --grifo-altura: .14em; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-tema='claro']) .grifo { background: none; box-shadow: inset 0 -.14em 0 var(--destaque); }
+  :root:not([data-tema='claro']) .grifo { --grifo-altura: .14em; }
 }
 
 
@@ -456,6 +459,18 @@ body.teclado-aberto .abas { display: none; }
 .aba:active .aba__icone { transform: scale(.92); }
 .aba[aria-current='page'] { color: var(--texto); font-weight: 800; }
 .aba[aria-current='page'] .aba__icone { background: var(--tinta); color: var(--tinta-contraste); }
+.abas__pilula {
+  position: absolute;
+  left: 0; top: 0;
+  width: 0; height: 0;
+  border-radius: var(--r-full);
+  background: var(--tinta);
+  pointer-events: none;
+  opacity: 0;
+}
+.aba { z-index: 1; }
+.abas--pilula .abas__pilula { opacity: 1; }
+.abas--pilula .aba[aria-current='page'] .aba__icone { background: transparent; }
 .aba__marcador {
   position: absolute;
   top: 2px; left: calc(50% + 10px);
@@ -489,7 +504,9 @@ body.teclado-aberto .abas { display: none; }
 .cartao--clicavel:focus-visible { outline-offset: 3px; }
 .cartao--suave.cartao--clicavel { background: var(--fundo); }
 .cartao--destaque { border: 1.5px solid var(--marca); box-shadow: 4px 4px 0 var(--marca); }
-.cartao--chamada { background: var(--destaque-suave); border: 1.5px solid var(--linha); }
+.cartao--chamada { background: var(--fundo); border: 1.5px solid var(--destaque); box-shadow: 4px 4px 0 var(--destaque); }
+.cartao--chamada.cartao--clicavel:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--destaque); }
+@media (hover: hover) { .cartao--chamada.cartao--clicavel:hover { transform: none; box-shadow: 4px 4px 0 var(--destaque); } }
 .cartao--chamada .item__icone { background: var(--destaque); color: #000; border-color: var(--linha); }
 
 .cartao--faixa { position: relative; padding-left: calc(var(--e4) + 6px); }
@@ -1748,7 +1765,7 @@ details > summary svg { transition: transform var(--normal); }
   width: 100%;
   aspect-ratio: 1.1;
   max-height: 78px;
-  color: var(--texto);
+  color: var(--marca-forte);
   background: var(--fundo);
   border: 1.5px solid var(--linha);
   border-radius: var(--r-lg);
@@ -1777,15 +1794,16 @@ details > summary svg { transition: transform var(--normal); }
 .atalho__icone {
   position: relative;
   display: grid; place-items: center;
-  width: 52px; height: 52px;
+  width: 54px; height: 54px;
   border-radius: 50%;
   border: 1.5px solid var(--linha);
   background: var(--fundo);
-  transition: background var(--rapido), transform var(--rapido);
+  box-shadow: 0 3px 0 var(--linha);
+  transition: transform 70ms ease-out, box-shadow 70ms ease-out, background var(--rapido);
 }
 .atalho__icone svg { width: 23px; height: 23px; }
-.atalho:active .atalho__icone { background: var(--destaque); color: #000; transform: scale(.94); }
-.atalho--marca .atalho__icone { background: var(--marca); border-color: var(--marca); color: #fff; }
+.atalho:active .atalho__icone { background: var(--destaque); color: #000; transform: translateY(3px); box-shadow: 0 0 0 var(--linha); }
+.atalho--marca .atalho__icone { background: var(--marca); border-color: var(--marca-base); box-shadow: 0 3px 0 var(--marca-base); color: #fff; }
 .atalho .marcador { top: -4px; right: -4px; }
 
 .aviso-fixo {
@@ -2049,6 +2067,8 @@ button.tarefa:active { background: var(--superficie-2); }
   body.logado .aba__icone { width: 28px; height: 28px; background: none !important; color: inherit !important; }
   body.logado .aba:hover { background: var(--superficie-2); }
   body.logado .aba[aria-current='page'] { background: var(--tinta); color: var(--tinta-contraste); }
+  body.logado .abas--pilula .aba[aria-current='page'] { background: transparent; }
+  body.logado .abas__pilula { border-radius: var(--r-md); }
   body.logado .aba__marcador { position: static; margin-left: auto; border: 0; min-width: 22px; height: 22px; font-size: var(--t-xs); }
 
   body.logado .avisos { left: var(--largura-lateral); bottom: var(--e6); }
@@ -2059,6 +2079,36 @@ button.tarefa:active { background: var(--superficie-2); }
   .duas-colunas > * { margin-top: 0 !important; }
   .duas-colunas > .pilha-lg > * + * { margin-top: var(--e6); }
   .duas-colunas .servicos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.painel-marca__avatar { position: absolute; top: var(--e4); right: var(--e4); }
+.painel-marca__avatar .avatar { border-color: #000; box-shadow: 2px 2px 0 #000; }
+
+@media (max-width: 979px) {
+  body.logado { --abas-altura: calc(90px + var(--seguro-base)); }
+  .abas {
+    left: 12px; right: 12px;
+    bottom: calc(10px + var(--seguro-base));
+    width: auto;
+    max-width: calc(var(--largura-app) - 24px);
+    padding: 6px;
+    border: 1.5px solid var(--linha);
+    border-radius: 24px;
+    box-shadow: 0 4px 0 var(--linha);
+  }
+  .aba { min-height: 52px; }
+  body.logado:not(.teclado-aberto)::after {
+    content: '';
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    height: calc(var(--abas-altura) + 6px);
+    background: linear-gradient(to bottom, transparent, var(--fundo) 42%);
+    pointer-events: none;
+    z-index: calc(var(--z-abas) - 1);
+  }
+}
+@media (max-height: 460px) and (orientation: landscape) {
+  body.logado { --abas-altura: 70px; }
 }
 
 
@@ -2174,6 +2224,87 @@ button.tarefa:active { background: var(--superficie-2); }
 
 .chegou { animation: dx-surgir 240ms ease-out both; }
 
+
+.conteudo[data-chegando] > * > :not(.acoes-fixas) {
+  animation: dx-surgir 380ms cubic-bezier(.16, 1, .3, 1) both;
+}
+.conteudo[data-chegando] > * > .duas-colunas { animation: none; }
+.conteudo[data-chegando] .duas-colunas > * > :not(.acoes-fixas) {
+  animation: dx-surgir 380ms cubic-bezier(.16, 1, .3, 1) both;
+}
+.conteudo[data-chegando] > * > :has(.acoes-fixas) { animation: none; }
+.conteudo[data-chegando] > * > :nth-child(2),
+.conteudo[data-chegando] .duas-colunas > * > :nth-child(1) { animation-delay: 45ms; }
+.conteudo[data-chegando] > * > :nth-child(3),
+.conteudo[data-chegando] .duas-colunas > * > :nth-child(2) { animation-delay: 90ms; }
+.conteudo[data-chegando] > * > :nth-child(4),
+.conteudo[data-chegando] .duas-colunas > * > :nth-child(3) { animation-delay: 135ms; }
+.conteudo[data-chegando] > * > :nth-child(5),
+.conteudo[data-chegando] .duas-colunas > * > :nth-child(4) { animation-delay: 180ms; }
+.conteudo[data-chegando] > * > :nth-child(6),
+.conteudo[data-chegando] .duas-colunas > * > :nth-child(5) { animation-delay: 220ms; }
+.conteudo[data-chegando] > * > :nth-child(n + 7),
+.conteudo[data-chegando] .duas-colunas > * > :nth-child(n + 6) { animation-delay: 260ms; }
+
+.conteudo[data-chegando] .grifo { animation: dx-grifo 560ms 200ms cubic-bezier(.65, 0, .25, 1) both; }
+@keyframes dx-grifo {
+  from { background-size: 0% 100%; }
+  to   { background-size: 100% 100%; }
+}
+
+.conteudo[data-chegando] .etapas__passo {
+  transform-origin: left center;
+  animation: dx-encher 420ms cubic-bezier(.3, .9, .3, 1) both;
+}
+.conteudo[data-chegando] .etapas__passo:nth-child(1) { animation-delay: 240ms; }
+.conteudo[data-chegando] .etapas__passo:nth-child(2) { animation-delay: 310ms; }
+.conteudo[data-chegando] .etapas__passo:nth-child(3) { animation-delay: 380ms; }
+.conteudo[data-chegando] .etapas__passo:nth-child(4) { animation-delay: 450ms; }
+.conteudo[data-chegando] .etapas__passo:nth-child(n + 5) { animation-delay: 520ms; }
+@keyframes dx-encher {
+  from { transform: scaleX(0); }
+  to   { transform: none; }
+}
+.etapas__passo--atual { animation: dx-respirar 1.8s ease-in-out infinite; }
+@keyframes dx-respirar {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .5; }
+}
+
+.conteudo[data-chegando] .atalho__icone { animation: dx-carimbo 420ms cubic-bezier(.2, 1.5, .4, 1) both; }
+.conteudo[data-chegando] .atalho:nth-child(1) .atalho__icone { animation-delay: 160ms; }
+.conteudo[data-chegando] .atalho:nth-child(2) .atalho__icone { animation-delay: 210ms; }
+.conteudo[data-chegando] .atalho:nth-child(3) .atalho__icone { animation-delay: 260ms; }
+.conteudo[data-chegando] .atalho:nth-child(n + 4) .atalho__icone { animation-delay: 310ms; }
+
+.conteudo[data-chegando] .semana__dia--hoje .semana__numero,
+.conteudo[data-chegando] .dia--hoje {
+  animation: dx-carimbo 460ms 380ms cubic-bezier(.2, 1.5, .4, 1) both;
+}
+@keyframes dx-carimbo {
+  from { opacity: 0; transform: scale(.4); }
+  to   { opacity: 1; transform: none; }
+}
+
+.conteudo[data-chegando] .painel-marca__avatar {
+  animation: dx-selo 520ms 260ms cubic-bezier(.2, 1.4, .4, 1) both;
+}
+@keyframes dx-selo {
+  from { opacity: 0; transform: scale(.5) rotate(-18deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+.estrelas-entrada button[data-ativa='true'] svg { animation: dx-estrela 340ms cubic-bezier(.2, 1.6, .4, 1) both; }
+.estrelas-entrada button:nth-child(2)[data-ativa='true'] svg { animation-delay: 40ms; }
+.estrelas-entrada button:nth-child(3)[data-ativa='true'] svg { animation-delay: 80ms; }
+.estrelas-entrada button:nth-child(4)[data-ativa='true'] svg { animation-delay: 120ms; }
+.estrelas-entrada button:nth-child(5)[data-ativa='true'] svg { animation-delay: 160ms; }
+@keyframes dx-estrela {
+  0%   { transform: scale(.6); }
+  60%  { transform: scale(1.22) rotate(8deg); }
+  100% { transform: none; }
+}
+
 :root[data-desempenho='equilibrado'] .barra,
 :root[data-desempenho='equilibrado'] .abas,
 :root[data-desempenho='equilibrado'] .cortina,
@@ -2225,9 +2356,22 @@ button.tarefa:active { background: var(--superficie-2); }
 @media (prefers-reduced-motion: reduce) {
   .entra, .cascata > *, .tela-entra-avanca, .tela-entra-volta, .tela-entra-troca,
   .tocou::after, .marcador, .aba__marcador, .confirmacao__circulo,
-  .confirmacao__circulo path, .trilha__barra--vivo, .etiqueta--vivo::before {
+  .confirmacao__circulo path, .trilha__barra--vivo, .etiqueta--vivo::before,
+  .estrelas-entrada svg {
     animation: none !important;
   }
+  .conteudo[data-chegando] > * > *, .conteudo[data-chegando] .duas-colunas > * > *,
+  .conteudo[data-chegando] .grifo,
+  .conteudo[data-chegando] .etapas__passo, .conteudo[data-chegando] .atalho__icone,
+  .conteudo[data-chegando] .semana__dia--hoje .semana__numero, .conteudo[data-chegando] .dia--hoje,
+  .conteudo[data-chegando] .painel-marca__avatar {
+    animation-name: dx-esmaecer !important;
+    animation-timing-function: ease-out !important;
+  }
+}
+@keyframes dx-esmaecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 [data-sem-animacao] *,
@@ -2344,7 +2488,7 @@ button.tarefa:active { background: var(--superficie-2); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.3.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.4.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -3173,6 +3317,7 @@ function TelaInicio(app) {
       ? h(
           'button',
           { class: 'painel-marca painel-marca--toque', type: 'button', onClick: () => app.ir(`/pedido/${emFoco.id}`) },
+          emFoco.diaristaNome ? h('span', { class: 'painel-marca__avatar' }, Avatar({ nome: emFoco.diaristaNome, foto: emFoco.diaristaAvatar })) : null,
           NumeroHeroi({
             rotulo: faltaPagar ? 'Falta pagar' : etapa.texto,
             valor: emFoco.servico?.nome || 'Serviço',
@@ -3220,7 +3365,7 @@ function TelaInicio(app) {
             'div',
             { class: 'cresce' },
             h('div', { class: 'medio' }, 'Como foi o serviço?'),
-            h('div', { class: 't-sm texto-2' }, `Avalie ${nomeCurto(p.diaristaNome)} - ${p.servico?.nome}`),
+            h('div', { class: 't-sm texto-2' }, `Avalie ${nomeCurto(p.diaristaNome)} · ${p.servico?.nome}`),
           ),
           icone('seta_dir'),
         ),
@@ -8721,7 +8866,7 @@ const { conferirSchema, limparDados, espacoUsadoKB, exportarTudo, armazenamentoE
 const __i3 = __mod("packages/core/data/seed.js");
 const { semear, bancoVazio, CONTAS_DEMO } = __i3;
 const __i4 = __mod("packages/core/api/bus.js");
-const { publicar, escutar, EVENTOS } = __i4;
+const { publicar, escutar, observarLocal, EVENTOS } = __i4;
 const authM = __mod("packages/core/api/auth.js");
 const perfilM = __mod("packages/core/api/perfil.js");
 const pedidos = __mod("packages/core/api/pedidos.js");
@@ -8889,8 +9034,8 @@ __e.default = {
   relatorios,
 };
 
-escutar(EVENTOS.SESSAO, (d) => {
-  if (d && d.entrou) manutencao();
+observarLocal((evento, d) => {
+  if (evento === EVENTOS.SESSAO && d && d.entrou) manutencao();
 });
 
 __e["escutar"] = escutar;
@@ -12065,7 +12210,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.3.0',
+  versao: '2.4.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -12101,11 +12246,23 @@ __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
   {
+    versao: '2.4.0',
+    data: '13/11/2026',
+    titulo: 'O app ganhou movimento',
+    itens: [
+      'Ao abrir uma tela, as partes chegam em sequência; o risco amarelo do seu nome se desenha e as etapas do pedido enchem na ordem em que aconteceram.',
+      'A marca da aba atual desliza de uma aba para a outra.',
+      'A etapa em que o pedido está agora pulsa devagar, e as estrelas da avaliação acendem uma a uma.',
+      'Se o celular estiver com "reduzir movimento" ligado, o app só esmaece, sem nada deslizando.',
+      'Correção: com os dois apps abertos no mesmo aparelho, entrar em um deles fazia o outro mexer nos dados ao mesmo tempo.',
+    ],
+  },
+  {
     versao: '2.3.0',
     data: '13/11/2026',
     titulo: 'O visual que agradou, lapidado',
     itens: [
-      'Voltou o visual da 2.1 (contorno preto, botão que afunda, amarelo presente), com os serviços em grade de quatro e o convite para avaliar mais discreto.',
+      'Voltou o visual da 2.1 (contorno preto, botão que afunda, amarelo presente), com os serviços em grade de quatro, o rosto do profissional no painel e a barra de abas solta da borda.',
       'Meus gastos: quanto você gastou, mês a mês, e em quê.',
       'Avisar alguém: mande a data e a hora do serviço para quem mora com você.',
       'Indicar o app para um conhecido.',
@@ -15209,7 +15366,7 @@ __e["ItemReportar"] = ItemReportar;
 __def("packages/telas/shell.js", function (__e) {
 
 const __i1 = __mod("packages/ui/index.js");
-const { h, montar, criarRoteador, Barra, Abas, avisar, ligarOndaDeToque, direcaoDaTroca, animarTroca, emCascata, otimizarListaLonga } = __i1;
+const { h, montar, criarRoteador, Barra, Abas, avisar, ligarOndaDeToque, direcaoDaTroca, animarTroca, marcarChegada, emCascata, otimizarListaLonga } = __i1;
 const __i2 = __mod("packages/core/api/index.js");
 const api = __i2.default;
 const __i3 = __mod("packages/nativo/ponte.js");
@@ -15324,6 +15481,7 @@ function criarApp(cfg) {
       if (!cfg.rotasPublicas.includes(ctx.caminho)) mostrarNovidadesUmaVez();
 
       animarTroca(conteudo, direcaoDaTroca(ctx.caminho));
+      marcarChegada(conteudo);
 
       const primeiraLista = conteudo.querySelector('.lista, .grade-2');
       if (primeiraLista) {
@@ -15332,7 +15490,7 @@ function criarApp(cfg) {
       }
 
       desenharAbas(ctx.caminho);
-      document.title = tituloAtual && tituloAtual !== cfg.nomeApp ? `${tituloAtual} · ${cfg.nomeApp}` : cfg.nomeApp;
+      document.title = tituloAtual && !cfg.nomeApp.startsWith(tituloAtual) ? `${tituloAtual} · ${cfg.nomeApp}` : cfg.nomeApp;
       narrador.textContent = tituloAtual || cfg.nomeApp;
     },
 
@@ -16142,7 +16300,7 @@ function CampoSenha(props) {
         b.classList.toggle('forca__barra--on', i < f.nivel);
         b.style.setProperty('--nivel-cor', cores[f.nivel]);
       });
-      rotuloForca.textContent = entrada.value ? `Senha ${f.rotulo}${f.problemas[0] ? ' - ' + f.problemas[0] : ''}` : '';
+      rotuloForca.textContent = entrada.value ? `Senha ${f.rotulo}${f.problemas[0] ? ' · ' + f.problemas[0] : ''}` : '';
     });
   }
 
@@ -16256,6 +16414,8 @@ const __i1 = __mod("packages/ui/dom.js");
 const { h } = __i1;
 const __i2 = __mod("packages/ui/icons.js");
 const { icone } = __i2;
+const __i3 = __mod("packages/ui/desempenho.js");
+const { modoLeve } = __i3;
 const MarcaNome = () =>
   h(
     'span',
@@ -16290,9 +16450,10 @@ function Barra(props) {
 }
 
 function Abas(itens = [], ativo, aoTrocar) {
-  return h(
+  const nav = h(
     'nav',
     { class: 'abas', 'aria-label': 'Navegacao principal' },
+    h('span', { class: 'abas__pilula', 'aria-hidden': 'true' }),
     h('div', { class: 'abas__marca' }, MarcaNome()),
     ...itens.map((t) =>
       h(
@@ -16308,6 +16469,74 @@ function Abas(itens = [], ativo, aoTrocar) {
         t.marcador > 0 ? h('span', { class: 'aba__marcador' }, t.marcador > 9 ? '9+' : String(t.marcador)) : null,
       ),
     ),
+  );
+  queueMicrotask(() => posicionarPilula(nav));
+  ouvirTamanho();
+  return nav;
+}
+
+let pilulaAntes = null;
+
+function posicionarPilula(nav, tentativas = 20) {
+  const pilula = nav.querySelector('.abas__pilula');
+  if (!pilula) return;
+  const deNovo = () => tentativas > 0 && setTimeout(() => posicionarPilula(nav, tentativas - 1), 50);
+  if (!nav.isConnected) {
+    deNovo();
+    return;
+  }
+  const largo = matchMedia('(min-width: 980px)').matches;
+  const atual = nav.querySelector(`.aba[aria-current='page']${largo ? '' : ' .aba__icone'}`);
+  const r = atual?.getBoundingClientRect();
+  if (!r || !r.width) {
+    nav.classList.remove('abas--pilula');
+    if (atual) deNovo(); // existe aba atual, mas ainda sem tamanho
+    return;
+  }
+  const caixa = nav.getBoundingClientRect();
+  const x = r.left - caixa.left - nav.clientLeft;
+  const y = r.top - caixa.top - nav.clientTop;
+  const fim = `translate3d(${x}px, ${y}px, 0)`;
+  pilula.style.width = `${r.width}px`;
+  pilula.style.height = `${r.height}px`;
+  pilula.style.transform = fim;
+  nav.classList.add('abas--pilula');
+
+  const mesmoLugar = (a, b) => a && Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) < 1;
+  const agora = performance.now();
+  let de = pilulaAntes;
+  let jaPassou = 0;
+  if (mesmoLugar(de, { x, y }) && deslize && mesmoLugar(deslize.ate, { x, y }) && agora - deslize.inicio < DURACAO) {
+    de = deslize.de;
+    jaPassou = agora - deslize.inicio;
+  }
+  pilulaAntes = { x, y };
+  if (!de || mesmoLugar(de, { x, y })) return;
+  if (modoLeve() || !pilula.animate) return;
+  if (document.documentElement.hasAttribute('data-sem-animacao')) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!jaPassou) deslize = { de, ate: { x, y }, inicio: agora };
+  const anim = pilula.animate(
+    [{ transform: `translate3d(${de.x}px, ${de.y}px, 0)` }, { transform: fim }],
+    { duration: DURACAO, easing: 'cubic-bezier(.3, 1.25, .5, 1)' },
+  );
+  anim.currentTime = jaPassou;
+}
+const DURACAO = 340;
+let deslize = null;
+
+let ouvindoTamanho = false;
+function ouvirTamanho() {
+  if (ouvindoTamanho || typeof window === 'undefined') return;
+  ouvindoTamanho = true;
+  window.addEventListener(
+    'resize',
+    () => {
+      const nav = document.querySelector('nav.abas');
+      pilulaAntes = null; // girar o celular nao e' trocar de aba: sem deslizar
+      if (nav) posicionarPilula(nav);
+    },
+    { passive: true },
   );
 }
 
@@ -17116,6 +17345,18 @@ function animarTroca(container, direcao) {
   container.classList.add(`tela-entra-${direcao}`);
 }
 
+let fimDaChegada = 0;
+function marcarChegada(el, ms = 1100) {
+  if (!el) return;
+  clearTimeout(fimDaChegada);
+  if (modoLeve()) {
+    delete el.dataset.chegando;
+    return;
+  }
+  el.dataset.chegando = '';
+  fimDaChegada = setTimeout(() => delete el.dataset.chegando, ms);
+}
+
 function selosDeSucesso(texto = 'Tudo certo!') {
   return h(
     'div',
@@ -17197,6 +17438,7 @@ __e["emCascata"] = emCascata;
 __e["contarAte"] = contarAte;
 __e["direcaoDaTroca"] = direcaoDaTroca;
 __e["animarTroca"] = animarTroca;
+__e["marcarChegada"] = marcarChegada;
 __e["selosDeSucesso"] = selosDeSucesso;
 __e["arrastarParaFechar"] = arrastarParaFechar;
 __e["otimizarListaLonga"] = otimizarListaLonga;

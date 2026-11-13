@@ -1,14 +1,15 @@
 {
-  "versao": "2.3.0",
-  "sha256": "826aff10efc23801a5bc4afd928704f8dd21a367ed7d579417ab1e4dbc32a3bd",
-  "tamanho": 628937,
+  "versao": "2.4.0",
+  "sha256": "3489b56e86bd4d3b865a5bf3f68cf0110d6bf67678c6bfbab78e2d3e7fc533e2",
+  "tamanho": 638998,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-12T23:58:54Z",
+  "publicadaEm": "2026-11-13T20:58:40Z",
   "novidades": [
-    "Voltou o visual da 2.1 (contorno preto, botão que afunda, amarelo presente), com os serviços em grade de quatro e o convite para avaliar mais discreto.",
-    "Meus gastos: quanto você gastou, mês a mês, e em quê.",
-    "Avisar alguém: mande a data e a hora do serviço para quem mora com você.",
-    "Indicar o app para um conhecido."
+    "Ao abrir uma tela, as partes chegam em sequência; o risco amarelo do seu nome se desenha e as etapas do pedido enchem na ordem em que aconteceram.",
+    "A marca da aba atual desliza de uma aba para a outra.",
+    "A etapa em que o pedido está agora pulsa devagar, e as estrelas da avaliação acendem uma a uma.",
+    "Se o celular estiver com \"reduzir movimento\" ligado, o app só esmaece, sem nada deslizando.",
+    "Correção: com os dois apps abertos no mesmo aparelho, entrar em um deles fazia o outro mexer nos dados ao mesmo tempo."
   ],
-  "assinatura": "ZiHJ07VA8T8gm_dgXYYB1Fd_vuIPFnWt5qgH38H0hINRtd8Pva4fiw1aikTja4yLt16cWuVrVQ7d5Zk1issrFA"
+  "assinatura": "MF2xIp5zHsw3IWQt0-3--OPy95hi8FmXiLLsp0rMD8OqaycJ40n-_Td2eWzdbqFHgMemvjT_X94cte6EhMUhbg"
 }
