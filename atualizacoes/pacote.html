@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.5.1 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.6.0 - arquivo unico">
 <style>
 
 :root {
@@ -489,26 +489,25 @@ body.teclado-aberto .abas { display: none; }
 
 .cartao {
   display: block;
-  background: var(--fundo);
-  border: 1px solid var(--borda);
-  border-radius: var(--r-lg);
+  background: var(--ladrilho);
+  border: 1px solid transparent;
+  border-radius: 20px;
   padding: var(--e4);
   color: var(--texto);
 }
 .cartao--liso { border-color: var(--borda); }
-.cartao--suave { background: var(--suave-fundo); border-color: var(--suave-borda); }
+.cartao--suave { background: var(--ladrilho); border-color: transparent; }
 .cartao--clicavel {
   width: 100%;
   text-align: left;
-  border: 1.5px solid var(--linha);
-  transition: transform var(--rapido), box-shadow var(--rapido);
+  transition: transform 90ms ease-out, filter var(--rapido);
 }
 @media (hover: hover) {
-  .cartao--clicavel:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--linha); }
+  .cartao--clicavel:hover { filter: brightness(.97); }
 }
-.cartao--clicavel:active { transform: none; box-shadow: none; }
+.cartao--clicavel:active { transform: scale(.985); box-shadow: none; }
 .cartao--clicavel:focus-visible { outline-offset: 3px; }
-.cartao--suave.cartao--clicavel { background: var(--fundo); }
+.cartao--suave.cartao--clicavel { background: var(--ladrilho); }
 .cartao--destaque { border: 1.5px solid var(--marca); box-shadow: 4px 4px 0 var(--marca); }
 .cartao--chamada { background: var(--fundo); border: 1.5px solid var(--destaque); box-shadow: 4px 4px 0 var(--destaque); }
 .cartao--chamada.cartao--clicavel:active { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--destaque); }
@@ -753,13 +752,13 @@ select.entrada {
   gap: var(--e3);
   min-height: 56px;
   padding: var(--e3) var(--e4);
-  background: var(--fundo);
-  border: 1.5px solid var(--borda-forte);
-  border-radius: var(--r-md);
+  background: var(--ladrilho);
+  border: 1.5px solid transparent;
+  border-radius: 18px;
   cursor: pointer;
   transition: border-color var(--rapido), background var(--rapido), box-shadow var(--rapido);
 }
-.opcao:hover { border-color: var(--tinta); }
+.opcao:hover { border-color: color-mix(in srgb, var(--texto) 25%, transparent); }
 .opcao input { position: absolute; opacity: 0; pointer-events: none; }
 .opcao__marca {
   flex: none;
@@ -785,7 +784,7 @@ select.entrada {
   border: 0; border-radius: 50%; background: #fff;
   transform: scale(0);
 }
-.opcao:has(input:checked) { border-color: var(--tinta); background: var(--marca-suave); box-shadow: 3px 3px 0 var(--marca); }
+.opcao:has(input:checked) { border-color: var(--marca); background: var(--marca-suave); box-shadow: 0 0 0 1px var(--marca); }
 .opcao:has(input:checked) .opcao__marca { background: var(--marca); border-color: var(--marca); }
 .opcao:has(input:checked) .opcao__marca::after { transform: rotate(-45deg) scale(1); }
 .opcao--radio:has(input:checked) .opcao__marca::after { transform: scale(1); }
@@ -960,13 +959,12 @@ span.ficha[aria-pressed='true'] { border-style: solid; }
 .lista { display: flex; flex-direction: column; gap: var(--e3); }
 .lista:has(> .item) {
   gap: 0;
-  border: 1px solid var(--borda);
-  border-radius: var(--r-lg);
+  background: var(--ladrilho);
+  border-radius: 20px;
   overflow: hidden;
 }
-.lista:has(> button.item), .lista:has(> a.item) { border: 1.5px solid var(--linha); }
-.lista > .item { border: 0; border-radius: 0; }
-.lista > .item + .item { border-top: 1px solid var(--borda); }
+.lista > .item { border: 0; border-radius: 0; background: transparent; }
+.lista > .item + .item { border-top: 1px solid color-mix(in srgb, var(--texto) 9%, transparent); }
 
 .item {
   display: flex;
@@ -975,26 +973,25 @@ span.ficha[aria-pressed='true'] { border-style: solid; }
   width: 100%;
   min-height: 64px;
   padding: var(--e3) var(--e4);
-  background: var(--fundo);
-  border: 1px solid var(--borda);
-  border-radius: var(--r-lg);
+  background: var(--ladrilho);
+  border: 1px solid transparent;
+  border-radius: 20px;
   color: var(--texto);
   text-align: left;
   transition: background var(--rapido);
 }
-button.item, a.item { border-color: var(--linha); border-width: 1.5px; }
+button.item, a.item { border-color: transparent; }
 .lista > button.item, .lista > a.item { border-width: 0; }
 .lista > button.item + .item, .lista > a.item + .item,
-.lista > .item + button.item { border-top: 1px solid var(--borda); }
-@media (hover: hover) { button.item:hover, a.item:hover { background: var(--superficie-2); text-decoration: none; } }
-button.item:active { background: var(--superficie-2); }
+.lista > .item + button.item { border-top: 1px solid color-mix(in srgb, var(--texto) 9%, transparent); }
+@media (hover: hover) { button.item:hover, a.item:hover { background: color-mix(in srgb, var(--texto) 5%, var(--ladrilho)); text-decoration: none; } }
+button.item:active { background: color-mix(in srgb, var(--texto) 8%, var(--ladrilho)); }
 .item__icone {
   flex: none;
   display: grid; place-items: center;
   width: 42px; height: 42px;
-  border-radius: var(--r-md);
+  border-radius: 50%;
   background: var(--fundo);
-  border: 1.5px solid var(--linha);
   color: var(--texto);
 }
 .item__icone svg { width: 21px; height: 21px; }
@@ -1717,8 +1714,8 @@ details > summary svg { transition: transform var(--normal); }
 
 .indicadores {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-block: 1.5px solid var(--tinta);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--e2);
 }
 .indicador {
   display: grid;
@@ -1728,16 +1725,21 @@ details > summary svg { transition: transform var(--normal); }
   text-align: left;
   min-width: 0;
 }
-.indicador:first-child { padding-left: 0; }
-.indicador + .indicador { border-left: 1px solid var(--borda); }
+.indicador { align-content: end; min-height: 92px; padding: var(--e3); border-radius: 20px; background: var(--destaque); color: #000; }
+.indicador:nth-child(2) { background: var(--marca); color: #fff; }
+.indicador:nth-child(3) { background: var(--tinta); color: var(--tinta-contraste); }
+.indicador .indicador__rotulo { color: inherit; opacity: .85; font-weight: 700; font-size: .74rem; }
 .indicador__icone { display: none; }
 .indicador__valor {
   font-family: var(--fonte-display);
-  font-size: clamp(1.15rem, 5.4vw, 1.55rem);
+  font-size: clamp(1rem, 4.8vw, 1.4rem);
   font-weight: 800;
   letter-spacing: -0.035em;
   line-height: 1.15;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 .indicador__rotulo { font-size: var(--t-sm); color: var(--texto-2); }
 
@@ -2252,6 +2254,485 @@ button.tarefa:active { background: var(--superficie-2); }
 .conteudo:has(> * > .chat__barra) > * > :nth-last-child(2) { margin-bottom: var(--e4); }
 
 
+.fichas--rolagem > * { flex: none; }
+.fichas--rolagem { scroll-padding-inline: var(--e5); }
+
+.vitrine {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: var(--e2);
+  min-height: 210px;
+  padding: var(--e5) var(--e3) var(--e5) var(--e5);
+  border-radius: 26px;
+  background: var(--marca);
+  color: #fff;
+}
+.vitrine--promo { background: var(--promo); }
+.vitrine--amarela { background: var(--destaque); color: #000; }
+.vitrine--tinta { background: var(--tinta); color: var(--tinta-contraste); }
+.vitrine__texto { display: grid; gap: var(--e2); align-self: stretch; align-content: end; min-width: 0; }
+.vitrine__rotulo {
+  justify-self: start;
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: #fff;
+  color: #000;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.vitrine--amarela .vitrine__rotulo { background: #000; color: #fff; }
+.vitrine__titulo { font-family: var(--fonte-display); font-size: clamp(1.7rem, 8vw, 2.2rem); font-weight: 800; line-height: 1.02; letter-spacing: -.03em; margin: 0; color: inherit; }
+.vitrine__apoio { font-size: .9rem; line-height: 1.35; opacity: .92; margin: 0; }
+.vitrine__arte {
+  display: grid; place-items: center;
+  width: 118px; height: 118px;
+  margin-right: 2px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / .94);
+  box-shadow: 0 6px 0 rgb(0 0 0 / .14);
+}
+.vitrine--tinta .vitrine__arte { background: var(--ladrilho); }
+.vitrine__arte .arte { width: 88px; height: 88px; transform: rotate(-6deg); }
+.vitrine::before, .vitrine::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 28%, rgb(255 255 255 / .55) 0 7%, transparent 8%),
+    radial-gradient(circle, rgb(255 255 255 / .07) 0 60%, rgb(255 255 255 / .28) 64%, transparent 67%);
+  animation: dx-bolha 6s ease-in-out infinite alternate;
+}
+.vitrine::before { width: 190px; height: 190px; right: -50px; top: -70px; }
+.vitrine::after { width: 56px; height: 56px; left: 46%; bottom: -16px; animation-duration: 4.5s; animation-delay: -2s; }
+.vitrine--amarela::before, .vitrine--amarela::after,
+.vitrine--tinta::before, .vitrine--tinta::after { opacity: .6; filter: invert(1); }
+
+.pilulas { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.pilula {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  border-radius: var(--r-full);
+  background: rgb(255 255 255 / .2);
+  font-size: .78rem;
+  font-weight: 700;
+}
+.vitrine--amarela .pilula { background: rgb(0 0 0 / .1); }
+.pilula svg { width: 14px; height: 14px; stroke-width: 2.2; }
+
+.incluso { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.incluso__item { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.incluso__marca {
+  flex: none;
+  display: grid; place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--marca);
+  color: #fff;
+}
+.incluso__marca svg { width: 15px; height: 15px; stroke-width: 3; }
+
+.faixas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e2); align-items: end; }
+.faixa {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: var(--e3) var(--e2);
+  border-radius: 18px;
+  background: var(--ladrilho);
+  text-align: center;
+}
+.faixa--meio { background: var(--marca); color: #fff; padding-block: var(--e4); }
+.faixa__titulo { font-size: .76rem; font-weight: 700; opacity: .85; }
+.faixa__valor { font-family: var(--fonte-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em; }
+.faixa__apoio { font-size: .7rem; font-weight: 600; opacity: .8; }
+
+.extras { display: flex; flex-wrap: wrap; gap: var(--e2); }
+.extra {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: var(--r-full);
+  background: var(--ladrilho);
+  font-size: .84rem;
+  font-weight: 600;
+}
+.extra b { color: var(--marca-forte); font-weight: 800; }
+
+.faixa-promo {
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  width: 100%;
+  padding: var(--e3) var(--e4) var(--e3) var(--e3);
+  border: 0;
+  border-radius: 20px;
+  background: var(--destaque);
+  color: #000;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 90ms ease-out;
+}
+.faixa-promo:active { transform: scale(.98); }
+.faixa-promo__selo {
+  flex: none;
+  display: grid; place-items: center;
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: var(--promo);
+  color: #fff;
+  font-weight: 800;
+  font-size: .85rem;
+  transform: rotate(-10deg);
+}
+.faixa-promo__texto { display: grid; gap: 2px; }
+.faixa-promo svg { flex: none; width: 20px; height: 20px; }
+
+.pessoas {
+  display: flex;
+  gap: var(--e3);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  margin-inline: calc(-1 * var(--e5));
+  padding: 2px var(--e5) 6px;
+  scroll-padding-inline: var(--e5);
+  scrollbar-width: none;
+}
+.pessoas::-webkit-scrollbar { display: none; }
+.pessoa {
+  flex: none;
+  width: 118px;
+  scroll-snap-align: start;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: var(--e4) var(--e2) var(--e3);
+  border: 0;
+  border-radius: 20px;
+  background: var(--ladrilho);
+  color: var(--texto);
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 90ms ease-out;
+}
+.pessoa:active { transform: scale(.96); }
+.pessoa .avatar { margin-bottom: 4px; }
+.pessoa__nome { font-weight: 800; font-size: .88rem; line-height: 1.15; }
+.pessoa__nota { display: inline-flex; align-items: center; gap: 3px; font-size: .8rem; font-weight: 700; }
+.pessoa__nota svg { width: 13px; height: 13px; fill: var(--destaque); stroke: var(--estrela-fio); stroke-width: 1.6; }
+.pessoa__preco { font-size: .76rem; color: var(--texto-2); font-weight: 600; }
+
+.procura--campo { cursor: text; padding-right: 20px; }
+.procura--campo:focus-within { box-shadow: 0 0 0 2.5px var(--marca); }
+.procura__campo {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+.procura__campo::placeholder { color: var(--texto-3); }
+
+.lista-achados { display: grid; gap: 2px; }
+.achado {
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  padding: 8px;
+  margin-inline: -8px;
+  width: calc(100% + 16px);
+  border: 0;
+  border-radius: 18px;
+  background: none;
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.achado:active { background: var(--ladrilho); }
+@media (hover: hover) { .achado:hover { background: var(--ladrilho); } }
+.achado__arte {
+  flex: none;
+  display: grid; place-items: center;
+  width: 56px; height: 56px;
+  border-radius: 16px;
+  background: var(--ladrilho);
+}
+.achado:active .achado__arte { background: var(--fundo); }
+@media (hover: hover) { .achado:hover .achado__arte { background: var(--fundo); } }
+.achado__corpo { flex: 1; display: grid; min-width: 0; }
+.achado__titulo { font-weight: 800; }
+.achado__apoio { font-size: .82rem; color: var(--texto-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.achado__preco { flex: none; font-size: .82rem; font-weight: 700; color: var(--texto-2); }
+
+.bilhete {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: 'rotulo copiar' 'codigo copiar';
+  align-items: center;
+  gap: 2px var(--e3);
+  padding: var(--e4) var(--e5);
+  border: 2px dashed var(--borda-forte);
+  border-radius: 20px;
+  background: var(--ladrilho);
+}
+.bilhete::before, .bilhete::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 22px; height: 22px;
+  margin-top: -11px;
+  border-radius: 50%;
+  background: var(--fundo);
+}
+.bilhete::before { left: -12px; }
+.bilhete::after { right: -12px; }
+.bilhete__rotulo { grid-area: rotulo; font-size: .74rem; font-weight: 700; color: var(--texto-2); text-transform: uppercase; letter-spacing: .06em; }
+.bilhete__codigo { grid-area: codigo; font-family: var(--fonte-display); font-size: 1.7rem; font-weight: 800; letter-spacing: .05em; }
+.bilhete__copiar {
+  grid-area: copiar;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: var(--r-full);
+  background: var(--tinta);
+  color: var(--tinta-contraste);
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.bilhete__copiar svg { width: 16px; height: 16px; }
+
+.veredito {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: var(--e3) var(--e4);
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: .9rem;
+}
+.veredito svg { flex: none; width: 22px; height: 22px; }
+.veredito--sim { background: color-mix(in srgb, var(--sucesso) 15%, transparent); }
+.veredito--sim svg { color: var(--sucesso); }
+.veredito--nao { background: var(--alerta-suave); }
+.veredito--nao svg { color: var(--alerta); }
+
+.regras { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.regras__item { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.regras__icone {
+  flex: none;
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--ladrilho);
+}
+.regras__icone svg { width: 18px; height: 18px; }
+
+.passos-usar { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e3); counter-reset: passo; }
+.passos-usar li {
+  counter-increment: passo;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  column-gap: 12px;
+  align-items: center;
+}
+.passos-usar li::before {
+  content: counter(passo);
+  grid-row: span 2;
+  display: grid; place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--destaque);
+  color: #000;
+  font-weight: 800;
+}
+.passos-usar b { font-weight: 800; }
+.passos-usar span { font-size: .85rem; color: var(--texto-2); }
+
+.filtros-servico {
+  display: flex;
+  gap: var(--e2);
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  margin-inline: calc(-1 * var(--e5));
+  padding: 2px var(--e5) 4px;
+  scroll-padding-inline: var(--e5);
+  scrollbar-width: none;
+}
+.filtros-servico::-webkit-scrollbar { display: none; }
+.filtro-servico {
+  flex: none;
+  width: 74px;
+  scroll-snap-align: start;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--texto-2);
+  font: inherit;
+  cursor: pointer;
+}
+.filtro-servico__arte {
+  display: grid; place-items: center;
+  width: 66px; height: 58px;
+  border-radius: 18px;
+  background: var(--ladrilho);
+  transition: transform 90ms ease-out, box-shadow var(--rapido), background var(--rapido);
+}
+.filtro-servico__arte svg { width: 34px; height: 34px; }
+.filtro-servico:active .filtro-servico__arte { transform: scale(.93); }
+.filtro-servico__nome { font-size: .74rem; font-weight: 700; line-height: 1.1; text-align: center; }
+.filtro-servico[aria-pressed='true'] { color: var(--texto); }
+.filtro-servico[aria-pressed='true'] .filtro-servico__arte { background: var(--marca-suave); box-shadow: inset 0 0 0 2.5px var(--marca); }
+.filtro-servico[aria-pressed='true'] .filtro-servico__nome { font-weight: 800; }
+
+.item__icone--arte { width: 50px; height: 50px; border: 0; border-radius: 14px; background: var(--fundo); }
+.item__icone--arte svg { width: 34px; height: 34px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .vitrine::before, .vitrine::after { animation: none; }
+}
+
+.segmentos {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 2px;
+  padding: 4px;
+  border-radius: var(--r-full);
+  background: var(--ladrilho);
+}
+.segmentos .ficha {
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  color: var(--texto-2);
+  font-size: .78rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.segmentos .ficha[aria-pressed='true'] { background: var(--tinta); color: var(--tinta-contraste); }
+
+.cartao--ladrilho { background: var(--ladrilho); border-color: transparent; box-shadow: none; }
+.cartao--ladrilho.cartao--clicavel:active { transform: scale(.985); box-shadow: none; }
+@media (hover: hover) { .cartao--ladrilho.cartao--clicavel:hover { transform: none; box-shadow: none; filter: brightness(.97); } }
+.cartao--ladrilho .item__icone--arte { background: var(--fundo); }
+.cartao--ladrilho .etiqueta--sem-ponto { background: var(--fundo); }
+
+.busca .entrada { min-height: 52px; border-color: transparent; border-radius: var(--r-full); background: var(--ladrilho); font-weight: 600; }
+.busca .entrada:focus { border-color: var(--marca); background: var(--fundo); }
+
+.cabeca-perfil {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: var(--e6) var(--e4) var(--e5);
+  border-radius: 26px;
+  background: var(--marca);
+  color: #fff;
+  text-align: center;
+}
+.cabeca-perfil::before, .cabeca-perfil::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 28%, rgb(255 255 255 / .55) 0 7%, transparent 8%),
+    radial-gradient(circle, rgb(255 255 255 / .07) 0 60%, rgb(255 255 255 / .28) 64%, transparent 67%);
+  animation: dx-bolha 6s ease-in-out infinite alternate;
+}
+.cabeca-perfil::before { width: 170px; height: 170px; left: -60px; top: -60px; }
+.cabeca-perfil::after { width: 70px; height: 70px; right: 18px; bottom: -20px; animation-duration: 4.5s; animation-delay: -2s; }
+.cabeca-perfil__foto { position: relative; padding: 0; border: 0; background: none; cursor: pointer; margin-bottom: var(--e2); }
+.cabeca-perfil__foto .avatar { box-shadow: 0 0 0 4px rgb(255 255 255 / .9); }
+.cabeca-perfil__camera {
+  position: absolute;
+  right: -4px; bottom: -2px;
+  display: grid; place-items: center;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--destaque);
+  color: #000;
+  box-shadow: 0 0 0 3px var(--marca);
+}
+.cabeca-perfil__camera svg { width: 16px; height: 16px; }
+.cabeca-perfil__nome { margin: 0; font-family: var(--fonte-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -.025em; color: #fff; }
+.cabeca-perfil__email { margin: 0; font-size: .85rem; opacity: .88; }
+.cabeca-perfil__editar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--e3);
+  padding: 10px 16px;
+  border: 0;
+  border-radius: var(--r-full);
+  background: #fff;
+  color: #000;
+  font: inherit;
+  font-size: .85rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+.cabeca-perfil__editar svg { width: 16px; height: 16px; }
+
+.minis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--e2); }
+.mini {
+  display: grid;
+  align-content: end;
+  gap: 2px;
+  min-height: 96px;
+  padding: var(--e3);
+  border: 0;
+  border-radius: 20px;
+  font: inherit;
+  text-align: left;
+}
+button.mini { cursor: pointer; transition: transform 90ms ease-out; }
+button.mini:active { transform: scale(.96); }
+.mini__valor { font-family: var(--fonte-display); font-size: clamp(1.05rem, 5vw, 1.4rem); font-weight: 800; letter-spacing: -.03em; line-height: 1.05; }
+.mini__rotulo { font-size: .74rem; font-weight: 700; opacity: .85; line-height: 1.15; }
+.mini--amarela { background: var(--destaque); color: #000; }
+.mini--azul { background: var(--marca); color: #fff; }
+.mini--tinta { background: var(--tinta); color: var(--tinta-contraste); }
+@media (prefers-reduced-motion: reduce) { .cabeca-perfil::before, .cabeca-perfil::after { animation: none; } }
+
+.linha > .btn--fantasma { flex: none; white-space: nowrap; }
+
+.plantao { border-color: transparent !important; background: var(--ladrilho); border-radius: 20px; }
+.plantao--ligado { background: color-mix(in srgb, var(--sucesso) 14%, var(--ladrilho)); }
+
+.lista:has(> .opcao) { background: none; gap: var(--e2); overflow: visible; }
+
+
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
   to   { opacity: 1; transform: none; }
@@ -2651,7 +3132,7 @@ button.tarefa:active { background: var(--superficie-2); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.5.1";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.6.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -2885,6 +3366,8 @@ const __i15 = __mod("apps/cliente/src/pages/enderecos.js");
 const { TelaEnderecos } = __i15;
 const __i16 = __mod("apps/cliente/src/pages/perfil.js");
 const { TelaPerfil } = __i16;
+const __i17 = __mod("apps/cliente/src/pages/descobrir.js");
+const { TelaServico, TelaBuscar, TelaOferta } = __i17;
 const PAPEL = 'cliente';
 
 const ABAS = [
@@ -2901,14 +3384,14 @@ const TEXTOS_LEGAIS = {
     'O DiaristaExpress conecta pessoas que precisam de serviços domésticos a profissionais autônomos. A plataforma intermedia o contato, o agendamento e o pagamento.',
     'O profissional é autônomo e responsável pela execução do serviço. O cliente é responsável por fornecer acesso ao imóvel e por informar condições relevantes (animais, alergias, restrições).',
     'Cancelamentos feitos com menos de 24 horas de antecedência estão sujeitos a multa de 30% do valor, repassada integralmente ao profissional.',
-    'A plataforma retem 12% do valor de cada serviço a título de intermediação.',
+    'A plataforma retém 12% do valor de cada serviço a título de intermediação.',
   ],
   privacidade: [
-    { titulo: 'Politica de privacidade' },
+    { titulo: 'Política de privacidade' },
     'Coletamos apenas o necessário para o serviço acontecer: nome, e-mail, telefone e endereços de atendimento.',
     'Nesta versão de demonstração, TODOS os dados ficam gravados apenas no armazenamento do seu próprio navegador. Nada é enviado para servidores, não ha rastreadores nem anuncios.',
-    'A senha nunca e guardada em texto: gravamos apenas um hash PBKDF2-SHA256 com sal individual, que não pode ser revertido.',
-    'O endereço completo só e revelado ao profissional depois que ele aceita o serviço. Antes disso, ele ve apenas bairro e cidade.',
+    'A senha nunca é guardada em texto: gravamos apenas um hash PBKDF2-SHA256 com sal individual, que não pode ser revertido.',
+    'O endereço completo só é revelado ao profissional depois que ele aceita o serviço. Antes disso, ele vê apenas bairro e cidade.',
     'Você pode baixar todos os seus dados ou excluir sua conta a qualquer momento em Configurações.',
   ],
 };
@@ -2938,7 +3421,7 @@ async function iniciarApp() {
           subtitulo: 'Sua casa cuidada por quem entende do assunto.',
           rotaInicial: '/',
           rotaCadastro: '/cadastro',
-          outroApp: { texto: 'E profissional?', link: 'Abrir o app do Profissional', href: '../diarista/' },
+          outroApp: { texto: 'É profissional?', link: 'Abrir o app do Profissional', href: '../diarista/' },
         })),
 
       '/cadastro': () => tela(app, TelaCadastro(app, { papel: PAPEL, rotaInicial: '/', rotaEntrar: '/entrar' })),
@@ -2949,7 +3432,7 @@ async function iniciarApp() {
           voltarPara: '/entrar',
           paragrafos: [
             { titulo: 'Esqueceu a senha?' },
-            'Nesta versão de demonstração não existe envio de e-mail, entao a recuperacao por link não está disponível.',
+            'Nesta versão de demonstração não existe envio de e-mail, então a recuperação por link não está disponível.',
             'Use a conta de demonstração na tela de login, ou crie uma conta nova - leva menos de um minuto.',
             'Em produção, aqui entraria o fluxo de token temporário enviado por e-mail, com validade curta e uso único.',
           ],
@@ -2960,6 +3443,9 @@ async function iniciarApp() {
 
       '/': () => tela(app, TelaInicio(app)),
       '/novo': (ctx) => tela(app, TelaNovoPedido(app, ctx)),
+      '/servico/:id': (ctx) => tela(app, TelaServico(app, ctx)),
+      '/buscar': () => tela(app, TelaBuscar(app)),
+      '/oferta/:codigo': (ctx) => tela(app, TelaOferta(app, ctx)),
       '/pedidos': (ctx) => tela(app, TelaPedidos(app, ctx)),
       '/assinaturas': () => tela(app, TelaAssinaturas(app)),
       '/pedido/:id': (ctx) => tela(app, TelaPedido(app, ctx)),
@@ -3008,7 +3494,7 @@ __def("apps/cliente/src/lib.js", function (__e) {
 __def("apps/cliente/src/pages/assinaturas.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Etiqueta, EstadoVazio, folha, avisar, modal, proximasDatas, FREQUENCIAS, dinheiro, dataAmigavel, dataCurta, isoData, somaDias, nomeCurto, api } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Etiqueta, EstadoVazio, folha, avisar, modal, proximasDatas, FREQUENCIAS, dinheiro, dataAmigavel, dataCurta, isoData, somaDias, nomeCurto, api, arte } = __i1;
 function TelaAssinaturas(app) {
   const raiz = h('div', { class: 'pilha-lg entra' });
 
@@ -3038,7 +3524,7 @@ function TelaAssinaturas(app) {
               h(
                 'div',
                 { class: 'item' },
-                h('span', { class: 'item__icone', style: { color: 'var(--texto-3)' } }, icone(a.servico?.icone || 'vassoura')),
+                h('span', { class: 'item__icone item__icone--arte' }, arte(a.servico?.icone || 'faxina', 34)),
                 h(
                   'span',
                   { class: 'item__corpo' },
@@ -3310,6 +3796,351 @@ function TelaAssinaturas(app) {
 __e["TelaAssinaturas"] = TelaAssinaturas;
 
 });
+__def("apps/cliente/src/pages/descobrir.js", function (__e) {
+
+const __i1 = __mod("apps/cliente/src/lib.js");
+const { h, cada, montar, icone, Botao, Secao, Avatar, EstadoVazio, avisar, atrasar, SERVICOS, servicoPorId, tarefasSugeridas, extrasDoServico, usaTamanho, TAMANHOS, orcar, cupomPorCodigo, dinheiro, nomeCurto, api, arte } = __i1;
+const COR_DA_VITRINE = {
+  faxina: 'azul', 'faxina-pesada': 'promo', cozinha: 'amarela', lavanderia: 'azul',
+  passadoria: 'tinta', baba: 'amarela', jardinagem: 'tinta', organizacao: 'promo',
+  eletrica: 'amarela', montagem: 'azul', reparos: 'promo',
+};
+
+const EM_PROMOCAO = new Set(['faxina', 'faxina-pesada']);
+
+function Vitrine({ variante, desenho, rotulo, titulo, texto, extra }) {
+  return h(
+    'header',
+    { class: ['vitrine', `vitrine--${variante}`] },
+    h(
+      'div',
+      { class: 'vitrine__texto' },
+      rotulo ? h('span', { class: 'vitrine__rotulo' }, rotulo) : null,
+      h('h1', { class: 'vitrine__titulo' }, titulo),
+      texto ? h('p', { class: 'vitrine__apoio' }, texto) : null,
+      extra || null,
+    ),
+    h('span', { class: 'vitrine__arte' }, arte(desenho, 92)),
+  );
+}
+
+const Pilula = (ic, texto) => h('span', { class: 'pilula' }, icone(ic), texto);
+
+const CartaoPessoa = (p, app) =>
+  h(
+    'button',
+    { class: 'pessoa', type: 'button', onClick: () => app.ir(`/profissional/${p.contaId}`) },
+    Avatar({ nome: p.nome, foto: p.avatar, tamanho: 'g', verificado: p.verificado }),
+    h('span', { class: 'pessoa__nome' }, nomeCurto(p.nome)),
+    h('span', { class: 'pessoa__nota' }, icone('estrela'), (Number(p.nota) || 0).toFixed(1)),
+    p.precoMinimo ? h('span', { class: 'pessoa__preco' }, `${dinheiro(p.precoMinimo)}/h`) : null,
+  );
+
+function TelaServico(app, ctx) {
+  const s = servicoPorId(ctx.params.id);
+  if (!s) {
+    return {
+      barra: { titulo: 'Serviço', aoVoltar: () => app.ir('/') },
+      corpo: EstadoVazio({ icone: 'busca', titulo: 'Serviço não encontrado', texto: 'Ele pode ter saído do catálogo.' }),
+    };
+  }
+
+  const tarefas = tarefasSugeridas(s.id);
+  const extras = extrasDoServico(s.id);
+  const quemFaz = api.perfil.listarProfissionais({ servicoId: s.id, ordenar: 'nota' }).slice(0, 8);
+
+  const porComodo = usaTamanho(s.id) && ['faxina', 'faxina-pesada', 'organizacao'].includes(s.id);
+  const faixas = porComodo
+    ? TAMANHOS.filter((t) => t.id !== 'comercial').map((t) => {
+        const o = orcar({ servicoId: s.id, tamanhoId: t.id });
+        return { titulo: t.nome, valor: o.total, apoio: `${o.horas} h` };
+      })
+    : [s.horasSugeridas - 1, s.horasSugeridas, s.horasSugeridas + 2].filter((x) => x >= 1).map((horas) => {
+        const o = orcar({ servicoId: s.id, horas });
+        return { titulo: horas === 1 ? '1 hora' : `${horas} horas`, valor: o.total, apoio: horas === s.horasSugeridas ? 'o mais pedido' : '' };
+      });
+
+  const corpo = h(
+    'div',
+    { class: 'pilha-lg entra' },
+    Vitrine({
+      variante: COR_DA_VITRINE[s.id] || 'azul',
+      desenho: s.icone,
+      rotulo: EM_PROMOCAO.has(s.id) ? 'Em promoção' : null,
+      titulo: s.nome,
+      texto: s.detalhe || s.resumo,
+      extra: h(
+        'div',
+        { class: 'pilulas' },
+        Pilula('dinheiro', `desde ${dinheiro(s.precoHoraSugerido)}/h`),
+        Pilula('relogio', `cerca de ${s.horasSugeridas} h`),
+      ),
+    }),
+
+    tarefas.length
+      ? h(
+          'section',
+          null,
+          Secao('O que está incluso'),
+          h(
+            'ul',
+            { class: 'incluso' },
+            ...tarefas.map((t) => h('li', { class: 'incluso__item' }, h('span', { class: 'incluso__marca' }, icone('check')), t)),
+          ),
+          h('p', { class: 't-sm texto-3', style: { marginTop: 'var(--e2)' } }, 'Você ajusta a lista no pedido: tira o que não precisa e acrescenta o que faltar.'),
+        )
+      : null,
+
+    h(
+      'section',
+      null,
+      Secao('Quanto custa'),
+      h(
+        'div',
+        { class: 'faixas' },
+        ...faixas.map((f, i) =>
+          h(
+            'div',
+            { class: ['faixa', i === 1 && 'faixa--meio'] },
+            h('span', { class: 'faixa__titulo' }, f.titulo),
+            h('span', { class: 'faixa__valor num' }, dinheiro(f.valor)),
+            f.apoio ? h('span', { class: 'faixa__apoio' }, f.apoio) : null,
+          ),
+        ),
+      ),
+      h('p', { class: 't-sm texto-3', style: { marginTop: 'var(--e2)' } }, 'Estimativa com o preço sugerido. O valor final aparece antes de confirmar.'),
+    ),
+
+    extras.length
+      ? h(
+          'section',
+          null,
+          Secao('Dá para acrescentar'),
+          h('div', { class: 'extras' }, ...extras.map((e) => h('span', { class: 'extra' }, e.nome, h('b', { class: 'num' }, `+ ${dinheiro(e.valor)}`)))),
+        )
+      : null,
+
+    EM_PROMOCAO.has(s.id)
+      ? h(
+          'button',
+          { class: 'faixa-promo', type: 'button', onClick: () => app.ir('/oferta/CASALIMPA') },
+          h('span', { class: 'faixa-promo__selo' }, 'R$ 25'),
+          h('span', { class: 'cresce faixa-promo__texto' }, h('b', null, 'R$ 25 off nesta faxina'), h('span', { class: 't-sm' }, 'acima de R$ 200, com o cupom CASALIMPA')),
+          icone('seta_dir'),
+        )
+      : null,
+
+    quemFaz.length
+      ? h(
+          'section',
+          null,
+          Secao(`Quem faz ${s.nome.toLowerCase()}`, h('a', { href: `#/profissionais?servico=${s.id}` }, 'ver todos')),
+          h('div', { class: 'pessoas' }, ...quemFaz.map((p) => CartaoPessoa(p, app))),
+        )
+      : null,
+
+    h(
+      'div',
+      { class: 'acoes-fixas' },
+      Botao({ icone: 'mais', onClick: () => app.ir(`/novo?servico=${s.id}`) }, `Pedir ${s.nome.toLowerCase()}`),
+    ),
+  );
+
+  return { barra: { titulo: s.nome, aoVoltar: () => app.ir('/') }, corpo };
+}
+
+const sem = (t) => String(t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+
+function TelaBuscar(app) {
+  let termo = '';
+  const resultados = h('div', { class: 'pilha-lg' });
+
+  const meus = api.pedidos.meusPedidos();
+  const recentes = [];
+  for (const p of meus) {
+    if (p.servicoId && !recentes.includes(p.servicoId)) recentes.push(p.servicoId);
+    if (recentes.length === 3) break;
+  }
+
+  const LinhaServico = (s, apoio) =>
+    h(
+      'button',
+      { class: 'achado', type: 'button', onClick: () => app.ir(`/servico/${s.id}`) },
+      h('span', { class: 'achado__arte' }, arte(s.icone, 40)),
+      h('span', { class: 'achado__corpo' }, h('span', { class: 'achado__titulo' }, s.nome), h('span', { class: 'achado__apoio' }, apoio || s.resumo)),
+      h('span', { class: 'achado__preco num' }, `${dinheiro(s.precoHoraSugerido)}/h`),
+    );
+
+  function desenhar() {
+    const t = sem(termo.trim());
+    if (!t) {
+      montar(
+        resultados,
+        recentes.length
+          ? h(
+              'section',
+              null,
+              Secao('Pedidos recentes'),
+              h('div', { class: 'lista-achados' }, ...recentes.map((id) => servicoPorId(id)).filter(Boolean).map((s) => LinhaServico(s, 'Você já pediu'))),
+            )
+          : null,
+        h('section', null, Secao('Todos os serviços'), h('div', { class: 'lista-achados' }, ...SERVICOS.map((s) => LinhaServico(s)))),
+      );
+      return;
+    }
+
+    let servicos = SERVICOS.filter((s) => sem(`${s.nome} ${s.resumo} ${s.detalhe} ${tarefasSugeridas(s.id).join(' ')}`).includes(t));
+    if (!servicos.length) {
+      servicos = SERVICOS.filter((s) => sem(extrasDoServico(s.id).map((e) => e.nome).join(' ')).includes(t)).slice(0, 3);
+    }
+    const pessoas = api.perfil.listarProfissionais({ ordenar: 'nota' }).filter((p) => sem(`${p.nome} ${p.bairro} ${p.cidade}`).includes(t));
+
+    montar(
+      resultados,
+      ...cada(
+        [servicos.length ? 's' : null, pessoas.length ? 'p' : null].filter(Boolean),
+        (k) =>
+          k === 's'
+            ? h('section', null, Secao('Serviços'), h('div', { class: 'lista-achados' }, ...servicos.map((s) => LinhaServico(s))))
+            : h('section', null, Secao('Profissionais'), h('div', { class: 'pessoas' }, ...pessoas.slice(0, 10).map((p) => CartaoPessoa(p, app)))),
+        () =>
+          EstadoVazio({
+            icone: 'busca',
+            titulo: `Nada para "${termo.trim()}"`,
+            texto: 'Tente outra palavra: "vidro", "roupa", "tomada", "jardim"...',
+          }),
+      ),
+    );
+  }
+
+  const entrada = h('input', {
+    class: 'procura__campo',
+    type: 'search',
+    placeholder: 'O que a casa pede?',
+    'aria-label': 'Buscar serviço ou profissional',
+    autocomplete: 'off',
+    enterkeyhint: 'search',
+    onInput: atrasar((e) => {
+      termo = e.target.value;
+      desenhar();
+    }, 120),
+  });
+
+  const sugestoes = h(
+    'div',
+    { class: 'fichas fichas--rolagem' },
+    ...['vidro', 'geladeira', 'roupa', 'tomada', 'móveis', 'jardim'].map((p) =>
+      h('button', { class: 'ficha', type: 'button', onClick: () => { entrada.value = p; termo = p; desenhar(); } }, p),
+    ),
+  );
+
+  desenhar();
+  setTimeout(() => entrada.focus({ preventScroll: true }), 280);
+
+  return {
+    barra: { titulo: 'Buscar', aoVoltar: () => app.ir('/') },
+    corpo: h('div', { class: 'pilha entra' }, h('label', { class: 'procura procura--campo' }, icone('busca'), entrada), sugestoes, resultados),
+  };
+}
+
+const VISUAL_DA_OFERTA = {
+  PRIMEIRA10: { variante: 'promo', desenho: 'faxina', titulo: '10% na primeira', servico: null },
+  VOLTASEMPRE: { variante: 'promo', desenho: 'faxina', titulo: '15% na próxima', servico: null },
+  CASALIMPA: { variante: 'amarela', desenho: 'pesada', titulo: 'R$ 25 off na faxina', servico: 'faxina' },
+};
+
+function TelaOferta(app, ctx) {
+  const c = cupomPorCodigo(ctx.params.codigo);
+  const visual = c && VISUAL_DA_OFERTA[c.codigo];
+  if (!c || !visual) {
+    return {
+      barra: { titulo: 'Oferta', aoVoltar: () => app.ir('/') },
+      corpo: EstadoVazio({ icone: 'alerta', titulo: 'Oferta encerrada', texto: 'Este cupom não está mais valendo.' }),
+    };
+  }
+
+  const concluidos = api.pedidos.estatisticas().concluidos;
+  let vale = true;
+  let motivo = 'Vale para você.';
+  if (c.apenasPrimeiroPedido && concluidos > 0) {
+    vale = false;
+    motivo = 'Este é só para o primeiro pedido, e você já contratou antes.';
+  } else if (c.exigePedidoAnterior && concluidos === 0) {
+    vale = false;
+    motivo = 'Este é para quem já contratou: vale a partir do segundo pedido.';
+  }
+
+  const nomesServicos = (c.servicos || []).map((id) => servicoPorId(id)?.nome).filter(Boolean);
+  const regras = [
+    c.minimoPedido ? ['dinheiro', `Pedido a partir de ${dinheiro(c.minimoPedido)}`] : null,
+    c.tetoDesconto ? ['escudo', `Desconto de até ${dinheiro(c.tetoDesconto)}`] : null,
+    nomesServicos.length ? ['vassoura', `Só para ${nomesServicos.join(' e ').toLowerCase()}`] : ['vassoura', 'Vale para qualquer serviço'],
+    c.apenasPrimeiroPedido ? ['estrela', 'Só no primeiro pedido'] : null,
+    c.exigePedidoAnterior ? ['atualizar', 'Para quem já contratou antes'] : null,
+    c.validoAte ? ['calendario', `Válido até ${new Date(c.validoAte + 'T12:00:00').toLocaleDateString('pt-BR')}`] : null,
+  ].filter(Boolean);
+
+  async function copiar() {
+    try {
+      await navigator.clipboard.writeText(c.codigo);
+      avisar(`Cupom ${c.codigo} copiado.`, 'sucesso');
+    } catch {
+      avisar(`O cupom é ${c.codigo}.`);
+    }
+  }
+
+  const destino = `/novo?cupom=${c.codigo}${visual.servico ? `&servico=${visual.servico}` : ''}`;
+
+  const corpo = h(
+    'div',
+    { class: 'pilha-lg entra' },
+    Vitrine({ variante: visual.variante, desenho: visual.desenho, rotulo: 'Oferta', titulo: visual.titulo, texto: c.descricao }),
+
+    h(
+      'div',
+      { class: 'bilhete' },
+      h('span', { class: 'bilhete__rotulo' }, 'Seu cupom'),
+      h('span', { class: 'bilhete__codigo' }, c.codigo),
+      h('button', { class: 'bilhete__copiar', type: 'button', onClick: copiar }, icone('documento'), 'Copiar'),
+    ),
+
+    h('div', { class: ['veredito', vale ? 'veredito--sim' : 'veredito--nao'] }, icone(vale ? 'check_circulo' : 'info'), motivo),
+
+    h(
+      'section',
+      null,
+      Secao('Regras'),
+      h('ul', { class: 'regras' }, ...regras.map(([ic, t]) => h('li', { class: 'regras__item' }, h('span', { class: 'regras__icone' }, icone(ic)), t))),
+    ),
+
+    h(
+      'section',
+      null,
+      Secao('Como usar'),
+      h(
+        'ol',
+        { class: 'passos-usar' },
+        h('li', null, h('b', null, 'Toque em "Pedir com o cupom"'), h('span', null, 'ele já vai preenchido.')),
+        h('li', null, h('b', null, 'Monte o pedido'), h('span', null, 'serviço, data e endereço.')),
+        h('li', null, h('b', null, 'Confira o desconto'), h('span', null, 'aparece no resumo, antes de confirmar.')),
+      ),
+    ),
+
+    h(
+      'div',
+      { class: 'acoes-fixas' },
+      Botao({ icone: 'mais', onClick: () => app.ir(destino), disabled: !vale }, vale ? 'Pedir com o cupom' : 'Não vale para você'),
+    ),
+  );
+
+  return { barra: { titulo: 'Oferta', aoVoltar: () => app.ir('/') }, corpo };
+}
+
+__e["TelaServico"] = TelaServico;
+__e["TelaBuscar"] = TelaBuscar;
+__e["TelaOferta"] = TelaOferta;
+
+});
 __def("apps/cliente/src/pages/enderecos.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
@@ -3554,7 +4385,7 @@ function TelaInicio(app) {
 
     const procura = h(
       'button',
-      { class: 'procura', type: 'button', onClick: () => app.ir('/novo') },
+      { class: 'procura', type: 'button', onClick: () => app.ir('/buscar') },
       icone('busca'),
       h('span', { class: 'procura__texto' }, 'O que a casa pede?'),
       h('span', { class: 'procura__quando' }, icone('calendario'), 'Amanhã'),
@@ -3583,7 +4414,7 @@ function TelaInicio(app) {
           apoio: veterano ? 'Cupom VOLTASEMPRE, a partir de R$ 100.' : 'Cupom PRIMEIRA10, a partir de R$ 80.',
           acao: 'Usar cupom',
           desenho: 'faxina',
-          aoTocar: () => app.ir(`/novo?cupom=${veterano ? 'VOLTASEMPRE' : 'PRIMEIRA10'}`),
+          aoTocar: () => app.ir(`/oferta/${veterano ? 'VOLTASEMPRE' : 'PRIMEIRA10'}`),
         }),
         Oferta({
           variante: 'amarela',
@@ -3591,7 +4422,7 @@ function TelaInicio(app) {
           apoio: 'Cupom CASALIMPA em faxinas acima de R$ 200.',
           acao: 'Pedir faxina',
           desenho: 'pesada',
-          aoTocar: () => app.ir('/novo?servico=faxina&cupom=CASALIMPA'),
+          aoTocar: () => app.ir('/oferta/CASALIMPA'),
         }),
         Oferta({
           variante: 'azul',
@@ -3638,7 +4469,7 @@ function TelaInicio(app) {
         ...SERVICOS.slice(0, 8).map((s) =>
           h(
             'button',
-            { class: 'servico', type: 'button', onClick: () => app.ir(`/novo?servico=${s.id}`) },
+            { class: 'servico', type: 'button', onClick: () => app.ir(`/servico/${s.id}`) },
             h(
               'span',
               { class: 'servico__icone' },
@@ -3744,14 +4575,14 @@ function CartaoPedido(p, aoClicar) {
   return h(
     'button',
     {
-      class: ['cartao', 'cartao--clicavel', acontecendo && 'cartao--faixa'],
+      class: ['cartao', 'cartao--clicavel', 'cartao--ladrilho', acontecendo && 'cartao--faixa'],
       type: 'button',
       onClick: aoClicar,
     },
     h(
       'div',
       { class: 'linha', style: { marginBottom: '12px' } },
-      h('span', { class: 'item__icone' }, icone(p.servico?.icone || 'vassoura')),
+      h('span', { class: 'item__icone item__icone--arte' }, arte(p.servico?.icone || 'faxina', 34)),
       h(
         'div',
         { class: 'cresce' },
@@ -3782,7 +4613,7 @@ __e["CartaoPedido"] = CartaoPedido;
 __def("apps/cliente/src/pages/novo-pedido.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, montar, icone, Botao, Cartao, Secao, Opcao, Destaque, Calendario, avisar, folha, SERVICOS, EXTRAS, TAMANHOS, PERIODOS, servicoPorId, tamanhoPorId, periodoPorId, orcar, dinheiro, dataAmigavel, isoData, deDataHora, somaDias, api, validarCupom, cuponsDisponiveis, modal, selosDeSucesso, vibrar, FREQUENCIAS, frequenciaPorId, METODOS, GRUPOS, grupoDoServico, usaTamanho, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, limparLinha } = __i1;
+const { h, montar, icone, Botao, Cartao, Secao, Opcao, Destaque, Calendario, avisar, folha, SERVICOS, EXTRAS, TAMANHOS, PERIODOS, servicoPorId, tamanhoPorId, periodoPorId, orcar, dinheiro, dataAmigavel, isoData, deDataHora, somaDias, api, validarCupom, cuponsDisponiveis, modal, selosDeSucesso, vibrar, FREQUENCIAS, frequenciaPorId, METODOS, GRUPOS, grupoDoServico, usaTamanho, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, limparLinha, arte } = __i1;
 const PASSOS = ['Serviço', 'Onde e quando', 'Confirmar'];
 
 function TelaNovoPedido(app, ctx) {
@@ -3856,8 +4687,7 @@ function TelaNovoPedido(app, ctx) {
             valor: s.id,
             titulo: s.nome,
             resumo: s.resumo,
-            icone: s.icone,
-            cor: s.cor,
+            desenho: arte(s.icone, 34),
             fim: `${dinheiro(s.precoHoraSugerido)}/h`,
             marcado: estado.servicoId === s.id,
             onChange: (marcado) => {
@@ -4157,7 +4987,7 @@ function TelaNovoPedido(app, ctx) {
         h(
           'div',
           { class: 'linha', style: { marginBottom: '12px' } },
-          h('span', { class: 'item__icone' }, icone(servico?.icone || 'vassoura')),
+          h('span', { class: 'item__icone item__icone--arte' }, arte(servico?.icone || 'faxina', 34)),
           h('div', { class: 'cresce' }, h('div', { class: 'medio' }, servico?.nome), h('div', { class: 't-sm texto-2' }, usaTamanho(estado.servicoId) ? tamanhoPorId(estado.tamanhoId).nome : servico?.resumo)),
         ),
         h('div', { class: 'divisor' }),
@@ -5081,7 +5911,7 @@ __e["TelaPedidos"] = TelaPedidos;
 __def("apps/cliente/src/pages/perfil.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, icone, Botao, Cartao, Secao, Avatar, Item, Campo, EstadoVazio, Estrelas, folha, avisar, lerFormulario, aplicarErros, dinheiro, mascaraTelefone, checarArquivoImagem, api } = __i1;
+const { h, cada, icone, Botao, Cartao, Secao, Avatar, Item, Campo, EstadoVazio, Estrelas, folha, avisar, lerFormulario, aplicarErros, dinheiro, mascaraTelefone, checarArquivoImagem, api, abrirGastos, indicarOApp } = __i1;
 function TelaPerfil(app) {
   const conta = api.auth.usuarioAtual();
   const perfil = api.perfil.meuPerfil();
@@ -5117,7 +5947,7 @@ function TelaPerfil(app) {
           { class: 'pilha', novalidate: true },
           Campo({ nome: 'nome', rotulo: 'Nome completo', icone: 'usuario', valor: conta.nome }),
           Campo({ nome: 'telefone', rotulo: 'Celular', icone: 'telefone', mascara: 'telefone', inputmode: 'numeric', valor: mascaraTelefone(conta.telefone) }),
-          Campo({ nome: 'email', rotulo: 'E-mail', icone: 'email', valor: conta.email, disabled: true, ajuda: 'O e-mail é a sua identificacao e não pode ser alterado nesta versão.' }),
+          Campo({ nome: 'email', rotulo: 'E-mail', icone: 'email', valor: conta.email, disabled: true, ajuda: 'O e-mail é a sua identificação e não pode ser alterado nesta versão.' }),
           Botao({ bloco: true, tipo: 'submit' }, 'Salvar'),
         );
         form.addEventListener('submit', (e) => {
@@ -5142,25 +5972,28 @@ function TelaPerfil(app) {
     'div',
     { class: 'pilha-lg entra' },
 
-    Cartao(
-      { class: 'centro pilha' },
+    h(
+      'header',
+      { class: 'cabeca-perfil' },
       h(
         'button',
-        { type: 'button', style: { display: 'flex', justifyContent: 'center', width: '100%' }, onClick: () => entradaFoto.click(), 'aria-label': 'Trocar foto' },
+        { class: 'cabeca-perfil__foto', type: 'button', onClick: () => entradaFoto.click(), 'aria-label': 'Trocar foto' },
         Avatar({ nome: conta.nome, foto: conta.avatar, tamanho: 'gg' }),
+        h('span', { class: 'cabeca-perfil__camera' }, icone('camera')),
       ),
       entradaFoto,
-      h('div', null, h('h1', null, conta.nome), h('p', { class: 'texto-2 t-sm' }, conta.email)),
-      Botao({ variante: 'contorno', tamanho: 'pequeno', icone: 'lapis', onClick: abrirEdicao }, 'Editar meus dados'),
+      h('h1', { class: 'cabeca-perfil__nome' }, conta.nome),
+      h('p', { class: 'cabeca-perfil__email' }, conta.email),
+      h('button', { class: 'cabeca-perfil__editar', type: 'button', onClick: abrirEdicao }, icone('lapis'), 'Editar meus dados'),
     ),
 
     stats.total
       ? h(
           'div',
-          { class: 'grade-3' },
-          Mini(String(stats.concluidos), 'serviços'),
-          Mini(String(stats.horasTotais), 'horas'),
-          Mini(dinheiro(stats.valorTotal), 'investido'),
+          { class: 'minis' },
+          Mini(String(stats.concluidos), stats.concluidos === 1 ? 'serviço feito' : 'serviços feitos', 'amarela'),
+          Mini(`${stats.horasTotais}h`, 'de casa cuidada', 'azul'),
+          Mini(dinheiro(stats.valorTotal), 'investido', 'tinta', abrirGastos),
         )
       : null,
 
@@ -5201,7 +6034,7 @@ function TelaPerfil(app) {
         : EstadoVazio({
             icone: 'coracao',
             titulo: 'Sem favoritos ainda',
-            texto: 'Toque no coracao no perfil de quem te atendeu bem para achar rápido depois.',
+            texto: 'Toque no coração no perfil de quem te atendeu bem para achar rápido depois.',
             acao: Botao({ variante: 'contorno', onClick: () => app.ir('/profissionais') }, 'Ver profissionais'),
           }),
     ),
@@ -5213,6 +6046,9 @@ function TelaPerfil(app) {
       h(
         'div',
         { class: 'lista' },
+        Item({ icone: 'grafico', titulo: 'Meus gastos', resumo: 'Mês a mês e por serviço', seta: true, onClick: () => abrirGastos() }),
+        Item({ icone: 'medalha', titulo: 'Ofertas para você', resumo: 'Cupons que valem na sua conta', seta: true, onClick: () => app.ir(`/oferta/${stats.concluidos ? 'VOLTASEMPRE' : 'PRIMEIRA10'}`) }),
+        Item({ icone: 'enviar', titulo: 'Indicar o app', resumo: 'Mande para quem também precisa', seta: true, onClick: () => indicarOApp('cliente') }),
         Item({ icone: 'sino', titulo: 'Avisos', seta: true, onClick: () => app.ir('/avisos') }),
         Item({ icone: 'engrenagem', titulo: 'Configurações', seta: true, onClick: () => app.ir('/config') }),
         Item({ icone: 'info', titulo: 'Ajuda', seta: true, onClick: () => app.ir('/ajuda') }),
@@ -5223,8 +6059,13 @@ function TelaPerfil(app) {
   return { barra: { titulo: 'Perfil' }, corpo };
 }
 
-const Mini = (valor, rotulo) =>
-  h('div', { class: 'cartao cartao--suave centro' }, h('div', { class: 'valor-medio' }, valor), h('div', { class: 't-xs texto-3' }, rotulo));
+const Mini = (valor, rotulo, cor, aoTocar) =>
+  h(
+    aoTocar ? 'button' : 'div',
+    { class: ['mini', `mini--${cor}`], type: aoTocar ? 'button' : null, onClick: aoTocar || null },
+    h('span', { class: 'mini__valor num' }, valor),
+    h('span', { class: 'mini__rotulo' }, rotulo),
+  );
 
 function reduzirImagem(arquivo, ladoMaximo = 320, qualidade = 0.8) {
   return new Promise((resolve, reject) => {
@@ -5254,7 +6095,7 @@ __e["reduzirImagem"] = reduzirImagem;
 __def("apps/cliente/src/pages/profissionais.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Ficha, Estrelas, EstadoVazio, Busca, BarrasDeNota, verImagem, avisar, atrasar, SERVICOS, nomeServico, dinheiro, tempoRelativo, api, compartilharProfissional, confirmar } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Ficha, Estrelas, EstadoVazio, Busca, BarrasDeNota, verImagem, avisar, atrasar, arte, SERVICOS, nomeServico, dinheiro, tempoRelativo, api, compartilharProfissional, confirmar } = __i1;
 function TelaProfissionais(app, ctx) {
   let servicoId = ctx.busca.servico || null;
   let ordenar = 'nota';
@@ -5275,7 +6116,7 @@ function TelaProfissionais(app, ctx) {
         (p) =>
           h(
             'button',
-            { class: 'cartao cartao--clicavel', type: 'button', onClick: () => app.ir(`/profissional/${p.contaId}`) },
+            { class: 'cartao cartao--clicavel cartao--ladrilho', type: 'button', onClick: () => app.ir(`/profissional/${p.contaId}`) },
             h(
               'div',
               { class: 'linha linha--topo' },
@@ -5289,7 +6130,7 @@ function TelaProfissionais(app, ctx) {
                   h('span', { class: 'medio' }, p.nome),
                   favoritos.has(p.contaId) ? h('span', { style: { color: 'var(--erro)' } }, icone('coracao')) : null,
                 ),
-                h('div', { class: 't-sm texto-2' }, `${p.bairro || 'Regiao nao informada'}${p.cidade ? ' · ' + p.cidade : ''}`),
+                h('div', { class: 't-sm texto-2' }, `${p.bairro || 'Região não informada'}${p.cidade ? ' · ' + p.cidade : ''}`),
                 h(
                   'div',
                   { class: 'linha', style: { marginTop: '6px' } },
@@ -5316,11 +6157,18 @@ function TelaProfissionais(app, ctx) {
     );
   }
 
+  const Ladrilho = (id, rotulo, desenho) =>
+    h(
+      'button',
+      { class: 'filtro-servico', type: 'button', 'aria-pressed': servicoId === id ? 'true' : 'false', onClick: (e) => trocarServico(id, e) },
+      h('span', { class: 'filtro-servico__arte' }, desenho),
+      h('span', { class: 'filtro-servico__nome' }, rotulo),
+    );
   const filtroServico = h(
     'div',
-    { class: 'fichas fichas--rolagem' },
-    Ficha({ ativa: !servicoId, onClick: (e) => trocarServico(null, e) }, 'Todos'),
-    ...SERVICOS.map((s) => Ficha({ ativa: servicoId === s.id, icone: s.icone, onClick: (e) => trocarServico(s.id, e) }, s.nome)),
+    { class: 'filtros-servico' },
+    Ladrilho(null, 'Todos', icone('lista')),
+    ...SERVICOS.map((s) => Ladrilho(s.id, s.curto || s.nome, arte(s.icone, 34))),
   );
 
   function trocarServico(id, e) {
@@ -5332,11 +6180,11 @@ function TelaProfissionais(app, ctx) {
 
   const ordenacao = h(
     'div',
-    { class: 'fichas' },
+    { class: 'segmentos', role: 'group', 'aria-label': 'Ordenar por' },
     ...[
-      { id: 'nota', rotulo: 'Melhor avaliados' },
-      { id: 'preco', rotulo: 'Menor preco' },
-      { id: 'experiencia', rotulo: 'Mais experientes' },
+      { id: 'nota', rotulo: 'Melhor nota' },
+      { id: 'preco', rotulo: 'Menor preço' },
+      { id: 'experiencia', rotulo: 'Experiência' },
     ].map((o) =>
       Ficha(
         {
@@ -6184,7 +7032,7 @@ __e["TelaClientes"] = TelaClientes;
 __def("apps/diarista/src/pages/inicio.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, icone, montar, Botao, Cartao, Secao, Etiqueta, EstadoVazio, Estrelas, Sparkline, BarraDeMeta, FaixaDaSemana, LinhaDoDia, NumeroHeroi, Indicadores, folha, avisar, ROTULO_ESTADO, ESTADOS, dinheiro, dataAmigavel, hora, nomeCurto, mesAno, api } = __i1;
+const { h, icone, montar, Botao, Cartao, Secao, Etiqueta, EstadoVazio, Estrelas, Sparkline, BarraDeMeta, FaixaDaSemana, LinhaDoDia, NumeroHeroi, Indicadores, folha, avisar, ROTULO_ESTADO, ESTADOS, dinheiro, dataAmigavel, hora, nomeCurto, mesAno, api, arte } = __i1;
 const saudacao = () => {
   const hr = new Date().getHours();
   if (hr < 12) return 'Bom dia';
@@ -6292,7 +7140,7 @@ function TelaInicio(app) {
             h(
               'div',
               { class: 'linha' },
-              h('span', { class: 'item__icone', style: { color: emAndamento.servico?.cor } }, icone(emAndamento.servico?.icone || 'vassoura')),
+              h('span', { class: 'item__icone item__icone--arte' }, arte(emAndamento.servico?.icone || 'faxina', 34)),
               h(
                 'div',
                 { class: 'cresce' },
@@ -6401,7 +7249,7 @@ function TelaInicio(app) {
                   h(
                     'div',
                     { class: 'linha' },
-                    h('span', { class: 'item__icone' }, icone(p.servico?.icone || 'vassoura')),
+                    h('span', { class: 'item__icone item__icone--arte' }, arte(p.servico?.icone || 'faxina', 34)),
                     h(
                       'div',
                       { class: 'cresce' },
@@ -6596,11 +7444,11 @@ __e["CartaoServico"] = CartaoServico;
 __def("apps/diarista/src/pages/oportunidades.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, cada, montar, icone, Botao, Ficha, EstadoVazio, Destaque, avisar, confirmar, SERVICOS, ESTADOS, dinheiro, dataAmigavel, hora, tempoRelativo, api } = __i1;
+const { h, cada, montar, icone, Botao, Ficha, EstadoVazio, Destaque, avisar, confirmar, SERVICOS, ESTADOS, dinheiro, dataAmigavel, hora, tempoRelativo, api, arte } = __i1;
 const ORDENS = [
   { id: 'data', rotulo: 'Mais próximos' },
   { id: 'valor', rotulo: 'Maior valor' },
-  { id: 'recente', rotulo: 'Recem publicados' },
+  { id: 'recente', rotulo: 'Mais novos' },
 ];
 
 function TelaOportunidades(app) {
@@ -6656,7 +7504,7 @@ function TelaOportunidades(app) {
       h(
         'div',
         { class: 'linha', style: { marginBottom: '12px' } },
-        h('span', { class: 'item__icone' }, icone(p.servico?.icone || 'vassoura')),
+        h('span', { class: 'item__icone item__icone--arte' }, arte(p.servico?.icone || 'faxina', 34)),
         h(
           'div',
           { class: 'cresce' },
@@ -6714,7 +7562,7 @@ function TelaOportunidades(app) {
               desenhar();
             },
           },
-          'Não tenho interesse',
+          'Agora não',
         ),
         Botao(
           {
@@ -6745,13 +7593,18 @@ function TelaOportunidades(app) {
   const InfoLinha = (ic, texto) =>
     h('div', { class: 'linha t-sm' }, h('span', { class: 'texto-3' }, icone(ic)), h('span', { class: 'texto-2 cresce' }, texto));
 
+  const Ladrilho = (id, rotulo, desenho) =>
+    h(
+      'button',
+      { class: 'filtro-servico', type: 'button', 'aria-pressed': servicoId === id ? 'true' : 'false', onClick: (e) => trocar(id, e) },
+      h('span', { class: 'filtro-servico__arte' }, desenho),
+      h('span', { class: 'filtro-servico__nome' }, rotulo),
+    );
   const filtros = h(
     'div',
-    { class: 'fichas fichas--rolagem' },
-    Ficha({ ativa: true, onClick: (e) => trocar(null, e) }, 'Todos'),
-    ...SERVICOS.filter((s) => perfil.servicos?.includes(s.id)).map((s) =>
-      Ficha({ icone: s.icone, onClick: (e) => trocar(s.id, e) }, s.nome),
-    ),
+    { class: 'filtros-servico' },
+    Ladrilho(null, 'Todos', icone('lista')),
+    ...SERVICOS.filter((s) => perfil.servicos?.includes(s.id)).map((s) => Ladrilho(s.id, s.curto || s.nome, arte(s.icone, 34))),
   );
 
   function trocar(id, e) {
@@ -6763,7 +7616,7 @@ function TelaOportunidades(app) {
 
   const ordenacao = h(
     'div',
-    { class: 'fichas' },
+    { class: 'segmentos', role: 'group', 'aria-label': 'Ordenar por' },
     ...ORDENS.map((o) =>
       Ficha(
         {
@@ -6805,7 +7658,7 @@ __e["TelaOportunidades"] = TelaOportunidades;
 __def("apps/diarista/src/pages/perfil.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Item, Campo, Opcao, Estrelas, Destaque, LinhaOpcao, folha, avisar, confirmar, verImagem, lerFormulario, aplicarErros, SERVICOS, servicoPorId, dinheiro, mascaraTelefone, checarArquivoImagem, api } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Item, Campo, Opcao, Estrelas, Destaque, LinhaOpcao, folha, avisar, confirmar, verImagem, lerFormulario, aplicarErros, SERVICOS, servicoPorId, dinheiro, mascaraTelefone, checarArquivoImagem, api, arte } = __i1;
 const DIAS = [
   ['seg', 'Seg'], ['ter', 'Ter'], ['qua', 'Qua'], ['qui', 'Qui'],
   ['sex', 'Sex'], ['sab', 'Sab'], ['dom', 'Dom'],
@@ -6887,7 +7740,7 @@ function TelaPerfil(app) {
               return h(
                 'div',
                 { class: 'item' },
-                h('span', { class: 'item__icone' }, icone(s.icone)),
+                h('span', { class: 'item__icone item__icone--arte' }, arte(s?.icone || 'faxina', 34)),
                 h(
                   'span',
                   { class: 'item__corpo' },
@@ -12240,6 +13093,7 @@ __def("packages/core/domain/servicos.js", function (__e) {
 const SERVICOS = [
   {
     id: 'faxina',
+    curto: 'Faxina', // cabe embaixo de um ladrilho de 74 px
     nome: 'Faxina completa',
     resumo: 'Limpeza geral de todos os cômodos',
     detalhe: 'Varrer, aspirar, passar pano, limpar banheiros, cozinha e tirar o pó.',
@@ -12251,6 +13105,7 @@ const SERVICOS = [
   },
   {
     id: 'faxina-pesada',
+    curto: 'Pesada',
     nome: 'Faxina pesada',
     resumo: 'Pós-obra, mudança ou casa fechada',
     detalhe: 'Remoção de resíduo de obra, limpeza de vidros altos, móveis pesados.',
@@ -12262,6 +13117,7 @@ const SERVICOS = [
   },
   {
     id: 'cozinha',
+    curto: 'Cozinha',
     nome: 'Cozinhar',
     resumo: 'Preparo de refeições na sua casa',
     detalhe: 'Marmitas da semana ou almoço do dia. Combine o cardápio no chat.',
@@ -12273,6 +13129,7 @@ const SERVICOS = [
   },
   {
     id: 'lavanderia',
+    curto: 'Lavar',
     nome: 'Lavanderia',
     resumo: 'Lavar, secar e dobrar',
     detalhe: 'Separação por cor e tecido, uso da sua máquina, roupas dobradas.',
@@ -12284,6 +13141,7 @@ const SERVICOS = [
   },
   {
     id: 'passadoria',
+    curto: 'Passar',
     nome: 'Passar roupa',
     resumo: 'Passadoria com acabamento',
     detalhe: 'Camisas, calças e roupa de cama. Traga o cesto que a gente resolve.',
@@ -12295,6 +13153,7 @@ const SERVICOS = [
   },
   {
     id: 'baba',
+    curto: 'Babá',
     nome: 'Babá / cuidados',
     resumo: 'Cuidar de crianças por período',
     detalhe: 'Acompanhamento, alimentação e banho. Profissionais com referências.',
@@ -12306,6 +13165,7 @@ const SERVICOS = [
   },
   {
     id: 'jardinagem',
+    curto: 'Jardim',
     nome: 'Jardinagem',
     resumo: 'Poda, capina e rega',
     detalhe: 'Corte de grama, poda de arbustos e limpeza do quintal.',
@@ -12317,6 +13177,7 @@ const SERVICOS = [
   },
   {
     id: 'organizacao',
+    curto: 'Organizar',
     nome: 'Organização',
     resumo: 'Armários, closet e despensa',
     detalhe: 'Personal organizer: categorizar, descartar e montar um sistema que dure.',
@@ -12328,6 +13189,7 @@ const SERVICOS = [
   },
   {
     id: 'eletrica',
+    curto: 'Elétrica',
     nome: 'Eletricista',
     resumo: 'Tomada, chuveiro, luminária e disjuntor',
     detalhe: 'Troca de tomada e interruptor, instalação de chuveiro e luminária, disjuntor que desarma.',
@@ -12340,6 +13202,7 @@ const SERVICOS = [
   },
   {
     id: 'montagem',
+    curto: 'Montagem',
     nome: 'Montagem de móveis',
     resumo: 'Guarda-roupa, prateleira e suporte de TV',
     detalhe: 'Montar e desmontar móveis, instalar prateleira e suporte de TV, regular porta de armário.',
@@ -12352,6 +13215,7 @@ const SERVICOS = [
   },
   {
     id: 'reparos',
+    curto: 'Reparos',
     nome: 'Pequenos reparos',
     resumo: 'Torneira pingando, porta emperrada, quadros',
     detalhe: 'Trocar torneira e sifão, vedar box, fixar quadros e cortinas, ajustar fechadura.',
@@ -12455,7 +13319,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.5.1',
+  versao: '2.6.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -12490,6 +13354,19 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.6.0',
+    data: '13/11/2026',
+    titulo: 'Cada botão leva a um lugar novo',
+    itens: [
+      'Toque num serviço da tela inicial: abre a página dele, com o que está incluso, quanto custa por tamanho da casa ou por horas, o que dá para acrescentar e quem faz.',
+      'A barra "O que a casa pede?" abre uma busca de verdade: ache o serviço por palavras como "grama", "tomada" ou "geladeira", e também profissionais.',
+      'Cada oferta tem a própria página: o cupom em forma de bilhete, botão de copiar, as regras por extenso e se ele vale ou não para você.',
+      'Buscar: os filtros viraram desenhos de cada serviço, fáceis de ler. A ordem ficou num seletor só.',
+      'Perfil com cara nova: você em destaque no bloco azul e seus números coloridos. Novos atalhos: Meus gastos, Ofertas para você e Indicar o app.',
+      'O resto do app ganhou o mesmo visual da tela inicial: cartões cinza sem contorno e os desenhos dos serviços nos pedidos, no chat e nas oportunidades do profissional.',
+    ],
+  },
   {
     versao: '2.5.1',
     data: '13/11/2026',
@@ -13831,7 +14708,7 @@ __e["TelaTexto"] = TelaTexto;
 __def("packages/telas/chat.js", function (__e) {
 
 const __i1 = __mod("packages/ui/index.js");
-const { h, cada, montar, icone, avisar, Botao, EstadoVazio } = __i1;
+const { h, cada, montar, icone, avisar, Botao, EstadoVazio, arte } = __i1;
 const __i2 = __mod("packages/core/util/format.js");
 const { hora, dataAmigavel, tempoRelativo } = __i2;
 const __i3 = __mod("packages/core/api/chat.js");
@@ -13937,7 +14814,7 @@ function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
       h(
         'div',
         { class: 'linha' },
-        h('span', { class: 'item__icone' }, icone(pedido.servico?.icone || 'vassoura')),
+        h('span', { class: 'item__icone item__icone--arte' }, arte(pedido.servico?.icone || 'faxina', 34)),
         h(
           'div',
           { class: 'cresce' },
@@ -16607,7 +17484,7 @@ function Selecao(props) {
 
 function Opcao(props) {
   const {
-    nome, valor, tipo = 'radio', titulo, resumo, fim, marcado = false, multi = false, onChange, icone: ic, cor,
+    nome, valor, tipo = 'radio', titulo, resumo, fim, marcado = false, multi = false, onChange, icone: ic, cor, desenho,
   } = props || {};
   const entrada = h('input', {
     type: tipo,
@@ -16622,9 +17499,11 @@ function Opcao(props) {
     { class: ['opcao', tipo === 'radio' && 'opcao--radio'] },
     entrada,
     h('span', { class: 'opcao__marca' }),
-    ic
-      ? h('span', { class: 'item__icone' }, icone(ic))
-      : null,
+    desenho
+      ? h('span', { class: 'item__icone item__icone--arte' }, desenho)
+      : ic
+        ? h('span', { class: 'item__icone' }, icone(ic))
+        : null,
     h(
       'span',
       { class: 'opcao__texto' },
