@@ -1,15 +1,14 @@
 {
-  "versao": "2.4.0",
-  "sha256": "3489b56e86bd4d3b865a5bf3f68cf0110d6bf67678c6bfbab78e2d3e7fc533e2",
-  "tamanho": 638998,
+  "versao": "2.5.0",
+  "sha256": "b577d9ed68ce58c9306e73b41c9bd3299ccffb51d48ad7327f89d08620ffaadc",
+  "tamanho": 654867,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-13T20:58:40Z",
+  "publicadaEm": "2026-11-13T21:14:20Z",
   "novidades": [
-    "Ao abrir uma tela, as partes chegam em sequência; o risco amarelo do seu nome se desenha e as etapas do pedido enchem na ordem em que aconteceram.",
-    "A marca da aba atual desliza de uma aba para a outra.",
-    "A etapa em que o pedido está agora pulsa devagar, e as estrelas da avaliação acendem uma a uma.",
-    "Se o celular estiver com \"reduzir movimento\" ligado, o app só esmaece, sem nada deslizando.",
-    "Correção: com os dois apps abertos no mesmo aparelho, entrar em um deles fazia o outro mexer nos dados ao mesmo tempo."
+    "Tela inicial nova: uma barra grande para pedir (\"O que a casa pede?\"), sugestões com desenhos coloridos de cada serviço e selo de promoção.",
+    "Para economizar: cartões de oferta que você desliza para o lado. Tocou, o cupom já entra aplicado no pedido.",
+    "Bolhas de sabão sobem devagar nos blocos de cor: a nossa marca.",
+    "Atalhos novos: Profissionais e Meus gastos direto da tela inicial."
   ],
-  "assinatura": "MF2xIp5zHsw3IWQt0-3--OPy95hi8FmXiLLsp0rMD8OqaycJ40n-_Td2eWzdbqFHgMemvjT_X94cte6EhMUhbg"
+  "assinatura": "47znMB68bO5wied_-j9fbc4x9adm2B8X5lUaSDz5uhWH2CW3Y_ZT48MBYXxm4LaMIJT2AWnKnHplETTU76GcRg"
 }

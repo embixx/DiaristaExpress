@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.4.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.5.0 - arquivo unico">
 <style>
 
 :root {
@@ -52,6 +52,8 @@
   --fundo: #ffffff;
   --superficie: #ffffff;
   --superficie-2: #f3f3f3;
+  --ladrilho: #efefef;
+  --promo: #dc2626;
   --superficie-3: #e2e2e2;
   --borda: #d9d9d9;
   --borda-forte: #8c8c8c;
@@ -115,6 +117,8 @@
   --fundo: #000000;
   --superficie: #000000;
   --superficie-2: #161616;
+  --ladrilho: #242424;
+  --promo: #dc2626;
   --superficie-3: #2b2b2b;
   --borda: #303030;
   --borda-forte: #6b6b6b;
@@ -146,6 +150,8 @@
     --fundo: #000000;
     --superficie: #000000;
     --superficie-2: #161616;
+    --ladrilho: #242424;
+    --promo: #dc2626;
     --superficie-3: #2b2b2b;
     --borda: #303030;
     --borda-forte: #6b6b6b;
@@ -1760,19 +1766,34 @@ details > summary svg { transition: transform var(--normal); }
   cursor: pointer;
 }
 .servico__icone {
+  position: relative;
   display: grid;
   place-items: center;
   width: 100%;
-  aspect-ratio: 1.1;
-  max-height: 78px;
+  aspect-ratio: 1.12;
+  max-height: 80px;
   color: var(--marca-forte);
-  background: var(--fundo);
-  border: 1.5px solid var(--linha);
-  border-radius: var(--r-lg);
-  box-shadow: 0 3px 0 var(--linha);
-  transition: transform 70ms ease-out, box-shadow 70ms ease-out, background var(--rapido);
+  background: var(--ladrilho);
+  border-radius: 18px;
+  transition: transform 90ms ease-out;
 }
-.servico:active .servico__icone { transform: translateY(3px); box-shadow: 0 0 0 var(--linha); background: var(--destaque); color: #000; }
+.servico:active .servico__icone { transform: scale(.93); }
+.servico__icone .arte { width: 60%; height: auto; max-width: 60px; transition: transform 260ms cubic-bezier(.2, 1.5, .4, 1); }
+@media (hover: hover) { .servico:hover .servico__icone .arte { transform: rotate(-7deg) scale(1.1); } }
+.servico__selo {
+  position: absolute;
+  top: -7px; left: 50%;
+  transform: translateX(-50%) rotate(-4deg);
+  padding: 2px 8px;
+  border-radius: var(--r-full);
+  background: var(--promo);
+  color: #fff;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 .servico__icone svg { width: 28px; height: 28px; stroke-width: 1.7; }
 .servico__texto { display: grid; }
 .servico__nome { font-size: .78rem; font-weight: 700; line-height: 1.2; }
@@ -1796,14 +1817,12 @@ details > summary svg { transition: transform var(--normal); }
   display: grid; place-items: center;
   width: 54px; height: 54px;
   border-radius: 50%;
-  border: 1.5px solid var(--linha);
-  background: var(--fundo);
-  box-shadow: 0 3px 0 var(--linha);
-  transition: transform 70ms ease-out, box-shadow 70ms ease-out, background var(--rapido);
+  background: var(--ladrilho);
+  transition: transform 90ms ease-out, background var(--rapido);
 }
 .atalho__icone svg { width: 23px; height: 23px; }
-.atalho:active .atalho__icone { background: var(--destaque); color: #000; transform: translateY(3px); box-shadow: 0 0 0 var(--linha); }
-.atalho--marca .atalho__icone { background: var(--marca); border-color: var(--marca-base); box-shadow: 0 3px 0 var(--marca-base); color: #fff; }
+.atalho:active .atalho__icone { background: var(--destaque); color: #000; transform: scale(.92); }
+.atalho--marca .atalho__icone { background: var(--marca); color: #fff; }
 .atalho .marcador { top: -4px; right: -4px; }
 
 .aviso-fixo {
@@ -2111,6 +2130,115 @@ button.tarefa:active { background: var(--superficie-2); }
   body.logado { --abas-altura: 70px; }
 }
 
+.procura {
+  display: flex;
+  align-items: center;
+  gap: var(--e3);
+  width: 100%;
+  min-height: 60px;
+  padding: 6px 6px 6px 20px;
+  border: 0;
+  border-radius: var(--r-full);
+  background: var(--ladrilho);
+  color: var(--texto);
+  font: inherit;
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 90ms ease-out;
+}
+.procura:active { transform: scale(.98); }
+.procura > svg { width: 24px; height: 24px; stroke-width: 2.6; flex: none; }
+.procura__texto { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.procura__quando {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  padding: 11px 14px;
+  border-radius: var(--r-full);
+  background: var(--fundo);
+  font-size: .85rem;
+  font-weight: 700;
+}
+.procura__quando svg { width: 16px; height: 16px; stroke-width: 2.2; }
+
+.ofertas {
+  display: flex;
+  gap: var(--e3);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  margin-inline: calc(-1 * var(--e5));
+  padding: 2px var(--e5) 8px;
+  scroll-padding-inline: var(--e5);
+  scrollbar-width: none;
+}
+.ofertas::-webkit-scrollbar { display: none; }
+.oferta {
+  position: relative;
+  flex: 0 0 84%;
+  max-width: 340px;
+  min-height: 156px;
+  scroll-snap-align: start;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: var(--e2);
+  padding: var(--e4) var(--e3) var(--e4) var(--e4);
+  border: 0;
+  border-radius: 22px;
+  background: var(--marca);
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 90ms ease-out;
+}
+.oferta:active { transform: scale(.97); }
+.oferta__texto { display: grid; align-content: space-between; gap: 6px; align-self: stretch; }
+.oferta__titulo { font-family: var(--fonte-display); font-size: 1.4rem; font-weight: 800; line-height: 1.05; letter-spacing: -.025em; }
+.oferta__apoio { font-size: .82rem; line-height: 1.3; opacity: .92; }
+.oferta__acao {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 8px 12px 8px 14px;
+  border-radius: var(--r-full);
+  background: #fff;
+  color: #000;
+  font-size: .8rem;
+  font-weight: 800;
+}
+.oferta__acao svg { width: 14px; height: 14px; stroke-width: 2.6; }
+.oferta .arte { width: 80px; height: 80px; align-self: center; transform: rotate(-6deg); }
+.oferta--promo { background: var(--promo); }
+.oferta--amarela { background: var(--destaque); color: #000; }
+.oferta--amarela .oferta__acao { background: #000; color: #fff; }
+.oferta--tinta { background: var(--tinta); color: var(--tinta-contraste); }
+.oferta--tinta .oferta__acao { background: var(--marca); color: #fff; }
+
+.painel-marca, .oferta { isolation: isolate; overflow: hidden; }
+.painel-marca::before, .painel-marca::after, .oferta::before, .oferta::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 28%, rgb(255 255 255 / .55) 0 7%, transparent 8%),
+    radial-gradient(circle, rgb(255 255 255 / .07) 0 60%, rgb(255 255 255 / .28) 64%, transparent 67%);
+}
+.painel-marca::before, .oferta::before { width: 150px; height: 150px; right: -42px; bottom: -64px; }
+.painel-marca::after, .oferta::after { width: 44px; height: 44px; right: 34%; top: -12px; }
+.oferta::before { width: 120px; height: 120px; right: auto; left: -40px; bottom: -58px; }
+.oferta--amarela::before, .oferta--amarela::after,
+.oferta--tinta::before, .oferta--tinta::after { opacity: .6; filter: invert(1); }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -2294,6 +2422,27 @@ button.tarefa:active { background: var(--superficie-2); }
   to   { opacity: 1; transform: none; }
 }
 
+.painel-marca::before, .oferta::before { animation: dx-bolha 6s ease-in-out infinite alternate; }
+.painel-marca::after, .oferta::after { animation: dx-bolha 4.5s -2s ease-in-out infinite alternate; }
+@keyframes dx-bolha {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-6px, -12px, 0) scale(1.05); }
+}
+
+.conteudo[data-chegando] .servico .arte { animation: dx-carimbo 460ms cubic-bezier(.2, 1.5, .4, 1) both; }
+.conteudo[data-chegando] .servico:nth-child(2) .arte { animation-delay: 40ms; }
+.conteudo[data-chegando] .servico:nth-child(3) .arte { animation-delay: 80ms; }
+.conteudo[data-chegando] .servico:nth-child(4) .arte { animation-delay: 120ms; }
+.conteudo[data-chegando] .servico:nth-child(5) .arte { animation-delay: 160ms; }
+.conteudo[data-chegando] .servico:nth-child(6) .arte { animation-delay: 200ms; }
+.conteudo[data-chegando] .servico:nth-child(7) .arte { animation-delay: 240ms; }
+.conteudo[data-chegando] .servico:nth-child(n + 8) .arte { animation-delay: 280ms; }
+.conteudo[data-chegando] .servico__selo { animation: dx-selo-promo 520ms 420ms cubic-bezier(.2, 1.6, .4, 1) both; }
+@keyframes dx-selo-promo {
+  from { opacity: 0; transform: translateX(-50%) scale(.3) rotate(-30deg); }
+  to   { opacity: 1; transform: translateX(-50%) rotate(-4deg); }
+}
+
 .estrelas-entrada button[data-ativa='true'] svg { animation: dx-estrela 340ms cubic-bezier(.2, 1.6, .4, 1) both; }
 .estrelas-entrada button:nth-child(2)[data-ativa='true'] svg { animation-delay: 40ms; }
 .estrelas-entrada button:nth-child(3)[data-ativa='true'] svg { animation-delay: 80ms; }
@@ -2357,14 +2506,16 @@ button.tarefa:active { background: var(--superficie-2); }
   .entra, .cascata > *, .tela-entra-avanca, .tela-entra-volta, .tela-entra-troca,
   .tocou::after, .marcador, .aba__marcador, .confirmacao__circulo,
   .confirmacao__circulo path, .trilha__barra--vivo, .etiqueta--vivo::before,
-  .estrelas-entrada svg {
+  .estrelas-entrada svg, .painel-marca::before, .painel-marca::after,
+  .oferta::before, .oferta::after {
     animation: none !important;
   }
   .conteudo[data-chegando] > * > *, .conteudo[data-chegando] .duas-colunas > * > *,
   .conteudo[data-chegando] .grifo,
   .conteudo[data-chegando] .etapas__passo, .conteudo[data-chegando] .atalho__icone,
   .conteudo[data-chegando] .semana__dia--hoje .semana__numero, .conteudo[data-chegando] .dia--hoje,
-  .conteudo[data-chegando] .painel-marca__avatar {
+  .conteudo[data-chegando] .painel-marca__avatar,
+  .conteudo[data-chegando] .servico .arte, .conteudo[data-chegando] .servico__selo {
     animation-name: dx-esmaecer !important;
     animation-timing-function: ease-out !important;
   }
@@ -2488,7 +2639,7 @@ button.tarefa:active { background: var(--superficie-2); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.4.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.5.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -2837,6 +2988,7 @@ __def("apps/cliente/src/lib.js", function (__e) {
 { const __r = __mod("packages/telas/pagamento.js"); __e["CartaoPagamento"] = __r["CartaoPagamento"]; }
 { const __r = __mod("packages/telas/reportar.js"); __e["abrirRelato"] = __r["abrirRelato"]; }
 { const __r = __mod("packages/telas/agenda.js"); __e["adicionarAAgenda"] = __r["adicionarAAgenda"]; }
+{ const __r = __mod("packages/telas/config.js"); __e["indicarOApp"] = __r["indicarOApp"]; __e["abrirGastos"] = __r["abrirGastos"]; }
 { const __r = __mod("packages/telas/contato.js"); __e["abrirContato"] = __r["abrirContato"]; __e["verNoMapa"] = __r["verNoMapa"]; __e["compartilharProfissional"] = __r["compartilharProfissional"]; __e["abrirComprovante"] = __r["abrirComprovante"]; }
 { const __r = __mod("packages/nativo/ponte.js"); __e["ehNativo"] = __r["ehNativo"]; __e["ehIOS"] = __r["ehIOS"]; __e["ehAndroid"] = __r["ehAndroid"]; __e["plataforma"] = __r["plataforma"]; __e["vibrar"] = __r["vibrar"]; __e["compartilhar"] = __r["compartilhar"]; }
 { const __r = __mod("packages/nativo/pwa.js"); __e["jaInstalado"] = __r["jaInstalado"]; __e["podeInstalar"] = __r["podeInstalar"]; __e["instalar"] = __r["instalar"]; }
@@ -3268,7 +3420,23 @@ __e["TelaEnderecos"] = TelaEnderecos;
 __def("apps/cliente/src/pages/inicio.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, icone, montar, Botao, Cartao, Secao, Avatar, Etiqueta, Estrelas, EstadoVazio, Progresso, FaixaDaSemana, LinhaDoDia, NumeroHeroi, Indicadores, avisar, SERVICOS, ROTULO_ESTADO, ETAPAS, progresso, ESTADOS, liberaSaida, dinheiro, dataAmigavel, hora, nomeCurto, mesAno, api } = __i1;
+const { h, cada, icone, montar, Botao, Cartao, Secao, Avatar, Etiqueta, Estrelas, EstadoVazio, Progresso, FaixaDaSemana, LinhaDoDia, NumeroHeroi, Indicadores, avisar, SERVICOS, ROTULO_ESTADO, ETAPAS, progresso, ESTADOS, liberaSaida, dinheiro, dataAmigavel, hora, nomeCurto, mesAno, api, arte, indicarOApp, abrirGastos } = __i1;
+const EM_PROMOCAO = new Set(['faxina', 'faxina-pesada']);
+
+const Oferta = ({ variante, titulo, apoio, acao, desenho, aoTocar }) =>
+  h(
+    'button',
+    { class: ['oferta', `oferta--${variante}`], type: 'button', onClick: aoTocar },
+    h(
+      'span',
+      { class: 'oferta__texto' },
+      h('span', { class: 'oferta__titulo' }, titulo),
+      h('span', { class: 'oferta__apoio' }, apoio),
+      h('span', { class: 'oferta__acao' }, acao, icone('seta_dir')),
+    ),
+    arte(desenho, 80),
+  );
+
 const saudacao = () => {
   const hr = new Date().getHours();
   if (hr < 12) return 'Bom dia';
@@ -3372,13 +3540,64 @@ function TelaInicio(app) {
       ),
     );
 
+    const procura = h(
+      'button',
+      { class: 'procura', type: 'button', onClick: () => app.ir('/novo') },
+      icone('busca'),
+      h('span', { class: 'procura__texto' }, 'O que a casa pede?'),
+      h('span', { class: 'procura__quando' }, icone('calendario'), 'Amanhã'),
+    );
+
     const atalhos = h(
       'div',
       { class: 'atalhos' },
-      Atalho('mais', 'Novo pedido', () => app.ir('/novo'), true),
-      Atalho('atualizar', 'Pedir de novo', () => repetir(ultimoFeito)),
-      Atalho('calendario', 'Serviços fixos', () => app.ir('/assinaturas')),
+      Atalho('atualizar', 'Pedir de novo', () => repetir(ultimoFeito), true),
+      Atalho('usuario', 'Profissionais', () => app.ir('/profissionais')),
+      Atalho('grafico', 'Meus gastos', () => abrirGastos()),
       Atalho('chat', 'Tira-dúvidas', () => app.ir('/duvidas')),
+    );
+
+    const veterano = stats.concluidos > 0;
+    const ofertas = h(
+      'section',
+      null,
+      Secao('Para economizar'),
+      h(
+        'div',
+        { class: 'ofertas' },
+        Oferta({
+          variante: 'promo',
+          titulo: veterano ? '15% na próxima' : '10% na primeira',
+          apoio: veterano ? 'Cupom VOLTASEMPRE, a partir de R$ 100.' : 'Cupom PRIMEIRA10, a partir de R$ 80.',
+          acao: 'Usar cupom',
+          desenho: 'faxina',
+          aoTocar: () => app.ir(`/novo?cupom=${veterano ? 'VOLTASEMPRE' : 'PRIMEIRA10'}`),
+        }),
+        Oferta({
+          variante: 'amarela',
+          titulo: 'R$ 25 off na faxina',
+          apoio: 'Cupom CASALIMPA em faxinas acima de R$ 200.',
+          acao: 'Pedir faxina',
+          desenho: 'pesada',
+          aoTocar: () => app.ir('/novo?servico=faxina&cupom=CASALIMPA'),
+        }),
+        Oferta({
+          variante: 'azul',
+          titulo: 'A mesma pessoa toda semana',
+          apoio: 'Combine uma vez e o serviço se repete sozinho.',
+          acao: 'Serviços fixos',
+          desenho: 'calendario',
+          aoTocar: () => app.ir('/assinaturas'),
+        }),
+        Oferta({
+          variante: 'tinta',
+          titulo: 'Indique quem precisa',
+          apoio: 'Mande o app para alguém que também quer a casa em dia.',
+          acao: 'Indicar',
+          desenho: 'presente',
+          aoTocar: () => indicarOApp('cliente'),
+        }),
+      ),
     );
 
     const semana = ativos.length
@@ -3400,7 +3619,7 @@ function TelaInicio(app) {
     const servicos = h(
       'section',
       null,
-      Secao('Do que a casa precisa?', h('a', { href: '#/novo' }, `ver os ${SERVICOS.length}`)),
+      Secao('Sugestões', h('a', { href: '#/novo' }, `ver os ${SERVICOS.length}`)),
       h(
         'div',
         { class: 'servicos' },
@@ -3408,7 +3627,12 @@ function TelaInicio(app) {
           h(
             'button',
             { class: 'servico', type: 'button', onClick: () => app.ir(`/novo?servico=${s.id}`) },
-            h('span', { class: 'servico__icone' }, icone(s.icone)),
+            h(
+              'span',
+              { class: 'servico__icone' },
+              arte(s.icone, 60),
+              EM_PROMOCAO.has(s.id) ? h('span', { class: 'servico__selo' }, 'Promo') : null,
+            ),
             h(
               'span',
               { class: 'servico__texto' },
@@ -3472,11 +3696,12 @@ function TelaInicio(app) {
         h('p', { class: 'saudacao__ola' }, `${saudacao()},`),
         h('h1', { class: 'saudacao__nome' }, h('span', { class: 'grifo' }, primeiroNome), '.'),
       ),
+      procura,
       h(
         'div',
         { class: 'duas-colunas' },
-        h('div', { class: 'pilha-lg' }, painel, ...chamadas, atalhos, semana),
-        h('div', { class: 'pilha-lg' }, servicos, quemAtende, mes),
+        h('div', { class: 'pilha-lg' }, painel, ...chamadas, servicos, ofertas),
+        h('div', { class: 'pilha-lg' }, atalhos, semana, quemAtende, mes),
       ),
     );
   }
@@ -3567,6 +3792,7 @@ function TelaNovoPedido(app, ctx) {
     diaristaPreferidoId: repetido?.diaristaPreferidoId || ctx.busca.profissional || null,
     cupom: '',
     descontoCupom: 0,
+    cupomSugerido: String(ctx.busca.cupom || '').slice(0, 20),
     frequenciaId: repetido?.frequenciaId || null,
     metodoPagamento: 'pix',
     enviando: false,
@@ -4075,7 +4301,7 @@ function TelaNovoPedido(app, ctx) {
       } else {
         estado.cupom = r.cupom.codigo;
         estado.descontoCupom = r.desconto;
-        retorno.textContent = `${r.cupom.descricao} - você economiza ${dinheiro(r.desconto)}.`;
+        retorno.textContent = `${r.cupom.descricao} — você economiza ${dinheiro(r.desconto)}.`;
         retorno.style.color = 'var(--sucesso)';
       }
       desenharResumoDoValor();
@@ -4083,6 +4309,11 @@ function TelaNovoPedido(app, ctx) {
     };
 
     entrada.addEventListener('change', aplicar);
+    if (estado.cupomSugerido && !estado.cupom) {
+      entrada.value = estado.cupomSugerido;
+      estado.cupomSugerido = '';
+      queueMicrotask(aplicar);
+    }
 
     return Cartao(
       { variante: 'suave' },
@@ -12210,7 +12441,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.4.0',
+  versao: '2.5.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -12245,6 +12476,17 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.5.0',
+    data: '13/11/2026',
+    titulo: 'Mais cor, mais vida',
+    itens: [
+      'Tela inicial nova: uma barra grande para pedir ("O que a casa pede?"), sugestões com desenhos coloridos de cada serviço e selo de promoção.',
+      'Para economizar: cartões de oferta que você desliza para o lado. Tocou, o cupom já entra aplicado no pedido.',
+      'Bolhas de sabão sobem devagar nos blocos de cor: a nossa marca.',
+      'Atalhos novos: Profissionais e Meus gastos direto da tela inicial.',
+    ],
+  },
   {
     versao: '2.4.0',
     data: '13/11/2026',
@@ -14374,6 +14616,8 @@ function TelaAjuda(app, { papel, voltarPara }) {
 
 __e["mostrarNovidades"] = mostrarNovidades;
 __e["TelaConfig"] = TelaConfig;
+__e["abrirGastos"] = abrirGastos;
+__e["indicarOApp"] = indicarOApp;
 __e["TelaAjuda"] = TelaAjuda;
 
 });
@@ -17234,9 +17478,119 @@ function ilustracao(nome) {
 const NOMES_ILUSTRACOES = Object.keys(CENAS);
 const temIlustracao = (nome) => Object.prototype.hasOwnProperty.call(CENAS, nome);
 
+const SOMBRA = (rx = 18) => `<ellipse cx="32" cy="59" rx="${rx}" ry="3" fill="#000" opacity=".16"/>`;
+
+const ARTES = {
+  faxina: `${SOMBRA(13)}
+    <path d="M21 25V17a3 3 0 0 1 3-3h10l10 4v3l-6 1v3Z" fill="#d4d4d8"/>
+    <rect x="43" y="16" width="4" height="4" rx="1" fill="#ef4444"/>
+    <path d="M18 30a5 5 0 0 1 5-5h12a5 5 0 0 1 5 5v24a3.5 3.5 0 0 1-3.5 3.5h-15A3.5 3.5 0 0 1 18 54Z" fill="#2563eb"/>
+    <rect x="22" y="34" width="14" height="12" rx="3" fill="#fff"/>
+    <path d="M25 39h8M25 42.5h5" stroke="#2563eb" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="52" cy="10" r="5.5" fill="#93c5fd"/><circle cx="50.5" cy="8.5" r="1.6" fill="#fff"/>
+    <circle cx="57" cy="23" r="3" fill="#facc15"/><circle cx="46" cy="3.5" r="2" fill="#93c5fd"/>
+    <path d="M9 12l1.5 3.5L14 17l-3.5 1.5L9 22l-1.5-3.5L4 17l3.5-1.5Z" fill="#facc15"/>`,
+
+  pesada: `${SOMBRA()}
+    <path d="M46 3 31 40" stroke="#facc15" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="21" cy="26" r="5" fill="#fff"/><circle cx="29" cy="23" r="6" fill="#e0ecff"/><circle cx="38" cy="25" r="5.5" fill="#fff"/><circle cx="45" cy="27" r="3.5" fill="#e0ecff"/>
+    <path d="M14 30h36l-4 26H18Z" fill="#ef4444"/>
+    <rect x="12" y="27" width="40" height="6" rx="3" fill="#b91c1c"/>
+    <rect x="17" y="41" width="30" height="4" fill="#fff" opacity=".35"/>`,
+
+  cozinha: `${SOMBRA(20)}
+    <path d="M22 17c-3-4 3-5 0-9M32 17c-3-4 3-5 0-9M42 17c-3-4 3-5 0-9" stroke="#93c5fd" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <rect x="2" y="33" width="9" height="5" rx="2.5" fill="#1f2937"/><rect x="53" y="33" width="9" height="5" rx="2.5" fill="#1f2937"/>
+    <path d="M10 28h44v18a10 10 0 0 1-10 10H20a10 10 0 0 1-10-10Z" fill="#2563eb"/>
+    <rect x="7" y="24" width="50" height="6" rx="3" fill="#1e40af"/>
+    <rect x="27" y="19" width="10" height="5" rx="2" fill="#facc15"/>
+    <path d="M16 35v9" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".55"/>`,
+
+  lavanderia: `${SOMBRA(20)}
+    <rect x="12" y="5" width="40" height="53" rx="6" fill="#e4e4e7"/>
+    <path d="M12 11a6 6 0 0 1 6-6h28a6 6 0 0 1 6 6v7H12Z" fill="#2563eb"/>
+    <circle cx="19" cy="11.5" r="2.5" fill="#facc15"/><circle cx="26" cy="11.5" r="2.5" fill="#fff"/>
+    <rect x="36" y="9" width="11" height="5" rx="1.5" fill="#93c5fd"/>
+    <circle cx="32" cy="37" r="14" fill="#9ca3af"/><circle cx="32" cy="37" r="10.5" fill="#93c5fd"/>
+    <path d="M21.5 38c3.5-3 7 3 10.5 0s7 3 10.5 0a10.5 10.5 0 0 1-21 0Z" fill="#2563eb"/>
+    <circle cx="36" cy="32" r="2" fill="#fff"/><circle cx="27" cy="42" r="2.6" fill="#ef4444"/>`,
+
+  passadoria: `${SOMBRA(22)}
+    <path d="M29 28V18a5 5 0 0 1 5-5h11a5 5 0 0 1 5 5v14" fill="none" stroke="#1f2937" stroke-width="5" stroke-linecap="round"/>
+    <path d="M5 52h48v-8c0-10-8-16-18-16H24C14 28 7 40 5 52Z" fill="#2563eb"/>
+    <rect x="4" y="50" width="50" height="5" rx="2" fill="#d4d4d8"/>
+    <circle cx="38" cy="40" r="4" fill="#facc15"/>
+    <path d="M58 41c3-3-2-5 1-8M60 52c3-3-2-5 1-8" stroke="#93c5fd" stroke-width="2.5" fill="none" stroke-linecap="round"/>`,
+
+  baba: `
+    <path d="M5 58h54" stroke="#93c5fd" stroke-width="3" stroke-linecap="round"/>
+    <path d="M7 39l-4-9 9 5Z" fill="#facc15"/>
+    <ellipse cx="28" cy="44" rx="21" ry="13" fill="#facc15"/>
+    <circle cx="41" cy="24" r="11" fill="#facc15"/>
+    <path d="M51 23l9 1.5-9 5Z" fill="#ef4444"/>
+    <circle cx="44" cy="21" r="2" fill="#1f2937"/>
+    <path d="M15 42c6-5 15-4 19 2-6 5-14 4-19-2Z" fill="#eab308"/>`,
+
+  jardinagem: `${SOMBRA(14)}
+    <circle cx="53" cy="10" r="5" fill="#facc15"/>
+    <path d="M32 35V17" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M32 25c-10 0-14-6-14-12 8 0 14 4 14 12Z" fill="#22c55e"/>
+    <path d="M32 21c8 0 13-5 13-11-8 0-13 4-13 11Z" fill="#22c55e"/>
+    <path d="M32 31c6 0 10-3 11-7-6 0-10 2-11 7Z" fill="#16a34a"/>
+    <path d="M18 38h28l-3 18H21Z" fill="#ef4444"/>
+    <rect x="16" y="34" width="32" height="6" rx="2" fill="#b91c1c"/>`,
+
+  organizacao: `${SOMBRA(22)}
+    <rect x="9" y="36" width="25" height="20" rx="2" fill="#facc15"/><rect x="19.5" y="36" width="4" height="8" fill="#ca8a04"/>
+    <rect x="33" y="40" width="22" height="16" rx="2" fill="#2563eb"/><rect x="38" y="45" width="12" height="4" rx="1" fill="#fff"/>
+    <rect x="17" y="17" width="23" height="19" rx="2" fill="#ef4444"/><rect x="26.5" y="17" width="4" height="7" fill="#fca5a5"/>`,
+
+  eletrica: `
+    <path d="M32 3v5M12 11l4 4M52 11l-4 4M5 29h5M54 29h5" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
+    <path d="M32 12a16 16 0 0 0-9 29c2 2 3 4 3 6h12c0-2 1-4 3-6a16 16 0 0 0-9-29Z" fill="#facc15"/>
+    <path d="M24 25a9 9 0 0 1 6-6" stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M28 39l2-6 2 4 2-4 2 6" stroke="#ca8a04" stroke-width="2" fill="none" stroke-linejoin="round"/>
+    <rect x="25" y="47" width="14" height="4" rx="1" fill="#9ca3af"/><rect x="25" y="52" width="14" height="4" rx="1" fill="#6b7280"/>
+    <rect x="28" y="57" width="8" height="3" rx="1.5" fill="#1f2937"/>`,
+
+  marcenaria: `${SOMBRA(16)}
+    <path d="M52 25h9" stroke="#9ca3af" stroke-width="3" stroke-linecap="round"/>
+    <rect x="45" y="20" width="7" height="10" rx="1.5" fill="#1f2937"/>
+    <path d="M17 33h12l-3 19H18Z" fill="#facc15"/>
+    <rect x="28" y="33" width="4" height="6" rx="1.5" fill="#ef4444"/>
+    <rect x="7" y="15" width="40" height="19" rx="8" fill="#2563eb"/>
+    <path d="M14 21v7M18.5 21v7" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
+    <rect x="12" y="51" width="20" height="7" rx="2" fill="#1f2937"/>`,
+
+  reparos: `${SOMBRA(18)}
+    <path d="M19 55 39 21" stroke="#facc15" stroke-width="6" stroke-linecap="round"/>
+    <rect x="28" y="10" width="26" height="11" rx="2" fill="#ef4444" transform="rotate(30 41 15.5)"/>
+    <path d="M12 30v15" stroke="#1f2937" stroke-width="3" stroke-linecap="round"/>
+    <rect x="7.5" y="27" width="9" height="3.5" rx="1" fill="#1f2937"/>
+    <path d="M56 40l1.3 3 3 1.3-3 1.3L56 49l-1.3-3-3-1.3 3-1.3Z" fill="#2563eb"/>`,
+
+  calendario: `
+    <rect x="8" y="12" width="48" height="45" rx="6" fill="#fff"/>
+    <path d="M8 18a6 6 0 0 1 6-6h36a6 6 0 0 1 6 6v7H8Z" fill="#ef4444"/>
+    <rect x="18" y="6" width="4" height="12" rx="2" fill="#1f2937"/><rect x="42" y="6" width="4" height="12" rx="2" fill="#1f2937"/>
+    <path d="M21 40l7 7 15-15" stroke="#2563eb" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`,
+  presente: `
+    <rect x="10" y="28" width="44" height="29" rx="3" fill="#ef4444"/>
+    <rect x="7" y="20" width="50" height="10" rx="3" fill="#b91c1c"/>
+    <rect x="29" y="20" width="6" height="37" fill="#facc15"/>
+    <path d="M32 20c-4-10-16-10-12-2 2 3 8 2 12 2Zm0 0c4-10 16-10 12-2-2 3-8 2-12 2Z" fill="#facc15"/>`,
+};
+
+function arte(nome, tamanho = 48) {
+  return svg(ARTES[nome] || ARTES.faxina, { viewBox: '0 0 64 64', tamanho, class: 'arte', stroke: 'none' });
+}
+const temArte = (nome) => Object.prototype.hasOwnProperty.call(ARTES, nome);
+
 __e["ilustracao"] = ilustracao;
 __e["NOMES_ILUSTRACOES"] = NOMES_ILUSTRACOES;
 __e["temIlustracao"] = temIlustracao;
+__e["arte"] = arte;
+__e["temArte"] = temArte;
 
 });
 __def("packages/ui/index.js", function (__e) {
