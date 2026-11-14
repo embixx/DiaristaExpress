@@ -1,15 +1,15 @@
 {
-  "versao": "2.12.0",
-  "sha256": "8c80737da38774a9e92c701213d687c8ecb65f0b2bb25530606edd338733f67f",
-  "tamanho": 727956,
+  "versao": "2.13.0",
+  "sha256": "be899aa35e1e2259deafd86a90ee565fb14a506418938d85de121c271b6e74f9",
+  "tamanho": 745413,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-14T19:11:14Z",
+  "publicadaEm": "2026-11-14T19:20:07Z",
   "novidades": [
-    "Conversa: botão de câmera para mandar foto (a foto é reduzida no aparelho antes de ir). Toque na foto para ver grande.",
-    "Perfil e tela inicial: \"investido\" virou \"gasto em serviços\", com o mesmo valor da tela Meus gastos (gorjetas entram, devoluções saem).",
-    "A seção que se chamava \"Seu novembro\" agora se chama \"Até agora\": os números sempre foram de todos os meses.",
-    "Textos de apoio nos blocos coloridos, a hora das mensagens e os dias do mês vizinho no calendário ficaram mais fortes e fáceis de ler.",
-    "App para Android pronto para instalar (anexo no Trello)."
+    "Cores: preto, branco e um azul mais profundo. O amarelo ficou só nas estrelas de avaliação.",
+    "O número de avisos agora vem em vermelho.",
+    "Ranking dos profissionais: pódio e lista, por serviço, a partir de Buscar (\"Ver o ranking\"). A posição aparece no cartão de cada profissional.",
+    "Buscar: um botão de filtro no lugar das três opções soltas - ordene por ranking, nota, preço, proximidade ou experiência, com preço máximo e só verificados.",
+    "Profissional: a carteira virou o destaque do perfil, a posição no ranking fica no canto, e dá para escolher não aparecer no ranking."
   ],
-  "assinatura": "D3fbT0NZPt_b_1pD9ujGrA9Xe0WgCU7DzpAgc4Br-UM3ueXpBi0-635SIuGH4IT83hcnGEznE3JKc5OAVwZ2UQ"
+  "assinatura": "SA2xgj4_KbPL46Q4caFX5YP1hsPofcz0sg7_Ir6IOroMEoyLgtr7upcB_yosxWFEBGH5oqWF7d6ifjSdtjHfQA"
 }

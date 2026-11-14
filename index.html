@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.12.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.13.0 - arquivo unico">
 <style>
 
 :root {
@@ -19,23 +19,24 @@
   --tinta-contraste: #ffffff;
   --linha: #000000;            /* contorno do que e' tocavel */
 
-  --marca: #2563eb;            /* preenchimento: botao, selecao, painel */
-  --marca-forte: #1d4ed8;      /* o mesmo azul quando e' TEXTO ou link */
+  --marca: #1e40af;            /* azul profundo (v2.13): botao, selecao, painel */
+  --marca-forte: #1e3a8a;      /* o mesmo azul quando e' TEXTO ou link */
   --marca-suave: #e8efff;
   --marca-contraste: #ffffff;
   --marca-base: #000000;       /* a "base da tecla" do botao principal */
 
-  --destaque: #facc15;
+  --destaque: #60a5fa;
   --destaque-texto: #000000;
-  --destaque-suave: #fef6c7;
+  --destaque-suave: #dbeafe;
+  --estrela: #facc15;          /* o unico amarelo da interface: nota */
   --estrela-fio: #000000;
 
-  --painel-fundo: #2563eb;
+  --painel-fundo: #1e40af;
   --painel-texto: #ffffff;
-  --painel-acento: #facc15;
+  --painel-acento: #93c5fd;
   --painel-borda: #000000;
   --painel-rotulo: #ffffff;
-  --painel-sombra: #facc15;
+  --painel-sombra: #0b1b4f;
 
   --sucesso: #166534;
   --sucesso-suave: #e7f6ec;
@@ -44,9 +45,9 @@
   --erro: #b91c1c;
   --erro-suave: #fdecec;
   --erro-fundo: #dc2626;
-  --info: #1d4ed8;
+  --info: #1e40af;
   --info-suave: #e8efff;
-  --marcador-fundo: #facc15; --marcador-texto: #000000;
+  --marcador-fundo: #dc2626; --marcador-texto: #ffffff;   /* contador de aviso: vermelho */
   --sucesso-aviso: #4ade80; --alerta-aviso: #facc15; --erro-aviso: #f87171;
 
   --fundo: #ffffff;
@@ -103,11 +104,12 @@
   --tinta-contraste: #000000;
   --linha: #7a7a7a;
   --marca-forte: #8fb4ff;
+  --marca: #2563eb;           /* no preto o profundo some (2,4:1); este da' 3,5:1 */
   --marca-suave: #0d1f52;
-  --marca-base: #14389f;
-  --destaque-suave: #2e2600;
+  --marca-base: #0b1b4f;
+  --destaque-suave: #0d1f52;
   --estrela-fio: #facc15;
-  --painel-borda: #2563eb;
+  --painel-borda: #3b82f6;
   --sucesso: #4ade80; --sucesso-suave: #072b14;
   --alerta: #facc15; --alerta-suave: #2e2600;
   --erro: #ff8080;   --erro-suave: #330d0d;
@@ -136,11 +138,12 @@
     --tinta-contraste: #000000;
     --linha: #7a7a7a;
     --marca-forte: #8fb4ff;
+    --marca: #2563eb;           /* no preto o profundo some (2,4:1); este da' 3,5:1 */
     --marca-suave: #0d1f52;
-    --marca-base: #14389f;
-    --destaque-suave: #2e2600;
+    --marca-base: #0b1b4f;
+    --destaque-suave: #0d1f52;
     --estrela-fio: #facc15;
-    --painel-borda: #2563eb;
+    --painel-borda: #3b82f6;
     --sucesso: #4ade80; --sucesso-suave: #072b14;
     --alerta: #facc15; --alerta-suave: #2e2600;
     --erro: #ff8080;   --erro-suave: #330d0d;
@@ -941,7 +944,7 @@ span.ficha[aria-pressed='true'] { border-style: solid; }
 .avatar--marca { background: var(--marca); color: #fff; }
 
 .estrelas { display: inline-flex; align-items: center; gap: 1px; }
-.estrelas svg { width: 16px; height: 16px; fill: var(--destaque); stroke: var(--estrela-fio); stroke-width: 1.6; }
+.estrelas svg { width: 16px; height: 16px; fill: var(--estrela); stroke: var(--estrela-fio); stroke-width: 1.6; }
 .estrelas svg.estrelas__vazia { fill: none; stroke: var(--borda-forte); }
 .estrelas--g svg { width: 30px; height: 30px; }
 .nota { display: inline-flex; align-items: center; gap: 5px; font-weight: 800; }
@@ -955,7 +958,7 @@ span.ficha[aria-pressed='true'] { border-style: solid; }
 }
 .estrelas-entrada button svg { width: 42px; height: 42px; stroke-width: 1.5; }
 .estrelas-entrada button:active { transform: scale(1.18); }
-.estrelas-entrada button[data-ativa='true'] svg { fill: var(--destaque); stroke: var(--estrela-fio); }
+.estrelas-entrada button[data-ativa='true'] svg { fill: var(--estrela); stroke: var(--estrela-fio); }
 
 .lista { display: flex; flex-direction: column; gap: var(--e3); }
 .lista:has(> .item) {
@@ -2002,7 +2005,7 @@ button.tarefa:active { background: var(--superficie-2); }
 .boas-vindas h1 b { font-weight: 800; color: var(--marca-forte); }
 .boas-vindas p { font-size: var(--t-lg); max-width: 26ch; line-height: 1.3; }
 
-.nota__estrela { width: 17px; height: 17px; fill: var(--destaque); stroke: var(--estrela-fio); stroke-width: 1.6; }
+.nota__estrela { width: 17px; height: 17px; fill: var(--estrela); stroke: var(--estrela-fio); stroke-width: 1.6; }
 
 .duas-colunas > * + * { margin-top: var(--e7); }
 
@@ -2438,7 +2441,7 @@ button.tarefa:active { background: var(--superficie-2); }
 .pessoa .avatar { margin-bottom: 4px; }
 .pessoa__nome { font-weight: 800; font-size: .88rem; line-height: 1.15; }
 .pessoa__nota { display: inline-flex; align-items: center; gap: 3px; font-size: .8rem; font-weight: 700; }
-.pessoa__nota svg { width: 13px; height: 13px; fill: var(--destaque); stroke: var(--estrela-fio); stroke-width: 1.6; }
+.pessoa__nota svg { width: 13px; height: 13px; fill: var(--estrela); stroke: var(--estrela-fio); stroke-width: 1.6; }
 .pessoa__preco { font-size: .76rem; color: var(--texto-2); font-weight: 600; }
 
 .procura--campo { cursor: text; padding-right: 20px; }
@@ -2981,6 +2984,47 @@ button.mini:active { transform: scale(.96); }
 .dia--fora { opacity: 1; }
 .chat__barra > .btn { flex: none; }
 
+.busca-linha { display: flex; gap: var(--e2); align-items: center; }
+.busca-linha .busca { flex: 1; min-width: 0; }
+.botao-filtro { position: relative; flex: none; display: grid; place-items: center; width: 52px; height: 52px; border: 0; border-radius: 16px; background: var(--ladrilho); color: var(--texto); cursor: pointer; }
+.botao-filtro svg { width: 22px; height: 22px; }
+.botao-filtro:active { transform: scale(.94); }
+.botao-filtro__conta { position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; display: grid; place-items: center; border-radius: 99px; background: var(--marca); color: #fff; font-size: .72rem; font-weight: 800; }
+.botao-filtro__conta[hidden] { display: none; }
+.posto { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 99px; background: var(--marca); color: #fff; font-size: .72rem; font-weight: 800; }
+
+.vitrine__arte--icone { color: var(--marca); }
+.vitrine__arte--icone svg { width: 56px; height: 56px; stroke-width: 1.8; }
+.podio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: var(--e2); }
+.podio__lugar { display: grid; justify-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--texto); font: inherit; cursor: pointer; text-align: center; }
+div.podio__lugar { cursor: default; }
+.podio__posicao { font-family: var(--fonte-display); font-weight: 800; font-size: 1.1rem; }
+.podio__nome { font-weight: 800; font-size: .9rem; }
+.podio__nota { display: inline-flex; align-items: center; gap: 3px; font-size: .8rem; font-weight: 700; }
+.podio__nota svg { width: 13px; height: 13px; fill: var(--estrela); stroke: var(--estrela-fio); }
+.podio__base { width: 100%; margin-top: 6px; border-radius: 14px 14px 4px 4px; background: var(--ladrilho); }
+.podio__lugar--1 .podio__base { height: 84px; background: var(--marca); }
+.podio__lugar--2 .podio__base { height: 60px; background: var(--tinta); }
+.podio__lugar--3 .podio__base { height: 44px; background: var(--destaque); }
+.podio__lugar--1 .avatar { box-shadow: 0 0 0 3px var(--marca); }
+.podio__lugar--eu .podio__nome::after { content: ' (você)'; color: var(--marca-forte); }
+.ranking-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e2); }
+.ranking-linha { display: flex; align-items: center; gap: var(--e3); width: 100%; padding: var(--e3); border: 0; border-radius: 18px; background: var(--ladrilho); color: var(--texto); font: inherit; text-align: left; cursor: pointer; }
+div.ranking-linha { cursor: default; }
+.ranking-linha--eu { box-shadow: inset 0 0 0 2px var(--marca); }
+.ranking-linha__posicao { flex: none; width: 34px; font-family: var(--fonte-display); font-weight: 800; font-size: 1.05rem; text-align: center; }
+.ranking-linha__corpo { flex: 1; display: grid; min-width: 0; }
+.ranking-linha__nome { font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ranking-linha__apoio { font-size: .8rem; color: var(--texto-2); }
+
+.cabeca-perfil__ranking { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 0; border-radius: 99px; background: var(--marca); color: #fff; font: inherit; font-size: .8rem; font-weight: 800; cursor: pointer; }
+.cabeca-perfil__ranking svg { width: 15px; height: 15px; }
+.carteira-destaque { position: relative; display: grid; gap: 2px; width: 100%; padding: var(--e4) var(--e5); padding-right: 48px; border: 0; border-radius: 22px; background: var(--marca); color: #fff; font: inherit; text-align: left; cursor: pointer; }
+.carteira-destaque__rotulo { font-size: .76rem; font-weight: 800; letter-spacing: .02em; }
+.carteira-destaque__valor { font-family: var(--fonte-display); font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
+.carteira-destaque__apoio { font-size: .84rem; }
+.carteira-destaque > svg { position: absolute; right: 18px; top: 50%; width: 22px; height: 22px; margin-top: -11px; }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3276,21 +3320,21 @@ button.mini:active { transform: scale(.96); }
 
 
 :root[data-app='cliente'] {
-  --painel-fundo: #2563eb;
+  --painel-fundo: #1e40af;
   --painel-texto: #ffffff;
-  --painel-acento: #facc15;
+  --painel-acento: #93c5fd;
   --painel-borda: #000000;
   --painel-rotulo: #ffffff;
-  --painel-sombra: #facc15;
+  --painel-sombra: #0b1b4f;
 }
 
 :root[data-app='cliente'][data-tema='escuro'] {
-  --painel-borda: #2563eb;
+  --painel-borda: #3b82f6;
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-app='cliente']:not([data-tema='claro']) {
-    --painel-borda: #2563eb;
+    --painel-borda: #3b82f6;
   }
 }
 
@@ -3298,21 +3342,21 @@ button.mini:active { transform: scale(.96); }
 :root[data-app='diarista'] {
   --painel-fundo: #000000;
   --painel-texto: #ffffff;
-  --painel-acento: #facc15;
+  --painel-acento: #60a5fa;
   --painel-borda: #000000;
   --painel-rotulo: #ffffff;
-  --painel-sombra: #facc15;
+  --painel-sombra: #1e40af;
 }
 
 :root[data-app='diarista'][data-tema='escuro'] {
-  --painel-borda: #facc15;
-  --painel-sombra: #2563eb;
+  --painel-borda: #3b82f6;
+  --painel-sombra: #1e40af;
 }
 
 @media (prefers-color-scheme: dark) {
   :root[data-app='diarista']:not([data-tema='claro']) {
-    --painel-borda: #facc15;
-    --painel-sombra: #2563eb;
+    --painel-borda: #3b82f6;
+    --painel-sombra: #1e40af;
   }
 }
 .escolha {
@@ -3381,7 +3425,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.12.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.13.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -3597,35 +3641,37 @@ const __i6 = __mod("packages/telas/config.js");
 const { TelaConfig, TelaAjuda } = __i6;
 const __i7 = __mod("packages/telas/duvidas.js");
 const { TelaDuvidas } = __i7;
-const __i8 = __mod("packages/telas/avaliar.js");
-const { TelaAvaliar } = __i8;
-const __i9 = __mod("apps/cliente/src/pages/inicio.js");
-const { TelaInicio } = __i9;
-const __i10 = __mod("apps/cliente/src/pages/novo-pedido.js");
-const { TelaNovoPedido } = __i10;
-const __i11 = __mod("apps/cliente/src/pages/pedidos.js");
-const { TelaPedidos } = __i11;
-const __i12 = __mod("apps/cliente/src/pages/assinaturas.js");
-const { TelaAssinaturas } = __i12;
-const __i13 = __mod("apps/cliente/src/pages/pedido.js");
-const { TelaPedido } = __i13;
-const __i14 = __mod("apps/cliente/src/pages/profissionais.js");
-const { TelaProfissionais, TelaProfissional } = __i14;
-const __i15 = __mod("apps/cliente/src/pages/enderecos.js");
-const { TelaEnderecos } = __i15;
-const __i16 = __mod("apps/cliente/src/pages/perfil.js");
-const { TelaPerfil } = __i16;
-const __i17 = __mod("apps/cliente/src/pages/descobrir.js");
-const { TelaServico, TelaBuscar, TelaOferta } = __i17;
-const __i18 = __mod("apps/cliente/src/pages/conta.js");
-const { TelaGastos } = __i18;
+const __i8 = __mod("packages/telas/ranking.js");
+const { TelaRanking } = __i8;
+const __i9 = __mod("packages/telas/avaliar.js");
+const { TelaAvaliar } = __i9;
+const __i10 = __mod("apps/cliente/src/pages/inicio.js");
+const { TelaInicio } = __i10;
+const __i11 = __mod("apps/cliente/src/pages/novo-pedido.js");
+const { TelaNovoPedido } = __i11;
+const __i12 = __mod("apps/cliente/src/pages/pedidos.js");
+const { TelaPedidos } = __i12;
+const __i13 = __mod("apps/cliente/src/pages/assinaturas.js");
+const { TelaAssinaturas } = __i13;
+const __i14 = __mod("apps/cliente/src/pages/pedido.js");
+const { TelaPedido } = __i14;
+const __i15 = __mod("apps/cliente/src/pages/profissionais.js");
+const { TelaProfissionais, TelaProfissional } = __i15;
+const __i16 = __mod("apps/cliente/src/pages/enderecos.js");
+const { TelaEnderecos } = __i16;
+const __i17 = __mod("apps/cliente/src/pages/perfil.js");
+const { TelaPerfil } = __i17;
+const __i18 = __mod("apps/cliente/src/pages/descobrir.js");
+const { TelaServico, TelaBuscar, TelaOferta } = __i18;
+const __i19 = __mod("apps/cliente/src/pages/conta.js");
+const { TelaGastos } = __i19;
 const PAPEL = 'cliente';
 
 const ABAS = [
   { id: 'inicio', rotulo: 'Início', icone: 'casa', rota: '/' },
   { id: 'novo', rotulo: 'Pedir', icone: 'mais', rota: '/novo' },
   { id: 'pedidos', rotulo: 'Pedidos', icone: 'lista', rota: '/pedidos', inclui: ['/pedido', '/chat', '/avaliar', '/assinaturas'], contador: (c) => c.mensagens },
-  { id: 'profissionais', rotulo: 'Buscar', icone: 'busca', rota: '/profissionais', inclui: ['/profissional'] },
+  { id: 'profissionais', rotulo: 'Buscar', icone: 'busca', rota: '/profissionais', inclui: ['/profissional', '/ranking'] },
   { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/enderecos', '/duvidas', '/gastos'], contador: (c) => c.notificacoes },
 ];
 
@@ -3711,6 +3757,7 @@ async function iniciarApp() {
       '/config': () => tela(app, TelaConfig(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/ajuda': () => tela(app, TelaAjuda(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/duvidas': () => tela(app, TelaDuvidas(app, { papel: PAPEL, voltarPara: '/ajuda' })),
+      '/ranking': () => tela(app, TelaRanking(app, { papel: PAPEL, voltarPara: PAPEL === 'cliente' ? '/profissionais' : '/perfil' })),
     },
   });
 
@@ -6636,20 +6683,88 @@ __e["TelaPerfil"] = TelaPerfil;
 __def("apps/cliente/src/pages/profissionais.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Ficha, Estrelas, EstadoVazio, Busca, BarrasDeNota, verImagem, avisar, atrasar, arte, estourarBolhas, SERVICOS, nomeServico, dinheiro, tempoRelativo, api, compartilharProfissional, confirmar } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Ficha, Estrelas, EstadoVazio, Busca, BarrasDeNota, verImagem, avisar, atrasar, arte, estourarBolhas, SERVICOS, nomeServico, dinheiro, tempoRelativo, api, compartilharProfissional, confirmar, folha, Opcao, LinhaOpcao } = __i1;
+const ORDENS = [
+  { id: 'ranking', rotulo: 'Ranking', resumo: 'Nota, número de avaliações e serviços feitos' },
+  { id: 'nota', rotulo: 'Melhor nota', resumo: 'A média das avaliações' },
+  { id: 'preco', rotulo: 'Menor preço', resumo: 'O preço por hora mais baixo primeiro' },
+  { id: 'proximidade', rotulo: 'Mais perto', resumo: 'Do seu bairro, depois da sua cidade' },
+  { id: 'experiencia', rotulo: 'Mais experientes', resumo: 'Quem já fez mais serviços' },
+];
+const PRECOS_MAX = [0, 40, 50, 60, 80];
+
 function TelaProfissionais(app, ctx) {
   let servicoId = ctx.busca.servico || null;
-  let ordenar = 'nota';
+  const filtros = { ordenar: 'ranking', precoMax: 0, soVerificados: false };
   let termo = '';
 
   const lista = h('div', { class: 'lista' });
+  const resumo = h('div', { class: 'linha linha--entre t-sm' });
+  const marcaFiltros = h('span', { class: 'botao-filtro__conta', hidden: true });
+  const botaoFiltro = h('button', { class: 'botao-filtro', type: 'button', 'aria-label': 'Filtrar e ordenar', onClick: () => abrirFiltros() }, icone('filtro'), marcaFiltros);
+
+  const ativos = () => (filtros.ordenar !== 'ranking' ? 1 : 0) + (filtros.precoMax ? 1 : 0) + (filtros.soVerificados ? 1 : 0);
+
+  function abrirFiltros() {
+    const rascunho = { ...filtros };
+    folha({
+      titulo: 'Filtrar e ordenar',
+      conteudo: (fechar) => {
+        const fichasPreco = h(
+          'div',
+          { class: 'fichas' },
+          ...PRECOS_MAX.map((v) =>
+            h('button', {
+              class: 'ficha',
+              type: 'button',
+              'aria-pressed': String(rascunho.precoMax === v),
+              onClick: (e) => {
+                rascunho.precoMax = v;
+                for (const b of e.currentTarget.parentElement.children) b.setAttribute('aria-pressed', 'false');
+                e.currentTarget.setAttribute('aria-pressed', 'true');
+              },
+            }, v ? `até ${dinheiro(v)}/h` : 'Qualquer preço'),
+          ),
+        );
+        return h(
+          'div',
+          { class: 'pilha' },
+          h('div', { class: 'campo__rotulo' }, 'Ordenar por'),
+          h(
+            'div',
+            { class: 'lista' },
+            ...ORDENS.map((o) =>
+              Opcao({ nome: 'ordem', valor: o.id, titulo: o.rotulo, resumo: o.resumo, marcado: rascunho.ordenar === o.id, onChange: (m) => { if (m) rascunho.ordenar = o.id; } }),
+            ),
+          ),
+          h('div', { class: 'campo__rotulo' }, 'Preço máximo por hora'),
+          fichasPreco,
+          LinhaOpcao({ titulo: 'Só identidade verificada', resumo: 'Esconde quem ainda não passou pela verificação', ligado: rascunho.soVerificados, onChange: (v) => { rascunho.soVerificados = v; } }),
+          h(
+            'div',
+            { class: 'linha' },
+            Botao({ variante: 'fantasma', onClick: () => { Object.assign(filtros, { ordenar: 'ranking', precoMax: 0, soVerificados: false }); fechar(); desenhar(); } }, 'Limpar'),
+            Botao({ bloco: true, onClick: () => { Object.assign(filtros, rascunho); fechar(); desenhar(); } }, 'Aplicar'),
+          ),
+        );
+      },
+    });
+  }
 
   function desenhar() {
     const favoritos = new Set(api.perfil.meuPerfil().favoritos || []);
     const encontrados = api.perfil
-      .listarProfissionais({ servicoId, ordenar })
+      .listarProfissionais({ servicoId, ...filtros })
       .filter((p) => (termo ? `${p.nome} ${p.bairro} ${p.cidade}`.toLowerCase().includes(termo.toLowerCase()) : true));
 
+    const n = ativos();
+    marcaFiltros.hidden = !n;
+    marcaFiltros.textContent = String(n);
+    montar(
+      resumo,
+      h('span', { class: 'texto-2' }, `${encontrados.length} profissiona${encontrados.length === 1 ? 'l' : 'is'} · ${ORDENS.find((o) => o.id === filtros.ordenar)?.rotulo.toLowerCase()}`),
+      h('a', { href: '#/ranking', class: 'negrito' }, 'Ver o ranking'),
+    );
     montar(
       lista,
       ...cada(
@@ -6668,7 +6783,7 @@ function TelaProfissionais(app, ctx) {
                 h(
                   'div',
                   { class: 'linha linha--entre' },
-                  h('span', { class: 'medio' }, p.nome),
+                  h('span', { class: 'linha', style: { gap: '8px' } }, h('span', { class: 'medio' }, p.nome), p.posicao ? h('span', { class: 'posto', title: 'Posição no ranking' }, `#${p.posicao}`) : null),
                   favoritos.has(p.contaId) ? h('span', { style: { color: 'var(--erro)' } }, icone('coracao')) : null,
                 ),
                 h('div', { class: 't-sm texto-2' }, `${p.bairro || 'Região não informada'}${p.cidade ? ' · ' + p.cidade : ''}`),
@@ -6719,29 +6834,6 @@ function TelaProfissionais(app, ctx) {
     desenhar();
   }
 
-  const ordenacao = h(
-    'div',
-    { class: 'segmentos', role: 'group', 'aria-label': 'Ordenar por' },
-    ...[
-      { id: 'nota', rotulo: 'Melhor nota' },
-      { id: 'preco', rotulo: 'Menor preço' },
-      { id: 'experiencia', rotulo: 'Experiência' },
-    ].map((o) =>
-      Ficha(
-        {
-          ativa: ordenar === o.id,
-          onClick: (e) => {
-            ordenar = o.id;
-            for (const b of e.currentTarget.parentElement.children) b.setAttribute('aria-pressed', 'false');
-            e.currentTarget.setAttribute('aria-pressed', 'true');
-            desenhar();
-          },
-        },
-        o.rotulo,
-      ),
-    ),
-  );
-
   desenhar();
 
   return {
@@ -6749,15 +6841,20 @@ function TelaProfissionais(app, ctx) {
     corpo: h(
       'div',
       { class: 'pilha entra' },
-      Busca({
-        placeholder: 'Buscar por nome ou bairro',
-        onInput: atrasar((e) => {
-          termo = e.target.value;
-          desenhar();
-        }, 220),
-      }),
+      h(
+        'div',
+        { class: 'busca-linha' },
+        Busca({
+          placeholder: 'Buscar por nome ou bairro',
+          onInput: atrasar((e) => {
+            termo = e.target.value;
+            desenhar();
+          }, 220),
+        }),
+        botaoFiltro,
+      ),
       filtroServico,
-      ordenacao,
+      resumo,
       lista,
     ),
   };
@@ -6941,26 +7038,28 @@ const __i6 = __mod("packages/telas/config.js");
 const { TelaConfig, TelaAjuda } = __i6;
 const __i7 = __mod("packages/telas/duvidas.js");
 const { TelaDuvidas } = __i7;
-const __i8 = __mod("packages/telas/avaliar.js");
-const { TelaAvaliar } = __i8;
-const __i9 = __mod("apps/diarista/src/pages/inicio.js");
-const { TelaInicio } = __i9;
-const __i10 = __mod("apps/diarista/src/pages/oportunidades.js");
-const { TelaOportunidades } = __i10;
-const __i11 = __mod("apps/diarista/src/pages/servico.js");
-const { TelaServico } = __i11;
-const __i12 = __mod("apps/diarista/src/pages/agenda.js");
-const { TelaAgenda } = __i12;
-const __i13 = __mod("apps/diarista/src/pages/carteira.js");
-const { TelaCarteira } = __i13;
-const __i14 = __mod("apps/diarista/src/pages/relatorio.js");
-const { TelaRelatorio } = __i14;
-const __i15 = __mod("apps/diarista/src/pages/perfil.js");
-const { TelaPerfil } = __i15;
-const __i16 = __mod("apps/diarista/src/pages/avaliacoes.js");
-const { TelaAvaliacoes } = __i16;
-const __i17 = __mod("apps/diarista/src/pages/clientes.js");
-const { TelaClientes } = __i17;
+const __i8 = __mod("packages/telas/ranking.js");
+const { TelaRanking } = __i8;
+const __i9 = __mod("packages/telas/avaliar.js");
+const { TelaAvaliar } = __i9;
+const __i10 = __mod("apps/diarista/src/pages/inicio.js");
+const { TelaInicio } = __i10;
+const __i11 = __mod("apps/diarista/src/pages/oportunidades.js");
+const { TelaOportunidades } = __i11;
+const __i12 = __mod("apps/diarista/src/pages/servico.js");
+const { TelaServico } = __i12;
+const __i13 = __mod("apps/diarista/src/pages/agenda.js");
+const { TelaAgenda } = __i13;
+const __i14 = __mod("apps/diarista/src/pages/carteira.js");
+const { TelaCarteira } = __i14;
+const __i15 = __mod("apps/diarista/src/pages/relatorio.js");
+const { TelaRelatorio } = __i15;
+const __i16 = __mod("apps/diarista/src/pages/perfil.js");
+const { TelaPerfil } = __i16;
+const __i17 = __mod("apps/diarista/src/pages/avaliacoes.js");
+const { TelaAvaliacoes } = __i17;
+const __i18 = __mod("apps/diarista/src/pages/clientes.js");
+const { TelaClientes } = __i18;
 const PAPEL = 'diarista';
 
 const ABAS = [
@@ -6968,7 +7067,7 @@ const ABAS = [
   { id: 'oportunidades', rotulo: 'Trabalhos', icone: 'busca', rota: '/oportunidades' },
   { id: 'agenda', rotulo: 'Agenda', icone: 'calendario', rota: '/agenda', inclui: ['/servico', '/chat', '/avaliar'], contador: (c) => c.mensagens },
   { id: 'carteira', rotulo: 'Carteira', icone: 'carteira', rota: '/carteira', inclui: ['/relatorio'] },
-  { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/avaliacoes', '/duvidas', '/clientes'], contador: (c) => c.notificacoes },
+  { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/avaliacoes', '/duvidas', '/clientes', '/ranking'], contador: (c) => c.notificacoes },
 ];
 
 const TEXTOS_LEGAIS = {
@@ -7050,6 +7149,7 @@ async function iniciarApp() {
       '/config': () => tela(app, TelaConfig(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/ajuda': () => tela(app, TelaAjuda(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/duvidas': () => tela(app, TelaDuvidas(app, { papel: PAPEL, voltarPara: '/ajuda' })),
+      '/ranking': () => tela(app, TelaRanking(app, { papel: PAPEL, voltarPara: PAPEL === 'cliente' ? '/profissionais' : '/perfil' })),
     },
   });
 
@@ -8273,7 +8373,29 @@ function TelaPerfil(app) {
           h('h1', { class: 'cabeca-perfil__nome' }, conta.nome),
           h('p', { class: 'cabeca-perfil__email' }, `${perfil.bairro || 'Bairro não informado'}${perfil.cidade ? ' · ' + perfil.cidade : ''}`),
           h('button', { class: 'cabeca-perfil__editar', type: 'button', onClick: () => abrirDados(conta, perfil) }, icone('lapis'), 'Editar meus dados'),
+          h('button', { class: 'cabeca-perfil__ranking', type: 'button', onClick: () => app.ir('/ranking'), 'aria-label': 'Ver o ranking' },
+            icone('medalha'),
+            perfil.mostrarRanking === false ? 'Fora do ranking' : `${api.perfil.cartaoProfissional(conta.id)?.posicao || '-'}º no ranking`),
         ),
+
+        (() => {
+          const r = api.carteira.meuResumo();
+          return h(
+            'button',
+            { class: 'carteira-destaque', type: 'button', onClick: () => app.ir('/carteira') },
+            h('span', { class: 'carteira-destaque__rotulo' }, 'Disponível para saque'),
+            h('span', { class: 'carteira-destaque__valor num' }, dinheiro(r.disponivel)),
+            h('span', { class: 'carteira-destaque__apoio' }, r.retido ? `mais ${dinheiro(r.retido)} liberando` : 'Toque para ver o extrato e sacar'),
+            icone('seta_dir'),
+          );
+        })(),
+
+        LinhaOpcao({
+          titulo: 'Aparecer no ranking',
+          resumo: 'Mostra sua posição para os clientes. Desligue se não quiser.',
+          ligado: perfil.mostrarRanking !== false,
+          onChange: () => { api.perfil.alternarRankingVisivel(); app.roteador.recarregar(); },
+        }),
 
         h(
           'div',
@@ -10563,6 +10685,10 @@ const perfil = {
   meusEnderecos: perfilM.meusEnderecos,
   salvarEndereco: perfilM.salvarEndereco,
   removerEndereco: perfilM.removerEndereco,
+  enderecoAtivo: perfilM.enderecoAtivo,
+  escolherEnderecoAtivo: perfilM.escolherEnderecoAtivo,
+  ranking: perfilM.ranking,
+  alternarRankingVisivel: perfilM.alternarRankingVisivel,
 };
 
 const carteira = {
@@ -11969,7 +12095,54 @@ function cartaoProfissional(contaId) {
     precoMinimo: menorPreco(p),
     atendendo: p.atendendo !== false,
     folgas: [...(p.folgas || [])],
+    mostrarRanking: p.mostrarRanking !== false,
+    posicao: p.mostrarRanking !== false ? posicaoNoRanking(contaId) : null,
   };
+}
+
+const NOTA_BASE = 4.5;
+const PESO_BASE = 8;
+function pontosDeRanking(p) {
+  const n = Number(p.totalAvaliacoes) || 0;
+  const nota = ((Number(p.nota) || 0) * n + NOTA_BASE * PESO_BASE) / (n + PESO_BASE);
+  return Math.round((nota * 100 + Math.log10(1 + (Number(p.totalServicos) || 0)) * 12) * 10) / 10;
+}
+
+function rankingBruto() {
+  return ler('contas', [])
+    .filter((c) => c.papel === 'diarista' && c.ativo)
+    .map((c) => ({ contaId: c.id, pontos: pontosDeRanking(perfilDe(c.id) || {}) }))
+    .sort((a, b) => b.pontos - a.pontos);
+}
+
+function posicaoNoRanking(contaId) {
+  const i = rankingBruto().findIndex((r) => r.contaId === contaId);
+  return i < 0 ? null : i + 1;
+}
+
+function ranking({ servicoId } = {}) {
+  return rankingBruto()
+    .map((r) => ({ ...cartaoProfissional(r.contaId), pontos: r.pontos }))
+    .filter((p) => p && p.contaId && p.mostrarRanking)
+    .filter((p) => (servicoId ? p.servicos.includes(servicoId) : true));
+}
+
+function alternarRankingVisivel() {
+  const { conta } = exigirSessao('diarista');
+  const atual = perfilDe(conta.id) || {};
+  const mostrar = atual.mostrarRanking === false;
+  const tudo = todos();
+  tudo[conta.id] = { ...atual, mostrarRanking: mostrar };
+  gravar(PERFIS, tudo);
+  publicar(EVENTOS.PERFIL, { contaId: conta.id });
+  return { ok: true, mostrar, posicao: posicaoNoRanking(conta.id) };
+}
+
+function distanciaAproximada(p, endereco) {
+  if (!endereco) return 1;
+  if (p.bairro && endereco.bairro && p.bairro.toLowerCase() === endereco.bairro.toLowerCase()) return 0;
+  if (p.cidade && endereco.cidade && p.cidade.toLowerCase() === endereco.cidade.toLowerCase()) return 1;
+  return 2;
 }
 
 function menorPreco(perfil) {
@@ -11988,7 +12161,7 @@ function bloqueadosDeQuemPergunta() {
   }
 }
 
-function listarProfissionais({ servicoId, cidade, notaMinima = 0, ordenar = 'nota' } = {}) {
+function listarProfissionais({ servicoId, cidade, notaMinima = 0, ordenar = 'nota', precoMax = 0, soVerificados = false } = {}) {
   const cartoes = ler('contas', [])
     .filter((c) => c.papel === 'diarista' && c.ativo)
     .map((c) => cartaoProfissional(c.id))
@@ -11997,9 +12170,15 @@ function listarProfissionais({ servicoId, cidade, notaMinima = 0, ordenar = 'not
     .filter((p) => !bloqueadosDeQuemPergunta().includes(p.contaId))
     .filter((p) => (servicoId ? p.servicos.includes(servicoId) : true))
     .filter((p) => (cidade ? p.cidade.toLowerCase().includes(String(cidade).toLowerCase()) : true))
-    .filter((p) => p.nota >= notaMinima);
+    .filter((p) => p.nota >= notaMinima)
+    .filter((p) => (precoMax > 0 ? (p.precoMinimo || 0) <= precoMax : true))
+    .filter((p) => (soVerificados ? p.verificado : true));
 
+  const onde = enderecoAtivoSeCliente();
+  const pontos = new Map(rankingBruto().map((r) => [r.contaId, r.pontos]));
   const ordenadores = {
+    ranking: (a, b) => (pontos.get(b.contaId) || 0) - (pontos.get(a.contaId) || 0),
+    proximidade: (a, b) => distanciaAproximada(a, onde) - distanciaAproximada(b, onde) || b.nota - a.nota,
     nota: (a, b) => b.nota - a.nota || b.totalAvaliacoes - a.totalAvaliacoes,
     preco: (a, b) => (a.precoMinimo || 1e9) - (b.precoMinimo || 1e9),
     experiencia: (a, b) => b.totalServicos - a.totalServicos,
@@ -12241,10 +12420,38 @@ function enderecoCompleto(enderecoId) {
   return `${e.rua}, ${e.numero}${comp} - ${e.bairro}, ${e.cidade}/${e.uf}`;
 }
 
+function enderecoAtivo() {
+  const { conta } = exigirSessao('cliente');
+  const lista = meusEnderecos();
+  const escolhido = perfilDe(conta.id)?.enderecoAtivoId;
+  return lista.find((e) => e.id === escolhido) || lista[0] || null;
+}
+
+function escolherEnderecoAtivo(enderecoId) {
+  const { conta } = exigirSessao('cliente');
+  if (!meusEnderecos().some((e) => e.id === enderecoId)) return { ok: false, erro: 'Endereço não encontrado.' };
+  const tudo = todos();
+  tudo[conta.id] = { ...(perfilDe(conta.id) || {}), enderecoAtivoId: enderecoId };
+  gravar(PERFIS, tudo);
+  publicar(EVENTOS.PERFIL, { contaId: conta.id });
+  return { ok: true, endereco: enderecoAtivo() };
+}
+
+function enderecoAtivoSeCliente() {
+  try {
+    return enderecoAtivo();
+  } catch {
+    return null;
+  }
+}
+
 __e["perfilDe"] = perfilDe;
 __e["perfilPublico"] = perfilPublico;
 __e["meuPerfil"] = meuPerfil;
 __e["cartaoProfissional"] = cartaoProfissional;
+__e["pontosDeRanking"] = pontosDeRanking;
+__e["ranking"] = ranking;
+__e["alternarRankingVisivel"] = alternarRankingVisivel;
 __e["listarProfissionais"] = listarProfissionais;
 __e["salvarPerfilDiarista"] = salvarPerfilDiarista;
 __e["salvarPerfilCliente"] = salvarPerfilCliente;
@@ -12261,6 +12468,8 @@ __e["removerEndereco"] = removerEndereco;
 __e["enderecoPorId"] = enderecoPorId;
 __e["enderecoAproximado"] = enderecoAproximado;
 __e["enderecoCompleto"] = enderecoCompleto;
+__e["enderecoAtivo"] = enderecoAtivo;
+__e["escolherEnderecoAtivo"] = escolherEnderecoAtivo;
 
 });
 __def("packages/core/api/relatorio.js", function (__e) {
@@ -13874,7 +14083,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.12.0',
+  versao: '2.13.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13909,6 +14118,18 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.13.0',
+    data: '14/11/2026',
+    titulo: 'Azul profundo e o ranking',
+    itens: [
+      'Cores: preto, branco e um azul mais profundo. O amarelo ficou só nas estrelas de avaliação.',
+      'O número de avisos agora vem em vermelho.',
+      'Ranking dos profissionais: pódio e lista, por serviço, a partir de Buscar ("Ver o ranking"). A posição aparece no cartão de cada profissional.',
+      'Buscar: um botão de filtro no lugar das três opções soltas - ordene por ranking, nota, preço, proximidade ou experiência, com preço máximo e só verificados.',
+      'Profissional: a carteira virou o destaque do perfil, a posição no ranking fica no canto, e dá para escolher não aparecer no ranking.',
+    ],
+  },
   {
     versao: '2.12.0',
     data: '14/11/2026',
@@ -17033,6 +17254,123 @@ const PERGUNTAS = {
 };
 
 __e["PERGUNTAS"] = PERGUNTAS;
+
+});
+__def("packages/telas/ranking.js", function (__e) {
+
+const __i1 = __mod("packages/ui/index.js");
+const { h, montar, icone, Avatar, Estrelas, EstadoVazio, arte } = __i1;
+const __i2 = __mod("packages/core/domain/servicos.js");
+const { SERVICOS } = __i2;
+const __i3 = __mod("packages/core/api/index.js");
+const api = __i3.default;
+function TelaRanking(app, { papel, voltarPara = '/' }) {
+  let servicoId = null;
+  const corpoLista = h('div', { class: 'pilha-lg' });
+  const meuId = papel === 'diarista' ? api.auth.usuarioAtual()?.id : null;
+
+  const abrir = (p) => (papel === 'cliente' ? () => app.ir(`/profissional/${p.contaId}`) : null);
+
+  function Podio(lista) {
+    const ordem = [lista[1], lista[0], lista[2]].filter(Boolean); // 2o, 1o, 3o: o primeiro no meio
+    return h(
+      'div',
+      { class: 'podio' },
+      ...ordem.map((p) =>
+        h(
+          papel === 'cliente' ? 'button' : 'div',
+          { class: ['podio__lugar', `podio__lugar--${p.posicao}`, p.contaId === meuId && 'podio__lugar--eu'], type: papel === 'cliente' ? 'button' : null, onClick: abrir(p) },
+          h('span', { class: 'podio__posicao' }, `${p.posicao}º`),
+          Avatar({ nome: p.nome, foto: p.avatar, tamanho: 'g', verificado: p.verificado }),
+          h('span', { class: 'podio__nome' }, p.nome.split(' ')[0]),
+          h('span', { class: 'podio__nota' }, icone('estrela'), (Number(p.nota) || 0).toFixed(1)),
+          h('span', { class: 'podio__base' }),
+        ),
+      ),
+    );
+  }
+
+  function desenhar() {
+    const lista = api.perfil.ranking({ servicoId }).map((p, i) => ({ ...p, posicao: i + 1 }));
+    if (!lista.length) {
+      montar(corpoLista, EstadoVazio({ icone: 'medalha', titulo: 'Ninguém no ranking deste serviço', texto: 'Tente outro serviço.' }));
+      return;
+    }
+    montar(
+      corpoLista,
+      Podio(lista.slice(0, 3)),
+      lista.length > 3
+        ? h(
+            'ol',
+            { class: 'ranking-lista' },
+            ...lista.slice(3).map((p) =>
+              h(
+                'li',
+                null,
+                h(
+                  papel === 'cliente' ? 'button' : 'div',
+                  { class: ['ranking-linha', p.contaId === meuId && 'ranking-linha--eu'], type: papel === 'cliente' ? 'button' : null, onClick: abrir(p) },
+                  h('span', { class: 'ranking-linha__posicao num' }, `${p.posicao}º`),
+                  Avatar({ nome: p.nome, foto: p.avatar, verificado: p.verificado }),
+                  h('span', { class: 'ranking-linha__corpo' }, h('span', { class: 'ranking-linha__nome' }, p.nome), h('span', { class: 'ranking-linha__apoio' }, `${p.totalServicos} serviços · ${p.bairro || p.cidade || ''}`)),
+                  Estrelas(p.nota, { mostrarNumero: true }),
+                ),
+              ),
+            ),
+          )
+        : null,
+    );
+  }
+
+  const filtros = h(
+    'div',
+    { class: 'filtros-servico' },
+    ...[{ id: null, curto: 'Geral', icone: null }, ...SERVICOS].map((s) =>
+      h(
+        'button',
+        {
+          class: 'filtro-servico',
+          type: 'button',
+          'aria-pressed': String(servicoId === s.id),
+          onClick: (e) => {
+            servicoId = s.id;
+            for (const b of e.currentTarget.parentElement.children) b.setAttribute('aria-pressed', 'false');
+            e.currentTarget.setAttribute('aria-pressed', 'true');
+            desenhar();
+          },
+        },
+        h('span', { class: 'filtro-servico__arte' }, s.icone ? arte(s.icone, 34) : icone('medalha')),
+        h('span', { class: 'filtro-servico__nome' }, s.curto || s.nome),
+      ),
+    ),
+  );
+
+  desenhar();
+
+  return {
+    barra: { titulo: 'Ranking', aoVoltar: () => app.ir(voltarPara) },
+    corpo: h(
+      'div',
+      { class: 'pilha-lg entra' },
+      h(
+        'header',
+        { class: 'vitrine vitrine--azul vitrine--ranking' },
+        h(
+          'div',
+          { class: 'vitrine__texto' },
+          h('span', { class: 'vitrine__rotulo' }, 'Ranking'),
+          h('h1', { class: 'vitrine__titulo' }, 'Os mais bem avaliados'),
+          h('p', { class: 'vitrine__apoio' }, 'Nota, número de avaliações e serviços feitos. Só aparece quem escolheu aparecer.'),
+        ),
+        h('span', { class: 'vitrine__arte vitrine__arte--icone' }, icone('medalha')),
+      ),
+      filtros,
+      corpoLista,
+    ),
+  };
+}
+
+__e["TelaRanking"] = TelaRanking;
 
 });
 __def("packages/telas/reportar.js", function (__e) {
