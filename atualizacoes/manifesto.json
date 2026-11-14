@@ -1,16 +1,14 @@
 {
-  "versao": "2.6.0",
-  "sha256": "f274befb9efcdfebdf40b771a4602a630e192aa687a596e19e996074c2d0b4ca",
-  "tamanho": 688486,
+  "versao": "2.7.0",
+  "sha256": "b0ad2f06ce58ff617500a29b9ec941a8513a83fcdb3ed50540f65bb53a72e33e",
+  "tamanho": 700645,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-13T23:17:49Z",
+  "publicadaEm": "2026-11-14T00:05:42Z",
   "novidades": [
-    "Toque num serviço da tela inicial: abre a página dele, com o que está incluso, quanto custa por tamanho da casa ou por horas, o que dá para acrescentar e quem faz.",
-    "A barra \"O que a casa pede?\" abre uma busca de verdade: ache o serviço por palavras como \"grama\", \"tomada\" ou \"geladeira\", e também profissionais.",
-    "Cada oferta tem a própria página: o cupom em forma de bilhete, botão de copiar, as regras por extenso e se ele vale ou não para você.",
-    "Buscar: os filtros viraram desenhos de cada serviço, fáceis de ler. A ordem ficou num seletor só.",
-    "Perfil com cara nova: você em destaque no bloco azul e seus números coloridos. Novos atalhos: Meus gastos, Ofertas para você e Indicar o app.",
-    "O resto do app ganhou o mesmo visual da tela inicial: cartões cinza sem contorno e os desenhos dos serviços nos pedidos, no chat e nas oportunidades do profissional."
+    "O pedido abre com um bloco colorido: o desenho do serviço, a etapa em que ele está e a cor do momento (azul esperando, amarelo acontecendo, preto concluído).",
+    "Antes do profissional chegar: uma lista curta do que deixar pronto (produtos, chave, objetos de valor, animais), para marcar item por item.",
+    "Meus gastos virou tela: o total, a média por serviço, os últimos seis meses em barras e quanto cada serviço pesa.",
+    "Profissional: o perfil ganhou o bloco preto e amarelo e os números coloridos; tocar na nota abre as avaliações."
   ],
-  "assinatura": "pCYHIaAT65MD6VQRk0OU3u-Y4NHj3_Y6tmvLCbh3CxOQrY2lrFSUs_FeFYxIknSqj2zirrjjRTPrMjaGF-goiw"
+  "assinatura": "zq89JR-LIrmWbEqBa81a8Lp-FFdCdiJLMimnBDyN8SwpKzZa0LuIj0mnp6oHSnqSuOVQuCRFJsbhAChLtSscQw"
 }

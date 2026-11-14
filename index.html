@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.6.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.7.0 - arquivo unico">
 <style>
 
 :root {
@@ -2655,8 +2655,9 @@ button.tarefa:active { background: var(--superficie-2); }
   gap: 4px;
   padding: var(--e6) var(--e4) var(--e5);
   border-radius: 26px;
-  background: var(--marca);
-  color: #fff;
+  background: var(--painel-fundo, var(--marca));
+  color: var(--painel-texto, #fff);
+  border: 1.5px solid var(--painel-borda, transparent);
   text-align: center;
 }
 .cabeca-perfil::before, .cabeca-perfil::after {
@@ -2682,10 +2683,10 @@ button.tarefa:active { background: var(--superficie-2); }
   border-radius: 50%;
   background: var(--destaque);
   color: #000;
-  box-shadow: 0 0 0 3px var(--marca);
+  box-shadow: 0 0 0 3px var(--painel-fundo, var(--marca));
 }
 .cabeca-perfil__camera svg { width: 16px; height: 16px; }
-.cabeca-perfil__nome { margin: 0; font-family: var(--fonte-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -.025em; color: #fff; }
+.cabeca-perfil__nome { margin: 0; font-family: var(--fonte-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -.025em; color: inherit; }
 .cabeca-perfil__email { margin: 0; font-size: .85rem; opacity: .88; }
 .cabeca-perfil__editar {
   display: inline-flex;
@@ -2731,6 +2732,44 @@ button.mini:active { transform: scale(.96); }
 .plantao--ligado { background: color-mix(in srgb, var(--sucesso) 14%, var(--ladrilho)); }
 
 .lista:has(> .opcao) { background: none; gap: var(--e2); overflow: visible; }
+
+.vitrine--pedido { --painel-texto: currentColor; --painel-acento: var(--destaque); }
+.vitrine--pedido.vitrine--amarela { --painel-acento: #000; }
+.vitrine--pedido .etapas { margin-top: var(--e1); }
+.vitrine--pedido .vitrine__arte { width: 96px; height: 96px; align-self: start; }
+.vitrine--pedido .vitrine__arte .arte { width: 70px; height: 70px; }
+
+.barras-mes { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--e2); align-items: end; padding: var(--e4) var(--e3) var(--e3); border-radius: 20px; background: var(--ladrilho); }
+.barras-mes__coluna { display: grid; grid-template-rows: auto 120px auto; justify-items: center; gap: 6px; min-width: 0; }
+.barras-mes__valor { font-size: .66rem; font-weight: 700; color: var(--texto-2); white-space: nowrap; min-height: 1em; }
+.barras-mes__trilho { position: relative; display: flex; align-items: flex-end; justify-content: center; width: 100%; height: 100%; }
+.barras-mes__barra { width: min(28px, 100%); border-radius: 8px 8px 4px 4px; background: var(--marca); }
+.barras-mes__coluna--atual .barras-mes__barra { background: var(--destaque); }
+.barras-mes__mes { font-size: .74rem; font-weight: 700; color: var(--texto-2); }
+.barras-mes__coluna--atual .barras-mes__mes { color: var(--texto); font-weight: 800; }
+
+.peso { display: flex; align-items: center; gap: var(--e3); padding: var(--e3); border-radius: 18px; background: var(--ladrilho); }
+.peso__arte { flex: none; display: grid; place-items: center; width: 50px; height: 50px; border-radius: 14px; background: var(--fundo); }
+.peso__corpo { flex: 1; display: grid; gap: 6px; min-width: 0; }
+.peso__nome { font-weight: 800; }
+.peso__valor { font-weight: 800; }
+.peso__trilho { height: 8px; border-radius: 99px; background: var(--fundo); overflow: hidden; }
+.peso__barra { display: block; height: 100%; border-radius: 99px; background: var(--marca); }
+.peso__parte { font-size: .76rem; color: var(--texto-2); font-weight: 600; }
+
+.preparo { display: grid; gap: var(--e3); padding: var(--e4); border-radius: 20px; background: var(--ladrilho); }
+.preparo__titulo { margin: 0; font-size: 1.05rem; }
+.preparo__conta { font-size: .8rem; font-weight: 800; color: var(--marca-forte); }
+.preparo__trilho { height: 8px; border-radius: 99px; background: var(--fundo); overflow: hidden; }
+.preparo__barra { display: block; height: 100%; width: 0; border-radius: 99px; background: var(--destaque); transition: width 300ms cubic-bezier(.2, .9, .3, 1); }
+.preparo__lista { display: grid; gap: 4px; }
+.preparo__item { display: flex; align-items: center; gap: 12px; padding: 8px 0; font-weight: 600; cursor: pointer; }
+.preparo__item input { position: absolute; opacity: 0; pointer-events: none; }
+.preparo__marca { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: var(--fundo); color: transparent; box-shadow: inset 0 0 0 2px var(--borda-forte); transition: background var(--rapido), transform 160ms cubic-bezier(.2, 1.6, .4, 1); }
+.preparo__marca svg { width: 16px; height: 16px; stroke-width: 3; }
+.preparo__item:has(input:checked) .preparo__marca { background: var(--marca); color: #fff; box-shadow: none; transform: scale(1.08); }
+.preparo__item:has(input:checked) > span:last-child { color: var(--texto-2); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.preparo__item:has(input:focus-visible) .preparo__marca { outline: 3px solid var(--destaque); outline-offset: 2px; }
 
 
 @keyframes dx-surgir {
@@ -3132,7 +3171,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.6.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.7.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -3368,6 +3407,8 @@ const __i16 = __mod("apps/cliente/src/pages/perfil.js");
 const { TelaPerfil } = __i16;
 const __i17 = __mod("apps/cliente/src/pages/descobrir.js");
 const { TelaServico, TelaBuscar, TelaOferta } = __i17;
+const __i18 = __mod("apps/cliente/src/pages/conta.js");
+const { TelaGastos } = __i18;
 const PAPEL = 'cliente';
 
 const ABAS = [
@@ -3375,7 +3416,7 @@ const ABAS = [
   { id: 'novo', rotulo: 'Pedir', icone: 'mais', rota: '/novo' },
   { id: 'pedidos', rotulo: 'Pedidos', icone: 'lista', rota: '/pedidos', inclui: ['/pedido', '/chat', '/avaliar', '/assinaturas'], contador: (c) => c.mensagens },
   { id: 'profissionais', rotulo: 'Buscar', icone: 'busca', rota: '/profissionais', inclui: ['/profissional'] },
-  { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/enderecos', '/duvidas'], contador: (c) => c.notificacoes },
+  { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/enderecos', '/duvidas', '/gastos'], contador: (c) => c.notificacoes },
 ];
 
 const TEXTOS_LEGAIS = {
@@ -3445,6 +3486,7 @@ async function iniciarApp() {
       '/novo': (ctx) => tela(app, TelaNovoPedido(app, ctx)),
       '/servico/:id': (ctx) => tela(app, TelaServico(app, ctx)),
       '/buscar': () => tela(app, TelaBuscar(app)),
+      '/gastos': () => tela(app, TelaGastos(app)),
       '/oferta/:codigo': (ctx) => tela(app, TelaOferta(app, ctx)),
       '/pedidos': (ctx) => tela(app, TelaPedidos(app, ctx)),
       '/assinaturas': () => tela(app, TelaAssinaturas(app)),
@@ -3794,6 +3836,122 @@ function TelaAssinaturas(app) {
 }
 
 __e["TelaAssinaturas"] = TelaAssinaturas;
+
+});
+__def("apps/cliente/src/pages/conta.js", function (__e) {
+
+const __i1 = __mod("apps/cliente/src/lib.js");
+const { h, Secao, EstadoVazio, Botao, SERVICOS, dinheiro, api, arte } = __i1;
+const MES_CURTO = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+const chaveDoMes = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+
+function TelaGastos(app) {
+  const g = api.pedidos.meusGastos();
+  const voltar = { titulo: 'Meus gastos', aoVoltar: () => app.ir('/perfil') };
+
+  if (!g.servicos) {
+    return {
+      barra: voltar,
+      corpo: EstadoVazio({
+        icone: 'grafico',
+        titulo: 'Nada gasto ainda',
+        texto: 'Quando um serviço for concluído, ele aparece aqui, somado por mês e por tipo.',
+        acao: Botao({ icone: 'mais', onClick: () => app.ir('/novo') }, 'Pedir um serviço'),
+      }),
+    };
+  }
+
+  const porChave = new Map(g.meses.map((m) => [m.mes, m]));
+  const hoje = new Date();
+  const seis = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(hoje.getFullYear(), hoje.getMonth() - i, 1);
+    const k = chaveDoMes(d);
+    seis.push({ chave: k, rotulo: MES_CURTO[d.getMonth()], total: porChave.get(k)?.total || 0, atual: i === 0 });
+  }
+  const maiorMes = Math.max(...seis.map((m) => m.total), 1);
+
+  const porServico = new Map();
+  for (const m of g.meses) for (const s of m.porServico) porServico.set(s.nome, (porServico.get(s.nome) || 0) + s.valor);
+  const servicos = [...porServico.entries()].map(([nome, valor]) => ({ nome, valor, s: SERVICOS.find((x) => x.nome === nome) })).sort((a, b) => b.valor - a.valor);
+  const maiorServico = Math.max(...servicos.map((s) => s.valor), 1);
+
+  const media = g.total / g.servicos;
+  const mesMaisCaro = [...g.meses].sort((a, b) => b.total - a.total)[0];
+  const [anoCaro, mesCaro] = mesMaisCaro.mes.split('-').map(Number);
+
+  const corpo = h(
+    'div',
+    { class: 'pilha-lg entra' },
+    h(
+      'header',
+      { class: 'vitrine vitrine--tinta' },
+      h(
+        'div',
+        { class: 'vitrine__texto' },
+        h('span', { class: 'vitrine__rotulo' }, 'Desde o começo'),
+        h('h1', { class: 'vitrine__titulo num' }, dinheiro(g.total)),
+        h('p', { class: 'vitrine__apoio' }, `em ${g.servicos} serviço${g.servicos === 1 ? '' : 's'}. Gorjetas entram, devoluções saem.`),
+      ),
+      h('span', { class: 'vitrine__arte' }, arte('presente', 88)),
+    ),
+
+    h(
+      'div',
+      { class: 'minis' },
+      h('div', { class: 'mini mini--amarela' }, h('span', { class: 'mini__valor num' }, dinheiro(media)), h('span', { class: 'mini__rotulo' }, 'por serviço, em média')),
+      h('div', { class: 'mini mini--azul' }, h('span', { class: 'mini__valor' }, `${MES_CURTO[mesCaro - 1]}/${String(anoCaro).slice(2)}`), h('span', { class: 'mini__rotulo' }, 'o mês de maior gasto')),
+      h('div', { class: 'mini mini--tinta' }, h('span', { class: 'mini__valor' }, servicos[0]?.s?.curto || servicos[0]?.nome || '-'), h('span', { class: 'mini__rotulo' }, 'o que mais pesa')),
+    ),
+
+    h(
+      'section',
+      null,
+      Secao('Últimos seis meses'),
+      h(
+        'div',
+        { class: 'barras-mes', role: 'img', 'aria-label': seis.map((m) => `${m.rotulo}: ${dinheiro(m.total)}`).join(', ') },
+        ...seis.map((m) =>
+          h(
+            'div',
+            { class: ['barras-mes__coluna', m.atual && 'barras-mes__coluna--atual'] },
+            h('span', { class: 'barras-mes__valor num' }, m.total ? dinheiro(m.total).replace(',00', '') : ''),
+            h('span', { class: 'barras-mes__trilho' }, h('span', { class: 'barras-mes__barra', style: { height: `${Math.max(m.total ? 6 : 0, (m.total / maiorMes) * 100)}%` } })),
+            h('span', { class: 'barras-mes__mes' }, m.rotulo),
+          ),
+        ),
+      ),
+    ),
+
+    h(
+      'section',
+      null,
+      Secao('Por serviço'),
+      h(
+        'div',
+        { class: 'pilha-sm' },
+        ...servicos.map((x) =>
+          h(
+            'div',
+            { class: 'peso' },
+            h('span', { class: 'peso__arte' }, arte(x.s?.icone || 'faxina', 34)),
+            h(
+              'div',
+              { class: 'peso__corpo' },
+              h('div', { class: 'linha linha--entre' }, h('span', { class: 'peso__nome' }, x.nome), h('span', { class: 'peso__valor num' }, dinheiro(x.valor))),
+              h('span', { class: 'peso__trilho' }, h('span', { class: 'peso__barra', style: { width: `${(x.valor / maiorServico) * 100}%` } })),
+              h('span', { class: 'peso__parte' }, `${Math.round((x.valor / g.total) * 100)}% do total`),
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
+
+  return { barra: voltar, corpo };
+}
+
+__e["TelaGastos"] = TelaGastos;
 
 });
 __def("apps/cliente/src/pages/descobrir.js", function (__e) {
@@ -4396,7 +4554,7 @@ function TelaInicio(app) {
       { class: 'atalhos' },
       Atalho('atualizar', 'Pedir de novo', () => repetir(ultimoFeito), true),
       Atalho('usuario', 'Profissionais', () => app.ir('/profissionais')),
-      Atalho('grafico', 'Meus gastos', () => abrirGastos()),
+      Atalho('grafico', 'Meus gastos', () => app.ir('/gastos')),
       Atalho('chat', 'Tira-dúvidas', () => app.ir('/duvidas')),
     );
 
@@ -5342,7 +5500,67 @@ __e["TelaNovoPedido"] = TelaNovoPedido;
 __def("apps/cliente/src/pages/pedido.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, icone, montar, Botao, Cartao, Secao, Avatar, Etiqueta, Estrelas, Destaque, EstadoVazio, LinhaDoTempo, CodigoCheckin, avisar, confirmar, folha, CartaoPagamento, ROTULO_ESTADO, ETAPAS, ESTADOS, acoesDisponiveis, calcularMulta, dinheiro, dataAmigavel, hora, dataHora, contagem, nomeCurto, api, abrirContato, verNoMapa, abrirComprovante, Calendario, PERIODOS, isoData, periodoDaHora, Opcao, adicionarAAgenda, compartilhar } = __i1;
+const { h, icone, montar, Botao, Cartao, Secao, Avatar, Etiqueta, Estrelas, Destaque, EstadoVazio, LinhaDoTempo, CodigoCheckin, avisar, confirmar, folha, CartaoPagamento, ROTULO_ESTADO, ETAPAS, ESTADOS, acoesDisponiveis, calcularMulta, dinheiro, dataAmigavel, hora, dataHora, contagem, nomeCurto, api, abrirContato, verNoMapa, abrirComprovante, Calendario, PERIODOS, isoData, periodoDaHora, Opcao, adicionarAAgenda, compartilhar, arte } = __i1;
+const PREPARO = {
+  casa: ['Separe os produtos de limpeza (ou combine que ele leve)', 'Deixe a chave ou avise a portaria', 'Guarde objetos de valor e documentos', 'Prenda os animais, se tiver'],
+  reparos: ['Libere o caminho até o local do serviço', 'Separe as peças ou o móvel a montar', 'Mostre onde fica o quadro de luz', 'Deixe uma tomada livre por perto'],
+};
+const chavePreparo = (id) => `dx:preparo:${id}`;
+function lerPreparo(id) {
+  try {
+    return JSON.parse(localStorage.getItem(chavePreparo(id)) || '[]');
+  } catch {
+    return [];
+  }
+}
+function gravarPreparo(id, marcados) {
+  try {
+    localStorage.setItem(chavePreparo(id), JSON.stringify(marcados));
+  } catch {
+  }
+}
+
+function CartaoPreparo(p) {
+  const itens = PREPARO[p.servico?.grupo === 'reparos' ? 'reparos' : 'casa'];
+  const marcados = new Set(lerPreparo(p.id));
+  const progresso = h('span', { class: 'preparo__conta' });
+  const barra = h('span', { class: 'preparo__barra' });
+  const atualizar = () => {
+    progresso.textContent = marcados.size === itens.length ? 'Tudo pronto!' : `${marcados.size} de ${itens.length}`;
+    barra.style.width = `${(marcados.size / itens.length) * 100}%`;
+  };
+  atualizar();
+  return h(
+    'section',
+    { class: 'preparo' },
+    h('div', { class: 'linha linha--entre' }, h('h2', { class: 'preparo__titulo' }, 'Antes do profissional chegar'), progresso),
+    h('span', { class: 'preparo__trilho' }, barra),
+    h(
+      'div',
+      { class: 'preparo__lista' },
+      ...itens.map((t, i) => {
+        const caixa = h('input', {
+          type: 'checkbox',
+          checked: marcados.has(i) || null,
+          onChange: (e) => {
+            if (e.target.checked) marcados.add(i);
+            else marcados.delete(i);
+            gravarPreparo(p.id, [...marcados]);
+            atualizar();
+          },
+        });
+        return h('label', { class: 'preparo__item' }, caixa, h('span', { class: 'preparo__marca' }, icone('check')), h('span', null, t));
+      }),
+    ),
+  );
+}
+
+const COR_DO_ESTADO = {
+  procurando: 'azul', agendado: 'azul', a_caminho: 'amarela', em_andamento: 'amarela',
+  concluido: 'tinta', avaliado: 'tinta', cancelado: 'promo', expirado: 'promo',
+};
+
+
 function TelaPedido(app, ctx) {
   const raiz = h('div');
   let paradaRelogio = null;
@@ -5364,25 +5582,31 @@ function TelaPedido(app, ctx) {
         'div',
         { class: 'pilha-lg entra' },
 
-        Cartao(
-          { destaque: true },
+        h(
+          'header',
+          { class: ['vitrine', 'vitrine--pedido', `vitrine--${COR_DO_ESTADO[p.estado] || 'azul'}`] },
           h(
             'div',
-            { class: 'linha linha--entre', style: { marginBottom: '12px' } },
-            h(
-              'div',
-              null,
-              h('h2', null, p.servico?.nome || 'Serviço'),
-              h('p', { class: 't-sm texto-2' }, `${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)} · ${p.horas}h`),
-            ),
-            Etiqueta(estado.texto, estado.tom),
+            { class: 'vitrine__texto' },
+            h('span', { class: 'vitrine__rotulo' }, estado.texto),
+            h('h1', { class: 'vitrine__titulo' }, p.servico?.nome || 'Serviço'),
+            h('p', { class: 'vitrine__apoio' }, `${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)} · ${p.horas}h`),
+            [ESTADOS.CANCELADO, ESTADOS.EXPIRADO].includes(p.estado)
+              ? null
+              : h(
+                  'div',
+                  { class: 'etapas' },
+                  ...ETAPAS.map((e, i) => {
+                    const atual = ETAPAS.findIndex((x) => x.estado === p.estado);
+                    return h('span', { class: ['etapas__passo', i < atual && 'etapas__passo--feito', i === atual && 'etapas__passo--atual'] });
+                  }),
+                ),
+            h('p', { class: 'vitrine__apoio t-sm' }, p.estado === ESTADOS.PROCURANDO ? `${estado.dica} Expira em ${contagem(p.expiraEm)}.` : estado.dica),
           ),
-          h('p', { class: 't-sm texto-2' }, estado.dica),
-
-          p.estado === ESTADOS.PROCURANDO
-            ? h('p', { class: 't-sm texto-3', style: { marginTop: '8px' } }, `Expira em ${contagem(p.expiraEm)}`)
-            : null,
+          h('span', { class: 'vitrine__arte' }, arte(p.servico?.icone || 'faxina', 92)),
         ),
+
+        [ESTADOS.AGENDADO, ESTADOS.A_CAMINHO].includes(p.estado) ? CartaoPreparo(p) : null,
 
         p.pagamento ? h('section', null, Secao('Pagamento'), CartaoPagamento(p, { papel: 'cliente', aoMudar: desenhar })) : null,
 
@@ -5993,7 +6217,7 @@ function TelaPerfil(app) {
           { class: 'minis' },
           Mini(String(stats.concluidos), stats.concluidos === 1 ? 'serviço feito' : 'serviços feitos', 'amarela'),
           Mini(`${stats.horasTotais}h`, 'de casa cuidada', 'azul'),
-          Mini(dinheiro(stats.valorTotal), 'investido', 'tinta', abrirGastos),
+          Mini(dinheiro(stats.valorTotal), 'investido', 'tinta', () => app.ir('/gastos')),
         )
       : null,
 
@@ -6046,7 +6270,7 @@ function TelaPerfil(app) {
       h(
         'div',
         { class: 'lista' },
-        Item({ icone: 'grafico', titulo: 'Meus gastos', resumo: 'Mês a mês e por serviço', seta: true, onClick: () => abrirGastos() }),
+        Item({ icone: 'grafico', titulo: 'Meus gastos', resumo: 'Mês a mês e por serviço', seta: true, onClick: () => app.ir('/gastos') }),
         Item({ icone: 'medalha', titulo: 'Ofertas para você', resumo: 'Cupons que valem na sua conta', seta: true, onClick: () => app.ir(`/oferta/${stats.concluidos ? 'VOLTASEMPRE' : 'PRIMEIRA10'}`) }),
         Item({ icone: 'enviar', titulo: 'Indicar o app', resumo: 'Mande para quem também precisa', seta: true, onClick: () => indicarOApp('cliente') }),
         Item({ icone: 'sino', titulo: 'Avisos', seta: true, onClick: () => app.ir('/avisos') }),
@@ -7699,25 +7923,27 @@ function TelaPerfil(app) {
         'div',
         { class: 'pilha-lg entra' },
 
-        Cartao(
-          { class: 'centro pilha' },
+        h(
+          'header',
+          { class: 'cabeca-perfil' },
           h(
             'button',
-            { type: 'button', style: { display: 'flex', justifyContent: 'center', width: '100%' }, onClick: () => entradaFoto.click(), 'aria-label': 'Trocar foto' },
+            { class: 'cabeca-perfil__foto', type: 'button', onClick: () => entradaFoto.click(), 'aria-label': 'Trocar foto' },
             Avatar({ nome: conta.nome, foto: conta.avatar, tamanho: 'gg', verificado: conta.verificado }),
+            h('span', { class: 'cabeca-perfil__camera' }, icone('camera')),
           ),
           entradaFoto,
-          h('div', null, h('h1', null, conta.nome), h('p', { class: 'texto-2 t-sm' }, `${perfil.bairro || 'Bairro nao informado'}${perfil.cidade ? ' · ' + perfil.cidade : ''}`)),
-          perfil.totalAvaliacoes ? h('div', { style: { display: 'flex', justifyContent: 'center' } }, Estrelas(perfil.nota, { mostrarNumero: true, total: perfil.totalAvaliacoes })) : null,
-          Botao({ variante: 'contorno', tamanho: 'pequeno', icone: 'lapis', onClick: () => abrirDados(conta, perfil) }, 'Editar meus dados'),
+          h('h1', { class: 'cabeca-perfil__nome' }, conta.nome),
+          h('p', { class: 'cabeca-perfil__email' }, `${perfil.bairro || 'Bairro não informado'}${perfil.cidade ? ' · ' + perfil.cidade : ''}`),
+          h('button', { class: 'cabeca-perfil__editar', type: 'button', onClick: () => abrirDados(conta, perfil) }, icone('lapis'), 'Editar meus dados'),
         ),
 
         h(
           'div',
-          { class: 'grade-3' },
-          Mini(String(stats.concluidos), 'serviços'),
-          Mini(String(perfil.totalAvaliacoes || 0), 'avaliações'),
-          Mini(perfil.nota ? perfil.nota.toFixed(1) : '-', 'nota'),
+          { class: 'minis' },
+          Mini(String(stats.concluidos), stats.concluidos === 1 ? 'serviço feito' : 'serviços feitos', 'amarela'),
+          Mini(perfil.nota ? perfil.nota.toFixed(1) : '-', `nota em ${perfil.totalAvaliacoes || 0} avaliações`, 'azul', () => app.ir('/avaliacoes')),
+          Mini(String((perfil.servicos || []).length), 'serviços que faço', 'tinta'),
         ),
 
         !conta.verificado
@@ -8009,8 +8235,13 @@ function TelaPerfil(app) {
   return { barra: { titulo: 'Meu perfil' }, corpo: raiz };
 }
 
-const Mini = (valor, rotulo) =>
-  h('div', { class: 'cartao cartao--suave centro' }, h('div', { class: 'valor-medio' }, valor), h('div', { class: 't-xs texto-3' }, rotulo));
+const Mini = (valor, rotulo, cor, aoTocar) =>
+  h(
+    aoTocar ? 'button' : 'div',
+    { class: ['mini', `mini--${cor}`], type: aoTocar ? 'button' : null, onClick: aoTocar || null },
+    h('span', { class: 'mini__valor num' }, valor),
+    h('span', { class: 'mini__rotulo' }, rotulo),
+  );
 
 function reduzirImagem(arquivo, ladoMaximo = 320, qualidade = 0.8) {
   return new Promise((resolve, reject) => {
@@ -13319,7 +13550,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.6.0',
+  versao: '2.7.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13354,6 +13585,17 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.7.0',
+    data: '13/11/2026',
+    titulo: 'Seu pedido com cara nova',
+    itens: [
+      'O pedido abre com um bloco colorido: o desenho do serviço, a etapa em que ele está e a cor do momento (azul esperando, amarelo acontecendo, preto concluído).',
+      'Antes do profissional chegar: uma lista curta do que deixar pronto (produtos, chave, objetos de valor, animais), para marcar item por item.',
+      'Meus gastos virou tela: o total, a média por serviço, os últimos seis meses em barras e quanto cada serviço pesa.',
+      'Profissional: o perfil ganhou o bloco preto e amarelo e os números coloridos; tocar na nota abre as avaliações.',
+    ],
+  },
   {
     versao: '2.6.0',
     data: '13/11/2026',
