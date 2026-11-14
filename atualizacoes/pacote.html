@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.11.3 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.12.0 - arquivo unico">
 <style>
 
 :root {
@@ -37,7 +37,7 @@
   --painel-rotulo: #ffffff;
   --painel-sombra: #facc15;
 
-  --sucesso: #15803d;
+  --sucesso: #166534;
   --sucesso-suave: #e7f6ec;
   --alerta: #854d0e;
   --alerta-suave: #fef6c7;
@@ -2968,6 +2968,19 @@ button.mini:active { transform: scale(.96); }
 }
 .opcao__titulo { overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; }
 
+.balao--foto { padding: 4px 4px 8px; }
+.balao__foto { display: block; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.balao__foto img { display: block; width: 100%; max-width: 240px; max-height: 300px; object-fit: cover; border-radius: 14px; }
+.balao--foto > :not(.balao__foto) { padding: 0 8px; }
+.balao--foto .balao__hora { margin-top: 4px; }
+
+.painel-marca .texto-2, .painel-marca .t-sm, .painel-marca__dica,
+.oferta__apoio, .vitrine__apoio, .cabeca-perfil__email, .indicador .indicador__rotulo,
+.mini__rotulo, .faixa__titulo, .faixa__apoio, .balao__hora, .pilula { opacity: 1; }
+.recado__quando { color: var(--texto-2); }
+.dia--fora { opacity: 1; }
+.chat__barra > .btn { flex: none; }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3368,7 +3381,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.11.3";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.12.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -4982,11 +4995,11 @@ function TelaInicio(app) {
       ? h(
           'section',
           null,
-          Secao(`Seu ${mesAno(new Date()).split(' de ')[0]}`),
+          Secao('Até agora'),
           Indicadores([
             { valor: String(stats.concluidos), rotulo: 'serviços' },
             { valor: `${stats.horasTotais}h`, rotulo: 'de trabalho' },
-            { valor: dinheiro(stats.valorTotal), rotulo: 'investido' },
+            { valor: dinheiro(api.pedidos.meusGastos().total), rotulo: 'gasto em serviços' },
           ]),
         )
       : null;
@@ -6461,7 +6474,7 @@ __e["TelaPedidos"] = TelaPedidos;
 __def("apps/cliente/src/pages/perfil.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, icone, Botao, Cartao, Secao, Avatar, Item, Campo, EstadoVazio, Estrelas, folha, avisar, lerFormulario, aplicarErros, dinheiro, mascaraTelefone, checarArquivoImagem, api, abrirGastos, indicarOApp } = __i1;
+const { h, cada, icone, Botao, Cartao, Secao, Avatar, Item, Campo, EstadoVazio, Estrelas, folha, avisar, lerFormulario, aplicarErros, dinheiro, mascaraTelefone, checarArquivoImagem, api, abrirGastos, indicarOApp, reduzirImagem } = __i1;
 function TelaPerfil(app) {
   const conta = api.auth.usuarioAtual();
   const perfil = api.perfil.meuPerfil();
@@ -6543,7 +6556,7 @@ function TelaPerfil(app) {
           { class: 'minis' },
           Mini(String(stats.concluidos), stats.concluidos === 1 ? 'serviço feito' : 'serviços feitos', 'amarela'),
           Mini(`${stats.horasTotais}h`, 'de casa cuidada', 'azul'),
-          Mini(dinheiro(stats.valorTotal), 'investido', 'tinta', () => app.ir('/gastos')),
+          Mini(dinheiro(api.pedidos.meusGastos().total), 'gasto em serviços', 'tinta', () => app.ir('/gastos')),
         )
       : null,
 
@@ -6617,29 +6630,7 @@ const Mini = (valor, rotulo, cor, aoTocar) =>
     h('span', { class: 'mini__rotulo' }, rotulo),
   );
 
-function reduzirImagem(arquivo, ladoMaximo = 320, qualidade = 0.8) {
-  return new Promise((resolve, reject) => {
-    const url = URL.createObjectURL(arquivo);
-    const img = new Image();
-    img.onload = () => {
-      const escala = Math.min(1, ladoMaximo / Math.max(img.width, img.height));
-      const canvas = document.createElement('canvas');
-      canvas.width = Math.round(img.width * escala);
-      canvas.height = Math.round(img.height * escala);
-      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-      URL.revokeObjectURL(url);
-      resolve(canvas.toDataURL('image/jpeg', qualidade));
-    };
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error('Não foi possível ler a imagem.'));
-    };
-    img.src = url;
-  });
-}
-
 __e["TelaPerfil"] = TelaPerfil;
-__e["reduzirImagem"] = reduzirImagem;
 
 });
 __def("apps/cliente/src/pages/profissionais.js", function (__e) {
@@ -8228,7 +8219,7 @@ __e["TelaOportunidades"] = TelaOportunidades;
 __def("apps/diarista/src/pages/perfil.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Item, Campo, Opcao, Estrelas, Destaque, LinhaOpcao, folha, avisar, confirmar, verImagem, lerFormulario, aplicarErros, SERVICOS, servicoPorId, dinheiro, mascaraTelefone, checarArquivoImagem, api, arte } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Item, Campo, Opcao, Estrelas, Destaque, LinhaOpcao, folha, avisar, confirmar, verImagem, lerFormulario, aplicarErros, SERVICOS, servicoPorId, dinheiro, mascaraTelefone, checarArquivoImagem, api, arte, reduzirImagem } = __i1;
 const DIAS = [
   ['seg', 'Seg'], ['ter', 'Ter'], ['qua', 'Qua'], ['qui', 'Qui'],
   ['sex', 'Sex'], ['sab', 'Sab'], ['dom', 'Dom'],
@@ -8589,29 +8580,7 @@ const Mini = (valor, rotulo, cor, aoTocar) =>
     h('span', { class: 'mini__rotulo' }, rotulo),
   );
 
-function reduzirImagem(arquivo, ladoMaximo = 320, qualidade = 0.8) {
-  return new Promise((resolve, reject) => {
-    const url = URL.createObjectURL(arquivo);
-    const img = new Image();
-    img.onload = () => {
-      const escala = Math.min(1, ladoMaximo / Math.max(img.width, img.height));
-      const canvas = document.createElement('canvas');
-      canvas.width = Math.round(img.width * escala);
-      canvas.height = Math.round(img.height * escala);
-      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-      URL.revokeObjectURL(url);
-      resolve(canvas.toDataURL('image/jpeg', qualidade));
-    };
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error('Não foi possível ler a imagem.'));
-    };
-    img.src = url;
-  });
-}
-
 __e["TelaPerfil"] = TelaPerfil;
-__e["reduzirImagem"] = reduzirImagem;
 
 });
 __def("apps/diarista/src/pages/relatorio.js", function (__e) {
@@ -10428,7 +10397,10 @@ function mensagensDoPedido(pedidoId) {
     .map((m) => ({ ...m, minha: m.autorId === ctx.conta.id, autorNome: contaPorId(m.autorId)?.nome || 'Usuário' }));
 }
 
-function enviarMensagem(pedidoId, texto) {
+const FOTO_MAX_CARACTERES = 410000;
+const FOTO_VALIDA = /^data:image\/(jpeg|png|webp);base64,[A-Za-z0-9+/]+=*$/;
+
+function enviarMensagem(pedidoId, texto, { imagem } = {}) {
   const ctx = exigirParticipacao(pedidoId);
   if (ctx.erro) return { ok: false, erro: ctx.erro };
   const { pedido, papel, conta } = ctx;
@@ -10440,8 +10412,12 @@ function enviarMensagem(pedidoId, texto) {
     return { ok: false, erro: 'Este pedido foi encerrado, a conversa está fechada.' };
   }
 
-  const limpo = limparParagrafo(texto, REGRAS.maxCaracteresMensagem);
-  if (!limpo) return { ok: false, erro: 'Escreva alguma coisa antes de enviar.' };
+  if (imagem !== undefined && imagem !== null) {
+    if (typeof imagem !== 'string' || !FOTO_VALIDA.test(imagem)) return { ok: false, erro: 'Essa foto não pôde ser enviada. Tente outra.' };
+    if (imagem.length > FOTO_MAX_CARACTERES) return { ok: false, erro: 'Foto grande demais para o chat.' };
+  }
+  const limpo = limparParagrafo(texto || '', REGRAS.maxCaracteresMensagem);
+  if (!limpo && !imagem) return { ok: false, erro: 'Escreva alguma coisa antes de enviar.' };
 
   const minhas = todas().filter((m) => m.pedidoId === pedidoId && m.autorId === conta.id);
   const ultima = minhas[minhas.length - 1];
@@ -10455,6 +10431,7 @@ function enviarMensagem(pedidoId, texto) {
     autorId: conta.id,
     papel,
     texto: limpo,
+    ...(imagem ? { imagem } : {}),
     em: new Date().toISOString(),
     lidaPor: [conta.id],
   };
@@ -10463,7 +10440,7 @@ function enviarMensagem(pedidoId, texto) {
   const destino = papel === 'cliente' ? pedido.diaristaId : pedido.clienteId;
   notificar(destino, {
     titulo: `Mensagem de ${conta.nome}`,
-    mensagem: limpo.slice(0, 90),
+    mensagem: limpo ? limpo.slice(0, 90) : 'Enviou uma foto.',
     tipo: 'info',
     link: `#/chat/${pedidoId}`,
   });
@@ -10525,6 +10502,7 @@ const ATALHOS = {
 };
 
 __e["mensagensDoPedido"] = mensagensDoPedido;
+__e["FOTO_MAX_CARACTERES"] = FOTO_MAX_CARACTERES;
 __e["enviarMensagem"] = enviarMensagem;
 __e["marcarConversaLida"] = marcarConversaLida;
 __e["totalNaoLidas"] = totalNaoLidas;
@@ -13896,7 +13874,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.11.3',
+  versao: '2.12.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13931,6 +13909,18 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.12.0',
+    data: '14/11/2026',
+    titulo: 'Foto na conversa e textos mais legíveis',
+    itens: [
+      'Conversa: botão de câmera para mandar foto (a foto é reduzida no aparelho antes de ir). Toque na foto para ver grande.',
+      'Perfil e tela inicial: "investido" virou "gasto em serviços", com o mesmo valor da tela Meus gastos (gorjetas entram, devoluções saem).',
+      'A seção que se chamava "Seu novembro" agora se chama "Até agora": os números sempre foram de todos os meses.',
+      'Textos de apoio nos blocos coloridos, a hora das mensagens e os dias do mês vizinho no calendário ficaram mais fortes e fáceis de ler.',
+      'App para Android pronto para instalar (anexo no Trello).',
+    ],
+  },
   {
     versao: '2.11.3',
     data: '14/11/2026',
@@ -15373,13 +15363,15 @@ __e["TelaTexto"] = TelaTexto;
 __def("packages/telas/chat.js", function (__e) {
 
 const __i1 = __mod("packages/ui/index.js");
-const { h, cada, montar, icone, avisar, Botao, EstadoVazio, arte } = __i1;
-const __i2 = __mod("packages/core/util/format.js");
-const { hora, dataAmigavel, tempoRelativo } = __i2;
-const __i3 = __mod("packages/core/api/chat.js");
-const { ATALHOS } = __i3;
-const __i4 = __mod("packages/core/api/index.js");
-const api = __i4.default;
+const { h, cada, montar, icone, avisar, Botao, EstadoVazio, arte, verImagem, reduzirImagem } = __i1;
+const __i2 = __mod("packages/core/util/validate.js");
+const { checarArquivoImagem } = __i2;
+const __i3 = __mod("packages/core/util/format.js");
+const { hora, dataAmigavel, tempoRelativo } = __i3;
+const __i4 = __mod("packages/core/api/chat.js");
+const { ATALHOS } = __i4;
+const __i5 = __mod("packages/core/api/index.js");
+const api = __i5.default;
 function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
   const pedidoId = ctx.params.id;
   const pedido = api.pedidos.pedidoPorId(pedidoId);
@@ -15412,8 +15404,11 @@ function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
             cabecalhoDia,
             h(
               'div',
-              { class: ['balao', m.minha ? 'balao--meu' : 'balao--dele'] },
-              m.texto,
+              { class: ['balao', m.minha ? 'balao--meu' : 'balao--dele', m.imagem && 'balao--foto'] },
+              m.imagem
+                ? h('button', { class: 'balao__foto', type: 'button', 'aria-label': 'Ver a foto inteira', onClick: () => verImagem(m.imagem, 'Foto da conversa') }, h('img', { src: m.imagem, alt: 'Foto enviada', loading: 'lazy' }))
+                : null,
+              m.texto || null,
               h('div', { class: 'balao__hora' }, hora(m.em)),
             ),
           );
@@ -15431,9 +15426,36 @@ function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
     requestAnimationFrame(() => listaEl.lastElementChild?.scrollIntoView({ block: 'end' }));
   }
 
+  const escolherFoto = h('input', {
+    type: 'file',
+    accept: 'image/png,image/jpeg,image/webp',
+    hidden: true,
+    onChange: async (e) => {
+      const arquivo = e.target.files?.[0];
+      e.target.value = '';
+      const checagem = checarArquivoImagem(arquivo);
+      if (!checagem.ok) {
+        avisar(checagem.erro, 'erro');
+        return;
+      }
+      try {
+        const imagem = await reduzirImagem(arquivo, 1024, 0.78);
+        const r = api.chat.enviarMensagem(pedidoId, entrada.value, { imagem });
+        if (!r.ok) {
+          avisar(r.erro, 'erro');
+          return;
+        }
+        entrada.value = '';
+        desenharMensagens();
+      } catch (err) {
+        avisar(err.message || 'Não foi possível enviar a foto.', 'erro');
+      }
+    },
+  });
+
   const entrada = h('textarea', {
     class: 'entrada',
-    placeholder: 'Escreva uma mensagem...',
+    placeholder: 'Mensagem...',
     rows: 1,
     maxlength: 800,
     'aria-label': 'Mensagem',
@@ -15490,7 +15512,14 @@ function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
       ),
     ),
     listaEl,
-    h('div', { class: 'chat__barra' }, h('div', { class: 'cresce' }, atalhos, entrada), Botao({ variante: 'principal', icone: 'enviar', onClick: () => enviar(), 'aria-label': 'Enviar' })),
+    h(
+      'div',
+      { class: 'chat__barra' },
+      escolherFoto,
+      Botao({ variante: 'fantasma', icone: 'camera', onClick: () => escolherFoto.click(), 'aria-label': 'Enviar foto' }),
+      h('div', { class: 'cresce' }, atalhos, entrada),
+      Botao({ variante: 'principal', icone: 'enviar', onClick: () => enviar(), 'aria-label': 'Enviar' }),
+    ),
   );
 
   desenharMensagens();
@@ -19187,6 +19216,32 @@ __e["arte"] = arte;
 __e["temArte"] = temArte;
 
 });
+__def("packages/ui/imagem.js", function (__e) {
+
+function reduzirImagem(arquivo, ladoMaximo = 320, qualidade = 0.8) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(arquivo);
+    const img = new Image();
+    img.onload = () => {
+      const escala = Math.min(1, ladoMaximo / Math.max(img.width, img.height));
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.round(img.width * escala);
+      canvas.height = Math.round(img.height * escala);
+      canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL('image/jpeg', qualidade));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Não foi possível ler a imagem.'));
+    };
+    img.src = url;
+  });
+}
+
+__e["reduzirImagem"] = reduzirImagem;
+
+});
 __def("packages/ui/index.js", function (__e) {
 
 { const __r = __mod("packages/ui/dom.js"); for (const __k in __r) if (__k !== 'default') __e[__k] = __r[__k]; }
@@ -19203,6 +19258,7 @@ __def("packages/ui/index.js", function (__e) {
 { const __r = __mod("packages/ui/components/dados.js"); for (const __k in __r) if (__k !== 'default') __e[__k] = __r[__k]; }
 { const __r = __mod("packages/ui/components/painel.js"); for (const __k in __r) if (__k !== 'default') __e[__k] = __r[__k]; }
 { const __r = __mod("packages/ui/qrcode.js"); for (const __k in __r) if (__k !== 'default') __e[__k] = __r[__k]; }
+{ const __r = __mod("packages/ui/imagem.js"); for (const __k in __r) if (__k !== 'default') __e[__k] = __r[__k]; }
 });
 __def("packages/ui/motion.js", function (__e) {
 
