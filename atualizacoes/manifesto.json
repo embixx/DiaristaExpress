@@ -1,15 +1,16 @@
 {
-  "versao": "2.9.0",
-  "sha256": "a0ffc9fb2de8830bab3ed8855900a2fd57b24308e7b3d5e33ad6fa51d0aea3ba",
-  "tamanho": 715696,
+  "versao": "2.10.0",
+  "sha256": "c0560081ddbbda890a4e8530442bced38ff07fa62b8e000d6bf5783501ad79db",
+  "tamanho": 723437,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-14T01:23:33Z",
+  "publicadaEm": "2026-11-14T01:32:02Z",
   "novidades": [
-    "Tela de entrada nova: capa na cor do app, com os serviços flutuando.",
-    "Campos de formulário preenchidos em cinza, com um anel azul quando você está digitando.",
-    "Profissional: \"Rota do dia\" na agenda abre o trajeto com todas as paradas do dia, na ordem dos horários.",
-    "Números que cabem em qualquer tela: no computador e em celular pequeno nada mais corta pela metade.",
-    "Títulos de lista quebram em duas linhas em vez de sumir no meio."
+    "Pedir com quem você confia: seus profissionais favoritos aparecem na tela inicial; um toque abre o pedido já para essa pessoa.",
+    "O pedido mostra no topo para quem ele vai, com um X para abrir para qualquer profissional.",
+    "Avisos organizados em Hoje, Esta semana e Antes, com um ponto azul no que ainda não foi lido.",
+    "As novidades de cada versão (como esta) ganharam cara nova.",
+    "Conversa: a mensagem nova entra do lado de quem falou.",
+    "Pedidos: Em andamento, Histórico e Todos num seletor só."
   ],
-  "assinatura": "nlbKwXVOyuVjOfW1P3oYyQUx_-arqHWea3Qh-aUq17rsExB3QNLyj9QsXs90Hl7NjxTKhx8uPPvZQIN-bPi-cg"
+  "assinatura": "NMZA7NUw_X97Px4jLjUDvQYxxOVgsh9HRx-Ab-g7CacTNfLvtdR2XqqoGPRBcgHVKGGhIRqKASpKln-NhHMi3w"
 }

@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.9.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.10.0 - arquivo unico">
 <style>
 
 :root {
@@ -1355,10 +1355,14 @@ button.item:active { background: color-mix(in srgb, var(--texto) 8%, var(--ladri
 }
 .balao--dele {
   align-self: flex-start;
-  background: var(--fundo);
-  border: 1.5px solid var(--linha);
+  background: var(--ladrilho);
   border-bottom-left-radius: 5px;
 }
+.balao:last-child { animation: dx-balao 260ms cubic-bezier(.2, 1.3, .4, 1) both; }
+.balao--meu:last-child { transform-origin: bottom right; }
+.balao--dele:last-child { transform-origin: bottom left; }
+@keyframes dx-balao { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .balao:last-child { animation: none; } }
 .balao__hora { font-size: .7rem; opacity: .75; margin-top: 3px; text-align: right; }
 .chat__data {
   align-self: center;
@@ -2907,6 +2911,58 @@ button.mini:active { transform: scale(.96); }
 .rota__texto span { font-size: .82rem; opacity: .9; }
 .rota > svg { flex: none; width: 20px; height: 20px; }
 
+.recados__grupo { margin: 0 0 var(--e2); font-size: .74rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--texto-2); }
+.recados { display: grid; gap: var(--e2); }
+.recado {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--e3);
+  width: 100%;
+  padding: var(--e3) var(--e4) var(--e3) var(--e3);
+  border: 0;
+  border-radius: 20px;
+  background: var(--ladrilho);
+  color: var(--texto);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 90ms ease-out;
+}
+.recado:active { transform: scale(.985); }
+.recado--novo { background: color-mix(in srgb, var(--marca) 12%, var(--ladrilho)); }
+.recado__icone { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--fundo); color: var(--marca-forte); }
+.recado__icone svg { width: 21px; height: 21px; }
+.recado__icone--sucesso { color: var(--sucesso); }
+.recado__icone--alerta { color: var(--alerta); }
+.recado__icone--erro { color: var(--erro); }
+.recado__corpo { flex: 1; display: grid; gap: 2px; min-width: 0; }
+.recado__titulo { font-weight: 800; }
+.recado__texto { font-size: .86rem; color: var(--texto-2); line-height: 1.35; }
+.recado__quando { margin-top: 2px; font-size: .74rem; color: var(--texto-3); font-weight: 600; }
+.recado__ponto { flex: none; width: 10px; height: 10px; margin-top: 6px; border-radius: 50%; background: var(--marca); box-shadow: 0 0 0 3px color-mix(in srgb, var(--marca) 25%, transparent); }
+
+.novidade-capa { position: relative; isolation: isolate; overflow: hidden; display: flex; align-items: center; gap: var(--e3); padding: var(--e4) var(--e4) var(--e4) var(--e5); border-radius: 22px; background: var(--marca); color: #fff; }
+.novidade-capa::before { content: ''; position: absolute; z-index: -1; width: 120px; height: 120px; right: -30px; top: -50px; border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgb(255 255 255 / .55) 0 7%, transparent 8%), radial-gradient(circle, rgb(255 255 255 / .07) 0 60%, rgb(255 255 255 / .28) 64%, transparent 67%); }
+.novidade-capa__texto { flex: 1; display: grid; gap: 2px; }
+.novidade-capa__versao { font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; opacity: .9; }
+.novidade-capa__titulo { font-family: var(--fonte-display); font-size: 1.35rem; line-height: 1.1; letter-spacing: -.02em; }
+.novidade-capa__arte { flex: none; display: grid; place-items: center; width: 72px; height: 72px; border-radius: 50%; background: #fff; transform: rotate(-8deg); }
+.novidades-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e3); }
+.novidades-lista li { display: flex; align-items: flex-start; gap: 12px; line-height: 1.4; animation: dx-surgir 380ms cubic-bezier(.16, 1, .3, 1) both; animation-delay: calc(120ms + var(--i, 0) * 60ms); }
+.novidades-lista__marca { flex: none; display: grid; place-items: center; width: 24px; height: 24px; margin-top: 1px; border-radius: 50%; background: var(--destaque); color: #000; }
+.novidades-lista__marca svg { width: 14px; height: 14px; stroke-width: 3; }
+@media (prefers-reduced-motion: reduce) { .novidades-lista li { animation: none; } }
+
+.pessoa__pedir { display: inline-flex; align-items: center; gap: 4px; margin-top: 4px; padding: 5px 12px; border-radius: var(--r-full); background: var(--marca); color: #fff; font-size: .76rem; font-weight: 800; }
+.pessoa__pedir svg { width: 13px; height: 13px; stroke-width: 2.6; }
+
+.para-quem { display: flex; align-items: center; gap: var(--e3); margin-bottom: var(--e4); padding: var(--e2) var(--e2) var(--e2) var(--e3); border-radius: var(--r-full); background: color-mix(in srgb, var(--marca) 12%, var(--ladrilho)); }
+.para-quem__texto { flex: 1; display: grid; line-height: 1.2; min-width: 0; }
+.para-quem__texto span { font-size: .74rem; color: var(--texto-2); font-weight: 700; }
+.para-quem__texto b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.para-quem__tirar { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--fundo); color: var(--texto); cursor: pointer; }
+.para-quem__tirar svg { width: 16px; height: 16px; }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3307,7 +3363,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.9.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.10.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -4863,6 +4919,29 @@ function TelaInicio(app) {
       ),
     );
 
+    const favoritos = (api.perfil.meuPerfil().favoritos || []).map((id) => api.perfil.cartaoProfissional(id)).filter(Boolean);
+    const confio = favoritos.length
+      ? h(
+          'section',
+          null,
+          Secao('Pedir com quem você confia'),
+          h(
+            'div',
+            { class: 'pessoas' },
+            ...favoritos.map((p) =>
+              h(
+                'button',
+                { class: 'pessoa', type: 'button', onClick: () => app.ir(`/novo?profissional=${p.contaId}`) },
+                Avatar({ nome: p.nome, foto: p.avatar, tamanho: 'g', verificado: p.verificado }),
+                h('span', { class: 'pessoa__nome' }, nomeCurto(p.nome)),
+                h('span', { class: 'pessoa__nota' }, icone('estrela'), (Number(p.nota) || 0).toFixed(1)),
+                h('span', { class: 'pessoa__pedir' }, icone('mais'), 'Pedir'),
+              ),
+            ),
+          ),
+        )
+      : null;
+
     const quemAtende = profissionais.length
       ? h(
           'section',
@@ -4920,7 +4999,7 @@ function TelaInicio(app) {
         'div',
         { class: 'duas-colunas' },
         h('div', { class: 'pilha-lg' }, painel, ...chamadas, servicos, ofertas),
-        h('div', { class: 'pilha-lg' }, atalhos, CartaoDica(), semana, quemAtende, mes),
+        h('div', { class: 'pilha-lg' }, atalhos, confio, CartaoDica(), semana, quemAtende, mes),
       ),
     );
   }
@@ -4989,7 +5068,7 @@ __e["CartaoPedido"] = CartaoPedido;
 __def("apps/cliente/src/pages/novo-pedido.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, montar, icone, Botao, Cartao, Secao, Opcao, Destaque, Calendario, avisar, folha, SERVICOS, EXTRAS, TAMANHOS, PERIODOS, servicoPorId, tamanhoPorId, periodoPorId, orcar, dinheiro, dataAmigavel, isoData, deDataHora, somaDias, api, validarCupom, cuponsDisponiveis, modal, selosDeSucesso, vibrar, FREQUENCIAS, frequenciaPorId, METODOS, GRUPOS, grupoDoServico, usaTamanho, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, limparLinha, arte } = __i1;
+const { h, montar, icone, Avatar, Botao, Cartao, Secao, Opcao, Destaque, Calendario, avisar, folha, SERVICOS, EXTRAS, TAMANHOS, PERIODOS, servicoPorId, tamanhoPorId, periodoPorId, orcar, dinheiro, dataAmigavel, isoData, deDataHora, somaDias, api, validarCupom, cuponsDisponiveis, modal, selosDeSucesso, vibrar, FREQUENCIAS, frequenciaPorId, METODOS, GRUPOS, grupoDoServico, usaTamanho, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, limparLinha, arte } = __i1;
 const PASSOS = ['Serviço', 'Onde e quando', 'Confirmar'];
 
 function TelaNovoPedido(app, ctx) {
@@ -5033,6 +5112,7 @@ function TelaNovoPedido(app, ctx) {
   const conteudo = h('div');
   const rodape = h('div', { class: 'acoes-fixas' });
   const trilha = h('div', { class: 'fichas fichas--passos', style: { marginBottom: '16px' } });
+  const faixaPreferido = h('div');
 
   const orcamento = () =>
     orcar({
@@ -5689,6 +5769,28 @@ function TelaNovoPedido(app, ctx) {
       ),
     );
 
+    const pref = estado.diaristaPreferidoId ? api.perfil.cartaoProfissional(estado.diaristaPreferidoId) : null;
+    montar(
+      faixaPreferido,
+      pref
+        ? h(
+            'div',
+            { class: 'para-quem' },
+            Avatar({ nome: pref.nome, foto: pref.avatar, verificado: pref.verificado }),
+            h('span', { class: 'para-quem__texto' }, h('span', null, 'Pedido para'), h('b', null, pref.nome)),
+            h('button', {
+              class: 'para-quem__tirar',
+              type: 'button',
+              'aria-label': 'Abrir para qualquer profissional',
+              onClick: () => {
+                estado.diaristaPreferidoId = null;
+                desenhar();
+              },
+            }, icone('fechar')),
+          )
+        : null,
+    );
+
     const telas = [passoServico, passoOndeQuando, passoConfirmar];
     montar(conteudo, telas[estado.passo]());
     atualizarRodape();
@@ -5708,7 +5810,7 @@ function TelaNovoPedido(app, ctx) {
         }
       },
     },
-    corpo: h('div', null, trilha, conteudo, rodape),
+    corpo: h('div', null, trilha, faixaPreferido, conteudo, rodape),
   };
 }
 
@@ -6287,7 +6389,7 @@ function TelaPedidos(app, ctx) {
 
   const fichas = h(
     'div',
-    { class: 'fichas', style: { marginBottom: 'var(--e4)' } },
+    { class: 'segmentos', role: 'group', 'aria-label': 'Filtrar pedidos', style: { marginBottom: 'var(--e4)' } },
     ...FILTROS.map((f) =>
       Ficha(
         {
@@ -13789,7 +13891,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.9.0',
+  versao: '2.10.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13824,6 +13926,19 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.10.0',
+    data: '13/11/2026',
+    titulo: 'Quem você confia, em um toque',
+    itens: [
+      'Pedir com quem você confia: seus profissionais favoritos aparecem na tela inicial; um toque abre o pedido já para essa pessoa.',
+      'O pedido mostra no topo para quem ele vai, com um X para abrir para qualquer profissional.',
+      'Avisos organizados em Hoje, Esta semana e Antes, com um ponto azul no que ainda não foi lido.',
+      'As novidades de cada versão (como esta) ganharam cara nova.',
+      'Conversa: a mensagem nova entra do lado de quem falou.',
+      'Pedidos: Em andamento, Histórico e Todos num seletor só.',
+    ],
+  },
   {
     versao: '2.9.0',
     data: '13/11/2026',
@@ -15364,7 +15479,7 @@ __e["TelaChat"] = TelaChat;
 __def("packages/telas/config.js", function (__e) {
 
 const __i1 = __mod("packages/ui/index.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Ficha, LinhaOpcao, Campo, CampoSenha, Item, Destaque, avisar, confirmar, folha, lerFormulario, aplicarErros, preferencias, salvarPreferencias, OPCOES_DESEMPENHO, detectarNivel, nivelAtual, diagnostico, medirFPS, Opcao } = __i1;
+const { h, cada, montar, icone, arte, Botao, Cartao, Secao, Ficha, LinhaOpcao, Campo, CampoSenha, Item, Destaque, avisar, confirmar, folha, lerFormulario, aplicarErros, preferencias, salvarPreferencias, OPCOES_DESEMPENHO, detectarNivel, nivelAtual, diagnostico, medirFPS, Opcao } = __i1;
 const __i2 = __mod("packages/core/api/index.js");
 const api = __i2.default;
 const __i3 = __mod("packages/core/data/db.js");
@@ -15390,18 +15505,32 @@ const { APP } = __i12;
 function mostrarNovidades(lista = NOVIDADES.slice(0, 1)) {
   if (!lista.length) return;
   folha({
-    titulo: lista.length === 1 ? `Novidades da versão ${lista[0].versao}` : 'O que mudou desde a última vez',
-    subtitulo: lista[0].titulo,
+    titulo: lista.length === 1 ? 'Novidades' : 'O que mudou desde a última vez',
     conteudo: () =>
       h(
         'div',
-        { class: 'pilha' },
-        ...lista.map((n) =>
+        { class: 'pilha-lg' },
+        h(
+          'div',
+          { class: 'novidade-capa' },
+          h(
+            'div',
+            { class: 'novidade-capa__texto' },
+            h('span', { class: 'novidade-capa__versao' }, `Versão ${lista[0].versao}`),
+            h('strong', { class: 'novidade-capa__titulo' }, lista[0].titulo),
+          ),
+          h('span', { class: 'novidade-capa__arte' }, arte('presente', 56)),
+        ),
+        ...lista.map((n, k) =>
           h(
             'div',
             null,
-            lista.length > 1 ? h('div', { class: 'campo__rotulo' }, `${n.versao} · ${n.data}`) : null,
-            h('ul', { class: 'novidades' }, ...n.itens.map((t) => h('li', null, t))),
+            lista.length > 1 && k > 0 ? h('div', { class: 'campo__rotulo' }, `${n.versao} · ${n.titulo}`) : null,
+            h(
+              'ul',
+              { class: 'novidades-lista' },
+              ...n.itens.map((t, i) => h('li', { style: { '--i': String(Math.min(i, 8)) } }, h('span', { class: 'novidades-lista__marca' }, icone('check')), h('span', null, t))),
+            ),
           ),
         ),
       ),
@@ -16541,13 +16670,47 @@ __e["TelaEntrar"] = TelaEntrar;
 __def("packages/telas/notificacoes.js", function (__e) {
 
 const __i1 = __mod("packages/ui/index.js");
-const { h, cada, Botao, EstadoVazio, Etiqueta, avisar, icone, confirmar } = __i1;
+const { h, Botao, EstadoVazio, avisar, icone, confirmar } = __i1;
 const __i2 = __mod("packages/core/util/format.js");
 const { tempoRelativo } = __i2;
 const __i3 = __mod("packages/core/api/index.js");
 const api = __i3.default;
 const ICONE_POR_TIPO = { sucesso: 'check_circulo', alerta: 'alerta', erro: 'x_circulo', info: 'info' };
 const COR_POR_TIPO = { sucesso: 'var(--sucesso)', alerta: 'var(--alerta)', erro: 'var(--erro)', info: 'var(--info)' };
+
+function agrupar(lista) {
+  const agora = new Date();
+  const inicioHoje = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate()).getTime();
+  const grupos = [['Hoje', []], ['Esta semana', []], ['Antes', []]];
+  for (const n of lista) {
+    const t = new Date(n.em).getTime();
+    grupos[t >= inicioHoje ? 0 : t >= inicioHoje - 6 * 86400000 ? 1 : 2][1].push(n);
+  }
+  return grupos.filter(([, itens]) => itens.length);
+}
+
+const Recado = (n, app) =>
+  h(
+    'button',
+    {
+      class: ['recado', !n.lida && 'recado--novo'],
+      type: 'button',
+      onClick: () => {
+        api.notificacoes.marcarLida(n.id);
+        if (n.link) location.hash = n.link.replace(/^#/, '');
+        else app.roteador.recarregar();
+      },
+    },
+    h('span', { class: ['recado__icone', `recado__icone--${COR_POR_TIPO[n.tipo] ? n.tipo : 'info'}`] }, icone(ICONE_POR_TIPO[n.tipo] || 'info')),
+    h(
+      'span',
+      { class: 'recado__corpo' },
+      h('span', { class: 'recado__titulo' }, n.titulo),
+      h('span', { class: 'recado__texto' }, n.mensagem),
+      h('span', { class: 'recado__quando' }, tempoRelativo(n.em)),
+    ),
+    !n.lida ? h('span', { class: 'recado__ponto', role: 'img', 'aria-label': 'não lido' }) : null,
+  );
 
 function TelaNotificacoes(app) {
   const lista = api.notificacoes.minhasNotificacoes();
@@ -16576,53 +16739,13 @@ function TelaNotificacoes(app) {
         )
       : null,
 
-    h(
-      'div',
-      { class: 'lista' },
-      ...cada(
-        lista,
-        (n) =>
-          h(
-            'button',
-            {
-              class: ['cartao', 'cartao--clicavel', !n.lida && 'cartao--destaque'],
-              type: 'button',
-              onClick: () => {
-                api.notificacoes.marcarLida(n.id);
-                if (n.link) location.hash = n.link.replace(/^#/, '');
-                else app.roteador.recarregar();
-              },
-            },
-            h(
-              'div',
-              { class: 'linha linha--topo' },
-              h(
-                'span',
-                { class: 'item__icone', style: { color: COR_POR_TIPO[n.tipo] || 'var(--info)' } },
-                icone(ICONE_POR_TIPO[n.tipo] || 'info'),
-              ),
-              h(
-                'div',
-                { class: 'cresce' },
-                h(
-                  'div',
-                  { class: 'linha linha--entre' },
-                  h('span', { class: 'medio' }, n.titulo),
-                  !n.lida ? Etiqueta('novo', 'marca', false) : null,
-                ),
-                h('p', { class: 't-sm texto-2' }, n.mensagem),
-                h('p', { class: 't-xs texto-3', style: { marginTop: '4px' } }, tempoRelativo(n.em)),
-              ),
-            ),
-          ),
-        () =>
-          EstadoVazio({
-            icone: 'sino',
-            titulo: 'Nenhum aviso por aqui',
-            texto: 'Quando algo acontecer com seus serviços, você vai ver aqui primeiro.',
-          }),
-      ),
-    ),
+    lista.length
+      ? h('div', { class: 'pilha-lg' }, ...agrupar(lista).map(([titulo, itens]) => h('section', null, h('h2', { class: 'recados__grupo' }, titulo), h('div', { class: 'recados' }, ...itens.map((n) => Recado(n, app))))))
+      : EstadoVazio({
+          icone: 'sino',
+          titulo: 'Nenhum aviso por aqui',
+          texto: 'Quando algo acontecer com seus serviços, você vai ver aqui primeiro.',
+        }),
 
     lista.length
       ? Botao(
