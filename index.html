@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.8.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.9.0 - arquivo unico">
 <style>
 
 :root {
@@ -679,17 +679,18 @@ a.btn:hover { text-decoration: none; }
   width: 100%;
   min-height: 52px;
   padding: var(--e3) var(--e4);
-  background: var(--fundo);
-  border: 1.5px solid var(--borda-forte);
-  border-radius: var(--r-md);
+  background: var(--ladrilho);
+  border: 1.5px solid transparent;
+  border-radius: 14px;
   color: var(--texto);
-  transition: border-color var(--rapido), box-shadow var(--rapido);
+  transition: border-color var(--rapido), box-shadow var(--rapido), background var(--rapido);
 }
 .entrada::placeholder { color: var(--texto-3); }
-.entrada:hover:not(:disabled) { border-color: var(--tinta); }
+.entrada:hover:not(:disabled) { border-color: color-mix(in srgb, var(--texto) 22%, transparent); }
 .entrada:focus {
-  border-color: var(--tinta);
-  box-shadow: 3px 3px 0 var(--marca);
+  border-color: var(--marca);
+  background: var(--fundo);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--marca) 28%, transparent);
 }
 .entrada:disabled { background: var(--superficie-2); color: var(--texto-3); border-color: var(--borda); cursor: not-allowed; }
 textarea.entrada { min-height: 112px; resize: vertical; line-height: 1.5; }
@@ -704,7 +705,7 @@ select.entrada {
 }
 
 .campo--erro .entrada { border-color: var(--erro); }
-.campo--erro .entrada:focus { box-shadow: 3px 3px 0 var(--erro); }
+.campo--erro .entrada:focus { box-shadow: 0 0 0 3px color-mix(in srgb, var(--erro) 28%, transparent); }
 .campo__erro {
   display: flex;
   align-items: center;
@@ -1006,9 +1007,11 @@ button.item:active { background: color-mix(in srgb, var(--texto) 8%, var(--ladri
 }
 .item__titulo {
   font-weight: 700;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 .item__resumo {
   font-size: var(--t-sm);
@@ -2823,6 +2826,87 @@ button.mini:active { transform: scale(.96); }
 .ficha--recente svg { width: 15px; height: 15px; color: var(--texto-2); }
 .ficha--limpar { border-color: transparent; color: var(--texto-2); text-decoration: underline; }
 
+.indicador, .mini { container-type: inline-size; }
+.indicador__valor, .mini__valor { font-size: clamp(.9rem, 22cqi, 1.4rem); }
+
+@media (max-width: 379px) {
+  .procura__quando { font-size: 0; gap: 0; padding: 12px; }
+  .procura__quando svg { width: 18px; height: 18px; }
+}
+
+.capa {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-content: end;
+  justify-items: start;
+  gap: var(--e2);
+  min-height: 300px;
+  padding: var(--e5);
+  border-radius: 28px;
+  background: var(--painel-fundo, var(--marca));
+  color: var(--painel-texto, #fff);
+  border: 1.5px solid var(--painel-borda, transparent);
+}
+.capa::before, .capa::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 32% 28%, rgb(255 255 255 / .55) 0 7%, transparent 8%),
+    radial-gradient(circle, rgb(255 255 255 / .07) 0 60%, rgb(255 255 255 / .28) 64%, transparent 67%);
+  animation: dx-bolha 6s ease-in-out infinite alternate;
+}
+.capa::before { width: 220px; height: 220px; left: -80px; top: -90px; }
+.capa::after { width: 80px; height: 80px; right: 38%; bottom: -26px; animation-duration: 4.5s; animation-delay: -2s; }
+.capa__artes { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.capa__arte {
+  position: absolute;
+  display: grid; place-items: center;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / .95);
+  box-shadow: 0 6px 0 rgb(0 0 0 / .16);
+  animation: dx-flutuar 5s ease-in-out infinite alternate;
+}
+.capa__arte--1 { top: 22px; right: 22px; transform: rotate(-8deg); }
+.capa__arte--2 { top: 96px; right: 92px; width: 54px; height: 54px; animation-delay: -1.2s; }
+.capa__arte--3 { top: 20px; right: 120px; width: 50px; height: 50px; animation-delay: -2.4s; }
+.capa__arte--4 { top: 112px; right: 16px; width: 58px; height: 58px; animation-delay: -3.6s; }
+.capa__arte--2 .arte, .capa__arte--3 .arte { width: 36px; height: 36px; }
+@keyframes dx-flutuar {
+  from { translate: 0 0; rotate: -4deg; }
+  to   { translate: 0 -8px; rotate: 5deg; }
+}
+.capa__sinal { width: 46px; height: 46px; }
+.capa__selo {
+  padding: 4px 10px;
+  border-radius: var(--r-full);
+  background: var(--destaque);
+  color: #000;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.capa__titulo { margin: 0; font-family: var(--fonte-display); font-size: clamp(2rem, 10vw, 2.6rem); font-weight: 800; letter-spacing: -.035em; line-height: 1; color: inherit; }
+.capa__titulo b { color: var(--destaque); font-weight: inherit; }
+.capa__apoio { margin: 0; max-width: 30ch; font-size: .95rem; line-height: 1.35; opacity: .92; }
+@media (prefers-reduced-motion: reduce) {
+  .capa::before, .capa::after, .capa__arte { animation: none; }
+}
+
+.rota { display: flex; align-items: center; gap: var(--e3); width: 100%; padding: var(--e3) var(--e4) var(--e3) var(--e3); border: 0; border-radius: 20px; background: var(--marca); color: #fff; font: inherit; text-align: left; cursor: pointer; transition: transform 90ms ease-out; }
+.rota:active { transform: scale(.98); }
+.rota__icone { flex: none; display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: #fff; color: var(--marca); }
+.rota__icone svg { width: 22px; height: 22px; }
+.rota__texto { flex: 1; display: grid; }
+.rota__texto span { font-size: .82rem; opacity: .9; }
+.rota > svg { flex: none; width: 20px; height: 20px; }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3223,7 +3307,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.8.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.9.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -4680,7 +4764,7 @@ function TelaInicio(app) {
       { class: 'procura', type: 'button', onClick: () => app.ir('/buscar') },
       icone('busca'),
       h('span', { class: 'procura__texto' }, 'O que a casa pede?'),
-      h('span', { class: 'procura__quando' }, icone('calendario'), 'Amanhã'),
+      h('span', { class: 'procura__quando', 'aria-label': 'Amanhã' }, icone('calendario'), 'Amanhã'),
     );
 
     const atalhos = h(
@@ -6902,9 +6986,17 @@ __def("apps/diarista/src/lib.js", function (__e) {
 __def("apps/diarista/src/pages/agenda.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, cada, montar, Botao, Cartao, Secao, EstadoVazio, Calendario, Ficha, GradeDoDia, dataCompleta, mesmoDia, dinheiro, somaDias, isoData, inicioDoDia, avisar, Destaque, api } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, EstadoVazio, Calendario, Ficha, GradeDoDia, dataCompleta, mesmoDia, dinheiro, somaDias, isoData, inicioDoDia, avisar, Destaque, api } = __i1;
 const __i2 = __mod("apps/diarista/src/pages/inicio.js");
 const { CartaoServico } = __i2;
+function abrirRota(paradas) {
+  const enc = encodeURIComponent;
+  const destino = paradas[paradas.length - 1];
+  const meio = paradas.slice(0, -1).map(enc).join('|');
+  const url = `https://www.google.com/maps/dir/?api=1&destination=${enc(destino)}${meio ? `&waypoints=${meio}` : ''}&travelmode=driving`;
+  window.open(url, '_blank', 'noopener');
+}
+
 function TelaAgenda(app) {
   let mes = new Date();
   let dia = new Date();
@@ -6951,7 +7043,7 @@ function TelaAgenda(app) {
         { class: 'linha linha--entre' },
         h(
           'div',
-          { class: 'fichas', role: 'group', 'aria-label': 'Como mostrar o dia' },
+          { class: 'segmentos', role: 'group', 'aria-label': 'Como mostrar o dia' },
           Ficha({ ativa: modo === 'lista', onClick: () => { modo = 'lista'; desenharDia(); } }, 'Lista'),
           Ficha({ ativa: modo === 'grade', onClick: () => { modo = 'grade'; desenharDia(); } }, 'Hora a hora'),
         ),
@@ -6963,6 +7055,17 @@ function TelaAgenda(app) {
         ),
       ),
       deFolga ? Destaque({ tom: 'alerta', icone: 'relogio' }, h('strong', null, 'Dia de folga. '), 'Você não recebe pedidos para esta data.') : null,
+      (() => {
+        const paradas = doDia.map((p) => p.endereco).filter((e) => e && !String(e).includes('não informado'));
+        if (!paradas.length || jaPassou) return null;
+        return h(
+          'button',
+          { class: 'rota', type: 'button', onClick: () => abrirRota(paradas) },
+          h('span', { class: 'rota__icone' }, icone('pin')),
+          h('span', { class: 'rota__texto' }, h('b', null, 'Rota do dia'), h('span', null, paradas.length === 1 ? '1 parada' : `${paradas.length} paradas, na ordem dos horários`)),
+          icone('seta_dir'),
+        );
+      })(),
       jaPassou
         ? null
         : Botao(
@@ -10921,7 +11024,7 @@ function criarPedido(dados) {
     if (limpo.diaristaPreferidoId && c.id !== limpo.diaristaPreferidoId) continue;
     notificar(c.id, {
       titulo: 'Novo serviço disponível',
-      mensagem: `${servicoPorId(servicoId)?.nome} em ${enderecoAproximado(pedido.enderecoId)} - ${dinheiro(orcamento.repasseProfissional)} para você.`,
+      mensagem: `${servicoPorId(servicoId)?.nome} em ${enderecoAproximado(pedido.enderecoId)}: ${dinheiro(orcamento.repasseProfissional)} para você.`,
       tipo: 'info',
       link: `#/oportunidades`,
     });
@@ -11107,7 +11210,7 @@ function aceitar(p, conta) {
 
   notificar(p.clienteId, {
     titulo: 'Profissional confirmado',
-    mensagem: `${conta.nome} aceitou seu pedido de ${servicoPorId(p.servicoId)?.nome} - ${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)}. ${ROTULO_PAGAMENTO[estadoPag]?.dica || ''}`.trim(),
+    mensagem: `${conta.nome} aceitou seu pedido de ${servicoPorId(p.servicoId)?.nome}, ${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)}. ${ROTULO_PAGAMENTO[estadoPag]?.dica || ''}`.trim(),
     tipo: estadoPag === PAGAMENTO.FALHOU ? 'alerta' : 'sucesso',
     link: `#/pedido/${p.id}`,
   });
@@ -11182,7 +11285,7 @@ function concluir(p) {
     pedidoId: p.id,
     valorLiquido: p.orcamento.repasseProfissional,
     taxa: p.orcamento.taxaPlataforma,
-    descricao: `${servicoPorId(p.servicoId)?.nome} - ${p.id.slice(-6)}`,
+    descricao: `${servicoPorId(p.servicoId)?.nome} · ${p.id.slice(-6)}`,
   });
   notificar(p.clienteId, {
     titulo: 'Serviço concluído',
@@ -12782,7 +12885,7 @@ async function semear() {
       contaId: mapa.diarista,
       tipo: 'retido',
       valor: concluido.orcamento.repasseProfissional,
-      descricao: 'Faxina completa - Vila Mariana',
+      descricao: 'Faxina completa · Vila Mariana',
       pedidoId: concluido.id,
       liberado: true,
       liberaEm: somaDias(new Date(), -10).toISOString(),
@@ -12803,7 +12906,7 @@ async function semear() {
       contaId: mapa.diarista,
       tipo: 'retido',
       valor: 184.8,
-      descricao: 'Faxina completa - Santana',
+      descricao: 'Faxina completa · Santana',
       liberado: false,
       liberaEm: liberacaoPrevista(new Date()).toISOString(),
       em: somaDias(new Date(), -1).toISOString(),
@@ -13686,7 +13789,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.8.0',
+  versao: '2.9.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13721,6 +13824,18 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.9.0',
+    data: '13/11/2026',
+    titulo: 'Acabamento',
+    itens: [
+      'Tela de entrada nova: capa na cor do app, com os serviços flutuando.',
+      'Campos de formulário preenchidos em cinza, com um anel azul quando você está digitando.',
+      'Profissional: "Rota do dia" na agenda abre o trajeto com todas as paradas do dia, na ordem dos horários.',
+      'Números que cabem em qualquer tela: no computador e em celular pequeno nada mais corta pela metade.',
+      'Títulos de lista quebram em duas linhas em vez de sumir no meio.',
+    ],
+  },
   {
     versao: '2.8.0',
     data: '13/11/2026',
@@ -15285,7 +15400,7 @@ function mostrarNovidades(lista = NOVIDADES.slice(0, 1)) {
           h(
             'div',
             null,
-            lista.length > 1 ? h('div', { class: 'campo__rotulo' }, `${n.versao} - ${n.data}`) : null,
+            lista.length > 1 ? h('div', { class: 'campo__rotulo' }, `${n.versao} · ${n.data}`) : null,
             h('ul', { class: 'novidades' }, ...n.itens.map((t) => h('li', null, t))),
           ),
         ),
@@ -16297,7 +16412,11 @@ __e["TelaDuvidas"] = TelaDuvidas;
 __def("packages/telas/entrar.js", function (__e) {
 
 const __i1 = __mod("packages/ui/index.js");
-const { h, lerFormulario, aplicarErros, Botao, Campo, CampoSenha, Destaque, avisar, icone } = __i1;
+const { h, lerFormulario, aplicarErros, Botao, Campo, CampoSenha, Destaque, avisar, icone, arte } = __i1;
+const ARTES_DA_CAPA = {
+  cliente: ['faxina', 'cozinha', 'lavanderia', 'jardinagem'],
+  diarista: ['faxina', 'pesada', 'reparos', 'eletrica'],
+};
 const __i2 = __mod("packages/core/api/index.js");
 const api = __i2.default;
 function TelaEntrar(app, { papel, titulo, subtitulo, rotaInicial, rotaCadastro, outroApp }) {
@@ -16348,12 +16467,17 @@ function TelaEntrar(app, { papel, titulo, subtitulo, rotaInicial, rotaCadastro, 
     { class: 'pilha-lg entra', style: { paddingTop: '16px' } },
 
     h(
-      'div',
-      { class: 'boas-vindas' },
-      h('span', { class: 'marca-nome__sinal boas-vindas__sinal' }, icone(papel === 'cliente' ? 'casa_servico' : 'vassoura')),
-      h('span', { class: 'selo-novo' }, papel === 'cliente' ? 'Para quem contrata' : 'Para quem trabalha'),
-      h('h1', null, 'Diarista', h('b', null, 'Express')),
-      h('p', { class: 'texto-2' }, subtitulo),
+      'header',
+      { class: 'capa' },
+      h(
+        'div',
+        { class: 'capa__artes', 'aria-hidden': 'true' },
+        ...(ARTES_DA_CAPA[papel] || ARTES_DA_CAPA.cliente).map((n, i) => h('span', { class: `capa__arte capa__arte--${i + 1}` }, arte(n, 44))),
+      ),
+      h('span', { class: 'marca-nome__sinal capa__sinal' }, icone(papel === 'cliente' ? 'casa_servico' : 'vassoura')),
+      h('span', { class: 'capa__selo' }, papel === 'cliente' ? 'Para quem contrata' : 'Para quem trabalha'),
+      h('h1', { class: 'capa__titulo' }, 'Diarista', h('b', null, 'Express')),
+      h('p', { class: 'capa__apoio' }, subtitulo),
     ),
 
     form,

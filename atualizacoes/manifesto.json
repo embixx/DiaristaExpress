@@ -1,16 +1,15 @@
 {
-  "versao": "2.8.0",
-  "sha256": "05afbe90dfe0b54ec2612ce5292c89f1b710ef4c15d7df51c23abab652a04c93",
-  "tamanho": 710047,
+  "versao": "2.9.0",
+  "sha256": "a0ffc9fb2de8830bab3ed8855900a2fd57b24308e7b3d5e33ad6fa51d0aea3ba",
+  "tamanho": 715696,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-14T00:36:33Z",
+  "publicadaEm": "2026-11-14T01:23:33Z",
   "novidades": [
-    "Bolhas de sabão estouram quando dá certo: pedido publicado, lista de preparo completa, avaliação enviada, cupom copiado e profissional favoritado.",
-    "Tocar de novo na aba em que você já está leva de volta ao topo.",
-    "Os desenhos dos serviços reagem ao toque.",
-    "Dica da casa na tela inicial: uma por dia, e \"Outra dica\" para ver mais.",
-    "A busca lembra o que você procurou por último.",
-    "Meus gastos: o total sobe até o valor."
+    "Tela de entrada nova: capa na cor do app, com os serviços flutuando.",
+    "Campos de formulário preenchidos em cinza, com um anel azul quando você está digitando.",
+    "Profissional: \"Rota do dia\" na agenda abre o trajeto com todas as paradas do dia, na ordem dos horários.",
+    "Números que cabem em qualquer tela: no computador e em celular pequeno nada mais corta pela metade.",
+    "Títulos de lista quebram em duas linhas em vez de sumir no meio."
   ],
-  "assinatura": "__-XinqjctKaADbkuRp6t1xwYoL03pwwKCHeAUMMIu9H9w5eTed-WKmbVf4unlk_tzDMfEweIpszdC-obP6lgQ"
+  "assinatura": "nlbKwXVOyuVjOfW1P3oYyQUx_-arqHWea3Qh-aUq17rsExB3QNLyj9QsXs90Hl7NjxTKhx8uPPvZQIN-bPi-cg"
 }
