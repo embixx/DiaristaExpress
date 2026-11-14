@@ -30,6 +30,7 @@
   }
 
   function carregarQuadros(v) {
+    try { localStorage.setItem(CHAVE_APP, appAtual()); } catch (e) { /* sem armazenamento */ }
     // ?v= muda a cada versao: o navegador nunca reaproveita o app velho.
     // O app escolhido e a hora entram no endereco: moldura com o mesmo
     // endereco de antes nao recarrega, e a troca de app nao aparecia.

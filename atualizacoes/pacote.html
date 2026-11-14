@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.11.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.11.1 - arquivo unico">
 <style>
 
 :root {
@@ -3368,7 +3368,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.11.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.11.1";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -12533,7 +12533,7 @@ function conferirSchema() {
   return true;
 }
 
-const PREFERENCIAS = ['preferencias', 'schema'];
+const PREFERENCIAS = ['preferencias', 'schema', 'app'];
 
 function limparDados({ manterPreferencias = true } = {}) {
   const chaves = [];
@@ -13896,7 +13896,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.11.0',
+  versao: '2.11.1',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13931,6 +13931,14 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.11.1',
+    data: '14/11/2026',
+    titulo: 'Computador e celular juntos, desde a primeira vez',
+    itens: [
+      'Na primeira abertura da página de teste, o celular às vezes parava na tela de escolher app. Agora os dois abrem no mesmo app.',
+    ],
+  },
   {
     versao: '2.11.0',
     data: '14/11/2026',
