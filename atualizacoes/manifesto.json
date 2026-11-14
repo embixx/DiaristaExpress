@@ -1,11 +1,12 @@
 {
-  "versao": "2.11.2",
-  "sha256": "0909d2678e242ca38c937046fba9a22fb03c1c8210c5d8437ba2e5411d3f2c56",
-  "tamanho": 724751,
+  "versao": "2.11.3",
+  "sha256": "f9d380bb38614af77d5bfda0900a354f2787e0aacbc17f8533de3d61a2df2a2d",
+  "tamanho": 725186,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-14T12:16:54Z",
+  "publicadaEm": "2026-11-14T12:34:05Z",
   "novidades": [
-    "Na página de teste do computador, entrar (ou sair) na tela do celular atualiza a do computador sozinha, e vice-versa."
+    "A página de teste do computador mostra um modo por vez: Computador (o app na janela inteira) ou Celular (um aparelho no centro). Troque no botão do topo, sem perder onde estava.",
+    "Barra do topo mais simples: só o modo, qual app ver e a versão. Quando sai versão nova, aparece \"Atualizar para…\" ali mesmo."
   ],
-  "assinatura": "gGyo2CR7wDDkr0iGp8nysnC4Jf0-egCRnRGS5bD6wAQtkpe-eBVmXaLrS9nqtA19uhRQBoA8ysqIVQfKyJHwiA"
+  "assinatura": "3yH-CmhHequHt8k91o07knj_idX2HrtGuif-Ui2AGt6YuFBCMYVsJvbNxlnEUNu5IBt9H7Ec9bVYPdVZ82kgWQ"
 }

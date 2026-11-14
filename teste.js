@@ -1,142 +1,120 @@
-/* teste.js - "computador e celular" do DiaristaExpress, para testar no PC.
+/* teste.js - pagina de teste do DiaristaExpress no computador.
  *
- * Mostra o mesmo app duas vezes, lado a lado: numa moldura de notebook
- * (1280 x 800) e num aparelho (390 x 844), as duas reduzidas para caber na
- * janela. Mesma origem = mesma conta e mesmos dados nas duas.
+ * Uma vista por vez: "Computador" (o app na janela inteira, como no site)
+ * ou "Celular" (um aparelho de 390 x 844, reduzido so' se nao couber).
+ * Trocar de vista nao recarrega o app - so' muda o tamanho, e o app se
+ * reorganiza na hora; a escolha fica lembrada para a proxima vez.
  *
  * Atualizacao: le o manifesto do canal ao abrir, a cada 2 minutos e quando a
- * janela volta ao foco. Saiu versao nova? Aparece a faixa amarela com
- * "Atualizar agora" - e o botao Atualizar do topo confere na hora.
+ * janela volta ao foco. Saiu versao nova? Aparece "Atualizar para X" na barra.
+ * Clicar na versao procura na hora.
  */
 (function () {
   var CHAVE_APP = 'dx:app';
+  var CHAVE_MODO = 'dx-teste:modo';
   var INTERVALO = 2 * 60 * 1000;
   var versaoCarregada = null;
   var $ = function (id) { return document.getElementById(id); };
+  var quadro = $('quadro');
+  var tela = document.querySelector('.tela');
 
+  // Aberta num celular de verdade: vai direto para o app.
+  if (window.matchMedia('(max-width: 760px) and (pointer: coarse)').matches) {
+    location.replace('./');
+    return;
+  }
+
+  function ler(chave, padrao) { try { return localStorage.getItem(chave) || padrao; } catch (e) { return padrao; } }
+  function gravar(chave, valor) { try { localStorage.setItem(chave, valor); } catch (e) { /* sem armazenamento */ } }
+
+  // ------------------------------------------------------------- app
+  function appAtual() { return ler(CHAVE_APP, 'cliente') === 'diarista' ? 'diarista' : 'cliente'; }
+
+  function carregar(v) {
+    gravar(CHAVE_APP, appAtual());
+    // versao, app e hora no endereco: o navegador nunca usa o app velho e a
+    // troca de app sempre recarrega.
+    quadro.src = './index.html?v=' + encodeURIComponent(v || 'sem-canal') + '&app=' + appAtual() + '&t=' + Date.now() + '#/';
+  }
+
+  $('qual-app').value = appAtual();
+  $('qual-app').addEventListener('change', function (e) {
+    gravar(CHAVE_APP, e.target.value);
+    carregar(versaoCarregada);
+  });
+
+  // ------------------------------------------------------------- vista
+  function modoAtual() { return ler(CHAVE_MODO, 'computador') === 'celular' ? 'celular' : 'computador'; }
+
+  function ajustar() {
+    if (modoAtual() !== 'celular') {
+      tela.style.transform = '';
+      return;
+    }
+    var area = document.querySelector('.vista');
+    var s = Math.min((area.clientHeight - 40) / 864, (area.clientWidth - 40) / 410, 1);
+    tela.style.transform = 'scale(' + s + ')';
+  }
+
+  function aplicarModo(modo) {
+    gravar(CHAVE_MODO, modo);
+    document.body.classList.toggle('modo-computador', modo === 'computador');
+    document.body.classList.toggle('modo-celular', modo === 'celular');
+    var botoes = document.querySelectorAll('[data-modo]');
+    for (var i = 0; i < botoes.length; i++) botoes[i].setAttribute('aria-pressed', String(botoes[i].dataset.modo === modo));
+    ajustar();
+  }
+
+  var botoesModo = document.querySelectorAll('[data-modo]');
+  for (var i = 0; i < botoesModo.length; i++) {
+    botoesModo[i].addEventListener('click', function (e) { aplicarModo(e.currentTarget.dataset.modo); });
+  }
+  window.addEventListener('resize', ajustar);
+
+  // ------------------------------------------------------------- versao
   function lerManifesto() {
     return fetch('./atualizacoes/manifesto.json?t=' + Date.now(), { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .catch(function () { return null; });
   }
 
-  function appAtual() {
-    try { return localStorage.getItem(CHAVE_APP) === 'diarista' ? 'diarista' : 'cliente'; } catch (e) { return 'cliente'; }
-  }
-
-  function marcarApp() {
-    var botoes = document.querySelectorAll('[data-app]');
-    for (var i = 0; i < botoes.length; i++) botoes[i].setAttribute('aria-pressed', String(botoes[i].dataset.app === appAtual()));
-  }
-
-  function carregarQuadros(v) {
-    try { localStorage.setItem(CHAVE_APP, appAtual()); } catch (e) { /* sem armazenamento */ }
-    // ?v= muda a cada versao: o navegador nunca reaproveita o app velho.
-    // O app escolhido e a hora entram no endereco: moldura com o mesmo
-    // endereco de antes nao recarrega, e a troca de app nao aparecia.
-    var endereco = './index.html?v=' + encodeURIComponent(v || 'sem-canal') + '&app=' + appAtual() + '&t=' + Date.now() + '#/';
-    $('computador').src = endereco;
-    $('celular').src = endereco;
-  }
-
-  // ------------------------------------------------------------- escala
-  function encaixar(el) {
-    if (el.parentElement.classList.contains('encaixe')) return el.parentElement;
-    var caixa = document.createElement('div');
-    caixa.className = 'encaixe';
-    el.parentElement.insertBefore(caixa, el);
-    caixa.appendChild(el);
-    return caixa;
-  }
-
-  function escalar(el, area, largura, altura) {
-    var caixa = encaixar(el);
-    var s = Math.min(area.clientWidth / largura, area.clientHeight / altura, 1);
-    el.style.width = largura + 'px';
-    el.style.height = altura + 'px';
-    el.style.transform = 'scale(' + s + ')';
-    caixa.style.width = Math.floor(largura * s) + 'px';
-    caixa.style.height = Math.floor(altura * s) + 'px';
-  }
-
-  function ajustar() {
-    escalar($('computador'), $('area-computador'), 1280, 800);
-    // O aparelho tem 12 px de moldura de cada lado.
-    escalar(document.querySelector('.aparelho'), $('area-celular'), 390 + 24, 844 + 24);
-  }
-
-  // --------------------------------------------------------- atualizacao
-  function mostrarVersao(v) {
-    $('versao').textContent = v ? 'versão ' + v : 'sem conexão com o canal';
-  }
+  function mostrarVersao(texto) { $('versao').textContent = texto; }
 
   function procurar(manual) {
     return lerManifesto().then(function (m) {
       if (!m || !m.versao) {
-        if (manual) mostrarVersao(null);
+        if (manual) mostrarVersao('sem conexão');
         return;
       }
       if (!versaoCarregada) {
         versaoCarregada = m.versao;
-        mostrarVersao(m.versao);
-        carregarQuadros(m.versao);
+        mostrarVersao('versão ' + m.versao);
+        carregar(m.versao);
         return;
       }
       if (m.versao !== versaoCarregada) {
-        $('aviso-texto').textContent = 'Saiu a versão ' + m.versao + ' (você está vendo a ' + versaoCarregada + ').';
-        $('aviso').hidden = false;
-        $('aviso-botao').dataset.versao = m.versao;
-        if (manual) aplicar(m.versao);
+        $('novidade').textContent = 'Atualizar para ' + m.versao;
+        $('novidade').dataset.versao = m.versao;
+        $('novidade').hidden = false;
       } else if (manual) {
-        $('versao').textContent = 'versão ' + m.versao + ' · já é a mais nova';
-        setTimeout(function () { mostrarVersao(versaoCarregada); }, 2500);
+        mostrarVersao('versão ' + m.versao + ' · a mais nova');
+        setTimeout(function () { mostrarVersao('versão ' + versaoCarregada); }, 2500);
       }
     });
   }
 
-  function aplicar(v) {
-    versaoCarregada = v;
-    mostrarVersao(v);
-    $('aviso').hidden = true;
-    carregarQuadros(v);
-  }
-
-  // ------------------------------------------------------------- ligacoes
-  var botoesApp = document.querySelectorAll('[data-app]');
-  for (var i = 0; i < botoesApp.length; i++) {
-    botoesApp[i].addEventListener('click', function (e) {
-      try { localStorage.setItem(CHAVE_APP, e.currentTarget.dataset.app); } catch (err) { /* sem armazenamento */ }
-      marcarApp();
-      carregarQuadros(versaoCarregada);
-    });
-  }
-  // Entrou (ou saiu) numa moldura? A outra acompanha. O evento `storage`
-  // chega aqui porque as molduras gravam no mesmo armazenamento da pagina.
-  var esperaSessao = 0;
-  window.addEventListener('storage', function (e) {
-    if (!e.key || e.key.indexOf('dx:sess') !== 0) return;
-    clearTimeout(esperaSessao);
-    esperaSessao = setTimeout(function () {
-      ['computador', 'celular'].forEach(function (id) {
-        try {
-          var w = $(id).contentWindow;
-          var naEntrada = (w.location.hash || '').indexOf('entrar') >= 0;
-          if (e.newValue ? naEntrada : !naEntrada) w.location.reload();
-        } catch (err) { /* moldura ainda carregando */ }
-      });
-    }, 600);
+  $('novidade').addEventListener('click', function (e) {
+    versaoCarregada = e.currentTarget.dataset.versao;
+    e.currentTarget.hidden = true;
+    mostrarVersao('versão ' + versaoCarregada);
+    carregar(versaoCarregada);
   });
-  $('atualizar').addEventListener('click', function () { procurar(true); });
-  $('aviso-botao').addEventListener('click', function (e) { aplicar(e.currentTarget.dataset.versao); });
-  window.addEventListener('resize', ajustar);
+  $('versao').addEventListener('click', function () { procurar(true); });
   window.addEventListener('focus', function () { procurar(false); });
   setInterval(function () { procurar(false); }, INTERVALO);
 
-  // Sem escolha ainda: abre no Cliente; os botoes do topo trocam.
-  try { if (!localStorage.getItem(CHAVE_APP)) localStorage.setItem(CHAVE_APP, 'cliente'); } catch (e) { /* sem armazenamento */ }
-  marcarApp();
-  ajustar();
+  aplicarModo(modoAtual());
   procurar(false).then(function () {
-    if (!versaoCarregada) carregarQuadros(null); // sem canal: abre assim mesmo
+    if (!versaoCarregada) carregar(null); // sem canal: abre assim mesmo
   });
 })();

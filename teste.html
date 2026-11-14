@@ -13,47 +13,38 @@
     base-uri 'none';
     form-action 'none';
   ">
-  <title>DiaristaExpress · computador e celular</title>
-  <link rel="stylesheet" href="./teste.css?v=2.11.2">
+  <title>DiaristaExpress</title>
+  <link rel="stylesheet" href="./teste.css?v=2.11.3">
 </head>
-<body>
-  <header class="topo">
-    <div class="topo__marca"><b>Diarista</b><span>Express</span><small>modo de teste</small></div>
-    <div class="topo__app" role="group" aria-label="Qual app mostrar">
-      <button type="button" data-app="cliente">Cliente</button>
-      <button type="button" data-app="diarista">Profissional</button>
+<body class="modo-computador">
+  <header class="barra">
+    <!-- Sem marca aqui: o proprio app ja' mostra o nome logo abaixo. -->
+    <span></span>
+
+    <div class="alternar" role="group" aria-label="Como ver o app">
+      <button type="button" data-modo="computador">Computador</button>
+      <button type="button" data-modo="celular">Celular</button>
     </div>
-    <div class="topo__versao">
-      <span id="versao">versão ...</span>
-      <button type="button" id="atualizar" class="topo__atualizar">Atualizar</button>
+
+    <div class="barra__fim">
+      <label class="escolha">
+        <span class="visualmente-oculto">Qual app</span>
+        <select id="qual-app">
+          <option value="cliente">App do cliente</option>
+          <option value="diarista">App do profissional</option>
+        </select>
+      </label>
+      <button type="button" id="novidade" class="novidade" hidden>Atualizar</button>
+      <button type="button" id="versao" class="versao" title="Procurar versão nova">versão ...</button>
     </div>
   </header>
 
-  <div id="aviso" class="aviso-versao" hidden>
-    <span id="aviso-texto">Nova versão no ar.</span>
-    <button type="button" id="aviso-botao">Atualizar agora</button>
-  </div>
-
-  <main class="palco">
-    <section class="quadro quadro--computador">
-      <h2>Computador</h2>
-      <div class="quadro__area" id="area-computador">
-        <iframe id="computador" title="App no computador" data-largura="1280" data-altura="800"></iframe>
-      </div>
-    </section>
-    <section class="quadro quadro--celular">
-      <h2>Celular</h2>
-      <div class="quadro__area" id="area-celular">
-        <div class="aparelho">
-          <iframe id="celular" title="App no celular" data-largura="390" data-altura="844"></iframe>
-        </div>
-      </div>
-    </section>
+  <main class="vista">
+    <div class="tela">
+      <iframe id="quadro" title="DiaristaExpress"></iframe>
+    </div>
   </main>
 
-  <p class="rodape">As duas telas são o mesmo app, com a mesma conta: o que você faz numa aparece na outra.
-    No celular de verdade, abra <a href="./">embixx.github.io/DiaristaExpress</a>.</p>
-
-  <script src="./teste.js?v=2.11.2"></script>
+  <script src="./teste.js?v=2.11.3"></script>
 </body>
 </html>
