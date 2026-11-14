@@ -6,6 +6,8 @@ Este repositorio nao tem codigo-fonte. E' so' o canal de distribuicao:
   link https://embixx.github.io/DiaristaExpress/ funciona no celular.
 - `atualizacoes/` - a versao mais nova, assinada. O arquivo baixado procura
   aqui sozinho, confere a assinatura e se atualiza.
+- `teste.html` - o app em modo computador e celular lado a lado, para testar
+  no PC, com aviso quando sai versao nova.
 
 ```
       |\      _,,,---,,_

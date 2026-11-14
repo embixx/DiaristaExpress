@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.10.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.11.0 - arquivo unico">
 <style>
 
 :root {
@@ -2963,6 +2963,11 @@ button.mini:active { transform: scale(.96); }
 .para-quem__tirar { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--fundo); color: var(--texto); cursor: pointer; }
 .para-quem__tirar svg { width: 16px; height: 16px; }
 
+@media (max-width: 379px) {
+  .fichas--passos .ficha { padding: 0 8px; gap: 4px; font-size: .74rem; }
+}
+.opcao__titulo { overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3363,7 +3368,7 @@ button.mini:active { transform: scale(.96); }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.10.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.11.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -13891,7 +13896,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.10.0',
+  versao: '2.11.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -13926,6 +13931,17 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.11.0',
+    data: '14/11/2026',
+    titulo: 'Testar no computador ficou fácil',
+    itens: [
+      'O arquivo do Trello agora abre no navegador o app em modo computador e celular, lado a lado, na mesma conta.',
+      'Ele abre sempre a versão mais nova: não precisa baixar de novo. E, se sair uma versão com a página aberta, aparece a faixa amarela "Atualizar agora".',
+      'Botões no topo para trocar entre o app do Cliente e o do Profissional.',
+      'Celular pequeno: as etapas do pedido e o nome dos serviços não cortam mais.',
+    ],
+  },
   {
     versao: '2.10.0',
     data: '13/11/2026',
