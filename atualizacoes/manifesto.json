@@ -1,14 +1,16 @@
 {
-  "versao": "2.7.0",
-  "sha256": "b0ad2f06ce58ff617500a29b9ec941a8513a83fcdb3ed50540f65bb53a72e33e",
-  "tamanho": 700645,
+  "versao": "2.8.0",
+  "sha256": "05afbe90dfe0b54ec2612ce5292c89f1b710ef4c15d7df51c23abab652a04c93",
+  "tamanho": 710047,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-14T00:05:42Z",
+  "publicadaEm": "2026-11-14T00:36:33Z",
   "novidades": [
-    "O pedido abre com um bloco colorido: o desenho do serviço, a etapa em que ele está e a cor do momento (azul esperando, amarelo acontecendo, preto concluído).",
-    "Antes do profissional chegar: uma lista curta do que deixar pronto (produtos, chave, objetos de valor, animais), para marcar item por item.",
-    "Meus gastos virou tela: o total, a média por serviço, os últimos seis meses em barras e quanto cada serviço pesa.",
-    "Profissional: o perfil ganhou o bloco preto e amarelo e os números coloridos; tocar na nota abre as avaliações."
+    "Bolhas de sabão estouram quando dá certo: pedido publicado, lista de preparo completa, avaliação enviada, cupom copiado e profissional favoritado.",
+    "Tocar de novo na aba em que você já está leva de volta ao topo.",
+    "Os desenhos dos serviços reagem ao toque.",
+    "Dica da casa na tela inicial: uma por dia, e \"Outra dica\" para ver mais.",
+    "A busca lembra o que você procurou por último.",
+    "Meus gastos: o total sobe até o valor."
   ],
-  "assinatura": "zq89JR-LIrmWbEqBa81a8Lp-FFdCdiJLMimnBDyN8SwpKzZa0LuIj0mnp6oHSnqSuOVQuCRFJsbhAChLtSscQw"
+  "assinatura": "__-XinqjctKaADbkuRp6t1xwYoL03pwwKCHeAUMMIu9H9w5eTed-WKmbVf4unlk_tzDMfEweIpszdC-obP6lgQ"
 }
