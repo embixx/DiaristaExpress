@@ -110,6 +110,22 @@
       carregarQuadros(versaoCarregada);
     });
   }
+  // Entrou (ou saiu) numa moldura? A outra acompanha. O evento `storage`
+  // chega aqui porque as molduras gravam no mesmo armazenamento da pagina.
+  var esperaSessao = 0;
+  window.addEventListener('storage', function (e) {
+    if (!e.key || e.key.indexOf('dx:sess') !== 0) return;
+    clearTimeout(esperaSessao);
+    esperaSessao = setTimeout(function () {
+      ['computador', 'celular'].forEach(function (id) {
+        try {
+          var w = $(id).contentWindow;
+          var naEntrada = (w.location.hash || '').indexOf('entrar') >= 0;
+          if (e.newValue ? naEntrada : !naEntrada) w.location.reload();
+        } catch (err) { /* moldura ainda carregando */ }
+      });
+    }, 600);
+  });
   $('atualizar').addEventListener('click', function () { procurar(true); });
   $('aviso-botao').addEventListener('click', function (e) { aplicar(e.currentTarget.dataset.versao); });
   window.addEventListener('resize', ajustar);
