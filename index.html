@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.14.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.14.1 - arquivo unico">
 <style>
 
 :root {
@@ -2118,6 +2118,7 @@ button.tarefa:active { background: var(--superficie-2); }
 @media (max-width: 979px) {
   body.logado { --abas-altura: calc(90px + var(--seguro-base)); }
   body.logado .acoes-fixas { box-shadow: 0 24px 0 var(--fundo); }
+  body.logado .chat__barra { box-shadow: 0 24px 0 var(--fundo); }
   .abas {
     left: 12px; right: 12px;
     bottom: calc(10px + var(--seguro-base));
@@ -3106,6 +3107,16 @@ div.ranking-linha { cursor: default; }
 .proposta-acoes .btn { white-space: nowrap; }
 .proposta-item__apoio--livre { white-space: normal; }
 
+.aviso-conflito { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 12px; padding: 10px 12px; border-radius: 14px; background: color-mix(in srgb, var(--erro) 12%, transparent); color: var(--texto); font-size: .88rem; line-height: 1.35; }
+.aviso-conflito svg { flex: none; width: 18px; height: 18px; margin-top: 1px; color: var(--erro); }
+
+.chat__barra--proposta { flex-direction: column; align-items: stretch; gap: var(--e2); }
+.chat__barra--proposta .proposta-acoes { margin: 0; }
+.proposta-entrada { align-items: flex-end; gap: var(--e2); }
+.proposta-valor__numero { font-size: clamp(1.15rem, 5.4vw, 1.5rem); }
+.selo-novo--vermelho { background: var(--marcador-fundo, #dc2626); color: #fff; }
+.chat--proposta { padding-top: var(--e3); }
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3506,7 +3517,7 @@ div.ranking-linha { cursor: default; }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.14.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.14.1";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -3753,7 +3764,7 @@ const PAPEL = 'cliente';
 const ABAS = [
   { id: 'inicio', rotulo: 'Início', icone: 'casa', rota: '/' },
   { id: 'novo', rotulo: 'Pedir', icone: 'mais', rota: '/novo' },
-  { id: 'pedidos', rotulo: 'Pedidos', icone: 'lista', rota: '/pedidos', inclui: ['/pedido', '/proposta', '/chat', '/avaliar', '/assinaturas'], contador: (c) => c.mensagens },
+  { id: 'pedidos', rotulo: 'Pedidos', icone: 'lista', rota: '/pedidos', inclui: ['/pedido', '/proposta', '/chat', '/avaliar', '/assinaturas'], contador: (c) => c.mensagens + c.propostas },
   { id: 'profissionais', rotulo: 'Buscar', icone: 'busca', rota: '/profissionais', inclui: ['/profissional', '/ranking'] },
   { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/enderecos', '/duvidas', '/gastos'], contador: (c) => c.notificacoes },
 ];
@@ -4946,6 +4957,25 @@ function TelaInicio(app) {
           }),
         );
 
+    const comPropostas = api.propostas.pedidosComPropostas();
+    const chamadaPropostas = comPropostas.map((x) =>
+      Cartao(
+        { class: 'cartao--chamada cartao--propostas', onClick: () => app.ir(`/pedido/${x.pedidoId}`) },
+        h(
+          'div',
+          { class: 'linha' },
+          h('span', { class: 'item__icone' }, icone('chat')),
+          h(
+            'div',
+            { class: 'cresce' },
+            h('div', { class: 'medio' }, `${x.abertas} proposta${x.abertas > 1 ? 's' : ''} para ${x.servico}`),
+            h('div', { class: 't-sm texto-2' }, `a partir de ${dinheiro(x.menor)}${x.novas ? ` · ${x.novas} nova${x.novas > 1 ? 's' : ''}` : ''}`),
+          ),
+          icone('seta_dir'),
+        ),
+      ),
+    );
+
     const chamadas = cada(aguardandoAvaliacao.slice(0, 1), (p) =>
       Cartao(
         { class: 'cartao--chamada', onClick: () => app.ir(`/avaliar/${p.id}`) },
@@ -5181,7 +5211,7 @@ function TelaInicio(app) {
       h(
         'div',
         { class: 'duas-colunas' },
-        h('div', { class: 'pilha-lg' }, painel, ...chamadas, servicos, ofertas),
+        h('div', { class: 'pilha-lg' }, ...chamadaPropostas, painel, ...chamadas, servicos, ofertas),
         h('div', { class: 'pilha-lg' }, atalhos, confio, CartaoDica(), semana, quemAtende, mes),
       ),
     );
@@ -6104,12 +6134,13 @@ function TelaNovoPedido(app, ctx) {
     setTimeout(() => {
       fechar();
       avisar(
-        f ? `${f.nome}. Avisamos assim que um profissional aceitar.` : 'Avisamos assim que um profissional aceitar.',
+        estado.modoPreco === 'propostas'
+          ? 'Pedido publicado. As propostas chegam aqui, cada uma com a sua conversa.'
+          : f ? `${f.nome}. Avisamos assim que um profissional aceitar.` : 'Avisamos assim que um profissional aceitar.',
         'sucesso',
       );
       app.ir(`/pedido/${r.pedido.id}`);
     }, 1150);
-    if (estado.modoPreco === 'propostas') setTimeout(() => avisar('As propostas aparecem no pedido, cada uma com a sua conversa.'), 1400);
   }
 
   function atualizarRodape() {
@@ -6317,6 +6348,7 @@ function SecaoPropostas(p) {
                   h(
                     'span',
                     { class: 'proposta-item__selos' },
+                    x.nova ? h('span', { class: 'selo-novo selo-novo--vermelho' }, 'nova') : null,
                     x.valor === menor && abertas.length > 1 ? h('span', { class: 'selo-novo' }, 'menor preço') : null,
                     (x.diarista?.posicao || Infinity) === melhorPosicao && abertas.length > 1 && melhorPosicao !== Infinity ? h('span', { class: 'selo-novo' }, 'melhor no ranking') : null,
                   ),
@@ -7473,7 +7505,7 @@ const PAPEL = 'diarista';
 
 const ABAS = [
   { id: 'inicio', rotulo: 'Início', icone: 'casa', rota: '/' },
-  { id: 'oportunidades', rotulo: 'Trabalhos', icone: 'busca', rota: '/oportunidades', inclui: ['/proposta'] },
+  { id: 'oportunidades', rotulo: 'Trabalhos', icone: 'busca', rota: '/oportunidades', inclui: ['/proposta'], contador: (c) => c.propostas },
   { id: 'agenda', rotulo: 'Agenda', icone: 'calendario', rota: '/agenda', inclui: ['/servico', '/chat', '/avaliar'], contador: (c) => c.mensagens },
   { id: 'carteira', rotulo: 'Carteira', icone: 'carteira', rota: '/carteira', inclui: ['/relatorio'] },
   { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/avaliacoes', '/duvidas', '/clientes', '/ranking', '/plano'], contador: (c) => c.notificacoes },
@@ -8726,6 +8758,10 @@ function TelaOportunidades(app) {
         h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Você recebe'), h('span', { class: 'resumo-linha__valor' }, dinheiro(repasse))),
       ),
 
+      p.conflito
+        ? h('div', { class: 'aviso-conflito', role: 'note' }, icone('relogio'), h('span', null, `Você já tem um serviço ${p.conflito.quando}, que bate com este horário.`))
+        : null,
+
       h(
         'div',
         { class: 'linha' },
@@ -8741,10 +8777,11 @@ function TelaOportunidades(app) {
           'Agora não',
         ),
         p.faixa
-          ? Botao({ bloco: true, onClick: () => abrirProposta(p) }, 'Enviar proposta')
+          ? Botao({ bloco: true, disabled: !!p.conflito, onClick: () => abrirProposta(p) }, 'Enviar proposta')
           : Botao(
           {
             bloco: true,
+            disabled: !!p.conflito,
             onClick: async () => {
               const ok = await confirmar({
                 titulo: 'Aceitar este serviço?',
@@ -11466,6 +11503,8 @@ const propostas = {
   minhasPropostas: propostasM.minhasPropostas,
   valorSugerido: propostasM.valorSugerido,
   simularRecebimento: propostasM.simularRecebimento,
+  naoLidas: propostasM.naoLidas,
+  pedidosComPropostas: propostasM.pedidosComPropostas,
 };
 
 let iniciado = false;
@@ -12071,6 +12110,7 @@ function decorar(p, conta) {
       ? propostas.map((pr) => ({
           ...pr,
           diarista: cartaoProfissional(pr.diaristaId),
+          nova: !(pr.vistaPor || []).includes(conta.id),
           naoLidas: (pr.conversa || []).filter((m) => !(m.lidaPor || []).includes(conta.id)).length,
         }))
       : [],
@@ -12124,7 +12164,11 @@ function oportunidades({ servicoId = null, ordenar = 'data' } = {}) {
     .filter((p) => !(perfilDe(p.clienteId)?.bloqueados || []).includes(conta.id))
     .map((p) => {
       const orcamento = orcamentoPara(p, conta.id);
-      return decorar({ ...p, orcamento, total: orcamento.total }, conta);
+      const conflito = conflitoDeHorario(conta.id, p);
+      return {
+        ...decorar({ ...p, orcamento, total: orcamento.total }, conta),
+        conflito: conflito ? { quando: `${dataAmigavel(conflito.dataHora)} às ${hora(conflito.dataHora)}` } : null,
+      };
     });
 
   const ordenadores = {
@@ -13564,6 +13608,7 @@ function enviarProposta(pedidoId, { valor, mensagem } = {}) {
       estado: 'aberta',
       criadaEm: agora,
       atualizadaEm: agora,
+      vistaPor: [conta.id],
       conversa: texto ? [{ id: id('pmsg'), autor: 'diarista', texto, em: agora, lidaPor: [conta.id] }] : [],
     };
     propostas.push(proposta);
@@ -13627,8 +13672,13 @@ function verProposta(pedidoId, propostaId) {
   const souCliente = p.clienteId === conta.id;
   if (!souCliente && pr.diaristaId !== conta.id) return null;
 
-  if ((pr.conversa || []).some((m) => !(m.lidaPor || []).includes(conta.id))) {
-    propostas[j] = { ...pr, conversa: pr.conversa.map((m) => ((m.lidaPor || []).includes(conta.id) ? m : { ...m, lidaPor: [...(m.lidaPor || []), conta.id] })) };
+  const naoVista = !(pr.vistaPor || []).includes(conta.id);
+  if (naoVista || (pr.conversa || []).some((m) => !(m.lidaPor || []).includes(conta.id))) {
+    propostas[j] = {
+      ...pr,
+      vistaPor: naoVista ? [...(pr.vistaPor || []), conta.id] : pr.vistaPor,
+      conversa: (pr.conversa || []).map((m) => ((m.lidaPor || []).includes(conta.id) ? m : { ...m, lidaPor: [...(m.lidaPor || []), conta.id] })),
+    };
     lista[i] = { ...p, propostas };
     salvarTodos(lista);
   }
@@ -13788,6 +13838,46 @@ function simularRecebimento(pedidoId, valor) {
   return { total: o.total, taxa: o.taxaPlataforma, percentualTaxa: o.percentualTaxa, recebe: o.repasseProfissional };
 }
 
+function naoLidas() {
+  try {
+    const { conta } = exigirSessao();
+    let total = 0;
+    for (const p of todos()) {
+      if (p.estado !== ESTADOS.PROCURANDO || !p.propostas?.length) continue;
+      const souCliente = p.clienteId === conta.id;
+      for (const pr of p.propostas) {
+        if (pr.estado !== 'aberta') continue;
+        if (!souCliente && pr.diaristaId !== conta.id) continue;
+        if (souCliente && !(pr.vistaPor || []).includes(conta.id)) {
+          total += 1;
+          continue;
+        }
+        total += (pr.conversa || []).filter((m) => m.autor !== 'sistema' && !(m.lidaPor || []).includes(conta.id)).length;
+      }
+    }
+    return total;
+  } catch {
+    return 0;
+  }
+}
+
+function pedidosComPropostas() {
+  const { conta } = exigirSessao('cliente');
+  return todos()
+    .filter((p) => p.clienteId === conta.id && p.estado === ESTADOS.PROCURANDO && p.faixa)
+    .map((p) => {
+      const abertas = (p.propostas || []).filter((x) => x.estado === 'aberta');
+      return {
+        pedidoId: p.id,
+        servico: servicoPorId(p.servicoId)?.nome || 'Serviço',
+        abertas: abertas.length,
+        menor: abertas.length ? Math.min(...abertas.map((x) => x.valor)) : 0,
+        novas: abertas.filter((x) => !(x.vistaPor || []).includes(conta.id)).length,
+      };
+    })
+    .filter((x) => x.abertas);
+}
+
 __e["enviarProposta"] = enviarProposta;
 __e["responderProposta"] = responderProposta;
 __e["verProposta"] = verProposta;
@@ -13797,6 +13887,8 @@ __e["retirarProposta"] = retirarProposta;
 __e["minhasPropostas"] = minhasPropostas;
 __e["valorSugerido"] = valorSugerido;
 __e["simularRecebimento"] = simularRecebimento;
+__e["naoLidas"] = naoLidas;
+__e["pedidosComPropostas"] = pedidosComPropostas;
 
 });
 __def("packages/core/api/relatorio.js", function (__e) {
@@ -14487,7 +14579,7 @@ async function semear() {
   const msgDemo = (autor, texto, horasAtras, lidaPor) => ({ id: id('pmsg'), autor, texto, em: somaHoras(new Date(), -horasAtras).toISOString(), lidaPor });
   pFaixa.propostas = [
     {
-      id: id('prop'), diaristaId: mapa.d3, valor: 195, estado: 'aberta',
+      id: id('prop'), diaristaId: mapa.d3, valor: 195, estado: 'aberta', vistaPor: [mapa.d3, mapa.cliente],
       criadaEm: somaHoras(new Date(), -2).toISOString(), atualizadaEm: somaHoras(new Date(), -1).toISOString(),
       conversa: [
         msgDemo('diarista', 'Bom dia! Faço faxina de apartamento há 8 anos. Levo os meus produtos.', 2, [mapa.d3, mapa.cliente]),
@@ -14496,7 +14588,7 @@ async function semear() {
       ],
     },
     {
-      id: id('prop'), diaristaId: mapa.d2, valor: 220, estado: 'aberta',
+      id: id('prop'), diaristaId: mapa.d2, valor: 220, estado: 'aberta', vistaPor: [mapa.d2],
       criadaEm: somaHoras(new Date(), -1).toISOString(), atualizadaEm: somaHoras(new Date(), -1).toISOString(),
       conversa: [msgDemo('diarista', 'Posso fazer em 5 horas, com faxina pesada no banheiro.', 1, [mapa.d2])],
     },
@@ -15495,7 +15587,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.14.0',
+  versao: '2.14.1',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -15531,6 +15623,18 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.14.1',
+    data: '19/11/2026',
+    titulo: 'Propostas à vista',
+    itens: [
+      'Proposta nova ou resposta na conversa acende o número vermelho na aba Pedidos (cliente) e Trabalhos (profissional).',
+      'A tela inicial avisa quando há propostas esperando você, com o menor valor recebido.',
+      'Na conversa da proposta, os botões de aceitar e o campo de mensagem ficam sempre visíveis, acima das abas.',
+      'Trabalho que bate com outro já marcado vem avisado no cartão, sem deixar mandar proposta à toa.',
+      'Android: o botão voltar fecha a janela aberta (mapa, filtros, avisos) em vez de sair da tela; na tela inicial, pede um segundo toque para sair.',
+    ],
+  },
   {
     versao: '2.14.0',
     data: '19/11/2026',
@@ -18921,18 +19025,15 @@ function TelaProposta(app, ctx, { papel, voltarPara }) {
           Botao({ variante: 'fantasma', onClick: retirar }, 'Retirar'),
           Botao({ variante: 'contorno', bloco: true, icone: 'lapis', onClick: mudarValor }, 'Mudar valor'),
         );
-    return h(
-      'div',
-      null,
-      acoes,
-      h('div', { class: 'chat__barra' }, h('div', { class: 'cresce' }, entrada), Botao({ variante: 'principal', icone: 'enviar', onClick: enviar, 'aria-label': 'Enviar' })),
-    );
+    return [acoes, h('div', { class: 'linha proposta-entrada' }, h('div', { class: 'cresce' }, entrada), Botao({ variante: 'principal', icone: 'enviar', onClick: enviar, 'aria-label': 'Enviar' }))];
   }
 
   function desenhar() {
     montar(topo, Topo());
     montar(listaEl, ...Mensagens());
-    montar(barra, Barra());
+    const conteudoBarra = Barra();
+    barra.className = conteudoBarra ? 'chat__barra chat__barra--proposta' : '';
+    montar(barra, ...(conteudoBarra || []));
     requestAnimationFrame(() => listaEl.lastElementChild?.scrollIntoView({ block: 'end' }));
   }
 
@@ -19337,9 +19438,10 @@ function criarApp(cfg) {
       return {
         notificacoes: api.notificacoes.naoLidas(),
         mensagens: api.chat.totalNaoLidas(),
+        propostas: api.propostas.naoLidas(),
       };
     } catch {
-      return { notificacoes: 0, mensagens: 0 };
+      return { notificacoes: 0, mensagens: 0, propostas: 0 };
     }
   };
 
@@ -19775,6 +19877,14 @@ const avisoErro = (t) => avisar(t, 'erro');
 const avisoAlerta = (t) => avisar(t, 'alerta');
 
 let abertas = 0;
+const pilhaDeCamadas = [];
+
+window.__dxVoltar = () => {
+  const fechar = pilhaDeCamadas[pilhaDeCamadas.length - 1];
+  if (!fechar) return false;
+  fechar(null);
+  return true;
+};
 
 function abrirCamada({ classeCortina, conteudo, aoFechar, fecharClicandoFora = true }) {
   const focoAnterior = document.activeElement;
@@ -19785,6 +19895,8 @@ function abrirCamada({ classeCortina, conteudo, aoFechar, fecharClicandoFora = t
   const fechar = (resultado) => {
     if (fechada) return;
     fechada = true;
+    const i = pilhaDeCamadas.indexOf(fechar);
+    if (i >= 0) pilhaDeCamadas.splice(i, 1);
     window.removeEventListener('hashchange', aoTrocarDeTela);
     cortina.remove();
     abertas = Math.max(0, abertas - 1);
@@ -19818,6 +19930,7 @@ function abrirCamada({ classeCortina, conteudo, aoFechar, fecharClicandoFora = t
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', aoTeclar);
   window.addEventListener('hashchange', aoTrocarDeTela);
+  if (fecharClicandoFora) pilhaDeCamadas.push(fechar);
   soltarFoco = prenderFoco(painel);
 
   return fechar;

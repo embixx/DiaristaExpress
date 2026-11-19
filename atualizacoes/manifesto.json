@@ -1,18 +1,15 @@
 {
-  "versao": "2.14.0",
-  "sha256": "2688d70cd8bc90d80bb7c3a1bad93881a10681f50e2259a98afb15dc4432e694",
-  "tamanho": 821105,
+  "versao": "2.14.1",
+  "sha256": "85191878028e08538939058f862d77693184dc22218910dced5320f50fca4096",
+  "tamanho": 826308,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-19T21:04:29Z",
+  "publicadaEm": "2026-11-19T22:28:04Z",
   "novidades": [
-    "Receber propostas: no pedido, diga quanto quer pagar (de/até). Cada profissional interessado manda o valor dele, e cada proposta abre uma conversa para você perguntar antes de aceitar.",
-    "Dica de preço: ao definir a faixa, o app compara com o que se costuma cobrar e avisa quando está barato demais.",
-    "Vários serviços no mesmo pedido (faxina + passar roupa, por exemplo). Cada um soma as horas e o preço dele.",
-    "Escolha quem vai fazer na hora de publicar: qualquer um, ou um profissional da lista (na ordem do ranking).",
-    "Tamanho do imóvel em metros quadrados.",
-    "Trocar de casa: toque no endereço no topo da tela inicial e escolha onde vai ser o serviço.",
-    "Endereço do serviço abre num mapa dentro do app, com o botão para seguir no app de mapas.",
-    "Taxa do app de 5%, mostrada na hora de fechar. Profissional com o Plano Profissional (R$ 29,90/mês) recebe o valor inteiro."
+    "Proposta nova ou resposta na conversa acende o número vermelho na aba Pedidos (cliente) e Trabalhos (profissional).",
+    "A tela inicial avisa quando há propostas esperando você, com o menor valor recebido.",
+    "Na conversa da proposta, os botões de aceitar e o campo de mensagem ficam sempre visíveis, acima das abas.",
+    "Trabalho que bate com outro já marcado vem avisado no cartão, sem deixar mandar proposta à toa.",
+    "Android: o botão voltar fecha a janela aberta (mapa, filtros, avisos) em vez de sair da tela; na tela inicial, pede um segundo toque para sair."
   ],
-  "assinatura": "CypD8OO6_UtmWvqGOR8JcCjTke67wwXq22ZPqaS6uOvOGPY2oHrnku_GQN-7SEGZKyngAuBVkBxy9EO60lBBAg"
+  "assinatura": "T17FsirOVbEgnmTG0vSfya_utH7dCgQAZoBf8_VBx3q9BdwBpDaRFU0PMklt0CuoA4MAcdnufULMxmgG1Zw6kg"
 }
