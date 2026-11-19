@@ -1,15 +1,18 @@
 {
-  "versao": "2.13.0",
-  "sha256": "be899aa35e1e2259deafd86a90ee565fb14a506418938d85de121c271b6e74f9",
-  "tamanho": 745413,
+  "versao": "2.14.0",
+  "sha256": "2688d70cd8bc90d80bb7c3a1bad93881a10681f50e2259a98afb15dc4432e694",
+  "tamanho": 821105,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-14T19:20:07Z",
+  "publicadaEm": "2026-11-19T21:04:29Z",
   "novidades": [
-    "Cores: preto, branco e um azul mais profundo. O amarelo ficou só nas estrelas de avaliação.",
-    "O número de avisos agora vem em vermelho.",
-    "Ranking dos profissionais: pódio e lista, por serviço, a partir de Buscar (\"Ver o ranking\"). A posição aparece no cartão de cada profissional.",
-    "Buscar: um botão de filtro no lugar das três opções soltas - ordene por ranking, nota, preço, proximidade ou experiência, com preço máximo e só verificados.",
-    "Profissional: a carteira virou o destaque do perfil, a posição no ranking fica no canto, e dá para escolher não aparecer no ranking."
+    "Receber propostas: no pedido, diga quanto quer pagar (de/até). Cada profissional interessado manda o valor dele, e cada proposta abre uma conversa para você perguntar antes de aceitar.",
+    "Dica de preço: ao definir a faixa, o app compara com o que se costuma cobrar e avisa quando está barato demais.",
+    "Vários serviços no mesmo pedido (faxina + passar roupa, por exemplo). Cada um soma as horas e o preço dele.",
+    "Escolha quem vai fazer na hora de publicar: qualquer um, ou um profissional da lista (na ordem do ranking).",
+    "Tamanho do imóvel em metros quadrados.",
+    "Trocar de casa: toque no endereço no topo da tela inicial e escolha onde vai ser o serviço.",
+    "Endereço do serviço abre num mapa dentro do app, com o botão para seguir no app de mapas.",
+    "Taxa do app de 5%, mostrada na hora de fechar. Profissional com o Plano Profissional (R$ 29,90/mês) recebe o valor inteiro."
   ],
-  "assinatura": "SA2xgj4_KbPL46Q4caFX5YP1hsPofcz0sg7_Ir6IOroMEoyLgtr7upcB_yosxWFEBGH5oqWF7d6ifjSdtjHfQA"
+  "assinatura": "CypD8OO6_UtmWvqGOR8JcCjTke67wwXq22ZPqaS6uOvOGPY2oHrnku_GQN-7SEGZKyngAuBVkBxy9EO60lBBAg"
 }

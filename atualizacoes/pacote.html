@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.13.0 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.14.0 - arquivo unico">
 <style>
 
 :root {
@@ -2995,8 +2995,8 @@ button.mini:active { transform: scale(.96); }
 
 .vitrine__arte--icone { color: var(--marca); }
 .vitrine__arte--icone svg { width: 56px; height: 56px; stroke-width: 1.8; }
-.podio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: var(--e2); }
-.podio__lugar { display: grid; justify-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--texto); font: inherit; cursor: pointer; text-align: center; }
+.podio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: end; gap: var(--e2); margin-bottom: var(--e3); }
+.podio__lugar { display: grid; justify-items: center; gap: 8px; padding: 0; border: 0; background: none; color: var(--texto); font: inherit; cursor: pointer; text-align: center; }
 div.podio__lugar { cursor: default; }
 .podio__posicao { font-family: var(--fonte-display); font-weight: 800; font-size: 1.1rem; }
 .podio__nome { font-weight: 800; font-size: .9rem; }
@@ -3014,7 +3014,7 @@ div.ranking-linha { cursor: default; }
 .ranking-linha--eu { box-shadow: inset 0 0 0 2px var(--marca); }
 .ranking-linha__posicao { flex: none; width: 34px; font-family: var(--fonte-display); font-weight: 800; font-size: 1.05rem; text-align: center; }
 .ranking-linha__corpo { flex: 1; display: grid; min-width: 0; }
-.ranking-linha__nome { font-weight: 800; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ranking-linha__nome { font-weight: 800; line-height: 1.2; overflow-wrap: anywhere; }
 .ranking-linha__apoio { font-size: .8rem; color: var(--texto-2); }
 
 .cabeca-perfil__ranking { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 0; border-radius: 99px; background: var(--marca); color: #fff; font: inherit; font-size: .8rem; font-weight: 800; cursor: pointer; }
@@ -3024,6 +3024,87 @@ div.ranking-linha { cursor: default; }
 .carteira-destaque__valor { font-family: var(--fonte-display); font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
 .carteira-destaque__apoio { font-size: .84rem; }
 .carteira-destaque > svg { position: absolute; right: 18px; top: 50%; width: 22px; height: 22px; margin-top: -11px; }
+
+.pessoa--escolhida { box-shadow: inset 0 0 0 2.5px var(--marca); background: var(--marca-suave); }
+.pessoa__qualquer { display: grid; place-items: center; width: 52px; height: 52px; margin-bottom: 4px; border-radius: 50%; background: var(--fundo); }
+.pessoa__qualquer svg { width: 24px; height: 24px; }
+
+.onde { display: inline-flex; align-items: center; gap: 6px; max-width: 100%; margin-bottom: var(--e3); padding: 8px 12px; border: 0; border-radius: var(--r-full); background: var(--ladrilho); color: var(--texto); font: inherit; font-size: .85rem; cursor: pointer; }
+.onde svg { flex: none; width: 16px; height: 16px; }
+.onde svg:first-child { color: var(--marca-forte); }
+.onde__bairro { color: var(--texto-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.mapa-endereco { display: flex; gap: 8px; align-items: flex-start; margin: 0; color: var(--texto); font-weight: 600; }
+.mapa-endereco svg { flex: none; width: 20px; height: 20px; margin-top: 2px; color: var(--marca-forte); }
+.mapa-moldura { position: relative; height: min(52vh, 380px); border-radius: 18px; overflow: hidden; background: var(--ladrilho); }
+.mapa-moldura__espera { position: absolute; inset: 0; display: grid; place-items: center; color: var(--texto-2); font-size: .9rem; }
+.mapa-moldura__mapa { position: relative; width: 100%; height: 100%; border: 0; }
+
+.plano-comparar { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); }
+.plano-comparar__coluna { display: grid; gap: 4px; align-content: start; padding: 16px; border-radius: 18px; background: var(--ladrilho); }
+.plano-comparar__coluna--plano { background: var(--marca); color: #fff; }
+.plano-comparar__rotulo { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+.plano-comparar__valor { font-family: var(--fonte-display); font-size: 2.2rem; font-weight: 800; line-height: 1; }
+.plano-comparar__apoio { font-size: .85rem; line-height: 1.3; }
+.plano-atalho { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; border: 0; border-radius: 18px; background: var(--ladrilho); color: var(--texto); font: inherit; text-align: left; cursor: pointer; }
+.plano-atalho__icone { flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--marca); color: #fff; }
+.plano-atalho__icone svg { width: 22px; height: 22px; }
+.plano-atalho__texto { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.plano-atalho__texto span { font-size: .85rem; color: var(--texto-2); }
+.plano-atalho > svg { flex: none; width: 18px; height: 18px; color: var(--texto-2); }
+.plano-atalho--ativo .plano-atalho__icone { background: var(--sucesso); }
+
+.proposta-topo { display: grid; gap: var(--e2); margin-bottom: var(--e3); }
+.proposta-quem { display: flex; align-items: center; gap: 12px; width: 100%; padding: 0; border: 0; background: none; color: var(--texto); font: inherit; text-align: left; cursor: pointer; }
+.proposta-quem__texto { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.proposta-quem__texto span { font-size: .85rem; color: var(--texto-2); }
+.proposta-valor { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 18px; background: var(--marca); color: #fff; }
+.proposta-valor .t-sm { color: #fff; }
+.proposta-valor .item__icone { background: rgba(255,255,255,.16); }
+.proposta-valor__servico { font-weight: 700; line-height: 1.2; }
+.proposta-valor__numero { flex: none; font-family: var(--fonte-display); font-size: 1.5rem; font-weight: 800; }
+.proposta-faixa { margin: 0; font-size: .85rem; color: var(--sucesso); font-weight: 600; }
+.proposta-faixa--fora { color: var(--alerta-texto, var(--texto)); }
+.proposta-fechamento { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 12px 14px; border-radius: 14px; background: var(--ladrilho); font-size: .9rem; }
+.proposta-estado { padding: 10px 14px; border-radius: 14px; background: var(--ladrilho); font-weight: 700; text-align: center; }
+.proposta-acoes { margin: var(--e2) 0; }
+.proposta-acoes > .btn:first-child { flex: none; }
+
+.adicionais { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: var(--e2); }
+.adicional { position: relative; display: grid; justify-items: center; gap: 4px; min-width: 0; padding: 12px 6px 10px; border: 2px solid transparent; border-radius: 16px; background: var(--ladrilho); color: var(--texto); font: inherit; cursor: pointer; }
+.adicional--marcado { border-color: var(--marca); background: color-mix(in srgb, var(--marca) 10%, var(--ladrilho)); }
+.adicional:disabled { opacity: .45; cursor: not-allowed; }
+.adicional__nome { max-width: 100%; font-size: .8rem; font-weight: 700; line-height: 1.15; text-align: center; overflow-wrap: anywhere; }
+.adicional__extra { display: inline-flex; align-items: center; min-height: 18px; font-size: .72rem; color: var(--texto-2); }
+.adicional--marcado .adicional__extra { color: var(--marca-forte); }
+.adicional__extra svg { width: 16px; height: 16px; }
+.faixa-preco { display: flex; align-items: flex-end; gap: var(--e2); margin-top: var(--e3); }
+.faixa-preco__campo { flex: 1; min-width: 0; display: grid; gap: 6px; }
+.faixa-preco__rotulo { font-size: .8rem; font-weight: 700; color: var(--texto-2); }
+.faixa-preco__entrada { display: flex; align-items: center; gap: 6px; height: 52px; padding: 0 14px; border-radius: 14px; background: var(--ladrilho); }
+.faixa-preco__entrada:focus-within { outline: 2px solid var(--marca); outline-offset: 1px; }
+.faixa-preco__moeda { color: var(--texto-2); font-weight: 700; }
+.faixa-preco__entrada input { flex: 1; min-width: 0; width: 100%; border: 0; background: none; color: var(--texto); font: inherit; font-size: 1.15rem; font-weight: 700; outline: none; }
+.faixa-preco__ate { padding-bottom: 16px; color: var(--texto-2); }
+.dica-preco { display: flex; gap: 10px; align-items: flex-start; margin-top: var(--e2); padding: 12px 14px; border-radius: 14px; font-size: .88rem; line-height: 1.35; }
+.dica-preco svg { flex: none; width: 20px; height: 20px; margin-top: 1px; }
+.dica-preco--justo, .dica-preco--alto { background: color-mix(in srgb, var(--sucesso) 12%, transparent); color: var(--texto); }
+.dica-preco--justo svg, .dica-preco--alto svg { color: var(--sucesso); }
+.dica-preco--baixo { background: color-mix(in srgb, #f59e0b 16%, transparent); color: var(--texto); }
+.dica-preco--baixo svg { color: #b45309; }
+.dica-preco--muito_baixo { background: color-mix(in srgb, var(--erro) 12%, transparent); color: var(--texto); }
+.dica-preco--muito_baixo svg { color: var(--erro); }
+
+.proposta-item { position: relative; display: flex; align-items: center; gap: 12px; padding: 14px; border-radius: 18px; background: var(--ladrilho); color: var(--texto); text-decoration: none; }
+.proposta-item__corpo { flex: 1; min-width: 0; display: grid; gap: 3px; }
+.proposta-item__nome { display: flex; align-items: center; gap: 8px; font-weight: 700; min-width: 0; }
+.proposta-item__apoio { font-size: .84rem; color: var(--texto-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.proposta-item__selos { display: flex; gap: 6px; flex-wrap: wrap; }
+.proposta-item__selos:empty { display: none; }
+.proposta-item__valor { flex: none; font-family: var(--fonte-display); font-size: 1.15rem; font-weight: 800; }
+.proposta-item__novas { position: absolute; top: -6px; right: -6px; min-width: 22px; height: 22px; padding: 0 6px; display: grid; place-items: center; border-radius: 99px; background: var(--marcador-fundo, #dc2626); color: #fff; font-size: .74rem; font-weight: 800; }
+.proposta-acoes .btn { white-space: nowrap; }
+.proposta-item__apoio--livre { white-space: normal; }
 
 
 @keyframes dx-surgir {
@@ -3425,7 +3506,7 @@ div.ranking-linha { cursor: default; }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.13.0";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.14.0";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -3643,34 +3724,36 @@ const __i7 = __mod("packages/telas/duvidas.js");
 const { TelaDuvidas } = __i7;
 const __i8 = __mod("packages/telas/ranking.js");
 const { TelaRanking } = __i8;
-const __i9 = __mod("packages/telas/avaliar.js");
-const { TelaAvaliar } = __i9;
-const __i10 = __mod("apps/cliente/src/pages/inicio.js");
-const { TelaInicio } = __i10;
-const __i11 = __mod("apps/cliente/src/pages/novo-pedido.js");
-const { TelaNovoPedido } = __i11;
-const __i12 = __mod("apps/cliente/src/pages/pedidos.js");
-const { TelaPedidos } = __i12;
-const __i13 = __mod("apps/cliente/src/pages/assinaturas.js");
-const { TelaAssinaturas } = __i13;
-const __i14 = __mod("apps/cliente/src/pages/pedido.js");
-const { TelaPedido } = __i14;
-const __i15 = __mod("apps/cliente/src/pages/profissionais.js");
-const { TelaProfissionais, TelaProfissional } = __i15;
-const __i16 = __mod("apps/cliente/src/pages/enderecos.js");
-const { TelaEnderecos } = __i16;
-const __i17 = __mod("apps/cliente/src/pages/perfil.js");
-const { TelaPerfil } = __i17;
-const __i18 = __mod("apps/cliente/src/pages/descobrir.js");
-const { TelaServico, TelaBuscar, TelaOferta } = __i18;
-const __i19 = __mod("apps/cliente/src/pages/conta.js");
-const { TelaGastos } = __i19;
+const __i9 = __mod("packages/telas/proposta.js");
+const { TelaProposta } = __i9;
+const __i10 = __mod("packages/telas/avaliar.js");
+const { TelaAvaliar } = __i10;
+const __i11 = __mod("apps/cliente/src/pages/inicio.js");
+const { TelaInicio } = __i11;
+const __i12 = __mod("apps/cliente/src/pages/novo-pedido.js");
+const { TelaNovoPedido } = __i12;
+const __i13 = __mod("apps/cliente/src/pages/pedidos.js");
+const { TelaPedidos } = __i13;
+const __i14 = __mod("apps/cliente/src/pages/assinaturas.js");
+const { TelaAssinaturas } = __i14;
+const __i15 = __mod("apps/cliente/src/pages/pedido.js");
+const { TelaPedido } = __i15;
+const __i16 = __mod("apps/cliente/src/pages/profissionais.js");
+const { TelaProfissionais, TelaProfissional } = __i16;
+const __i17 = __mod("apps/cliente/src/pages/enderecos.js");
+const { TelaEnderecos } = __i17;
+const __i18 = __mod("apps/cliente/src/pages/perfil.js");
+const { TelaPerfil } = __i18;
+const __i19 = __mod("apps/cliente/src/pages/descobrir.js");
+const { TelaServico, TelaBuscar, TelaOferta } = __i19;
+const __i20 = __mod("apps/cliente/src/pages/conta.js");
+const { TelaGastos } = __i20;
 const PAPEL = 'cliente';
 
 const ABAS = [
   { id: 'inicio', rotulo: 'Início', icone: 'casa', rota: '/' },
   { id: 'novo', rotulo: 'Pedir', icone: 'mais', rota: '/novo' },
-  { id: 'pedidos', rotulo: 'Pedidos', icone: 'lista', rota: '/pedidos', inclui: ['/pedido', '/chat', '/avaliar', '/assinaturas'], contador: (c) => c.mensagens },
+  { id: 'pedidos', rotulo: 'Pedidos', icone: 'lista', rota: '/pedidos', inclui: ['/pedido', '/proposta', '/chat', '/avaliar', '/assinaturas'], contador: (c) => c.mensagens },
   { id: 'profissionais', rotulo: 'Buscar', icone: 'busca', rota: '/profissionais', inclui: ['/profissional', '/ranking'] },
   { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/enderecos', '/duvidas', '/gastos'], contador: (c) => c.notificacoes },
 ];
@@ -3757,6 +3840,7 @@ async function iniciarApp() {
       '/config': () => tela(app, TelaConfig(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/ajuda': () => tela(app, TelaAjuda(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/duvidas': () => tela(app, TelaDuvidas(app, { papel: PAPEL, voltarPara: '/ajuda' })),
+      '/proposta/:pedido/:proposta': (ctx) => tela(app, TelaProposta(app, ctx, { papel: PAPEL, voltarPara: '/pedidos' })),
       '/ranking': () => tela(app, TelaRanking(app, { papel: PAPEL, voltarPara: PAPEL === 'cliente' ? '/profissionais' : '/perfil' })),
     },
   });
@@ -4270,7 +4354,7 @@ function TelaServico(app, ctx) {
 
   const porComodo = usaTamanho(s.id) && ['faxina', 'faxina-pesada', 'organizacao'].includes(s.id);
   const faixas = porComodo
-    ? TAMANHOS.filter((t) => t.id !== 'comercial').map((t) => {
+    ? TAMANHOS.filter((t) => ['pequeno', 'medio', 'grande'].includes(t.id)).map((t) => {
         const o = orcar({ servicoId: s.id, tamanhoId: t.id });
         return { titulo: t.nome, valor: o.total, apoio: `${o.horas} h` };
       })
@@ -4720,7 +4804,7 @@ __e["TelaEnderecos"] = TelaEnderecos;
 __def("apps/cliente/src/pages/inicio.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, cada, icone, montar, Botao, Cartao, Secao, Avatar, Etiqueta, Estrelas, EstadoVazio, Progresso, FaixaDaSemana, LinhaDoDia, NumeroHeroi, Indicadores, avisar, SERVICOS, ROTULO_ESTADO, ETAPAS, progresso, ESTADOS, liberaSaida, dinheiro, dataAmigavel, hora, nomeCurto, mesAno, api, arte, indicarOApp, abrirGastos } = __i1;
+const { h, cada, icone, montar, Botao, Cartao, Secao, Avatar, Etiqueta, Estrelas, EstadoVazio, Progresso, FaixaDaSemana, LinhaDoDia, NumeroHeroi, Indicadores, avisar, SERVICOS, ROTULO_ESTADO, ETAPAS, progresso, ESTADOS, liberaSaida, dinheiro, dataAmigavel, hora, nomeCurto, mesAno, api, arte, indicarOApp, abrirGastos, folha, Opcao } = __i1;
 const DICAS = [
   { arte: 'faxina', texto: 'Vinagre branco com água tira o embaçado do box do banheiro.' },
   { arte: 'cozinha', texto: 'Bicarbonato com um pouco de água vira uma pasta que solta a gordura do fogão.' },
@@ -5056,6 +5140,40 @@ function TelaInicio(app) {
       h(
         'div',
         { class: 'saudacao' },
+        (() => {
+          const ativo = api.perfil.enderecoAtivo();
+          if (!ativo) return null;
+          const abrir = () =>
+            folha({
+              titulo: 'Onde vai ser o serviço?',
+              conteudo: (fechar) =>
+                h(
+                  'div',
+                  { class: 'pilha' },
+                  h(
+                    'div',
+                    { class: 'lista' },
+                    ...api.perfil.meusEnderecos().map((e) =>
+                      Opcao({
+                        nome: 'endereco-ativo',
+                        valor: e.id,
+                        titulo: e.apelido || 'Endereço',
+                        resumo: `${e.rua}, ${e.numero} · ${e.bairro}`,
+                        marcado: e.id === ativo.id,
+                        onChange: (m) => {
+                          if (!m) return;
+                          api.perfil.escolherEnderecoAtivo(e.id);
+                          fechar();
+                        },
+                      }),
+                    ),
+                  ),
+                  Botao({ variante: 'contorno', bloco: true, icone: 'mais', onClick: () => { fechar(); app.ir('/enderecos'); } }, 'Adicionar ou editar endereços'),
+                ),
+            });
+          return h('button', { class: 'onde', type: 'button', onClick: abrir, 'aria-label': 'Trocar o endereço do serviço' },
+            icone('pin'), h('b', null, ativo.apelido || 'Endereço'), h('span', { class: 'onde__bairro' }, ativo.bairro), icone('seta_baixo'));
+        })(),
         h('p', { class: 'saudacao__ola' }, `${saudacao()},`),
         h('h1', { class: 'saudacao__nome' }, h('span', { class: 'grifo' }, primeiroNome), '.'),
       ),
@@ -5133,7 +5251,9 @@ __e["CartaoPedido"] = CartaoPedido;
 __def("apps/cliente/src/pages/novo-pedido.js", function (__e) {
 
 const __i1 = __mod("apps/cliente/src/lib.js");
-const { h, montar, icone, Avatar, Botao, Cartao, Secao, Opcao, Destaque, Calendario, avisar, folha, SERVICOS, EXTRAS, TAMANHOS, PERIODOS, servicoPorId, tamanhoPorId, periodoPorId, orcar, dinheiro, dataAmigavel, isoData, deDataHora, somaDias, api, validarCupom, cuponsDisponiveis, modal, selosDeSucesso, vibrar, FREQUENCIAS, frequenciaPorId, METODOS, GRUPOS, grupoDoServico, usaTamanho, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, limparLinha, arte } = __i1;
+const { h, montar, icone, Avatar, Botao, Cartao, Secao, Opcao, Destaque, Calendario, avisar, folha, SERVICOS, EXTRAS, TAMANHOS, PERIODOS, servicoPorId, tamanhoPorId, periodoPorId, orcar, dinheiro, dataAmigavel, isoData, deDataHora, somaDias, api, validarCupom, cuponsDisponiveis, modal, selosDeSucesso, vibrar, FREQUENCIAS, frequenciaPorId, METODOS, GRUPOS, grupoDoServico, usaTamanho, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, limparLinha, arte, avaliarFaixa, MAXIMO_DE_ADICIONAIS, horasSugeridas } = __i1;
+const dezena = (v) => Math.max(20, Math.round((Number(v) || 0) / 10) * 10);
+
 const PASSOS = ['Serviço', 'Onde e quando', 'Confirmar'];
 
 function TelaNovoPedido(app, ctx) {
@@ -5147,7 +5267,10 @@ function TelaNovoPedido(app, ctx) {
     tamanhoId: repetido?.tamanhoId || 'medio',
     horas: repetido?.horas || 0, // 0 = usar a sugestao do servico
     extras: new Set(repetido?.extras || []),
-    enderecoId: repetido?.enderecoId || enderecos[0]?.id || null,
+    adicionais: new Set(repetido?.adicionais || []),
+    modoPreco: 'fixo',
+    faixa: { min: 0, max: 0 },
+    enderecoId: repetido?.enderecoId || api.perfil.enderecoAtivo()?.id || enderecos[0]?.id || null,
     data: somaDias(new Date(), 1),
     periodoId: repetido?.periodoId || 'manha',
     hora: periodoPorId(repetido?.periodoId || 'manha').horaPadrao,
@@ -5160,7 +5283,9 @@ function TelaNovoPedido(app, ctx) {
     metodoPagamento: 'pix',
     enviando: false,
   };
-  estado.tarefas = (repetido?.tarefas || tarefasSugeridas(estado.servicoId)).map((texto) => ({ texto, ligada: true }));
+  const sugestoesDeTarefa = () =>
+    [estado.servicoId, ...estado.adicionais].flatMap((id) => (id ? tarefasSugeridas(id) : [])).filter((t, i, a) => a.indexOf(t) === i).slice(0, MAXIMO_DE_TAREFAS);
+  estado.tarefas = (repetido?.tarefas || sugestoesDeTarefa()).map((texto) => ({ texto, ligada: true }));
   if (estado.servicoId && !usaTamanho(estado.servicoId)) estado.tamanhoId = 'medio';
 
   function lerRepeticao() {
@@ -5179,18 +5304,66 @@ function TelaNovoPedido(app, ctx) {
   const trilha = h('div', { class: 'fichas fichas--passos', style: { marginBottom: '16px' } });
   const faixaPreferido = h('div');
 
-  const orcamento = () =>
+  const orcamento = () => {
+    const precos = estado.diaristaPreferidoId ? api.perfil.perfilDe(estado.diaristaPreferidoId)?.precos : undefined;
+    return orcar({
+      servicoId: estado.servicoId,
+      horas: estado.horas || undefined,
+      tamanhoId: estado.tamanhoId,
+      extras: [...estado.extras],
+      adicionais: [...estado.adicionais],
+      precos,
+      precoHora: precos?.[estado.servicoId],
+      urgente: new Date(estado.data).getTime() - Date.now() < 36 * 3600000,
+      desconto: estado.descontoCupom,
+    });
+  };
+
+  const referenciaDePreco = () =>
     orcar({
       servicoId: estado.servicoId,
       horas: estado.horas || undefined,
       tamanhoId: estado.tamanhoId,
       extras: [...estado.extras],
-      precoHora: estado.diaristaPreferidoId
-        ? api.perfil.perfilDe(estado.diaristaPreferidoId)?.precos?.[estado.servicoId]
-        : undefined,
+      adicionais: [...estado.adicionais],
       urgente: new Date(estado.data).getTime() - Date.now() < 36 * 3600000,
-      desconto: estado.descontoCupom,
-    });
+    }).total;
+
+  let atualizarDica = () => {};
+
+  function QuemVaiFazer() {
+    const opcoes = api.perfil
+      .listarProfissionais({ servicoId: estado.servicoId, ordenar: 'ranking' })
+      .filter((p) => [...estado.adicionais].every((s) => p.servicos?.includes(s)))
+      .slice(0, 8);
+    if (estado.diaristaPreferidoId && !opcoes.some((p) => p.contaId === estado.diaristaPreferidoId)) {
+      const escolhido = api.perfil.cartaoProfissional(estado.diaristaPreferidoId);
+      if (escolhido) opcoes.unshift(escolhido);
+    }
+    const escolher = (id) => {
+      estado.diaristaPreferidoId = id;
+      desenhar();
+    };
+    return h(
+      'section',
+      null,
+      Secao('Quem vai fazer'),
+      h(
+        'div',
+        { class: 'pessoas pessoas--escolha' },
+        h('button', { class: ['pessoa', !estado.diaristaPreferidoId && 'pessoa--escolhida'], type: 'button', 'aria-pressed': String(!estado.diaristaPreferidoId), onClick: () => escolher(null) },
+          h('span', { class: 'pessoa__qualquer' }, icone('usuario')),
+          h('span', { class: 'pessoa__nome' }, 'Qualquer um'),
+          h('span', { class: 'pessoa__preco' }, 'o primeiro que aceitar')),
+        ...opcoes.map((p) =>
+          h('button', { class: ['pessoa', estado.diaristaPreferidoId === p.contaId && 'pessoa--escolhida'], type: 'button', 'aria-pressed': String(estado.diaristaPreferidoId === p.contaId), onClick: () => escolher(p.contaId) },
+            Avatar({ nome: p.nome, foto: p.avatar, tamanho: 'g', verificado: p.verificado }),
+            h('span', { class: 'pessoa__nome' }, p.nome.split(' ')[0]),
+            h('span', { class: 'pessoa__preco' }, `${p.posicao ? `#${p.posicao} · ` : ''}${dinheiro(p.precos?.[estado.servicoId] || p.precoMinimo)}/h`)),
+        ),
+      ),
+    );
+  }
 
   function passoServico() {
     return h(
@@ -5216,7 +5389,8 @@ function TelaNovoPedido(app, ctx) {
               estado.servicoId = s.id;
               estado.horas = 0;
               estado.extras = new Set([...estado.extras].filter((e) => extrasDoServico(s.id).some((x) => x.id === e)));
-              estado.tarefas = tarefasSugeridas(s.id).map((texto) => ({ texto, ligada: true }));
+              estado.adicionais.delete(s.id);
+              estado.tarefas = sugestoesDeTarefa().map((texto) => ({ texto, ligada: true }));
               if (!usaTamanho(s.id)) estado.tamanhoId = 'medio';
               desenhar();
             },
@@ -5229,6 +5403,8 @@ function TelaNovoPedido(app, ctx) {
         ? h(
             'div',
             { class: 'pilha entra' },
+            SecaoAdicionais(),
+            QuemVaiFazer(),
             ...(usaTamanho(estado.servicoId) ? [Secao('Tamanho do imóvel'),
             h(
               'div',
@@ -5252,6 +5428,8 @@ function TelaNovoPedido(app, ctx) {
 
             Secao('Duração', h('span', { class: 't-sm texto-3' }, 'ajuste se quiser')),
             ControleHoras(),
+
+            SecaoPreco(),
 
             Secao('Extras'),
             h(
@@ -5279,6 +5457,141 @@ function TelaNovoPedido(app, ctx) {
           )
         : null,
     );
+  }
+
+  function SecaoAdicionais() {
+    const outros = SERVICOS.filter((s) => s.id !== estado.servicoId);
+    const cheio = estado.adicionais.size >= MAXIMO_DE_ADICIONAIS;
+    return h(
+      'section',
+      null,
+      Secao('Mais algum serviço no mesmo dia?', h('span', { class: 't-sm texto-3' }, `até ${MAXIMO_DE_ADICIONAIS}`)),
+      h(
+        'div',
+        { class: 'adicionais' },
+        ...outros.map((s) => {
+          const marcado = estado.adicionais.has(s.id);
+          return h(
+            'button',
+            {
+              class: ['adicional', marcado && 'adicional--marcado'],
+              type: 'button',
+              'aria-pressed': String(marcado),
+              disabled: !marcado && cheio ? true : null,
+              onClick: () => {
+                if (marcado) estado.adicionais.delete(s.id);
+                else estado.adicionais.add(s.id);
+                estado.horas = 0;
+                estado.tarefas = sugestoesDeTarefa().map((texto) => ({ texto, ligada: true }));
+                desenhar();
+              },
+            },
+            h('span', { class: 'adicional__arte' }, arte(s.icone, 28)),
+            h('span', { class: 'adicional__nome' }, s.curto || s.nome),
+            h('span', { class: 'adicional__extra' }, marcado ? icone('check') : `+${horasSugeridas(s.id, estado.tamanhoId)}h`),
+          );
+        }),
+      ),
+    );
+  }
+
+  function SecaoPreco() {
+    const caixaFaixa = h('div');
+    const dica = h('div');
+
+    atualizarDica = () => {
+      if (estado.modoPreco !== 'propostas') return;
+      if (!(estado.faixa.min >= 20) || estado.faixa.max < estado.faixa.min) {
+        montar(dica, h('div', { class: 'dica-preco dica-preco--muito_baixo', role: 'status' }, icone('alerta'), h('span', null, estado.faixa.min >= 20 ? 'O valor "Até" precisa ser maior que o "De".' : 'O mínimo é R$ 20.')));
+        return;
+      }
+      const a = avaliarFaixa({ referencia: referenciaDePreco(), min: estado.faixa.min, max: estado.faixa.max });
+      const ok = a.nivel === 'justo' || a.nivel === 'alto';
+      montar(dica, h('div', { class: ['dica-preco', `dica-preco--${a.nivel}`], role: 'status' }, icone(ok ? 'check_circulo' : 'alerta'), h('span', null, a.texto)));
+    };
+
+    const Campo = (rotulo, chave) =>
+      h(
+        'label',
+        { class: 'faixa-preco__campo' },
+        h('span', { class: 'faixa-preco__rotulo' }, rotulo),
+        h(
+          'span',
+          { class: 'faixa-preco__entrada' },
+          h('span', { class: 'faixa-preco__moeda' }, 'R$'),
+          h('input', {
+            class: 'num',
+            type: 'number',
+            inputmode: 'numeric',
+            min: 20,
+            max: 10000,
+            step: 10,
+            value: String(estado.faixa[chave] || ''),
+            'aria-label': `${rotulo} em reais`,
+            onInput: (e) => {
+              estado.faixa[chave] = Number(e.target.value) || 0;
+              atualizarDica();
+              atualizarRodape();
+            },
+          }),
+        ),
+      );
+
+    function desenharFaixa() {
+      if (estado.modoPreco !== 'propostas') {
+        montar(caixaFaixa);
+        return;
+      }
+      if (!estado.faixa.max) {
+        const ref = referenciaDePreco();
+        estado.faixa = { min: dezena(ref * 0.9), max: dezena(ref * 1.1) };
+      }
+      montar(
+        caixaFaixa,
+        h('div', { class: 'faixa-preco' }, Campo('De', 'min'), h('span', { class: 'faixa-preco__ate' }, 'a'), Campo('Até', 'max')),
+        dica,
+      );
+      atualizarDica();
+    }
+
+    const escolher = (modo) => {
+      estado.modoPreco = modo;
+      if (modo === 'propostas') {
+        estado.cupom = '';
+        estado.descontoCupom = 0;
+      }
+      desenharFaixa();
+      atualizarRodape();
+    };
+
+    const secao = h(
+      'section',
+      null,
+      Secao('Preço'),
+      h(
+        'div',
+        { class: 'lista' },
+        Opcao({
+          nome: 'modo-preco',
+          valor: 'fixo',
+          titulo: 'Preço do profissional',
+          resumo: 'Quem aceitar primeiro faz, pelo preço por hora dele.',
+          marcado: estado.modoPreco === 'fixo',
+          onChange: (m) => m && escolher('fixo'),
+        }),
+        Opcao({
+          nome: 'modo-preco',
+          valor: 'propostas',
+          titulo: 'Receber propostas',
+          resumo: 'Você diz quanto quer pagar; os interessados mandam o valor e você escolhe.',
+          marcado: estado.modoPreco === 'propostas',
+          onChange: (m) => m && escolher('propostas'),
+        }),
+      ),
+      caixaFaixa,
+    );
+    desenharFaixa();
+    return secao;
   }
 
   function SecaoTarefas() {
@@ -5348,6 +5661,7 @@ function TelaNovoPedido(app, ctx) {
 
     const mudar = (delta) => {
       estado.horas = Math.min(12, Math.max(1, (estado.horas || orcamento().horas) + delta));
+      estado.horas = Math.min(12, orcamento().horas);
       mostrar.textContent = `${estado.horas} h`;
       atualizarRodape();
     };
@@ -5481,13 +5795,23 @@ function TelaNovoPedido(app, ctx) {
       resumoDoValor,
       Cartao(
         null,
-        h('div', { class: 'cartao__titulo' }, 'Resumo do valor'),
-        LinhaValor(`${o.horas}h x ${dinheiro(o.precoHora)}`, dinheiro(o.subtotal)),
+        h('div', { class: 'cartao__titulo' }, estado.modoPreco === 'propostas' ? 'Valor de referência' : 'Resumo do valor'),
+        ...(o.itens?.length
+          ? o.itens.map((it) => LinhaValor(`${it.nome} · ${it.horas}h x ${dinheiro(it.precoHora)}`, dinheiro(it.valor)))
+          : [LinhaValor(`${o.horas}h x ${dinheiro(o.precoHora)}`, dinheiro(o.subtotal))]),
         ...o.extras.map((e) => LinhaValor(e.nome, `+ ${dinheiro(e.valor)}`)),
         o.adicionalUrgencia > 0 ? LinhaValor('Adicional de urgência (15%)', `+ ${dinheiro(o.adicionalUrgencia)}`) : null,
         o.desconto > 0 ? LinhaValor(`Cupom ${estado.cupom}`, `- ${dinheiro(o.desconto)}`) : null,
-        h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Total'), h('span', { class: 'resumo-linha__valor' }, dinheiro(o.total))),
-        h('p', { class: 't-sm texto-3', style: { marginTop: '10px' } }, `Deste valor, ${dinheiro(o.repasseProfissional)} vão para o profissional.`),
+        estado.modoPreco === 'propostas'
+          ? h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Sua faixa'), h('span', { class: 'resumo-linha__valor' }, `${dinheiro(estado.faixa.min)} a ${dinheiro(estado.faixa.max)}`))
+          : h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Total'), h('span', { class: 'resumo-linha__valor' }, dinheiro(o.total))),
+        h(
+          'p',
+          { class: 't-sm texto-3', style: { marginTop: '10px' } },
+          estado.modoPreco === 'propostas'
+            ? 'O valor final é o da proposta que você aceitar. Os profissionais pagam a taxa do app sobre ele.'
+            : `Deste valor, ${dinheiro(o.repasseProfissional)} vão para o profissional (a taxa do app, de ${o.percentualTaxa}%, sai da parte dele).`,
+        ),
       ),
     );
   }
@@ -5525,7 +5849,7 @@ function TelaNovoPedido(app, ctx) {
 
       CampoRepetir(),
 
-      CampoCupom(),
+      estado.modoPreco === 'propostas' ? null : CampoCupom(),
 
       Destaque(
         { tom: 'info', icone: 'escudo' },
@@ -5729,7 +6053,10 @@ function TelaNovoPedido(app, ctx) {
   }
 
   function podeAvancar() {
-    if (estado.passo === 0) return !!estado.servicoId;
+    if (estado.passo === 0) {
+      if (estado.modoPreco === 'propostas' && !(estado.faixa.min >= 20 && estado.faixa.max >= estado.faixa.min)) return false;
+      return !!estado.servicoId;
+    }
     if (estado.passo === 1) return !!estado.enderecoId && !!estado.data;
     return true;
   }
@@ -5748,6 +6075,8 @@ function TelaNovoPedido(app, ctx) {
       horas: estado.horas || orcamento().horas,
       tamanhoId: estado.tamanhoId,
       extras: [...estado.extras],
+      adicionais: [...estado.adicionais],
+      faixa: estado.modoPreco === 'propostas' ? { ...estado.faixa } : null,
       observacoes: estado.observacoes,
       diaristaPreferidoId: estado.diaristaPreferidoId,
       cupom: estado.cupom,
@@ -5780,11 +6109,14 @@ function TelaNovoPedido(app, ctx) {
       );
       app.ir(`/pedido/${r.pedido.id}`);
     }, 1150);
+    if (estado.modoPreco === 'propostas') setTimeout(() => avisar('As propostas aparecem no pedido, cada uma com a sua conversa.'), 1400);
   }
 
   function atualizarRodape() {
     const o = orcamento();
     const ultimo = estado.passo === PASSOS.length - 1;
+    const propostas = estado.modoPreco === 'propostas';
+    atualizarDica(); // horas e extras mudam a referencia da faixa
 
     montar(
       rodape,
@@ -5792,8 +6124,8 @@ function TelaNovoPedido(app, ctx) {
         ? h(
             'div',
             { class: 'cresce' },
-            h('div', { class: 't-xs texto-3' }, ultimo ? 'total' : 'valor estimado'),
-            h('div', { class: 'valor-medio' }, dinheiro(o.total)),
+            h('div', { class: 't-xs texto-3' }, propostas ? 'sua faixa' : ultimo ? 'total' : 'valor estimado'),
+            h('div', { class: 'valor-medio' }, propostas ? `${dinheiro(estado.faixa.min)} a ${dinheiro(estado.faixa.max)}` : dinheiro(o.total)),
           )
         : null,
       Botao(
@@ -5947,6 +6279,61 @@ const COR_DO_ESTADO = {
 };
 
 
+function SecaoPropostas(p) {
+  const abertas = p.propostas.filter((x) => x.estado === 'aberta');
+  const menor = Math.min(...abertas.map((x) => x.valor));
+  const melhorPosicao = Math.min(...abertas.map((x) => x.diarista?.posicao || Infinity));
+  return h(
+    'section',
+    null,
+    Secao(`Propostas${abertas.length ? ` (${abertas.length})` : ''}`, h('span', { class: 't-sm texto-3' }, `faixa ${dinheiro(p.faixa.min)} a ${dinheiro(p.faixa.max)}`)),
+    abertas.length
+      ? h(
+          'div',
+          { class: 'lista' },
+          ...abertas
+            .slice()
+            .sort((a, b) => a.valor - b.valor)
+            .map((x) => {
+              const ultima = (x.conversa || []).filter((m) => m.autor !== 'sistema').slice(-1)[0];
+              return h(
+                'a',
+                { class: 'proposta-item', href: `#/proposta/${p.id}/${x.id}` },
+                Avatar({ nome: x.diarista?.nome || 'Profissional', foto: x.diarista?.avatar, verificado: x.diarista?.verificado }),
+                h(
+                  'span',
+                  { class: 'proposta-item__corpo' },
+                  h(
+                    'span',
+                    { class: 'proposta-item__nome' },
+                    x.diarista?.nome || 'Profissional',
+                    x.diarista?.posicao ? h('span', { class: 'posto' }, `#${x.diarista.posicao}`) : null,
+                  ),
+                  h(
+                    'span',
+                    { class: 'proposta-item__apoio truncado' },
+                    ultima ? `"${ultima.texto.slice(0, 60)}"` : `${(x.diarista?.nota || 0).toFixed(1)} de nota · ${x.diarista?.totalServicos || 0} serviços`,
+                  ),
+                  h(
+                    'span',
+                    { class: 'proposta-item__selos' },
+                    x.valor === menor && abertas.length > 1 ? h('span', { class: 'selo-novo' }, 'menor preço') : null,
+                    (x.diarista?.posicao || Infinity) === melhorPosicao && abertas.length > 1 && melhorPosicao !== Infinity ? h('span', { class: 'selo-novo' }, 'melhor no ranking') : null,
+                  ),
+                ),
+                h('span', { class: 'proposta-item__valor num' }, dinheiro(x.valor)),
+                x.naoLidas ? h('span', { class: 'proposta-item__novas', 'aria-label': `${x.naoLidas} mensagens novas` }, String(x.naoLidas)) : null,
+              );
+            }),
+        )
+      : Cartao(
+          { variante: 'suave' },
+          h('div', { class: 'medio' }, 'Esperando propostas'),
+          h('p', { class: 't-sm texto-2' }, 'Os profissionais da região foram avisados. Cada proposta chega com uma conversa, para você perguntar antes de decidir.'),
+        ),
+  );
+}
+
 function TelaPedido(app, ctx) {
   const raiz = h('div');
   let paradaRelogio = null;
@@ -5974,7 +6361,7 @@ function TelaPedido(app, ctx) {
           h(
             'div',
             { class: 'vitrine__texto' },
-            h('span', { class: 'vitrine__rotulo' }, estado.texto),
+            h('span', { class: 'vitrine__rotulo' }, p.faixa && p.estado === ESTADOS.PROCURANDO ? 'Recebendo propostas' : estado.texto),
             h('h1', { class: 'vitrine__titulo' }, p.servico?.nome || 'Serviço'),
             h('p', { class: 'vitrine__apoio' }, `${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)} · ${p.horas}h`),
             [ESTADOS.CANCELADO, ESTADOS.EXPIRADO].includes(p.estado)
@@ -5987,10 +6374,20 @@ function TelaPedido(app, ctx) {
                     return h('span', { class: ['etapas__passo', i < atual && 'etapas__passo--feito', i === atual && 'etapas__passo--atual'] });
                   }),
                 ),
-            h('p', { class: 'vitrine__apoio t-sm' }, p.estado === ESTADOS.PROCURANDO ? `${estado.dica} Expira em ${contagem(p.expiraEm)}.` : estado.dica),
+            h(
+              'p',
+              { class: 'vitrine__apoio t-sm' },
+              p.estado === ESTADOS.PROCURANDO
+                ? p.faixa
+                  ? `${p.propostasAbertas ? `${p.propostasAbertas} proposta${p.propostasAbertas > 1 ? 's' : ''} até agora.` : 'Os profissionais da região foram avisados.'} Expira em ${contagem(p.expiraEm)}.`
+                  : `${estado.dica} Expira em ${contagem(p.expiraEm)}.`
+                : estado.dica,
+            ),
           ),
           h('span', { class: 'vitrine__arte' }, arte(p.servico?.icone || 'faxina', 92)),
         ),
+
+        p.faixa && p.estado === ESTADOS.PROCURANDO ? SecaoPropostas(p) : null,
 
         [ESTADOS.AGENDADO, ESTADOS.A_CAMINHO].includes(p.estado) ? CartaoPreparo(p) : null,
 
@@ -6108,10 +6505,18 @@ function TelaPedido(app, ctx) {
           Secao('Valores'),
           Cartao(
             null,
-            Linha(`${o.horas}h x ${dinheiro(o.precoHora)}`, dinheiro(o.subtotal)),
-            ...(o.extras || []).map((e) => Linha(e.nome, `+ ${dinheiro(e.valor)}`)),
+            ...(p.faixa && !p.diaristaId
+              ? [Linha('Sua faixa', `${dinheiro(p.faixa.min)} a ${dinheiro(p.faixa.max)}`)]
+              : o.combinado
+                ? [Linha('Valor da proposta aceita', dinheiro(o.combinado))]
+                : o.itens?.length
+                  ? o.itens.map((it) => Linha(`${it.nome} · ${it.horas}h x ${dinheiro(it.precoHora)}`, dinheiro(it.valor)))
+                  : [Linha(`${o.horas}h x ${dinheiro(o.precoHora)}`, dinheiro(o.subtotal))]),
+            ...(p.faixa && !p.diaristaId ? [] : (o.extras || []).map((e) => Linha(e.nome, `+ ${dinheiro(e.valor)}`))),
             o.adicionalUrgencia > 0 ? Linha('Adicional de urgência', `+ ${dinheiro(o.adicionalUrgencia)}`) : null,
-            h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Total'), h('span', { class: 'resumo-linha__valor' }, dinheiro(p.total))),
+            p.faixa && !p.diaristaId
+              ? h('p', { class: 't-sm texto-2', style: { marginTop: '8px' } }, 'O total é o da proposta que você aceitar.')
+              : h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Total'), h('span', { class: 'resumo-linha__valor' }, dinheiro(p.total))),
             p.multaAplicada > 0 ? h('p', { class: 't-sm', style: { color: 'var(--erro)', marginTop: '8px' } }, `Multa de cancelamento: ${dinheiro(p.multaAplicada)}`) : null,
           ),
         ),
@@ -7040,34 +7445,38 @@ const __i7 = __mod("packages/telas/duvidas.js");
 const { TelaDuvidas } = __i7;
 const __i8 = __mod("packages/telas/ranking.js");
 const { TelaRanking } = __i8;
-const __i9 = __mod("packages/telas/avaliar.js");
-const { TelaAvaliar } = __i9;
-const __i10 = __mod("apps/diarista/src/pages/inicio.js");
-const { TelaInicio } = __i10;
-const __i11 = __mod("apps/diarista/src/pages/oportunidades.js");
-const { TelaOportunidades } = __i11;
-const __i12 = __mod("apps/diarista/src/pages/servico.js");
-const { TelaServico } = __i12;
-const __i13 = __mod("apps/diarista/src/pages/agenda.js");
-const { TelaAgenda } = __i13;
-const __i14 = __mod("apps/diarista/src/pages/carteira.js");
-const { TelaCarteira } = __i14;
-const __i15 = __mod("apps/diarista/src/pages/relatorio.js");
-const { TelaRelatorio } = __i15;
-const __i16 = __mod("apps/diarista/src/pages/perfil.js");
-const { TelaPerfil } = __i16;
-const __i17 = __mod("apps/diarista/src/pages/avaliacoes.js");
-const { TelaAvaliacoes } = __i17;
-const __i18 = __mod("apps/diarista/src/pages/clientes.js");
-const { TelaClientes } = __i18;
+const __i9 = __mod("packages/telas/proposta.js");
+const { TelaProposta } = __i9;
+const __i10 = __mod("packages/telas/avaliar.js");
+const { TelaAvaliar } = __i10;
+const __i11 = __mod("apps/diarista/src/pages/inicio.js");
+const { TelaInicio } = __i11;
+const __i12 = __mod("apps/diarista/src/pages/oportunidades.js");
+const { TelaOportunidades } = __i12;
+const __i13 = __mod("apps/diarista/src/pages/servico.js");
+const { TelaServico } = __i13;
+const __i14 = __mod("apps/diarista/src/pages/agenda.js");
+const { TelaAgenda } = __i14;
+const __i15 = __mod("apps/diarista/src/pages/carteira.js");
+const { TelaCarteira } = __i15;
+const __i16 = __mod("apps/diarista/src/pages/relatorio.js");
+const { TelaRelatorio } = __i16;
+const __i17 = __mod("apps/diarista/src/pages/perfil.js");
+const { TelaPerfil } = __i17;
+const __i18 = __mod("apps/diarista/src/pages/avaliacoes.js");
+const { TelaAvaliacoes } = __i18;
+const __i19 = __mod("apps/diarista/src/pages/clientes.js");
+const { TelaClientes } = __i19;
+const __i20 = __mod("apps/diarista/src/pages/plano.js");
+const { TelaPlano } = __i20;
 const PAPEL = 'diarista';
 
 const ABAS = [
   { id: 'inicio', rotulo: 'Início', icone: 'casa', rota: '/' },
-  { id: 'oportunidades', rotulo: 'Trabalhos', icone: 'busca', rota: '/oportunidades' },
+  { id: 'oportunidades', rotulo: 'Trabalhos', icone: 'busca', rota: '/oportunidades', inclui: ['/proposta'] },
   { id: 'agenda', rotulo: 'Agenda', icone: 'calendario', rota: '/agenda', inclui: ['/servico', '/chat', '/avaliar'], contador: (c) => c.mensagens },
   { id: 'carteira', rotulo: 'Carteira', icone: 'carteira', rota: '/carteira', inclui: ['/relatorio'] },
-  { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/avaliacoes', '/duvidas', '/clientes', '/ranking'], contador: (c) => c.notificacoes },
+  { id: 'perfil', rotulo: 'Perfil', icone: 'usuario', rota: '/perfil', inclui: ['/config', '/ajuda', '/avisos', '/avaliacoes', '/duvidas', '/clientes', '/ranking', '/plano'], contador: (c) => c.notificacoes },
 ];
 
 const TEXTOS_LEGAIS = {
@@ -7149,7 +7558,9 @@ async function iniciarApp() {
       '/config': () => tela(app, TelaConfig(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/ajuda': () => tela(app, TelaAjuda(app, { papel: PAPEL, voltarPara: '/perfil' })),
       '/duvidas': () => tela(app, TelaDuvidas(app, { papel: PAPEL, voltarPara: '/ajuda' })),
+      '/proposta/:pedido/:proposta': (ctx) => tela(app, TelaProposta(app, ctx, { papel: PAPEL, voltarPara: '/oportunidades' })),
       '/ranking': () => tela(app, TelaRanking(app, { papel: PAPEL, voltarPara: PAPEL === 'cliente' ? '/profissionais' : '/perfil' })),
+      '/plano': () => tela(app, TelaPlano(app)),
     },
   });
 
@@ -7433,6 +7844,7 @@ const ROTULO_MOV = {
   taxa: { texto: 'Taxa da plataforma', icone: 'info', cor: 'var(--texto-3)', sinal: '-' },
   saque: { texto: 'Saque', icone: 'pix', cor: 'var(--info)', sinal: '-' },
   estorno: { texto: 'Estorno', icone: 'x_circulo', cor: 'var(--erro)', sinal: '-' },
+  plano: { texto: 'Plano Profissional', icone: 'medalha', cor: 'var(--info)', sinal: '-' },
 };
 
 function TelaCarteira(app) {
@@ -8105,7 +8517,7 @@ __e["CartaoServico"] = CartaoServico;
 __def("apps/diarista/src/pages/oportunidades.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, cada, montar, icone, Botao, Ficha, EstadoVazio, Destaque, avisar, confirmar, SERVICOS, ESTADOS, dinheiro, dataAmigavel, hora, tempoRelativo, api, arte } = __i1;
+const { h, cada, montar, icone, Botao, Ficha, EstadoVazio, Destaque, avisar, confirmar, folha, SERVICOS, ESTADOS, dinheiro, dataAmigavel, hora, tempoRelativo, api, arte } = __i1;
 const ORDENS = [
   { id: 'data', rotulo: 'Mais próximos' },
   { id: 'valor', rotulo: 'Maior valor' },
@@ -8119,8 +8531,13 @@ function TelaOportunidades(app) {
 
   const lista = h('div', { class: 'lista' });
 
+  const minhas = h('div');
+
   function desenhar() {
-    const itens = api.pedidos.oportunidades({ servicoId, ordenar });
+    const itens = api.pedidos
+      .oportunidades({ servicoId, ordenar })
+      .filter((p) => p.minhaProposta?.estado !== 'recusada' && p.minhaProposta?.estado !== 'aberta');
+    desenharMinhas();
     montar(
       lista,
       ...cada(
@@ -8150,6 +8567,91 @@ function TelaOportunidades(app) {
               }),
       ),
     );
+  }
+
+  function desenharMinhas() {
+    const props = api.propostas.minhasPropostas();
+    montar(
+      minhas,
+      props.length
+        ? h(
+            'section',
+            { class: 'pilha-sm' },
+            h('div', { class: 'cartao__titulo' }, `Suas propostas (${props.length})`),
+            ...props.map(({ pedido, proposta, naoLidas }) =>
+              h(
+                'a',
+                { class: 'proposta-item', href: `#/proposta/${pedido.id}/${proposta.id}` },
+                h('span', { class: 'item__icone item__icone--arte' }, arte(pedido.servico?.icone || 'faxina', 30)),
+                h(
+                  'span',
+                  { class: 'proposta-item__corpo' },
+                  h('span', { class: 'proposta-item__nome' }, pedido.servico?.nome || 'Serviço'),
+                  h('span', { class: 'proposta-item__apoio proposta-item__apoio--livre' }, `${pedido.clienteNome} · ${dataAmigavel(pedido.dataHora)} às ${hora(pedido.dataHora)}`),
+                ),
+                h('span', { class: 'proposta-item__valor num' }, dinheiro(proposta.valor)),
+                naoLidas ? h('span', { class: 'proposta-item__novas', 'aria-label': `${naoLidas} mensagens novas` }, String(naoLidas)) : null,
+              ),
+            ),
+          )
+        : null,
+    );
+  }
+
+  function abrirProposta(p) {
+    const sugerido = api.propostas.valorSugerido(p.id);
+    const recebe = h('div', { class: 'proposta-fechamento' });
+    const atualizarRecebe = (v) => {
+      const r = api.propostas.simularRecebimento(p.id, v);
+      if (!r) return;
+      montar(
+        recebe,
+        r.taxa > 0 ? h('span', null, `Taxa do app (${r.percentualTaxa}%): - ${dinheiro(r.taxa)}`) : h('span', null, 'Plano Profissional: taxa zero'),
+        h('b', null, `Você recebe ${dinheiro(r.recebe)}`),
+      );
+    };
+    const valor = h('input', {
+      class: 'num',
+      type: 'number',
+      inputmode: 'numeric',
+      min: 20,
+      max: 10000,
+      step: 5,
+      value: String(sugerido),
+      'aria-label': 'Valor da proposta em reais',
+      onInput: (e) => atualizarRecebe(e.target.value),
+    });
+    const mensagem = h('textarea', { class: 'entrada', rows: 3, maxlength: 800, placeholder: 'Ex.: Tenho 6 anos de experiência e levo meus produtos.', 'aria-label': 'Mensagem para o cliente' });
+    atualizarRecebe(sugerido);
+    folha({
+      titulo: 'Enviar proposta',
+      subtitulo: `O cliente quer pagar entre ${dinheiro(p.faixa.min)} e ${dinheiro(p.faixa.max)}.`,
+      conteudo: (fechar) =>
+        h(
+          'div',
+          { class: 'pilha' },
+          h('label', { class: 'faixa-preco__campo' }, h('span', { class: 'faixa-preco__rotulo' }, 'Seu valor pelo serviço inteiro'), h('span', { class: 'faixa-preco__entrada' }, h('span', { class: 'faixa-preco__moeda' }, 'R$'), valor)),
+          recebe,
+          h('label', { class: 'faixa-preco__campo' }, h('span', { class: 'faixa-preco__rotulo' }, 'Mensagem (opcional)'), mensagem),
+          Botao(
+            {
+              bloco: true,
+              icone: 'enviar',
+              onClick: () => {
+                const r = api.propostas.enviarProposta(p.id, { valor: Number(valor.value), mensagem: mensagem.value });
+                if (!r.ok) {
+                  avisar(r.erro, 'erro');
+                  return;
+                }
+                fechar();
+                avisar('Proposta enviada. A conversa com o cliente abre aqui.', 'sucesso');
+                app.ir(`/proposta/${p.id}/${r.proposta.id}`);
+              },
+            },
+            'Enviar proposta',
+          ),
+        ),
+    });
   }
 
   function rendaMensal(p) {
@@ -8196,18 +8698,31 @@ function TelaOportunidades(app) {
       h(
         'div',
         { class: 'pilha-sm', style: { marginBottom: '12px' } },
-        InfoLinha('relogio', `${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)} · ${p.horas} horas`),
+        InfoLinha('relogio', `${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)} · ${p.horas} ${p.horas === 1 ? 'hora' : 'horas'}`),
         InfoLinha('pin', p.enderecoAproximado),
         InfoLinha('usuario', p.clienteNome),
         p.extras?.length ? InfoLinha('mais', p.orcamento.extras.map((e) => e.nome).join(', ')) : null,
         p.observacoes ? InfoLinha('chat', p.observacoes) : null,
       ),
 
-      h(
+      p.faixa
+        ? h(
+            'div',
+            { class: 'cartao cartao--suave', style: { marginBottom: '12px' } },
+            h('div', { class: 't-sm texto-2' }, 'O cliente quer pagar'),
+            h('div', { class: 'valor-medio num' }, `${dinheiro(p.faixa.min)} a ${dinheiro(p.faixa.max)}`),
+            h('p', { class: 't-sm texto-2', style: { marginTop: '6px' } }, `Recebendo propostas${p.propostasAbertas ? ` · ${p.propostasAbertas} até agora` : ''}. Mande seu valor e converse com o cliente.`),
+          )
+        : null,
+      p.faixa
+        ? null
+        : h(
         'div',
         { class: 'cartao cartao--suave', style: { marginBottom: '12px' } },
         h('div', { class: 'linha linha--entre' }, h('span', { class: 't-sm texto-2' }, 'Cliente paga'), h('span', { class: 'num' }, dinheiro(p.total))),
-        h('div', { class: 'linha linha--entre' }, h('span', { class: 't-sm texto-2' }, `Taxa da plataforma (${Math.round((p.orcamento.taxaPlataforma / (p.total || 1)) * 100)}%)`), h('span', { class: 'num' }, `- ${dinheiro(p.orcamento.taxaPlataforma)}`)),
+        p.orcamento.percentualTaxa === 0
+          ? h('div', { class: 'linha linha--entre' }, h('span', { class: 't-sm texto-2' }, 'Plano Profissional'), h('span', { class: 'num' }, 'taxa zero'))
+          : h('div', { class: 'linha linha--entre' }, h('span', { class: 't-sm texto-2' }, `Taxa do app (${p.orcamento.percentualTaxa ?? Math.round((p.orcamento.taxaPlataforma / (p.total || 1)) * 100)}%)`), h('span', { class: 'num' }, `- ${dinheiro(p.orcamento.taxaPlataforma)}`)),
         h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Você recebe'), h('span', { class: 'resumo-linha__valor' }, dinheiro(repasse))),
       ),
 
@@ -8225,13 +8740,19 @@ function TelaOportunidades(app) {
           },
           'Agora não',
         ),
-        Botao(
+        p.faixa
+          ? Botao({ bloco: true, onClick: () => abrirProposta(p) }, 'Enviar proposta')
+          : Botao(
           {
             bloco: true,
             onClick: async () => {
               const ok = await confirmar({
                 titulo: 'Aceitar este serviço?',
-                texto: `${p.servico?.nome} em ${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)}. Você recebe ${dinheiro(repasse)}.`,
+                texto:
+                  `${p.servico?.nome} em ${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)}. ` +
+                  (p.orcamento.taxaPlataforma > 0
+                    ? `Cliente paga ${dinheiro(p.total)}; com a taxa de ${p.orcamento.percentualTaxa}% (${dinheiro(p.orcamento.taxaPlataforma)}) você recebe ${dinheiro(repasse)}. Com o Plano Profissional, receberia tudo.`
+                    : `Com o Plano Profissional, você recebe o valor inteiro: ${dinheiro(repasse)}.`),
                 confirmarTexto: 'Aceitar',
               });
               if (!ok) return;
@@ -8295,7 +8816,12 @@ function TelaOportunidades(app) {
   );
 
   desenhar();
-  const parar = api.escutar(api.EVENTOS.PEDIDO_CRIADO, desenhar);
+  const pararCriado = api.escutar(api.EVENTOS.PEDIDO_CRIADO, desenhar);
+  const pararMudou = api.escutar(api.EVENTOS.PEDIDO_MUDOU, desenharMinhas);
+  const parar = () => {
+    pararCriado?.();
+    pararMudou?.();
+  };
 
   return {
     barra: { titulo: 'Oportunidades' },
@@ -8305,6 +8831,7 @@ function TelaOportunidades(app) {
       perfil.servicos?.length
         ? null
         : Destaque({ tom: 'alerta' }, 'Você ainda não escolheu quais serviços faz. ', h('a', { href: '#/perfil' }, 'Configurar agora')),
+      minhas,
       filtros,
       ordenacao,
       lista,
@@ -8319,7 +8846,7 @@ __e["TelaOportunidades"] = TelaOportunidades;
 __def("apps/diarista/src/pages/perfil.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
-const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Item, Campo, Opcao, Estrelas, Destaque, LinhaOpcao, folha, avisar, confirmar, verImagem, lerFormulario, aplicarErros, SERVICOS, servicoPorId, dinheiro, mascaraTelefone, checarArquivoImagem, api, arte, reduzirImagem } = __i1;
+const { h, cada, montar, icone, Botao, Cartao, Secao, Avatar, Item, Campo, Opcao, Estrelas, Destaque, LinhaOpcao, folha, avisar, confirmar, verImagem, lerFormulario, aplicarErros, SERVICOS, servicoPorId, dinheiro, mascaraTelefone, checarArquivoImagem, api, arte, reduzirImagem, dataCurta } = __i1;
 const DIAS = [
   ['seg', 'Seg'], ['ter', 'Ter'], ['qua', 'Qua'], ['qui', 'Qui'],
   ['sex', 'Sex'], ['sab', 'Sab'], ['dom', 'Dom'],
@@ -8386,6 +8913,22 @@ function TelaPerfil(app) {
             h('span', { class: 'carteira-destaque__rotulo' }, 'Disponível para saque'),
             h('span', { class: 'carteira-destaque__valor num' }, dinheiro(r.disponivel)),
             h('span', { class: 'carteira-destaque__apoio' }, r.retido ? `mais ${dinheiro(r.retido)} liberando` : 'Toque para ver o extrato e sacar'),
+            icone('seta_dir'),
+          );
+        })(),
+
+        (() => {
+          const pl = api.plano.meuPlano();
+          return h(
+            'button',
+            { class: ['plano-atalho', pl.ativo && 'plano-atalho--ativo'], type: 'button', onClick: () => app.ir('/plano') },
+            h('span', { class: 'plano-atalho__icone' }, icone('medalha')),
+            h(
+              'span',
+              { class: 'plano-atalho__texto' },
+              h('b', null, pl.ativo ? 'Plano Profissional ativo' : 'Plano Profissional'),
+              h('span', null, pl.ativo ? `Taxa zero até ${dataCurta(pl.ate)}` : `Receba 100% por ${dinheiro(pl.preco)}/mês`),
+            ),
             icone('seta_dir'),
           );
         })(),
@@ -8705,6 +9248,184 @@ const Mini = (valor, rotulo, cor, aoTocar) =>
 __e["TelaPerfil"] = TelaPerfil;
 
 });
+__def("apps/diarista/src/pages/plano.js", function (__e) {
+
+const __i1 = __mod("apps/diarista/src/lib.js");
+const { h, montar, icone, Botao, Cartao, avisar, QrCode, LinhaOpcao, confirmar, dinheiro, dataAmigavel, api } = __i1;
+async function copiar(texto) {
+  try {
+    await navigator.clipboard.writeText(texto);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function TelaPlano(app) {
+  const raiz = h('div', { class: 'pilha-lg entra' });
+
+  function Comparacao(d) {
+    return h(
+      'div',
+      { class: 'plano-comparar' },
+      h(
+        'div',
+        { class: 'plano-comparar__coluna' },
+        h('span', { class: 'plano-comparar__rotulo' }, 'Sem plano'),
+        h('span', { class: 'plano-comparar__valor num' }, `${d.percentualTaxa}%`),
+        h('span', { class: 'plano-comparar__apoio' }, 'de cada serviço fica com o app'),
+      ),
+      h(
+        'div',
+        { class: 'plano-comparar__coluna plano-comparar__coluna--plano' },
+        h('span', { class: 'plano-comparar__rotulo' }, 'Com o plano'),
+        h('span', { class: 'plano-comparar__valor num' }, '0%'),
+        h('span', { class: 'plano-comparar__apoio' }, `você recebe tudo por ${dinheiro(d.preco)}/mês`),
+      ),
+    );
+  }
+
+  function desenhar() {
+    const d = api.plano.meuPlano();
+    const vantagem = d.taxaUltimoMes - d.preco;
+
+    const cabeca = h(
+      'header',
+      { class: 'vitrine vitrine--azul' },
+      h(
+        'div',
+        { class: 'vitrine__texto' },
+        h('span', { class: 'vitrine__rotulo' }, d.ativo ? 'Ativo' : 'Plano Profissional'),
+        h('h1', { class: 'vitrine__titulo' }, d.ativo ? 'Taxa zero' : 'Receba 100% de cada serviço'),
+        h(
+          'p',
+          { class: 'vitrine__apoio' },
+          d.ativo
+            ? `Vale para os serviços que você aceitar até ${dataAmigavel(d.ate)}.`
+            : `${dinheiro(d.preco)} por mês. Sem a taxa de ${d.percentualTaxa}% em nenhum serviço.`,
+        ),
+      ),
+      h('span', { class: 'vitrine__arte vitrine__arte--icone' }, icone('medalha')),
+    );
+
+    const conta = Cartao(
+      { class: 'cartao--liso' },
+      h('div', { class: 'campo__rotulo' }, 'A conta, com os seus números'),
+      h(
+        'div',
+        { class: 'resumo-linha' },
+        h('span', null, 'Taxa paga nos últimos 30 dias'),
+        h('span', { class: 'resumo-linha__valor num' }, dinheiro(d.taxaUltimoMes)),
+      ),
+      h(
+        'div',
+        { class: 'resumo-linha' },
+        h('span', null, 'Mensalidade do plano'),
+        h('span', { class: 'resumo-linha__valor num' }, dinheiro(d.preco)),
+      ),
+      h(
+        'p',
+        { class: 't-sm texto-2', style: { marginTop: '10px' } },
+        vantagem > 0
+          ? `No último mês o plano teria deixado ${dinheiro(vantagem)} a mais no seu bolso.`
+          : `O plano se paga quando você fatura mais de ${dinheiro(d.compensaAPartirDe)} por mês em serviços.`,
+      ),
+    );
+
+    let acoes;
+    if (d.ativo) {
+      acoes = h(
+        'div',
+        { class: 'pilha' },
+        LinhaOpcao({
+          titulo: 'Renovar sozinho',
+          resumo: `No vencimento, ${dinheiro(d.preco)} saem do seu saldo disponível.`,
+          ligado: d.renovar,
+          onChange: () => {
+            const r = api.plano.alternarRenovacao();
+            if (!r.ok) avisar(r.erro, 'erro');
+            else avisar(r.renovar ? 'Renovação ligada.' : 'Renovação desligada. O plano vale até o fim do período.');
+            desenhar();
+          },
+        }),
+        Botao({ variante: 'contorno', bloco: true, icone: 'mais', onClick: () => pagar(d, 'estender') }, `Somar mais ${d.dias} dias`),
+      );
+    } else if (d.pixPendente) {
+      acoes = h(
+        'div',
+        { class: 'pilha' },
+        h('div', { class: 'pagamento__qr' }, QrCode(d.pixPendente.codigo, { tamanho: 196, rotulo: 'QR Code do Pix do plano' })),
+        h('div', { class: 'campo__rotulo' }, 'Pix copia e cola'),
+        h('div', { class: 'pagamento__codigo num' }, d.pixPendente.codigo),
+        Botao(
+          { bloco: true, icone: 'documento', onClick: async () => avisar((await copiar(d.pixPendente.codigo)) ? 'Código copiado. Cole no app do seu banco.' : 'Selecione o código e copie.', 'sucesso') },
+          'Copiar código Pix',
+        ),
+        h(
+          'div',
+          { class: 'pagamento__teste' },
+          h('span', { class: 'selo-novo' }, 'teste'),
+          h('span', { class: 't-sm texto-2' }, 'Sem banco conectado nesta versão. Use o botão abaixo para fazer o papel do banco.'),
+        ),
+        Botao(
+          {
+            variante: 'contorno',
+            bloco: true,
+            icone: 'check',
+            onClick: () => {
+              const r = api.plano.simularPixDoPlano();
+              if (!r.ok) avisar(r.erro, 'erro');
+              else avisar('Plano ativo. Taxa zero a partir de agora.', 'sucesso');
+              desenhar();
+            },
+          },
+          'Simular pagamento aprovado',
+        ),
+      );
+    } else {
+      acoes = h('div', { class: 'pilha' }, Botao({ bloco: true, icone: 'medalha', onClick: () => pagar(d, 'assinar') }, `Assinar por ${dinheiro(d.preco)}/mês`));
+    }
+
+    montar(
+      raiz,
+      cabeca,
+      Comparacao(d),
+      conta,
+      acoes,
+      h(
+        'p',
+        { class: 't-sm texto-2' },
+        'A taxa de cada serviço é fixada quando você aceita: o valor que aparece na hora de fechar é o que cai na sua carteira.',
+      ),
+    );
+  }
+
+  async function pagar(d, modo) {
+    const comSaldo = d.saldo >= d.preco;
+    const ok = await confirmar({
+      titulo: modo === 'estender' ? `Somar ${d.dias} dias` : 'Assinar o Plano Profissional',
+      texto: comSaldo
+        ? `${dinheiro(d.preco)} saem do seu saldo disponível (${dinheiro(d.saldo)}).`
+        : `Seu saldo (${dinheiro(d.saldo)}) não cobre a mensalidade. Vamos gerar um Pix de ${dinheiro(d.preco)}.`,
+      confirmarTexto: comSaldo ? 'Pagar com o saldo' : 'Gerar Pix',
+    });
+    if (!ok) return;
+    const r = api.plano.assinarPlano({ forma: comSaldo ? 'saldo' : 'pix' });
+    if (!r.ok) avisar(r.erro, 'erro');
+    else if (r.plano) avisar('Plano ativo. Taxa zero a partir de agora.', 'sucesso');
+    desenhar();
+  }
+
+  desenhar();
+  return {
+    barra: { titulo: 'Plano Profissional', aoVoltar: () => app.ir('/perfil') },
+    corpo: raiz,
+  };
+}
+
+__e["TelaPlano"] = TelaPlano;
+
+});
 __def("apps/diarista/src/pages/relatorio.js", function (__e) {
 
 const __i1 = __mod("apps/diarista/src/lib.js");
@@ -8959,7 +9680,9 @@ function TelaServico(app, ctx) {
           Cartao(
             { style: meu && p.pagamento ? { marginTop: '10px' } : null },
             Linha('Cliente paga', dinheiro(p.total)),
-            Linha('Taxa da plataforma', `- ${dinheiro(o.taxaPlataforma)}`),
+            o.taxaPlataforma > 0
+              ? Linha(`Taxa do app (${o.percentualTaxa ?? Math.round((o.taxaPlataforma / (p.total || 1)) * 100)}%)`, `- ${dinheiro(o.taxaPlataforma)}`)
+              : Linha('Plano Profissional', 'taxa zero'),
             p.gorjeta > 0 ? Linha('Gorjeta do cliente', `+ ${dinheiro(p.gorjeta)}`) : null,
             h('div', { class: 'resumo-linha resumo-linha--total' }, h('span', null, 'Você recebe'), h('span', { class: 'resumo-linha__valor' }, dinheiro(o.repasseProfissional))),
             h('p', { class: 't-sm texto-3', style: { marginTop: '8px' } }, 'O valor entra como retido ao finalizar e libera em 2 dias úteis.'),
@@ -10211,6 +10934,7 @@ const TIPOS = {
   ESTORNO: 'estorno',     // cancelamento
   MULTA: 'multa',         // multa recebida por cancelamento tardio do cliente
   GORJETA: 'gorjeta',     // presente do cliente na avaliacao: sem taxa, sem espera
+  PLANO: 'plano',         // mensalidade do Plano Profissional paga com o saldo
 };
 
 const todos = () => ler(CHAVE, []);
@@ -10270,6 +10994,9 @@ function resumoDe(contaId) {
         break;
       case TIPOS.SAQUE:
         if (m.status !== 'recusado') disponivel -= m.valor;
+        break;
+      case TIPOS.PLANO:
+        disponivel -= m.valor;
         break;
       case TIPOS.ESTORNO:
         disponivel -= m.valor;
@@ -10361,7 +11088,7 @@ function creditarServico({ diaristaId, pedidoId, valorLiquido, taxa, descricao }
       contaId: diaristaId,
       tipo: TIPOS.TAXA,
       valor: dinheiroValido(taxa),
-      descricao: `Taxa da plataforma (${Math.round(REGRAS.taxaPlataforma * 100)}%)`,
+      descricao: `Taxa da plataforma (${Math.round((taxa / ((Number(valorLiquido) || 0) + taxa || 1)) * 100)}%)`,
       pedidoId,
       informativo: true, // ja descontada do liquido; aparece so para transparencia
     });
@@ -10400,6 +11127,15 @@ function creditarGorjeta({ diaristaId, pedidoId, valor }) {
     valor: dinheiroValido(valor),
     descricao: 'Gorjeta do cliente',
     pedidoId,
+  });
+}
+
+function registrarMensalidade({ contaId, valor, descricao }) {
+  return adicionar({
+    contaId,
+    tipo: TIPOS.PLANO,
+    valor: dinheiroValido(valor),
+    descricao: limparLinha(descricao || 'Plano Profissional', 80),
   });
 }
 
@@ -10469,6 +11205,7 @@ __e["creditarServico"] = creditarServico;
 __e["creditarMulta"] = creditarMulta;
 __e["segurarRepasse"] = segurarRepasse;
 __e["creditarGorjeta"] = creditarGorjeta;
+__e["registrarMensalidade"] = registrarMensalidade;
 __e["estornar"] = estornar;
 __e["solicitarSaque"] = solicitarSaque;
 __e["mascararChave"] = mascararChave;
@@ -10654,6 +11391,8 @@ const pagamentos = __mod("packages/core/api/pagamentos.js");
 const modoTeste = __mod("packages/core/api/modoteste.js");
 const atividade = __mod("packages/core/api/atividade.js");
 const relatorios = __mod("packages/core/api/relatorio.js");
+const planoM = __mod("packages/core/api/plano.js");
+const propostasM = __mod("packages/core/api/propostas.js");
 const auth = {
   configurarPapel: authM.configurarPapel,
   papelDoApp: authM.papelDoApp,
@@ -10708,6 +11447,25 @@ const notificacoes = {
   marcarLida: notificacoesM.marcarLida,
   marcarTodasLidas: notificacoesM.marcarTodasLidas,
   limparNotificacoes: notificacoesM.limparNotificacoes,
+};
+
+const plano = {
+  meuPlano: planoM.meuPlano,
+  assinarPlano: planoM.assinarPlano,
+  simularPixDoPlano: planoM.simularPixDoPlano,
+  alternarRenovacao: planoM.alternarRenovacao,
+};
+
+const propostas = {
+  enviarProposta: propostasM.enviarProposta,
+  responderProposta: propostasM.responderProposta,
+  verProposta: propostasM.verProposta,
+  aceitarProposta: propostasM.aceitarProposta,
+  recusarProposta: propostasM.recusarProposta,
+  retirarProposta: propostasM.retirarProposta,
+  minhasPropostas: propostasM.minhasPropostas,
+  valorSugerido: propostasM.valorSugerido,
+  simularRecebimento: propostasM.simularRecebimento,
 };
 
 let iniciado = false;
@@ -10811,6 +11569,8 @@ __e.default = {
   modoTeste,
   atividade,
   relatorios,
+  plano,
+  propostas,
 };
 
 observarLocal((evento, d) => {
@@ -10833,6 +11593,8 @@ __e["pagamentos"] = pagamentos;
 __e["modoTeste"] = modoTeste;
 __e["atividade"] = atividade;
 __e["relatorios"] = relatorios;
+__e["plano"] = plano;
+__e["propostas"] = propostas;
 __e["iniciar"] = iniciar;
 __e["manutencao"] = manutencao;
 __e["resetarDemonstracao"] = resetarDemonstracao;
@@ -11101,11 +11863,11 @@ const { creditarServico, creditarMulta, estornar, segurarRepasse } = __i6;
 const __i7 = __mod("packages/core/security/crypto.js");
 const { comparacaoConstante } = __i7;
 const __i8 = __mod("packages/core/api/perfil.js");
-const { enderecoPorId, enderecoAproximado, enderecoCompleto, perfilDe } = __i8;
+const { enderecoPorId, enderecoAproximado, enderecoCompleto, perfilDe, cartaoProfissional } = __i8;
 const __i9 = __mod("packages/core/domain/pedido.js");
 const { ESTADOS, podeTransicionar, estaAtivo, ATIVOS } = __i9;
 const __i10 = __mod("packages/core/domain/preco.js");
-const { orcar, calcularMulta } = __i10;
+const { orcar, calcularMulta, adicionaisValidos } = __i10;
 const __i11 = __mod("packages/core/domain/cupom.js");
 const { validarCupom } = __i11;
 const __i12 = __mod("packages/core/domain/recorrencia.js");
@@ -11114,16 +11876,28 @@ const __i13 = __mod("packages/core/domain/pagamento.js");
 const { cobrancaInicial, metodoPorId, estadoAtual, liberaSaida, encerrarCobranca, PAGAMENTO, ROTULO_PAGAMENTO } = __i13;
 const __i14 = __mod("packages/core/api/pagamentos.js");
 const { cobrancaNoAceite } = __i14;
-const __i15 = __mod("packages/core/domain/servicos.js");
-const { servicoPorId, idsDeServico, extraPorId, tamanhoPorId, periodoPorId, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, horaDeChegadaValida } = __i15;
-const __i16 = __mod("packages/core/util/format.js");
-const { dinheiro, dataAmigavel, hora, deDataHora, somaDias, isoData } = __i16;
-const __i17 = __mod("packages/core/util/validate.js");
-const { limparParagrafo, limparLinha, numero, validar, obrigatorio, dataFutura, numeroEntre } = __i17;
+const __i15 = __mod("packages/core/api/plano.js");
+const { temPlanoAtivo } = __i15;
+const __i16 = __mod("packages/core/domain/servicos.js");
+const { servicoPorId, idsDeServico, extraPorId, tamanhoPorId, periodoPorId, extrasDoServico, tarefasSugeridas, MAXIMO_DE_TAREFAS, horaDeChegadaValida } = __i16;
+const __i17 = __mod("packages/core/util/format.js");
+const { dinheiro, dataAmigavel, hora, deDataHora, somaDias, isoData } = __i17;
+const __i18 = __mod("packages/core/util/validate.js");
+const { limparParagrafo, limparLinha, numero, validar, obrigatorio, dataFutura, numeroEntre, dinheiroValido } = __i18;
 const CHAVE = 'pedidos';
 
 const todos = () => ler(CHAVE, []);
 const salvarTodos = (lista) => gravar(CHAVE, lista);
+
+const servicosDoPedido = (p) => [p.servicoId, ...(p.adicionais || [])];
+
+const atendeOPedido = (perfil, p) => servicosDoPedido(p).every((s) => perfil?.servicos?.includes(s));
+
+function comAdicionais(servico, adicionais) {
+  if (!servico || !adicionais?.length) return servico;
+  const nomes = adicionais.map((id) => servicoPorId(id)?.curto || servicoPorId(id)?.nome).filter(Boolean);
+  return { ...servico, nomeBase: servico.nome, nome: [servico.nome, ...nomes].join(' + ') };
+}
 
 function anotar(pedido, texto, autor) {
   return {
@@ -11149,6 +11923,7 @@ function criarPedido(dados) {
     periodoId: periodoPorId(dados.periodoId).id,
     extras: (dados.extras || []).filter((e) => extrasDoServico(servicoId).some((x) => x.id === e)),
     observacoes: limparParagrafo(dados.observacoes, 500),
+    adicionais: adicionaisValidos(dados.adicionais, servicoId),
     diaristaPreferidoId: dados.diaristaPreferidoId || null,
     metodoPagamento: metodoPorId(dados.metodoPagamento) ? dados.metodoPagamento : 'pix',
   };
@@ -11161,6 +11936,16 @@ function criarPedido(dados) {
     horas: [numeroEntre(1, 12, 'Duração')],
   });
   if (!ok) return { ok: false, erros };
+
+  let faixa = null;
+  if (dados.faixa) {
+    const min = dinheiroValido(dados.faixa.min);
+    const max = dinheiroValido(dados.faixa.max);
+    if (!(min >= 20) || !(max >= min) || max > 10000) {
+      return { ok: false, erros: { faixa: 'Faixa de preço inválida: mínimo de R$ 20 e o máximo não pode ser menor que o mínimo.' } };
+    }
+    faixa = { min, max };
+  }
 
   const bloqueados = perfilDe(conta.id)?.bloqueados || [];
   if (limpo.diaristaPreferidoId) {
@@ -11175,12 +11960,15 @@ function criarPedido(dados) {
   const urgente = new Date(limpo.dataHora).getTime() - Date.now() < 36 * 3600000;
 
   let precoHora;
+  let precos;
   if (limpo.diaristaPreferidoId) {
     const p = perfilDe(limpo.diaristaPreferidoId);
     precoHora = Number(p?.precos?.[servicoId]) || undefined;
+    precos = p?.precos;
   }
 
-  const base = orcar({ servicoId, horas: limpo.horas, tamanhoId: limpo.tamanhoId, extras: limpo.extras, precoHora, urgente });
+  const horasPedidas = Number(dados.horas) > 0 ? limpo.horas : undefined;
+  const base = orcar({ servicoId, horas: horasPedidas, tamanhoId: limpo.tamanhoId, extras: limpo.extras, adicionais: limpo.adicionais, precos, precoHora, urgente });
 
   let desconto = 0;
   let cupomAplicado = null;
@@ -11196,9 +11984,11 @@ function criarPedido(dados) {
 
   const orcamento = orcar({
     servicoId,
-    horas: limpo.horas,
+    horas: horasPedidas,
     tamanhoId: limpo.tamanhoId,
     extras: limpo.extras,
+    adicionais: limpo.adicionais,
+    precos,
     precoHora,
     urgente,
     desconto,
@@ -11209,14 +11999,17 @@ function criarPedido(dados) {
     clienteId: conta.id,
     diaristaId: null,
     ...limpo,
+    horas: orcamento.horas,
     urgente,
+    faixa,
+    propostas: [],
     cupom: cupomAplicado,
     orcamento,
     total: orcamento.total,
     estado: ESTADOS.PROCURANDO,
     pagamento: cobrancaInicial(limpo.metodoPagamento),
     codigoCheckin: codigoCurto(),
-    tarefas: montarTarefas(dados.tarefas, servicoId),
+    tarefas: montarTarefas(dados.tarefas, servicoId, limpo.adicionais),
     expiraEm: somaDias(new Date(), 2).toISOString(),
     criadoEm: new Date().toISOString(),
     atualizadoEm: new Date().toISOString(),
@@ -11228,14 +12021,16 @@ function criarPedido(dados) {
 
   for (const c of ler('contas', [])) {
     if (c.papel !== 'diarista' || !c.ativo) continue;
-    if (!perfilDe(c.id)?.servicos?.includes(servicoId)) continue;
+    if (!atendeOPedido(perfilDe(c.id), pedido)) continue; // faz todos os servicos pedidos
     if (perfilDe(c.id)?.atendendo === false) continue; // em pausa: sem aviso
     if (bloqueados.includes(c.id)) continue; // bloqueado por este cliente
     if ((perfilDe(c.id)?.folgas || []).includes(isoData(new Date(limpo.dataHora)))) continue; // de folga no dia
     if (limpo.diaristaPreferidoId && c.id !== limpo.diaristaPreferidoId) continue;
     notificar(c.id, {
-      titulo: 'Novo serviço disponível',
-      mensagem: `${servicoPorId(servicoId)?.nome} em ${enderecoAproximado(pedido.enderecoId)}: ${dinheiro(orcamento.repasseProfissional)} para você.`,
+      titulo: faixa ? 'Pedido recebendo propostas' : 'Novo serviço disponível',
+      mensagem: faixa
+        ? `${comAdicionais(servicoPorId(servicoId), limpo.adicionais)?.nome} em ${enderecoAproximado(pedido.enderecoId)}: entre ${dinheiro(faixa.min)} e ${dinheiro(faixa.max)}.`
+        : `${comAdicionais(servicoPorId(servicoId), limpo.adicionais)?.nome} em ${enderecoAproximado(pedido.enderecoId)}: ${dinheiro(orcamento.repasseProfissional)} para você.`,
       tipo: 'info',
       link: `#/oportunidades`,
     });
@@ -11250,6 +12045,10 @@ function pedidoPorId(pedidoId) {
   const meu = p.clienteId === conta.id || p.diaristaId === conta.id;
   const abertoParaMim = conta.papel === 'diarista' && p.estado === ESTADOS.PROCURANDO;
   if (!meu && !abertoParaMim) return null;
+  if (!meu && abertoParaMim) {
+    const orcamento = orcamentoPara(p, conta.id);
+    return decorar({ ...p, orcamento, total: orcamento.total }, conta);
+  }
   return decorar(p, conta);
 }
 
@@ -11263,9 +12062,20 @@ function decorar(p, conta) {
     ? (ler('assinaturas', []).find((a) => a.id === p.assinaturaId) || null)
     : null;
 
+  const propostas = p.propostas || [];
   return {
     ...p,
-    servico: servicoPorId(p.servicoId),
+    servico: comAdicionais(servicoPorId(p.servicoId), p.adicionais),
+    adicionais: p.adicionais || [],
+    propostas: souCliente
+      ? propostas.map((pr) => ({
+          ...pr,
+          diarista: cartaoProfissional(pr.diaristaId),
+          naoLidas: (pr.conversa || []).filter((m) => !(m.lidaPor || []).includes(conta.id)).length,
+        }))
+      : [],
+    minhaProposta: souCliente ? null : propostas.find((pr) => pr.diaristaId === conta.id) || null,
+    propostasAbertas: propostas.filter((pr) => pr.estado === 'aberta').length,
     pagamento: p.pagamento && !souCliente ? { ...p.pagamento, pix: null } : p.pagamento,
     pagamentoEstado: estadoAtual(p.pagamento),
     tarefas: p.tarefas || [],
@@ -11306,13 +12116,16 @@ function oportunidades({ servicoId = null, ordenar = 'data' } = {}) {
 
   const lista = todos()
     .filter((p) => p.estado === ESTADOS.PROCURANDO)
-    .filter((p) => perfil.servicos.includes(p.servicoId))
+    .filter((p) => atendeOPedido(perfil, p))
     .filter((p) => !p.diaristaPreferidoId || p.diaristaPreferidoId === conta.id)
     .filter((p) => (servicoId ? p.servicoId === servicoId : true))
     .filter((p) => !(p.recusadoPor || []).includes(conta.id))
     .filter((p) => !(perfil.folgas || []).includes(isoData(new Date(p.dataHora))))
     .filter((p) => !(perfilDe(p.clienteId)?.bloqueados || []).includes(conta.id))
-    .map((p) => decorar(p, conta));
+    .map((p) => {
+      const orcamento = orcamentoPara(p, conta.id);
+      return decorar({ ...p, orcamento, total: orcamento.total }, conta);
+    });
 
   const ordenadores = {
     data: (a, b) => new Date(a.dataHora) - new Date(b.dataHora),
@@ -11389,32 +12202,46 @@ function mudarEstado(pedidoId, destino, extra = {}) {
   return { ok: true, pedido: decorar(lista[i], conta) };
 }
 
-function aceitar(p, conta) {
-  if (p.diaristaId) return { ok: false, erro: 'Outro profissional aceitou primeiro.' };
-  const perfil = perfilDe(conta.id);
-  if (!perfil.servicos.includes(p.servicoId)) {
-    return { ok: false, erro: 'Este serviço não está na sua lista de atendimentos.' };
-  }
-  const conflito = todos().find(
+function conflitoDeHorario(diaristaId, p) {
+  return todos().find(
     (o) =>
-      o.diaristaId === conta.id &&
+      o.id !== p.id &&
+      o.diaristaId === diaristaId &&
       ATIVOS.includes(o.estado) &&
       Math.abs(new Date(o.dataHora) - new Date(p.dataHora)) < (o.horas || 4) * 3600000,
-  );
-  if (conflito) {
-    return { ok: false, erro: `Você já tem um serviço em ${dataAmigavel(conflito.dataHora)} às ${hora(conflito.dataHora)}.` };
-  }
+  ) || null;
+}
 
-  const precoHora = Number(perfil.precos?.[p.servicoId]) || undefined;
-  const orcamento = orcar({
+function orcamentoPara(p, diaristaId, { combinado = 0 } = {}) {
+  const perfil = perfilDe(diaristaId);
+  return orcar({
     servicoId: p.servicoId,
     horas: p.horas,
     tamanhoId: p.tamanhoId,
     extras: p.extras,
-    precoHora,
+    adicionais: p.adicionais,
+    precos: perfil?.precos,
+    precoHora: Number(perfil?.precos?.[p.servicoId]) || undefined,
     urgente: p.urgente,
+    combinado,
+    semTaxa: temPlanoAtivo(diaristaId),
     desconto: p.orcamento?.desconto || 0,
   });
+}
+
+function aceitar(p, conta) {
+  if (p.diaristaId) return { ok: false, erro: 'Outro profissional aceitou primeiro.' };
+  if (p.faixa) return { ok: false, erro: 'Este pedido recebe propostas: envie a sua com o valor.' };
+  const perfil = perfilDe(conta.id);
+  if (!atendeOPedido(perfil, p)) {
+    return { ok: false, erro: 'Este serviço não está na sua lista de atendimentos.' };
+  }
+  const conflito = conflitoDeHorario(conta.id, p);
+  if (conflito) {
+    return { ok: false, erro: `Você já tem um serviço em ${dataAmigavel(conflito.dataHora)} às ${hora(conflito.dataHora)}.` };
+  }
+
+  const orcamento = orcamentoPara(p, conta.id);
 
   const pagamento = cobrancaNoAceite({ ...p, total: orcamento.total }, { aceitaCartao: perfil.aceitaCartao !== false });
   const estadoPag = estadoAtual(pagamento);
@@ -11590,14 +12417,15 @@ function dadosParaRepetir(pedidoId) {
     periodoId: p.periodoId,
     horas: p.horas,
     extras: [...(p.extras || [])],
+    adicionais: [...(p.adicionais || [])],
     observacoes: p.observacoes,
     diaristaPreferidoId: p.diaristaId || null,
     tarefas: (p.tarefas || []).map((t) => t.texto),
   };
 }
 
-function montarTarefas(enviadas, servicoId) {
-  const textos = Array.isArray(enviadas) ? enviadas : tarefasSugeridas(servicoId);
+function montarTarefas(enviadas, servicoId, adicionais = []) {
+  const textos = Array.isArray(enviadas) ? enviadas : [servicoId, ...adicionais].flatMap((id) => tarefasSugeridas(id));
   const vistos = new Set();
   const limpas = [];
   for (const cru of textos) {
@@ -11960,6 +12788,9 @@ function estatisticas() {
   };
 }
 
+__e["servicosDoPedido"] = servicosDoPedido;
+__e["atendeOPedido"] = atendeOPedido;
+__e["anotar"] = anotar;
 __e["criarPedido"] = criarPedido;
 __e["pedidoPorId"] = pedidoPorId;
 __e["meusPedidos"] = meusPedidos;
@@ -11968,6 +12799,8 @@ __e["pedidosDoDia"] = pedidosDoDia;
 __e["contagemPorDia"] = contagemPorDia;
 __e["mapaDoMes"] = mapaDoMes;
 __e["mudarEstado"] = mudarEstado;
+__e["conflitoDeHorario"] = conflitoDeHorario;
+__e["orcamentoPara"] = orcamentoPara;
 __e["dadosParaRepetir"] = dadosParaRepetir;
 __e["marcarTarefa"] = marcarTarefa;
 __e["LIMITE_DE_REAGENDAMENTOS"] = LIMITE_DE_REAGENDAMENTOS;
@@ -12470,6 +13303,500 @@ __e["enderecoAproximado"] = enderecoAproximado;
 __e["enderecoCompleto"] = enderecoCompleto;
 __e["enderecoAtivo"] = enderecoAtivo;
 __e["escolherEnderecoAtivo"] = escolherEnderecoAtivo;
+
+});
+__def("packages/core/api/plano.js", function (__e) {
+
+const __i1 = __mod("packages/core/env.js");
+const { REGRAS } = __i1;
+const __i2 = __mod("packages/core/data/db.js");
+const { ler, gravar } = __i2;
+const __i3 = __mod("packages/core/util/id.js");
+const { id } = __i3;
+const __i4 = __mod("packages/core/api/auth.js");
+const { exigirSessao } = __i4;
+const __i5 = __mod("packages/core/api/bus.js");
+const { publicar, EVENTOS } = __i5;
+const __i6 = __mod("packages/core/api/notificacoes.js");
+const { notificar } = __i6;
+const __i7 = __mod("packages/core/api/carteira.js");
+const { resumoDe, registrarMensalidade, TIPOS } = __i7;
+const __i8 = __mod("packages/core/domain/pix.js");
+const { codigoPix } = __i8;
+const __i9 = __mod("packages/core/util/format.js");
+const { dataAmigavel, somaDias } = __i9;
+const PERFIS = 'perfis';
+const DIA = 24 * 3600000;
+
+const lerPlano = (contaId) => ler(PERFIS, {})[contaId]?.plano || null;
+
+function gravarPlano(contaId, plano) {
+  const mapa = ler(PERFIS, {});
+  if (!mapa[contaId]) return;
+  mapa[contaId] = { ...mapa[contaId], plano };
+  gravar(PERFIS, mapa);
+  publicar(EVENTOS.PERFIL, { contaId });
+}
+
+const vigente = (plano, agora = Date.now()) => !!plano?.ate && new Date(plano.ate).getTime() > agora;
+
+function renovarSeVenceu(contaId, agora = Date.now()) {
+  const plano = lerPlano(contaId);
+  if (!plano?.ate || vigente(plano, agora) || plano.encerrado) return plano;
+
+  if (plano.renovar && resumoDe(contaId).disponivel >= REGRAS.planoProfissional.preco) {
+    registrarMensalidade({ contaId, valor: REGRAS.planoProfissional.preco, descricao: 'Plano Profissional (renovação)' });
+    const novo = { ...plano, ate: somaDias(new Date(agora), REGRAS.planoProfissional.dias).toISOString(), renovadoEm: new Date(agora).toISOString() };
+    gravarPlano(contaId, novo);
+    return novo;
+  }
+
+  const novo = { ...plano, encerrado: true };
+  gravarPlano(contaId, novo);
+  notificar(contaId, {
+    titulo: 'Seu Plano Profissional venceu',
+    mensagem: plano.renovar
+      ? `Não havia saldo para renovar. A taxa de ${Math.round(REGRAS.taxaPlataforma * 100)}% volta a valer nos próximos serviços.`
+      : `A taxa de ${Math.round(REGRAS.taxaPlataforma * 100)}% volta a valer nos próximos serviços.`,
+    tipo: 'alerta',
+    link: '#/plano',
+  });
+  return novo;
+}
+
+function temPlanoAtivo(contaId) {
+  return vigente(renovarSeVenceu(contaId));
+}
+
+function meuPlano() {
+  const { conta } = exigirSessao('diarista');
+  const plano = renovarSeVenceu(conta.id);
+  const ativo = vigente(plano);
+  const { preco, dias } = REGRAS.planoProfissional;
+
+  const desde = Date.now() - 30 * DIA;
+  const taxaUltimoMes = ler('movimentos', [])
+    .filter((m) => m.contaId === conta.id && m.tipo === TIPOS.TAXA && new Date(m.em).getTime() >= desde)
+    .reduce((s, m) => s + (Number(m.valor) || 0), 0);
+
+  return {
+    ativo,
+    ate: ativo ? plano.ate : null,
+    renovar: ativo ? !!plano.renovar : false,
+    pixPendente: plano?.pix && !ativo ? plano.pix : null,
+    preco,
+    dias,
+    percentualTaxa: Math.round(REGRAS.taxaPlataforma * 100),
+    compensaAPartirDe: Math.round((preco / REGRAS.taxaPlataforma) * 100) / 100,
+    taxaUltimoMes: Math.round(taxaUltimoMes * 100) / 100,
+    saldo: resumoDe(conta.id).disponivel,
+  };
+}
+
+function ativar(contaId, origem) {
+  const atual = lerPlano(contaId);
+  const base = vigente(atual) ? new Date(atual.ate) : new Date();
+  const plano = {
+    desde: atual && vigente(atual) ? atual.desde : new Date().toISOString(),
+    ate: somaDias(base, REGRAS.planoProfissional.dias).toISOString(),
+    renovar: true,
+    origem,
+  };
+  gravarPlano(contaId, plano);
+  notificar(contaId, {
+    titulo: 'Plano Profissional ativo',
+    mensagem: `Taxa zero nos serviços que você aceitar até ${dataAmigavel(plano.ate)}.`,
+    tipo: 'sucesso',
+    link: '#/plano',
+  });
+  return plano;
+}
+
+function assinarPlano({ forma } = {}) {
+  const { conta } = exigirSessao('diarista');
+  const { preco } = REGRAS.planoProfissional;
+
+  if (forma === 'saldo') {
+    if (resumoDe(conta.id).disponivel < preco) {
+      return { ok: false, erro: 'Saldo insuficiente. Pague por Pix ou espere liberar o valor retido.' };
+    }
+    registrarMensalidade({ contaId: conta.id, valor: preco, descricao: 'Plano Profissional (mensalidade)' });
+    return { ok: true, plano: ativar(conta.id, 'saldo') };
+  }
+
+  if (forma === 'pix') {
+    const txid = id('pla').replace(/[^A-Za-z0-9]/g, '').slice(0, 25);
+    const pix = { codigo: codigoPix({ valor: preco, txid }), txid, valor: preco, criadoEm: new Date().toISOString() };
+    gravarPlano(conta.id, { ...(lerPlano(conta.id) || {}), pix });
+    return { ok: true, pix };
+  }
+  return { ok: false, erro: 'Escolha como pagar.' };
+}
+
+function simularPixDoPlano() {
+  const { conta } = exigirSessao('diarista');
+  const atual = lerPlano(conta.id);
+  if (!atual?.pix) return { ok: false, erro: 'Não há Pix do plano esperando pagamento.' };
+  const { pix, ...resto } = atual;
+  gravarPlano(conta.id, resto);
+  return { ok: true, plano: ativar(conta.id, 'pix') };
+}
+
+function alternarRenovacao() {
+  const { conta } = exigirSessao('diarista');
+  const atual = lerPlano(conta.id);
+  if (!vigente(atual)) return { ok: false, erro: 'Você não tem plano ativo.' };
+  const novo = { ...atual, renovar: !atual.renovar };
+  gravarPlano(conta.id, novo);
+  return { ok: true, renovar: novo.renovar };
+}
+
+__e["renovarSeVenceu"] = renovarSeVenceu;
+__e["temPlanoAtivo"] = temPlanoAtivo;
+__e["meuPlano"] = meuPlano;
+__e["assinarPlano"] = assinarPlano;
+__e["simularPixDoPlano"] = simularPixDoPlano;
+__e["alternarRenovacao"] = alternarRenovacao;
+
+});
+__def("packages/core/api/propostas.js", function (__e) {
+
+const __i1 = __mod("packages/core/data/db.js");
+const { ler, gravar } = __i1;
+const __i2 = __mod("packages/core/util/id.js");
+const { id } = __i2;
+const __i3 = __mod("packages/core/api/auth.js");
+const { exigirSessao, contaPorId } = __i3;
+const __i4 = __mod("packages/core/api/bus.js");
+const { publicar, EVENTOS } = __i4;
+const __i5 = __mod("packages/core/api/notificacoes.js");
+const { notificar } = __i5;
+const __i6 = __mod("packages/core/api/perfil.js");
+const { perfilDe, cartaoProfissional, enderecoAproximado } = __i6;
+const __i7 = __mod("packages/core/api/pagamentos.js");
+const { cobrancaNoAceite } = __i7;
+const __i8 = __mod("packages/core/api/pedidos.js");
+const { anotar, atendeOPedido, conflitoDeHorario, orcamentoPara, pedidoPorId } = __i8;
+const __i9 = __mod("packages/core/domain/pedido.js");
+const { ESTADOS, podeTransicionar } = __i9;
+const __i10 = __mod("packages/core/domain/pagamento.js");
+const { estadoAtual, PAGAMENTO, ROTULO_PAGAMENTO } = __i10;
+const __i11 = __mod("packages/core/domain/servicos.js");
+const { servicoPorId } = __i11;
+const __i12 = __mod("packages/core/env.js");
+const { REGRAS } = __i12;
+const __i13 = __mod("packages/core/util/format.js");
+const { dinheiro, dataAmigavel, hora, isoData } = __i13;
+const __i14 = __mod("packages/core/util/validate.js");
+const { limparParagrafo, dinheiroValido } = __i14;
+const CHAVE = 'pedidos';
+const JANELA_ANTI_SPAM_MS = 1500;
+const VALOR_MINIMO = 20;
+const VALOR_MAXIMO = 10000;
+
+const todos = () => ler(CHAVE, []);
+const salvarTodos = (lista) => gravar(CHAVE, lista);
+
+function localizar(pedidoId) {
+  const lista = todos();
+  const i = lista.findIndex((p) => p.id === pedidoId);
+  return { lista, i, p: i >= 0 ? lista[i] : null };
+}
+
+function gravarPedido(lista, i, pedido) {
+  lista[i] = { ...pedido, atualizadoEm: new Date().toISOString() };
+  salvarTodos(lista);
+  publicar(EVENTOS.PEDIDO_MUDOU, { pedidoId: pedido.id, estado: pedido.estado });
+  return lista[i];
+}
+
+const nomeDoServico = (p) => servicoPorId(p.servicoId)?.nome || 'Serviço';
+
+function motivoParaNaoPropor(p, conta) {
+  if (!p || p.estado !== ESTADOS.PROCURANDO) return 'Este pedido não está mais recebendo propostas.';
+  if (!p.faixa) return 'Este pedido não recebe propostas: aceite direto.';
+  const perfil = perfilDe(conta.id);
+  if (perfil?.atendendo === false) return 'Você está em pausa. Volte a receber pedidos para propor.';
+  if (!atendeOPedido(perfil, p)) return 'Este serviço não está na sua lista de atendimentos.';
+  if (p.diaristaPreferidoId && p.diaristaPreferidoId !== conta.id) return 'Este pedido é para outro profissional.';
+  if ((perfilDe(p.clienteId)?.bloqueados || []).includes(conta.id)) return 'Este pedido não está disponível para você.';
+  if ((perfil?.folgas || []).includes(isoData(new Date(p.dataHora)))) return 'Você marcou folga nesse dia.';
+  if (conflitoDeHorario(conta.id, p)) return 'Você já tem um serviço nesse horário.';
+  return '';
+}
+
+function enviarProposta(pedidoId, { valor, mensagem } = {}) {
+  const { conta } = exigirSessao('diarista');
+  const { lista, i, p } = localizar(pedidoId);
+  const motivo = motivoParaNaoPropor(p, conta);
+  if (motivo) return { ok: false, erro: motivo };
+
+  const v = dinheiroValido(valor);
+  if (!(v >= VALOR_MINIMO) || v > VALOR_MAXIMO) {
+    return { ok: false, erro: `Proposta entre ${dinheiro(VALOR_MINIMO)} e ${dinheiro(VALOR_MAXIMO)}.` };
+  }
+  const texto = limparParagrafo(mensagem || '', REGRAS.maxCaracteresMensagem);
+  const agora = new Date().toISOString();
+
+  const propostas = [...(p.propostas || [])];
+  const j = propostas.findIndex((pr) => pr.diaristaId === conta.id);
+  let proposta;
+  if (j >= 0) {
+    if (propostas[j].estado === 'recusada') return { ok: false, erro: 'O cliente recusou sua proposta neste pedido.' };
+    const mudou = propostas[j].valor !== v;
+    proposta = {
+      ...propostas[j],
+      valor: v,
+      estado: 'aberta',
+      atualizadaEm: agora,
+      conversa: [
+        ...(propostas[j].conversa || []),
+        ...(mudou ? [{ id: id('pmsg'), autor: 'sistema', texto: `Novo valor: ${dinheiro(v)}`, em: agora, lidaPor: [conta.id] }] : []),
+        ...(texto ? [{ id: id('pmsg'), autor: 'diarista', texto, em: agora, lidaPor: [conta.id] }] : []),
+      ],
+    };
+    propostas[j] = proposta;
+  } else {
+    proposta = {
+      id: id('prop'),
+      diaristaId: conta.id,
+      valor: v,
+      estado: 'aberta',
+      criadaEm: agora,
+      atualizadaEm: agora,
+      conversa: texto ? [{ id: id('pmsg'), autor: 'diarista', texto, em: agora, lidaPor: [conta.id] }] : [],
+    };
+    propostas.push(proposta);
+  }
+
+  gravarPedido(lista, i, { ...p, propostas });
+  notificar(p.clienteId, {
+    titulo: j >= 0 ? `${conta.nome} mudou a proposta` : `Proposta de ${conta.nome}`,
+    mensagem: `${dinheiro(v)} para ${nomeDoServico(p)} em ${dataAmigavel(p.dataHora)}.${texto ? ` "${texto.slice(0, 60)}"` : ''}`,
+    tipo: 'info',
+    link: `#/proposta/${p.id}/${proposta.id}`,
+  });
+  return { ok: true, proposta };
+}
+
+function responderProposta(pedidoId, propostaId, texto) {
+  const { conta } = exigirSessao();
+  const { lista, i, p } = localizar(pedidoId);
+  if (!p) return { ok: false, erro: 'Pedido não encontrado.' };
+  const propostas = [...(p.propostas || [])];
+  const j = propostas.findIndex((pr) => pr.id === propostaId);
+  const pr = propostas[j];
+  if (!pr) return { ok: false, erro: 'Proposta não encontrada.' };
+
+  const autor = p.clienteId === conta.id ? 'cliente' : pr.diaristaId === conta.id ? 'diarista' : null;
+  if (!autor) return { ok: false, erro: 'Você não participa desta conversa.' };
+  if (p.estado !== ESTADOS.PROCURANDO || pr.estado !== 'aberta') {
+    return { ok: false, erro: 'Esta proposta foi encerrada.' };
+  }
+  const limpo = limparParagrafo(texto || '', REGRAS.maxCaracteresMensagem);
+  if (!limpo) return { ok: false, erro: 'Escreva alguma coisa antes de enviar.' };
+
+  const minhas = (pr.conversa || []).filter((m) => m.autor === autor);
+  const ultima = minhas[minhas.length - 1];
+  if (ultima && Date.now() - new Date(ultima.em).getTime() < JANELA_ANTI_SPAM_MS) {
+    return { ok: false, erro: 'Calma lá - espere um instante antes de mandar outra.' };
+  }
+
+  const msg = { id: id('pmsg'), autor, texto: limpo, em: new Date().toISOString(), lidaPor: [conta.id] };
+  propostas[j] = { ...pr, conversa: [...(pr.conversa || []), msg] };
+  gravarPedido(lista, i, { ...p, propostas });
+
+  notificar(autor === 'cliente' ? pr.diaristaId : p.clienteId, {
+    titulo: `Mensagem de ${conta.nome}`,
+    mensagem: limpo.slice(0, 90),
+    tipo: 'info',
+    link: `#/proposta/${p.id}/${pr.id}`,
+  });
+  publicar(EVENTOS.MENSAGEM, { pedidoId });
+  return { ok: true, mensagem: msg };
+}
+
+function verProposta(pedidoId, propostaId) {
+  const { conta } = exigirSessao();
+  const { lista, i, p } = localizar(pedidoId);
+  if (!p) return null;
+  const propostas = [...(p.propostas || [])];
+  const j = propostas.findIndex((pr) => pr.id === propostaId || (propostaId === 'minha' && pr.diaristaId === conta.id));
+  const pr = propostas[j];
+  if (!pr) return null;
+  const souCliente = p.clienteId === conta.id;
+  if (!souCliente && pr.diaristaId !== conta.id) return null;
+
+  if ((pr.conversa || []).some((m) => !(m.lidaPor || []).includes(conta.id))) {
+    propostas[j] = { ...pr, conversa: pr.conversa.map((m) => ((m.lidaPor || []).includes(conta.id) ? m : { ...m, lidaPor: [...(m.lidaPor || []), conta.id] })) };
+    lista[i] = { ...p, propostas };
+    salvarTodos(lista);
+  }
+  const atual = propostas[j];
+  const cliente = contaPorId(p.clienteId);
+  const o = orcamentoPara(p, atual.diaristaId, { combinado: atual.valor });
+
+  return {
+    pedido: pedidoPorId(pedidoId),
+    proposta: {
+      ...atual,
+      conversa: (atual.conversa || []).map((m) => ({ ...m, minha: m.autor === (souCliente ? 'cliente' : 'diarista') })),
+    },
+    souCliente,
+    diarista: cartaoProfissional(atual.diaristaId),
+    clienteNome: cliente?.nome || 'Cliente',
+    clienteAvatar: cliente?.avatar || '',
+    total: o.total,
+    taxa: souCliente ? null : o.taxaPlataforma,
+    percentualTaxa: souCliente ? null : o.percentualTaxa,
+    recebe: souCliente ? null : o.repasseProfissional,
+    aberta: p.estado === ESTADOS.PROCURANDO && atual.estado === 'aberta',
+    foraDaFaixa: p.faixa ? atual.valor > p.faixa.max || atual.valor < p.faixa.min : false,
+  };
+}
+
+function aceitarProposta(pedidoId, propostaId) {
+  const { conta } = exigirSessao('cliente');
+  const { lista, i, p } = localizar(pedidoId);
+  if (!p || p.clienteId !== conta.id) return { ok: false, erro: 'Pedido não encontrado.' };
+  const pr = (p.propostas || []).find((x) => x.id === propostaId);
+  if (!pr || pr.estado !== 'aberta') return { ok: false, erro: 'Esta proposta não está mais disponível.' };
+  if (!podeTransicionar(p.estado, ESTADOS.AGENDADO, 'diarista')) return { ok: false, erro: 'Este pedido não está mais recebendo propostas.' };
+
+  const diarista = contaPorId(pr.diaristaId);
+  const perfil = perfilDe(pr.diaristaId);
+  if (!diarista?.ativo || !atendeOPedido(perfil, p)) return { ok: false, erro: 'Este profissional não atende mais este serviço.' };
+  if (conflitoDeHorario(pr.diaristaId, p)) return { ok: false, erro: `${diarista.nome.split(' ')[0]} já fechou outro serviço nesse horário.` };
+
+  const orcamento = orcamentoPara(p, pr.diaristaId, { combinado: pr.valor });
+  const pagamento = cobrancaNoAceite({ ...p, total: orcamento.total }, { aceitaCartao: perfil?.aceitaCartao !== false });
+  const agora = new Date().toISOString();
+  const propostas = (p.propostas || []).map((x) =>
+    x.id === pr.id ? { ...x, estado: 'aceita', decididaEm: agora } : x.estado === 'aberta' ? { ...x, estado: 'recusada', decididaEm: agora } : x,
+  );
+
+  const pedido = gravarPedido(
+    lista,
+    i,
+    anotar(
+      { ...p, propostas, diaristaId: pr.diaristaId, estado: ESTADOS.AGENDADO, orcamento, total: orcamento.total, pagamento, aceitoEm: agora },
+      `Proposta de ${diarista.nome} aceita (${dinheiro(pr.valor)})`,
+      'cliente',
+    ),
+  );
+
+  const mensagens = ler('mensagens', []);
+  for (const m of pr.conversa || []) {
+    if (m.autor === 'sistema') continue;
+    mensagens.push({
+      id: id('msg'),
+      pedidoId: p.id,
+      autorId: m.autor === 'cliente' ? p.clienteId : pr.diaristaId,
+      papel: m.autor,
+      texto: m.texto,
+      em: m.em,
+      lidaPor: [p.clienteId, pr.diaristaId],
+    });
+  }
+  gravar('mensagens', mensagens);
+
+  const estadoPag = estadoAtual(pagamento);
+  notificar(pr.diaristaId, {
+    titulo: 'Proposta aceita!',
+    mensagem: `${conta.nome} fechou ${nomeDoServico(p)} com você: ${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)}, ${dinheiro(orcamento.repasseProfissional)} para você.`,
+    tipo: 'sucesso',
+    link: `#/servico/${p.id}`,
+  });
+  for (const x of p.propostas || []) {
+    if (x.id === pr.id || x.estado !== 'aberta') continue;
+    notificar(x.diaristaId, {
+      titulo: 'O cliente escolheu outra proposta',
+      mensagem: `${nomeDoServico(p)} em ${enderecoAproximado(p.enderecoId)} foi fechado com outro profissional.`,
+      tipo: 'info',
+      link: '#/oportunidades',
+    });
+  }
+  if (estadoPag === PAGAMENTO.FALHOU) {
+    notificar(conta.id, { titulo: 'Pagamento recusado', mensagem: ROTULO_PAGAMENTO[estadoPag]?.dica || '', tipo: 'alerta', link: `#/pedido/${p.id}` });
+  }
+  return { ok: true, pedido };
+}
+
+function recusarProposta(pedidoId, propostaId) {
+  const { conta } = exigirSessao('cliente');
+  const { lista, i, p } = localizar(pedidoId);
+  if (!p || p.clienteId !== conta.id) return { ok: false, erro: 'Pedido não encontrado.' };
+  const pr = (p.propostas || []).find((x) => x.id === propostaId);
+  if (!pr || pr.estado !== 'aberta') return { ok: false, erro: 'Esta proposta não está mais disponível.' };
+  const propostas = p.propostas.map((x) => (x.id === pr.id ? { ...x, estado: 'recusada', decididaEm: new Date().toISOString() } : x));
+  gravarPedido(lista, i, { ...p, propostas });
+  notificar(pr.diaristaId, {
+    titulo: 'Proposta não aceita',
+    mensagem: `O cliente preferiu não seguir com ${dinheiro(pr.valor)} para ${nomeDoServico(p)}.`,
+    tipo: 'info',
+    link: '#/oportunidades',
+  });
+  return { ok: true };
+}
+
+function retirarProposta(pedidoId) {
+  const { conta } = exigirSessao('diarista');
+  const { lista, i, p } = localizar(pedidoId);
+  if (!p) return { ok: false, erro: 'Pedido não encontrado.' };
+  const pr = (p.propostas || []).find((x) => x.diaristaId === conta.id && x.estado === 'aberta');
+  if (!pr || p.estado !== ESTADOS.PROCURANDO) return { ok: false, erro: 'Não há proposta sua aberta neste pedido.' };
+  const propostas = p.propostas.map((x) => (x.id === pr.id ? { ...x, estado: 'retirada', decididaEm: new Date().toISOString() } : x));
+  gravarPedido(lista, i, { ...p, propostas });
+  notificar(p.clienteId, {
+    titulo: `${conta.nome} retirou a proposta`,
+    mensagem: `${nomeDoServico(p)} em ${dataAmigavel(p.dataHora)}.`,
+    tipo: 'info',
+    link: `#/pedido/${p.id}`,
+  });
+  return { ok: true };
+}
+
+function minhasPropostas() {
+  const { conta } = exigirSessao('diarista');
+  return todos()
+    .filter((p) => p.estado === ESTADOS.PROCURANDO)
+    .filter((p) => (p.propostas || []).some((x) => x.diaristaId === conta.id && x.estado === 'aberta'))
+    .map((p) => {
+      const pr = p.propostas.find((x) => x.diaristaId === conta.id);
+      return {
+        pedido: pedidoPorId(p.id),
+        proposta: pr,
+        naoLidas: (pr.conversa || []).filter((m) => !(m.lidaPor || []).includes(conta.id)).length,
+      };
+    })
+    .sort((a, b) => new Date(b.proposta.atualizadaEm) - new Date(a.proposta.atualizadaEm));
+}
+
+function valorSugerido(pedidoId) {
+  const { conta } = exigirSessao('diarista');
+  const p = todos().find((x) => x.id === pedidoId);
+  if (!p?.faixa) return 0;
+  const proprio = orcamentoPara(p, conta.id).total;
+  return Math.min(p.faixa.max, Math.max(p.faixa.min, Math.round(proprio)));
+}
+
+function simularRecebimento(pedidoId, valor) {
+  const { conta } = exigirSessao('diarista');
+  const p = todos().find((x) => x.id === pedidoId);
+  if (!p) return null;
+  const o = orcamentoPara(p, conta.id, { combinado: dinheiroValido(valor) || 0.01 });
+  return { total: o.total, taxa: o.taxaPlataforma, percentualTaxa: o.percentualTaxa, recebe: o.repasseProfissional };
+}
+
+__e["enviarProposta"] = enviarProposta;
+__e["responderProposta"] = responderProposta;
+__e["verProposta"] = verProposta;
+__e["aceitarProposta"] = aceitarProposta;
+__e["recusarProposta"] = recusarProposta;
+__e["retirarProposta"] = retirarProposta;
+__e["minhasPropostas"] = minhasPropostas;
+__e["valorSugerido"] = valorSugerido;
+__e["simularRecebimento"] = simularRecebimento;
 
 });
 __def("packages/core/api/relatorio.js", function (__e) {
@@ -13143,6 +14470,38 @@ async function semear() {
     observacoes: 'Escritório pequeno, 2 salas e 1 banheiro.',
   });
 
+  const comFaixa = somaDias(new Date(), 4);
+  comFaixa.setHours(9, 0, 0, 0);
+  const pFaixa = criarPedido({
+    cliente: 'cliente',
+    servicoId: 'faxina',
+    enderecoId: endCasa,
+    dataHora: comFaixa,
+    horas: 5,
+    tamanhoId: 'grande',
+    estado: ESTADOS.PROCURANDO,
+    observacoes: 'Apartamento de 120 m², 3 quartos.',
+    criadoEm: somaHoras(new Date(), -3),
+  });
+  pFaixa.faixa = { min: 180, max: 230 };
+  const msgDemo = (autor, texto, horasAtras, lidaPor) => ({ id: id('pmsg'), autor, texto, em: somaHoras(new Date(), -horasAtras).toISOString(), lidaPor });
+  pFaixa.propostas = [
+    {
+      id: id('prop'), diaristaId: mapa.d3, valor: 195, estado: 'aberta',
+      criadaEm: somaHoras(new Date(), -2).toISOString(), atualizadaEm: somaHoras(new Date(), -1).toISOString(),
+      conversa: [
+        msgDemo('diarista', 'Bom dia! Faço faxina de apartamento há 8 anos. Levo os meus produtos.', 2, [mapa.d3, mapa.cliente]),
+        msgDemo('cliente', 'Ótimo! Você limpa janelas também?', 1.5, [mapa.cliente, mapa.d3]),
+        msgDemo('diarista', 'Limpo sim, as de dentro e o lado de fora que alcanço com segurança.', 1, [mapa.d3]),
+      ],
+    },
+    {
+      id: id('prop'), diaristaId: mapa.d2, valor: 220, estado: 'aberta',
+      criadaEm: somaHoras(new Date(), -1).toISOString(), atualizadaEm: somaHoras(new Date(), -1).toISOString(),
+      conversa: [msgDemo('diarista', 'Posso fazer em 5 horas, com faxina pesada no banheiro.', 1, [mapa.d2])],
+    },
+  ];
+
   const passado = somaDias(new Date(), -12);
   passado.setHours(9, 0, 0, 0);
   const concluido = criarPedido({
@@ -13665,7 +15024,20 @@ __def("packages/core/domain/preco.js", function (__e) {
 const __i1 = __mod("packages/core/env.js");
 const { REGRAS } = __i1;
 const __i2 = __mod("packages/core/domain/servicos.js");
-const { extraPorId, servicoPorId, tamanhoPorId } = __i2;
+const { extraPorId, servicoPorId, tamanhoPorId, usaTamanho } = __i2;
+const MAXIMO_DE_ADICIONAIS = 3;
+
+function horasSugeridas(servicoId, tamanhoId) {
+  const base = servicoPorId(servicoId)?.horasSugeridas || 4;
+  return Math.max(1, Math.round(usaTamanho(servicoId) ? base * tamanhoPorId(tamanhoId).fator : base));
+}
+
+function adicionaisValidos(lista, principalId) {
+  return [...new Set(Array.isArray(lista) ? lista : [])]
+    .filter((id) => id !== principalId && servicoPorId(id))
+    .slice(0, MAXIMO_DE_ADICIONAIS);
+}
+
 const centavos = (reais) => Math.round((Number(reais) || 0) * 100);
 const reais = (cent) => Math.round(cent) / 100;
 
@@ -13673,13 +15045,28 @@ function orcar(p = {}) {
   const servico = servicoPorId(p.servicoId);
   const tamanho = tamanhoPorId(p.tamanhoId);
 
-  const horas = Number(p.horas) > 0
-    ? Number(p.horas)
-    : Math.max(1, Math.round((servico?.horasSugeridas || 4) * tamanho.fator));
+  const adicionais = adicionaisValidos(p.adicionais, p.servicoId).map((id) => {
+    const s = servicoPorId(id);
+    const proprio = Number(p.precos?.[id]);
+    return { servicoId: id, nome: s.nome, horas: horasSugeridas(id, p.tamanhoId), precoHora: proprio > 0 ? proprio : s.precoHoraSugerido || 45 };
+  });
+  const horasDosAdicionais = adicionais.reduce((s, a) => s + a.horas, 0);
+
+  const sugeridas = Math.max(1, Math.round((servico?.horasSugeridas || 4) * tamanho.fator)) + horasDosAdicionais;
+  const horas = Math.max(horasDosAdicionais + 1, Number(p.horas) > 0 ? Number(p.horas) : sugeridas);
+  const horasPrincipal = horas - horasDosAdicionais;
 
   const precoHora = Number(p.precoHora) > 0 ? Number(p.precoHora) : servico?.precoHoraSugerido || 45;
 
-  const subtotalC = centavos(precoHora) * horas;
+  const combinadoC = Number(p.combinado) > 0 ? centavos(p.combinado) : 0;
+  const subtotalC =
+    combinadoC || centavos(precoHora) * horasPrincipal + adicionais.reduce((s, a) => s + centavos(a.precoHora) * a.horas, 0);
+  const itens = adicionais.length && !combinadoC
+    ? [
+        { servicoId: p.servicoId, nome: servico?.nome || 'Serviço', horas: horasPrincipal, precoHora, valor: reais(centavos(precoHora) * horasPrincipal) },
+        ...adicionais.map((a) => ({ ...a, valor: reais(centavos(a.precoHora) * a.horas) })),
+      ]
+    : [];
 
   const extras = (p.extras || [])
     .map((id) => extraPorId(id))
@@ -13687,15 +15074,18 @@ function orcar(p = {}) {
     .map((e) => ({ id: e.id, nome: e.nome, valor: e.valor }));
   const totalExtrasC = extras.reduce((s, e) => s + centavos(e.valor), 0);
 
-  const adicionalUrgenciaC = p.urgente ? Math.round((subtotalC + totalExtrasC) * 0.15) : 0;
+  const adicionalUrgenciaC = p.urgente && !combinadoC ? Math.round((subtotalC + totalExtrasC) * 0.15) : 0;
   const descontoC = Math.min(centavos(p.desconto), subtotalC + totalExtrasC + adicionalUrgenciaC);
 
   const totalC = Math.max(0, subtotalC + totalExtrasC + adicionalUrgenciaC - descontoC);
-  const taxaC = Math.round(totalC * REGRAS.taxaPlataforma);
+  const taxaC = p.semTaxa ? 0 : Math.round(totalC * REGRAS.taxaPlataforma);
 
   return {
     horas,
-    precoHora,
+    precoHora: combinadoC ? reais(Math.round(combinadoC / horas)) : precoHora,
+    combinado: combinadoC ? reais(combinadoC) : 0,
+    itens,
+    percentualTaxa: p.semTaxa ? 0 : Math.round(REGRAS.taxaPlataforma * 100),
     subtotal: reais(subtotalC),
     extras,
     totalExtras: reais(totalExtrasC),
@@ -13731,20 +15121,41 @@ function liberacaoPrevista(concluidoEm) {
   return d;
 }
 
-function resumoRepasse(total) {
-  const taxaC = Math.round(centavos(total) * REGRAS.taxaPlataforma);
+function resumoRepasse(total, { semTaxa = false } = {}) {
+  const taxaC = semTaxa ? 0 : Math.round(centavos(total) * REGRAS.taxaPlataforma);
   return {
     bruto: reais(centavos(total)),
     taxa: reais(taxaC),
     liquido: reais(centavos(total) - taxaC),
-    percentualTaxa: Math.round(REGRAS.taxaPlataforma * 100),
+    percentualTaxa: semTaxa ? 0 : Math.round(REGRAS.taxaPlataforma * 100),
   };
 }
 
+function avaliarFaixa({ referencia, min, max }) {
+  const ref = Math.max(1, Number(referencia) || 0);
+  const teto = Number(max) || 0;
+  const piso = Number(min) || 0;
+  const r = (v) => `R$ ${Math.round(v).toLocaleString('pt-BR')}`;
+  if (teto < ref * 0.6) {
+    return { nivel: 'muito_baixo', referencia: ref, texto: `Muito barato para esse serviço: o comum é perto de ${r(ref)}. Dificilmente alguém vai aceitar.` };
+  }
+  if (teto < ref * 0.85) {
+    return { nivel: 'baixo', referencia: ref, texto: `Um pouco abaixo do comum (perto de ${r(ref)}). As propostas podem demorar mais.` };
+  }
+  if (piso > ref * 1.35) {
+    return { nivel: 'alto', referencia: ref, texto: `Acima do comum (perto de ${r(ref)}). Você deve receber propostas rápido.` };
+  }
+  return { nivel: 'justo', referencia: ref, texto: `Dentro do que os profissionais costumam cobrar (perto de ${r(ref)}).` };
+}
+
+__e["MAXIMO_DE_ADICIONAIS"] = MAXIMO_DE_ADICIONAIS;
+__e["horasSugeridas"] = horasSugeridas;
+__e["adicionaisValidos"] = adicionaisValidos;
 __e["orcar"] = orcar;
 __e["calcularMulta"] = calcularMulta;
 __e["liberacaoPrevista"] = liberacaoPrevista;
 __e["resumoRepasse"] = resumoRepasse;
+__e["avaliarFaixa"] = avaliarFaixa;
 
 });
 __def("packages/core/domain/recorrencia.js", function (__e) {
@@ -14014,9 +15425,10 @@ const EXTRA_POR_ID = new Map(EXTRAS.map((e) => [e.id, e]));
 const extraPorId = (id) => EXTRA_POR_ID.get(id) || null;
 
 const TAMANHOS = [
-  { id: 'pequeno', nome: 'Até 1 quarto', fator: 0.8 },
-  { id: 'medio', nome: '2 a 3 quartos', fator: 1 },
-  { id: 'grande', nome: '4 quartos ou mais', fator: 1.4 },
+  { id: 'pequeno', nome: 'Até 50 m²', fator: 0.8 },
+  { id: 'medio', nome: '50 a 100 m²', fator: 1 },
+  { id: 'grande', nome: '100 a 200 m²', fator: 1.4 },
+  { id: 'enorme', nome: 'Acima de 200 m²', fator: 1.9 },
   { id: 'comercial', nome: 'Comercial / escritório', fator: 1.6 },
 ];
 const tamanhoPorId = (id) => TAMANHOS.find((t) => t.id === id) || TAMANHOS[1];
@@ -14083,13 +15495,14 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.13.0',
+  versao: '2.14.0',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
 
 const REGRAS = {
-  taxaPlataforma: 0.12,
+  taxaPlataforma: 0.05,
+  planoProfissional: { preco: 29.9, dias: 30 },
   saqueMinimo: 20,
   diasRetencao: 2,
   cancelamentoGratuitoHoras: 24,
@@ -14118,6 +15531,21 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.14.0',
+    data: '19/11/2026',
+    titulo: 'Propostas, vários serviços e taxa de 5%',
+    itens: [
+      'Receber propostas: no pedido, diga quanto quer pagar (de/até). Cada profissional interessado manda o valor dele, e cada proposta abre uma conversa para você perguntar antes de aceitar.',
+      'Dica de preço: ao definir a faixa, o app compara com o que se costuma cobrar e avisa quando está barato demais.',
+      'Vários serviços no mesmo pedido (faxina + passar roupa, por exemplo). Cada um soma as horas e o preço dele.',
+      'Escolha quem vai fazer na hora de publicar: qualquer um, ou um profissional da lista (na ordem do ranking).',
+      'Tamanho do imóvel em metros quadrados.',
+      'Trocar de casa: toque no endereço no topo da tela inicial e escolha onde vai ser o serviço.',
+      'Endereço do serviço abre num mapa dentro do app, com o botão para seguir no app de mapas.',
+      'Taxa do app de 5%, mostrada na hora de fechar. Profissional com o Plano Profissional (R$ 29,90/mês) recebe o valor inteiro.',
+    ],
+  },
   {
     versao: '2.13.0',
     data: '14/11/2026',
@@ -15119,7 +16547,11 @@ function whatsapp(telefone, mensagem = '') {
 function abrirNoMapa(endereco) {
   const q = encodeURIComponent(String(endereco || ''));
   if (!q) return false;
-  location.href = ehIOS() ? `maps://?q=${q}` : `geo:0,0?q=${q}`;
+  if (ehNativo() || /Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    location.href = ehIOS() ? `maps://?q=${q}` : `geo:0,0?q=${q}`;
+  } else {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${q}`, '_blank', 'noopener');
+  }
   return true;
 }
 
@@ -16530,7 +17962,29 @@ function verNoMapa(endereco) {
     return;
   }
   vibrar('leve');
-  abrirNoMapa(endereco);
+  const q = encodeURIComponent(endereco);
+  folha({
+    titulo: 'Endereço do serviço',
+    conteudo: (fechar) =>
+      h(
+        'div',
+        { class: 'pilha' },
+        h('p', { class: 'mapa-endereco' }, icone('pin'), h('span', null, endereco)),
+        h(
+          'div',
+          { class: 'mapa-moldura' },
+          h('span', { class: 'mapa-moldura__espera' }, 'Carregando o mapa...'),
+          h('iframe', {
+            class: 'mapa-moldura__mapa',
+            title: `Mapa: ${endereco}`,
+            src: `https://maps.google.com/maps?q=${q}&z=16&hl=pt-BR&output=embed`,
+            loading: 'lazy',
+            referrerpolicy: 'no-referrer',
+          }),
+        ),
+        Botao({ bloco: true, icone: 'pin', onClick: () => { fechar(); abrirNoMapa(endereco); } }, 'Abrir no app de mapas'),
+      ),
+  });
 }
 
 async function compartilharProfissional(p) {
@@ -17254,6 +18708,257 @@ const PERGUNTAS = {
 };
 
 __e["PERGUNTAS"] = PERGUNTAS;
+
+});
+__def("packages/telas/proposta.js", function (__e) {
+
+const __i1 = __mod("packages/ui/index.js");
+const { h, cada, montar, icone, avisar, Botao, EstadoVazio, Avatar, Estrelas, confirmar, folha, arte } = __i1;
+const __i2 = __mod("packages/core/util/format.js");
+const { hora, dataAmigavel, dinheiro } = __i2;
+const __i3 = __mod("packages/core/api/index.js");
+const api = __i3.default;
+function TelaProposta(app, ctx, { papel, voltarPara }) {
+  const pedidoId = ctx.params.pedido;
+  const propostaId = ctx.params.proposta;
+  const voltar = () => app.ir(papel === 'cliente' ? `/pedido/${pedidoId}` : voltarPara);
+
+  let dados = api.propostas.verProposta(pedidoId, propostaId);
+  if (!dados) {
+    return {
+      barra: { titulo: 'Proposta', aoVoltar: voltar },
+      corpo: EstadoVazio({ icone: 'chat', titulo: 'Proposta indisponível', texto: 'Ela foi encerrada ou não é sua.' }),
+    };
+  }
+
+  const topo = h('div');
+  const listaEl = h('div', { class: 'chat chat--proposta' });
+  const barra = h('div');
+
+  function Topo() {
+    const { pedido, proposta, diarista } = dados;
+    const quem = dados.souCliente
+      ? h(
+          'button',
+          { class: 'proposta-quem', type: 'button', onClick: () => app.ir(`/profissional/${proposta.diaristaId}`) },
+          Avatar({ nome: diarista?.nome || 'Profissional', foto: diarista?.avatar, verificado: diarista?.verificado }),
+          h(
+            'span',
+            { class: 'proposta-quem__texto' },
+            h('b', null, diarista?.nome || 'Profissional'),
+            h('span', null, diarista?.posicao ? `#${diarista.posicao} no ranking · ` : '', `${diarista?.totalServicos || 0} serviços`),
+          ),
+          diarista?.nota ? Estrelas(diarista.nota, { mostrarNumero: true }) : null,
+        )
+      : h(
+          'div',
+          { class: 'proposta-quem' },
+          Avatar({ nome: dados.clienteNome, foto: dados.clienteAvatar }),
+          h('span', { class: 'proposta-quem__texto' }, h('b', null, dados.clienteNome), h('span', null, pedido?.enderecoAproximado || '')),
+        );
+
+    const estadoTexto = { aceita: 'Aceita', recusada: 'Não aceita', retirada: 'Retirada' }[proposta.estado];
+    return h(
+      'div',
+      { class: 'proposta-topo' },
+      quem,
+      h(
+        'div',
+        { class: 'proposta-valor' },
+        h('span', { class: 'item__icone item__icone--arte' }, arte(pedido?.servico?.icone || 'faxina', 30)),
+        h(
+          'div',
+          { class: 'cresce' },
+          h('div', { class: 'proposta-valor__servico' }, pedido?.servico?.nome || 'Serviço'),
+          h('div', { class: 't-sm texto-2' }, pedido ? `${dataAmigavel(pedido.dataHora)} às ${hora(pedido.dataHora)} · ${pedido.horas}h` : ''),
+        ),
+        h('div', { class: 'proposta-valor__numero num' }, dinheiro(proposta.valor)),
+      ),
+      pedido?.faixa
+        ? h(
+            'p',
+            { class: ['proposta-faixa', dados.foraDaFaixa && 'proposta-faixa--fora'] },
+            dados.foraDaFaixa
+              ? `Fora da faixa do pedido (${dinheiro(pedido.faixa.min)} a ${dinheiro(pedido.faixa.max)}).`
+              : `Dentro da faixa do pedido (${dinheiro(pedido.faixa.min)} a ${dinheiro(pedido.faixa.max)}).`,
+          )
+        : null,
+      !dados.souCliente
+        ? h(
+            'div',
+            { class: 'proposta-fechamento' },
+            dados.taxa > 0
+              ? h('span', null, `Taxa do app (${dados.percentualTaxa}%): - ${dinheiro(dados.taxa)}`)
+              : h('span', null, 'Plano Profissional: taxa zero'),
+            h('b', null, `Você recebe ${dinheiro(dados.recebe)}`),
+          )
+        : null,
+      estadoTexto ? h('div', { class: 'proposta-estado' }, `Proposta ${estadoTexto.toLowerCase()}`) : null,
+    );
+  }
+
+  function Mensagens() {
+    return cada(
+      dados.proposta.conversa,
+      (m) =>
+        m.autor === 'sistema'
+          ? h('div', { class: 'chat__data' }, m.texto)
+          : h('div', { class: ['balao', m.minha ? 'balao--meu' : 'balao--dele'] }, m.texto, h('div', { class: 'balao__hora' }, hora(m.em))),
+      () =>
+        h(
+          'div',
+          { class: 'estado-vazio' },
+          h('div', { class: 'estado-vazio__icone' }, icone('chat')),
+          h('h2', null, dados.souCliente ? 'Pergunte o que quiser' : 'Apresente-se'),
+          h('p', null, dados.souCliente ? 'Produtos, experiência, como faz o serviço. A resposta chega aqui.' : 'Diga por que você é a pessoa certa. O cliente lê antes de decidir.'),
+        ),
+    );
+  }
+
+  const entrada = h('textarea', {
+    class: 'entrada',
+    placeholder: dados.souCliente ? 'Pergunte algo...' : 'Mensagem...',
+    rows: 1,
+    maxlength: 800,
+    'aria-label': 'Mensagem',
+    onInput: (e) => {
+      e.target.style.height = 'auto';
+      e.target.style.height = `${Math.min(120, e.target.scrollHeight)}px`;
+    },
+    onKeydown: (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        enviar();
+      }
+    },
+  });
+
+  function enviar() {
+    if (!entrada.value.trim()) return;
+    const r = api.propostas.responderProposta(pedidoId, dados.proposta.id, entrada.value);
+    if (!r.ok) {
+      avisar(r.erro, 'erro');
+      return;
+    }
+    entrada.value = '';
+    entrada.style.height = 'auto';
+    recarregar();
+  }
+
+  async function aceitar() {
+    const nome = dados.diarista?.nome?.split(' ')[0] || 'este profissional';
+    const ok = await confirmar({
+      titulo: `Fechar com ${nome}?`,
+      texto: `${dinheiro(dados.total)} no total. As outras propostas deste pedido são dispensadas e a conversa continua no chat do pedido.`,
+      confirmarTexto: 'Aceitar proposta',
+    });
+    if (!ok) return;
+    const r = api.propostas.aceitarProposta(pedidoId, dados.proposta.id);
+    if (!r.ok) {
+      avisar(r.erro, 'erro');
+      recarregar();
+      return;
+    }
+    avisar(`Fechado! ${nome} já está no seu pedido.`, 'sucesso');
+    app.ir(`/pedido/${pedidoId}`);
+  }
+
+  async function recusar() {
+    const ok = await confirmar({ titulo: 'Dispensar esta proposta?', texto: 'O profissional é avisado. As outras continuam abertas.', confirmarTexto: 'Dispensar', perigo: true });
+    if (!ok) return;
+    const r = api.propostas.recusarProposta(pedidoId, dados.proposta.id);
+    if (!r.ok) avisar(r.erro, 'erro');
+    else app.ir(`/pedido/${pedidoId}`);
+  }
+
+  function mudarValor() {
+    const campo = h('input', { class: 'entrada num', type: 'number', inputmode: 'decimal', min: 20, max: 10000, step: 5, value: String(dados.proposta.valor), 'aria-label': 'Novo valor' });
+    folha({
+      titulo: 'Mudar o valor',
+      conteudo: (fechar) =>
+        h(
+          'div',
+          { class: 'pilha' },
+          h('label', { class: 'campo__rotulo' }, 'Novo valor (R$)'),
+          campo,
+          Botao({
+            bloco: true,
+            onClick: () => {
+              const r = api.propostas.enviarProposta(pedidoId, { valor: Number(campo.value) });
+              if (!r.ok) {
+                avisar(r.erro, 'erro');
+                return;
+              }
+              fechar();
+              avisar('Valor atualizado. O cliente foi avisado.', 'sucesso');
+              recarregar();
+            },
+          }, 'Atualizar proposta'),
+        ),
+    });
+  }
+
+  async function retirar() {
+    const ok = await confirmar({ titulo: 'Retirar sua proposta?', texto: 'O cliente é avisado e o pedido volta para a sua lista de trabalhos.', confirmarTexto: 'Retirar', perigo: true });
+    if (!ok) return;
+    const r = api.propostas.retirarProposta(pedidoId);
+    if (!r.ok) avisar(r.erro, 'erro');
+    else app.ir('/oportunidades');
+  }
+
+  function Barra() {
+    if (!dados.aberta) return null;
+    const acoes = dados.souCliente
+      ? h(
+          'div',
+          { class: 'linha proposta-acoes' },
+          Botao({ variante: 'fantasma', onClick: recusar }, 'Dispensar'),
+          Botao({ bloco: true, icone: 'check', onClick: aceitar }, `Aceitar · ${dinheiro(dados.total)}`),
+        )
+      : h(
+          'div',
+          { class: 'linha proposta-acoes' },
+          Botao({ variante: 'fantasma', onClick: retirar }, 'Retirar'),
+          Botao({ variante: 'contorno', bloco: true, icone: 'lapis', onClick: mudarValor }, 'Mudar valor'),
+        );
+    return h(
+      'div',
+      null,
+      acoes,
+      h('div', { class: 'chat__barra' }, h('div', { class: 'cresce' }, entrada), Botao({ variante: 'principal', icone: 'enviar', onClick: enviar, 'aria-label': 'Enviar' })),
+    );
+  }
+
+  function desenhar() {
+    montar(topo, Topo());
+    montar(listaEl, ...Mensagens());
+    montar(barra, Barra());
+    requestAnimationFrame(() => listaEl.lastElementChild?.scrollIntoView({ block: 'end' }));
+  }
+
+  function recarregar() {
+    const novo = api.propostas.verProposta(pedidoId, propostaId);
+    if (novo) dados = novo;
+    desenhar();
+  }
+
+  desenhar();
+  const parar = api.escutar(api.EVENTOS.PEDIDO_MUDOU, (d) => {
+    if (d?.pedidoId === pedidoId) recarregar();
+  });
+
+  return {
+    barra: {
+      titulo: dados.souCliente ? 'Proposta' : 'Sua proposta',
+      subtitulo: dados.pedido?.servico?.nome || '',
+      aoVoltar: voltar,
+    },
+    corpo: h('div', null, topo, listaEl, barra),
+    aoSair: parar,
+  };
+}
+
+__e["TelaProposta"] = TelaProposta;
 
 });
 __def("packages/telas/ranking.js", function (__e) {
@@ -18075,8 +19780,12 @@ function abrirCamada({ classeCortina, conteudo, aoFechar, fecharClicandoFora = t
   const focoAnterior = document.activeElement;
   const cortina = h('div', { class: ['cortina', classeCortina] });
   let soltarFoco = null;
+  let fechada = false;
 
   const fechar = (resultado) => {
+    if (fechada) return;
+    fechada = true;
+    window.removeEventListener('hashchange', aoTrocarDeTela);
     cortina.remove();
     abertas = Math.max(0, abertas - 1);
     if (!abertas) document.body.style.overflow = '';
@@ -18085,6 +19794,8 @@ function abrirCamada({ classeCortina, conteudo, aoFechar, fecharClicandoFora = t
     focoAnterior?.focus?.();
     aoFechar?.(resultado);
   };
+
+  const aoTrocarDeTela = () => fechar(null);
 
   const aoTeclar = (e) => {
     if (e.key === 'Escape') {
@@ -18106,6 +19817,7 @@ function abrirCamada({ classeCortina, conteudo, aoFechar, fecharClicandoFora = t
   abertas++;
   document.body.style.overflow = 'hidden';
   document.addEventListener('keydown', aoTeclar);
+  window.addEventListener('hashchange', aoTrocarDeTela);
   soltarFoco = prenderFoco(painel);
 
   return fechar;
