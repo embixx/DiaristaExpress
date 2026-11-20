@@ -1,15 +1,14 @@
 {
-  "versao": "2.14.1",
-  "sha256": "85191878028e08538939058f862d77693184dc22218910dced5320f50fca4096",
-  "tamanho": 826308,
+  "versao": "2.14.2",
+  "sha256": "299ae368f5b551ed141208132389db6f02ec5d672df87dde9bc11c896af85f4b",
+  "tamanho": 830011,
   "arquivo": "pacote.html",
-  "publicadaEm": "2026-11-19T22:28:04Z",
+  "publicadaEm": "2026-11-20T06:09:45Z",
   "novidades": [
-    "Proposta nova ou resposta na conversa acende o número vermelho na aba Pedidos (cliente) e Trabalhos (profissional).",
-    "A tela inicial avisa quando há propostas esperando você, com o menor valor recebido.",
-    "Na conversa da proposta, os botões de aceitar e o campo de mensagem ficam sempre visíveis, acima das abas.",
-    "Trabalho que bate com outro já marcado vem avisado no cartão, sem deixar mandar proposta à toa.",
-    "Android: o botão voltar fecha a janela aberta (mapa, filtros, avisos) em vez de sair da tela; na tela inicial, pede um segundo toque para sair."
+    "Publicar pedido: nada mais passa da borda em celular pequeno. Endereço longo quebra a linha em vez de empurrar a tela, e o botão Publicar aparece inteiro.",
+    "Propostas: se o cliente cancelar, mudar a data ou deixar o pedido expirar, quem mandou proposta é avisado na hora.",
+    "Serviço fixo agora guarda os serviços a mais (passar roupa junto, por exemplo) e a sua lista de tarefas para as próximas vezes.",
+    "O cartão de pagamento volta a destacar o Pix esperando pagamento e a avisar em vermelho quando o pagamento é recusado."
   ],
-  "assinatura": "T17FsirOVbEgnmTG0vSfya_utH7dCgQAZoBf8_VBx3q9BdwBpDaRFU0PMklt0CuoA4MAcdnufULMxmgG1Zw6kg"
+  "assinatura": "F4oHk0P1rHFfyEt2S8-kixR_Kic2UCvgy8cqT4N416r6nGl8p_2M7u4f1cH3YNf9hcnhHMWhA4El9MD7WHgeCQ"
 }

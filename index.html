@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.14.1 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.14.2 - arquivo unico">
 <style>
 
 :root {
@@ -336,9 +336,10 @@ h3 { font-size: var(--t-lg); letter-spacing: -0.015em; }
 }
 
 .conteudo {
+  --respiro: var(--e5);
   flex: 1;
   width: 100%;
-  padding: var(--e4) var(--e5);
+  padding: var(--e4) var(--respiro);
   padding-bottom: calc(var(--abas-altura, 0px) + var(--e7));
 }
 .conteudo--sem-abas { padding-bottom: calc(var(--e7) + var(--seguro-base)); }
@@ -859,8 +860,8 @@ span.ficha[aria-pressed='true'] { border-style: solid; }
   overflow-x: auto;
   scrollbar-width: none;
   padding-bottom: 2px;
-  margin-inline: calc(var(--e5) * -1);
-  padding-inline: var(--e5);
+  margin-inline: calc(var(--respiro, var(--e5)) * -1);
+  padding-inline: var(--respiro, var(--e5));
   scroll-snap-type: x proximity;
 }
 .fichas--rolagem::-webkit-scrollbar { display: none; }
@@ -1252,7 +1253,8 @@ button.item:active { background: color-mix(in srgb, var(--texto) 8%, var(--ladri
   font-weight: 800;
   font-size: var(--t-lg);
 }
-.resumo-linha__valor { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 700; }
+.resumo-linha__valor { font-variant-numeric: tabular-nums; font-weight: 700; text-align: right; min-width: 0; overflow-wrap: anywhere; }
+.resumo-linha > :first-child { flex: none; max-width: 50%; }
 
 .calendario { display: block; }
 .calendario__cabecalho {
@@ -2010,7 +2012,7 @@ button.tarefa:active { background: var(--superficie-2); }
 .duas-colunas > * + * { margin-top: var(--e7); }
 
 @media (max-width: 360px) {
-  .conteudo { padding-inline: var(--e4); }
+  .conteudo { --respiro: var(--e4); }
   .barra { padding-left: var(--e4); }
   .aba { font-size: .66rem; }
   .aba__icone { width: 50px; }
@@ -2029,7 +2031,7 @@ button.tarefa:active { background: var(--superficie-2); }
 
 
 @media (min-width: 640px) {
-  .conteudo { padding: var(--e6) var(--e6) calc(var(--abas-altura, 0px) + var(--e8)); }
+  .conteudo { --respiro: var(--e6); padding: var(--e6) var(--respiro) calc(var(--abas-altura, 0px) + var(--e8)); }
   .barra { padding-inline: var(--e6) var(--e4); }
   .servicos { grid-template-columns: repeat(6, minmax(0, 1fr)); }
   .abas { border: 1.5px solid var(--linha); border-bottom: 0; border-radius: var(--r-xl) var(--r-xl) 0 0; }
@@ -2185,9 +2187,9 @@ button.tarefa:active { background: var(--superficie-2); }
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
-  margin-inline: calc(-1 * var(--e5));
-  padding: 2px var(--e5) 8px;
-  scroll-padding-inline: var(--e5);
+  margin-inline: calc(-1 * var(--respiro, var(--e5)));
+  padding: 2px var(--respiro, var(--e5)) 8px;
+  scroll-padding-inline: var(--respiro, var(--e5));
   scrollbar-width: none;
 }
 .ofertas::-webkit-scrollbar { display: none; }
@@ -2266,7 +2268,7 @@ button.tarefa:active { background: var(--superficie-2); }
 
 
 .fichas--rolagem > * { flex: none; }
-.fichas--rolagem { scroll-padding-inline: var(--e5); }
+.fichas--rolagem { scroll-padding-inline: var(--respiro, var(--e5)); }
 
 .vitrine {
   position: relative;
@@ -2415,9 +2417,9 @@ button.tarefa:active { background: var(--superficie-2); }
   gap: var(--e3);
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  margin-inline: calc(-1 * var(--e5));
-  padding: 2px var(--e5) 6px;
-  scroll-padding-inline: var(--e5);
+  margin-inline: calc(-1 * var(--respiro, var(--e5)));
+  padding: 2px var(--respiro, var(--e5)) 6px;
+  scroll-padding-inline: var(--respiro, var(--e5));
   scrollbar-width: none;
 }
 .pessoas::-webkit-scrollbar { display: none; }
@@ -2584,9 +2586,9 @@ button.tarefa:active { background: var(--superficie-2); }
   gap: var(--e2);
   overflow-x: auto;
   scroll-snap-type: x proximity;
-  margin-inline: calc(-1 * var(--e5));
-  padding: 2px var(--e5) 4px;
-  scroll-padding-inline: var(--e5);
+  margin-inline: calc(-1 * var(--respiro, var(--e5)));
+  padding: 2px var(--respiro, var(--e5)) 4px;
+  scroll-padding-inline: var(--respiro, var(--e5));
   scrollbar-width: none;
 }
 .filtros-servico::-webkit-scrollbar { display: none; }
@@ -3080,7 +3082,7 @@ div.ranking-linha { cursor: default; }
 .adicional--marcado .adicional__extra { color: var(--marca-forte); }
 .adicional__extra svg { width: 16px; height: 16px; }
 .faixa-preco { display: flex; align-items: flex-end; gap: var(--e2); margin-top: var(--e3); }
-.faixa-preco__campo { flex: 1; min-width: 0; display: grid; gap: 6px; }
+.faixa-preco__campo { flex: 1; min-width: 0; display: grid; gap: var(--e2); }
 .faixa-preco__rotulo { font-size: .8rem; font-weight: 700; color: var(--texto-2); }
 .faixa-preco__entrada { display: flex; align-items: center; gap: 6px; height: 52px; padding: 0 14px; border-radius: 14px; background: var(--ladrilho); }
 .faixa-preco__entrada:focus-within { outline: 2px solid var(--marca); outline-offset: 1px; }
@@ -3116,6 +3118,8 @@ div.ranking-linha { cursor: default; }
 .proposta-valor__numero { font-size: clamp(1.15rem, 5.4vw, 1.5rem); }
 .selo-novo--vermelho { background: var(--marcador-fundo, #dc2626); color: #fff; }
 .chat--proposta { padding-top: var(--e3); }
+
+.pagamento .linha--entre { flex-wrap: wrap; row-gap: var(--e2); }
 
 
 @keyframes dx-surgir {
@@ -3517,7 +3521,7 @@ div.ranking-linha { cursor: default; }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.14.1";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.14.2";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -5589,6 +5593,7 @@ function TelaNovoPedido(app, ctx) {
       if (modo === 'propostas') {
         estado.cupom = '';
         estado.descontoCupom = 0;
+        estado.frequenciaId = null; // servico fixo tem preco fixo
       }
       desenharFaixa();
       atualizarRodape();
@@ -5877,7 +5882,7 @@ function TelaNovoPedido(app, ctx) {
 
       CampoPagamento(),
 
-      CampoRepetir(),
+      estado.modoPreco === 'propostas' ? null : CampoRepetir(),
 
       estado.modoPreco === 'propostas' ? null : CampoCupom(),
 
@@ -6156,7 +6161,7 @@ function TelaNovoPedido(app, ctx) {
             'div',
             { class: 'cresce' },
             h('div', { class: 't-xs texto-3' }, propostas ? 'sua faixa' : ultimo ? 'total' : 'valor estimado'),
-            h('div', { class: 'valor-medio' }, propostas ? `${dinheiro(estado.faixa.min)} a ${dinheiro(estado.faixa.max)}` : dinheiro(o.total)),
+            h('div', { class: 'valor-medio' }, propostas ? `R$ ${Math.round(estado.faixa.min)} a ${Math.round(estado.faixa.max)}` : dinheiro(o.total)),
           )
         : null,
       Botao(
@@ -6185,6 +6190,7 @@ function TelaNovoPedido(app, ctx) {
             class: 'ficha',
             type: 'button',
             'aria-pressed': i === estado.passo ? 'true' : 'false',
+            'aria-label': `${i + 1}. ${nome}${i < estado.passo ? ' (feito)' : ''}`,
             disabled: i > estado.passo || null,
             onClick: () => {
               estado.passo = i;
@@ -6192,7 +6198,7 @@ function TelaNovoPedido(app, ctx) {
             },
           },
           i < estado.passo ? icone('check') : null,
-          `${i + 1}. ${nome}`,
+          i < estado.passo ? `${i + 1}` : `${i + 1}. ${nome}`,
         ),
       ),
     );
@@ -10062,6 +10068,10 @@ function criarAssinatura(dados) {
     return { ok: false, erros: { enderecoId: 'Escolha um endereço seu.' } };
   }
 
+  if (dados.faixa) {
+    return { ok: false, erros: { faixa: 'Serviço fixo usa o preço do profissional. Propostas valem para pedido avulso.' } };
+  }
+
   const primeiro = criarPedido(dados);
   if (!primeiro.ok) return primeiro;
 
@@ -10071,7 +10081,9 @@ function criarAssinatura(dados) {
     servicoId: dados.servicoId,
     enderecoId: endereco.id,
     frequenciaId: frequencia.id,
-    horas: numero(dados.horas, { min: 1, max: 12, padrao: 4 }),
+    horas: primeiro.pedido.horas,
+    adicionais: [...(primeiro.pedido.adicionais || [])],
+    tarefas: (primeiro.pedido.tarefas || []).map((t) => t.texto),
     tamanhoId: tamanhoPorId(dados.tamanhoId).id,
     periodoId: periodoPorId(dados.periodoId).id,
     extras: (dados.extras || []).filter((e) => !!extraPorId(e)),
@@ -10217,6 +10229,8 @@ function garantirProximos() {
       tamanhoId: a.tamanhoId,
       periodoId: a.periodoId,
       extras: a.extras,
+      adicionais: a.adicionais || [],
+      tarefas: a.tarefas,
       observacoes: a.observacoes,
       diaristaPreferidoId: a.diaristaFixoId || null,
     });
@@ -11932,6 +11946,15 @@ const servicosDoPedido = (p) => [p.servicoId, ...(p.adicionais || [])];
 
 const atendeOPedido = (perfil, p) => servicosDoPedido(p).every((s) => perfil?.servicos?.includes(s));
 
+function encerrarPropostas(p, estado, titulo, mensagem) {
+  const agora = new Date().toISOString();
+  for (const x of p.propostas || []) {
+    if (x.estado !== 'aberta') continue;
+    notificar(x.diaristaId, { titulo, mensagem, tipo: 'info', link: '#/oportunidades' });
+  }
+  return (p.propostas || []).map((x) => (x.estado === 'aberta' ? { ...x, estado, decididaEm: agora } : x));
+}
+
 function comAdicionais(servico, adicionais) {
   if (!servico || !adicionais?.length) return servico;
   const nomes = adicionais.map((id) => servicoPorId(id)?.curto || servicoPorId(id)?.nome).filter(Boolean);
@@ -11994,6 +12017,10 @@ function criarPedido(dados) {
     } else if ((escolhido.folgas || []).includes(isoData(new Date(limpo.dataHora)))) {
       return { ok: false, erros: { data: 'Este profissional está de folga nesse dia. Escolha outra data.' } };
     }
+  }
+
+  if (faixa && codigoCupom) {
+    return { ok: false, erros: { cupom: 'Cupom vale só com o preço do profissional, não em pedido com propostas.' } };
   }
 
   const urgente = new Date(limpo.dataHora).getTime() - Date.now() < 36 * 3600000;
@@ -12429,6 +12456,7 @@ function cancelar(p, parte, motivo) {
         canceladoEm: new Date().toISOString(),
         motivoCancelamento: limparParagrafo(motivo, 200),
         multaAplicada: multa.valor,
+        propostas: encerrarPropostas(p, 'encerrada', 'Pedido cancelado', `${servicoPorId(p.servicoId)?.nome} de ${dataAmigavel(p.dataHora)} foi cancelado pelo cliente. Sua proposta foi encerrada.`),
         pagamento: encerrarCobranca(p.pagamento, { multa: multa.valor }),
       },
       `Cancelado pelo cliente. ${multa.motivo}`,
@@ -12553,9 +12581,26 @@ function reagendar(pedidoId, { data, periodoId, hora: horaPedida } = {}) {
     }
   }
 
+  const agoraISO = new Date().toISOString();
+  const propostasReagendadas = (p.propostas || []).map((x) =>
+    x.estado === 'aberta'
+      ? { ...x, conversa: [...(x.conversa || []), { id: id('pmsg'), autor: 'sistema', texto: `Nova data: ${dataAmigavel(quando)} às ${hora(quando)}`, em: agoraISO, lidaPor: [conta.id] }] }
+      : x,
+  );
+  for (const x of p.propostas || []) {
+    if (x.estado !== 'aberta') continue;
+    notificar(x.diaristaId, {
+      titulo: 'O cliente mudou a data',
+      mensagem: `${servicoPorId(p.servicoId)?.nome} agora é ${dataAmigavel(quando)} às ${hora(quando)}. Sua proposta continua valendo; retire se não puder.`,
+      tipo: 'alerta',
+      link: `#/proposta/${p.id}/${x.id}`,
+    });
+  }
+
   lista[i] = anotar(
     {
       ...p,
+      propostas: propostasReagendadas,
       dataHora: quando.toISOString(),
       periodoId: periodo.id,
       reagendamentos: (p.reagendamentos || 0) + 1,
@@ -12799,13 +12844,24 @@ function expirarVencidos() {
     if (p.estado !== ESTADOS.PROCURANDO) return p;
     if (new Date(p.expiraEm || 0).getTime() > agora) return p;
     mudou = true;
+    const tinhaPropostas = (p.propostas || []).some((x) => x.estado === 'aberta');
     notificar(p.clienteId, {
       titulo: 'Pedido expirou',
-      mensagem: 'Ninguém aceitou a tempo. Você pode publicar de novo ajustando data ou valor.',
+      mensagem: tinhaPropostas
+        ? 'O prazo para escolher uma proposta terminou. Publique de novo para receber propostas novas.'
+        : 'Ninguém aceitou a tempo. Você pode publicar de novo ajustando data ou valor.',
       tipo: 'alerta',
       link: `#/pedido/${p.id}`,
     });
-    return anotar({ ...p, estado: ESTADOS.EXPIRADO }, 'Expirado sem propostas', 'sistema');
+    return anotar(
+      {
+        ...p,
+        estado: ESTADOS.EXPIRADO,
+        propostas: encerrarPropostas(p, 'expirada', 'Pedido expirou', `O cliente não escolheu a tempo: ${servicoPorId(p.servicoId)?.nome} de ${dataAmigavel(p.dataHora)} expirou.`),
+      },
+      tinhaPropostas ? 'Expirado sem proposta escolhida' : 'Expirado sem propostas',
+      'sistema',
+    );
   });
   if (mudou) salvarTodos(lista);
   return mudou;
@@ -15587,7 +15643,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.14.1',
+  versao: '2.14.2',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -15623,6 +15679,17 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.14.2',
+    data: '20/11/2026',
+    titulo: 'Tudo no lugar',
+    itens: [
+      'Publicar pedido: nada mais passa da borda em celular pequeno. Endereço longo quebra a linha em vez de empurrar a tela, e o botão Publicar aparece inteiro.',
+      'Propostas: se o cliente cancelar, mudar a data ou deixar o pedido expirar, quem mandou proposta é avisado na hora.',
+      'Serviço fixo agora guarda os serviços a mais (passar roupa junto, por exemplo) e a sua lista de tarefas para as próximas vezes.',
+      'O cartão de pagamento volta a destacar o Pix esperando pagamento e a avisar em vermelho quando o pagamento é recusado.',
+    ],
+  },
   {
     versao: '2.14.1',
     data: '19/11/2026',
@@ -18861,7 +18928,7 @@ function TelaProposta(app, ctx, { papel, voltarPara }) {
           h('span', { class: 'proposta-quem__texto' }, h('b', null, dados.clienteNome), h('span', null, pedido?.enderecoAproximado || '')),
         );
 
-    const estadoTexto = { aceita: 'Aceita', recusada: 'Não aceita', retirada: 'Retirada' }[proposta.estado];
+    const estadoTexto = { aceita: 'Aceita', recusada: 'Não aceita', retirada: 'Retirada', encerrada: 'Encerrada (pedido cancelado)', expirada: 'Expirada' }[proposta.estado];
     return h(
       'div',
       { class: 'proposta-topo' },
@@ -20945,7 +21012,7 @@ function aplicarProps(el, props) {
     const valor = PROPS_DE_ENDERECO.has(chave) ? enderecoSeguro(bruto) : bruto;
 
     if (chave === 'class' || chave === 'className') {
-      el.className = Array.isArray(valor) ? valor.filter(Boolean).join(' ') : String(valor);
+      el.className = Array.isArray(valor) ? valor.flat(Infinity).filter(Boolean).join(' ') : String(valor);
     } else if (chave === 'style' && typeof valor === 'object') {
       for (const [prop, v] of Object.entries(valor)) {
         if (prop.startsWith('--')) el.style.setProperty(prop, String(v));
