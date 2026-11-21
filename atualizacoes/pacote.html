@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="generator" content="DiaristaExpress 2.14.2 - arquivo unico">
+<meta name="generator" content="DiaristaExpress 2.14.3 - arquivo unico">
 <style>
 
 :root {
@@ -3121,6 +3121,124 @@ div.ranking-linha { cursor: default; }
 
 .pagamento .linha--entre { flex-wrap: wrap; row-gap: var(--e2); }
 
+.opcao { flex-wrap: wrap; }
+.opcao__texto { flex: 1 1 6em; min-width: 6em; }
+.opcao__valor { margin-left: auto; }
+.opcao__titulo { overflow-wrap: break-word; }
+.acoes-fixas { flex-wrap: wrap; }
+.acoes-fixas .btn { min-width: fit-content; }
+.segmentos { grid-auto-columns: auto; }
+.segmentos .ficha { white-space: normal; text-overflow: clip; text-align: center; line-height: 1.15; }
+@media (max-width: 767px) {
+  .servicos { grid-template-columns: repeat(auto-fill, minmax(4.75em, 1fr)); }
+}
+
+
+.passo-pedido-trilha { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: var(--e4); }
+.passo-pedido { display: grid; align-content: start; gap: 6px; min-height: 34px; padding: 4px 0; border: 0; background: none; color: var(--texto-3); font: inherit; text-align: left; cursor: pointer; }
+.passo-pedido:disabled { cursor: default; }
+.passo-pedido__barra { display: block; height: 4px; border-radius: 4px; background: color-mix(in srgb, var(--texto) 16%, transparent); transition: background var(--rapido); }
+.passo-pedido--atual .passo-pedido__barra, .passo-pedido--feita .passo-pedido__barra { background: var(--marca); }
+.passo-pedido__nome { display: flex; align-items: center; gap: 4px; font-size: .78rem; font-weight: 700; line-height: 1.2; }
+.passo-pedido__nome svg { flex: none; width: 14px; height: 14px; }
+.passo-pedido--atual { color: var(--texto); }
+.passo-pedido--feita { color: var(--texto-2); }
+.passo-pedido:focus-visible { outline: 3px solid var(--destaque); outline-offset: 2px; border-radius: 6px; }
+
+.ladrilhos { display: grid; grid-template-columns: repeat(auto-fill, minmax(6.4em, 1fr)); gap: var(--e2); }
+.ladrilhos > .opcao { position: relative; flex-direction: column; flex-wrap: nowrap; justify-content: flex-start; align-items: center; gap: 6px; min-height: 0; padding: 14px 6px 12px; border-width: 2px; text-align: center; }
+.ladrilhos .opcao__marca { position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; }
+.ladrilhos .opcao:not(:has(input:checked)) .opcao__marca { opacity: 0; }
+.ladrilhos .opcao__texto { flex: none; width: 100%; min-width: 0; align-items: center; overflow: visible; }
+.ladrilhos .opcao__titulo { font-size: .84rem; line-height: 1.15; }
+.ladrilhos .opcao__valor { margin: 0; font-size: .74rem; font-weight: 700; color: var(--texto-2); }
+.ladrilhos .opcao:has(input:checked) .opcao__valor { color: var(--texto); }
+.ladrilhos--texto > .opcao { justify-content: center; padding: 12px 8px; }
+.ladrilhos--texto .opcao__resumo { font-size: .74rem; overflow-wrap: normal; }
+
+.escolhido { margin-top: calc(var(--e2) * -1); font-size: var(--t-sm); color: var(--texto-2); }
+.escolhido b { color: var(--texto); }
+
+@media (max-width: 767px) {
+  .adicionais {
+    display: flex;
+    overflow-x: auto;
+    margin: 0 calc(-1 * var(--respiro, var(--e5)));
+    padding: 2px var(--respiro, var(--e5)) 4px;
+    scroll-padding-inline: var(--respiro, var(--e5));
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+  .adicionais::-webkit-scrollbar { display: none; }
+  .adicional { flex: 0 0 88px; scroll-snap-align: start; }
+}
+
+.grade-opcoes { display: grid; grid-template-columns: repeat(auto-fill, minmax(9.5em, 1fr)); gap: var(--e2); }
+.grade-opcoes > .opcao { min-height: 0; gap: 10px; padding: 10px 12px; }
+.grade-opcoes .opcao__marca { width: 20px; height: 20px; }
+.grade-opcoes .opcao__texto { flex: 1 1 auto; min-width: 0; }
+
+.lista.lista--agrupada { gap: 0; background: var(--ladrilho); border-radius: 20px; overflow: hidden; }
+.lista--agrupada > .opcao { min-height: 52px; padding: 10px var(--e4); background: transparent; border: 0; border-radius: 0; }
+.lista--agrupada > .opcao + .opcao { border-top: 1px solid color-mix(in srgb, var(--texto) 9%, transparent); }
+.lista--agrupada > .opcao:has(input:checked) { background: transparent; box-shadow: none; }
+.lista--agrupada > .opcao:has(input:focus-visible) { outline-offset: -3px; }
+.lista--agrupada .opcao__titulo { font-weight: 600; }
+.lista--agrupada .opcao__marca { width: 22px; height: 22px; }
+
+.contador { display: flex; align-items: center; gap: var(--e2); padding: var(--e3) var(--e3) var(--e3) var(--e4); background: var(--ladrilho); border-radius: 18px; }
+.contador__valor { font-size: 1.5rem; font-weight: 800; line-height: 1.1; }
+.contador__botao { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 1.5px solid var(--borda-forte); border-radius: 50%; background: var(--fundo); color: var(--texto); font: inherit; font-size: 1.4rem; font-weight: 700; line-height: 1; cursor: pointer; }
+.contador__botao:active { transform: scale(.94); }
+.contador__botao:focus-visible { outline: 3px solid var(--destaque); outline-offset: 2px; }
+
+.dias {
+  display: flex;
+  gap: var(--e2);
+  overflow-x: auto;
+  margin: 0 calc(-1 * var(--respiro, var(--e5)));
+  padding: 2px var(--respiro, var(--e5)) 6px;
+  scroll-padding-inline: var(--respiro, var(--e5));
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+}
+.dias::-webkit-scrollbar { display: none; }
+.dia-chip { flex: none; display: grid; justify-items: center; gap: 2px; min-width: 64px; padding: 10px 8px; border: 2px solid transparent; border-radius: 16px; background: var(--ladrilho); color: var(--texto); font: inherit; cursor: pointer; scroll-snap-align: start; }
+.dia-chip__semana, .dia-chip__mes { font-size: .72rem; font-weight: 600; color: var(--texto-2); white-space: nowrap; }
+.dia-chip__numero { font-size: 1.35rem; line-height: 1.1; }
+.dia-chip--escolhido { border-color: var(--marca); background: var(--marca); color: #fff; }
+.dia-chip--escolhido .dia-chip__semana, .dia-chip--escolhido .dia-chip__mes { color: #fff; }
+.dia-chip--outra svg { width: 22px; height: 22px; margin: 2px 0; }
+.dia-chip:focus-visible { outline: 3px solid var(--destaque); outline-offset: 2px; }
+.dias + .cartao { margin-top: var(--e3); }
+
+.secao__titulo { flex-wrap: wrap; row-gap: 2px; }
+.secao__titulo h2 { min-width: min(100%, max-content); }
+.ladrilhos--texto .opcao__marca { display: none; }
+@media (min-width: 768px) {
+  .ladrilhos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ladrilhos--texto { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.link-alvo { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; margin: -12px -8px; }
+.indicadores { grid-template-columns: repeat(auto-fit, minmax(6.2em, 1fr)); }
+.bilhete { display: flex; flex-wrap: wrap; align-items: center; }
+.bilhete__rotulo { flex: 1 0 100%; }
+.bilhete__codigo { flex: 1 1 auto; min-width: 0; }
+.bilhete__copiar { flex: none; margin-left: auto; }
+.procura__texto { white-space: normal; line-height: 1.2; }
+@media (max-width: 340px) {
+  .abas--pilula { left: 8px; right: 8px; }
+  .abas--pilula .aba__icone { width: 42px; }
+}
+.codigo { gap: clamp(4px, 1.6vw, var(--e2)); }
+.codigo span { width: clamp(34px, 11vw, 44px); height: auto; aspect-ratio: 44 / 54; }
+.bilhete { row-gap: var(--e2); }
+@media (max-width: 340px) {
+  .cartao:has(> .calendario), .cartao:has(> div > .calendario) { padding-inline: 8px; }
+  .calendario__semana, .calendario__grade { gap: 2px; }
+}
+
 
 @keyframes dx-surgir {
   from { opacity: 0; transform: translate3d(0, 10px, 0); }
@@ -3521,7 +3639,7 @@ div.ranking-linha { cursor: default; }
 (function () {
   'use strict';
 
-  var VERSAO_BASE = window.__dxVersaoBase || "2.14.2";
+  var VERSAO_BASE = window.__dxVersaoBase || "2.14.3";
   var CANAL = "https://embixx.github.io/DiaristaExpress/atualizacoes/";
   var CHAVE_PUBLICA = {"kty": "EC", "crv": "P-256", "x": "3V0VNvB6H7SJsf2IBhKpLhgPlWwiKN1wIv9Uy0tadUQ", "y": "URsTo7lYjDm_DEIY3nYA7GvhQ2tJnK-3S_EwDxq-AyQ"};
   var PFX = 'dx-atualizacao:';
@@ -5335,7 +5453,7 @@ function TelaNovoPedido(app, ctx) {
 
   const conteudo = h('div');
   const rodape = h('div', { class: 'acoes-fixas' });
-  const trilha = h('div', { class: 'fichas fichas--passos', style: { marginBottom: '16px' } });
+  const trilha = h('nav', { class: 'passo-pedido-trilha', 'aria-label': 'Etapas do pedido' });
   const faixaPreferido = h('div');
 
   const orcamento = () => {
@@ -5408,13 +5526,12 @@ function TelaNovoPedido(app, ctx) {
       h('div', { class: 'cartao__titulo', style: { marginBottom: '-6px' } }, g.nome),
       h(
         'div',
-        { class: 'lista' },
+        { class: 'ladrilhos', role: 'radiogroup', 'aria-label': g.nome },
         ...SERVICOS.filter((s) => grupoDoServico(s.id) === g.id).map((s) =>
           Opcao({
             nome: 'servico',
             valor: s.id,
             titulo: s.nome,
-            resumo: s.resumo,
             desenho: arte(s.icone, 34),
             fim: `${dinheiro(s.precoHoraSugerido)}/h`,
             marcado: estado.servicoId === s.id,
@@ -5437,12 +5554,13 @@ function TelaNovoPedido(app, ctx) {
         ? h(
             'div',
             { class: 'pilha entra' },
+            h('p', { class: 'escolhido' }, h('b', null, servicoPorId(estado.servicoId)?.nome), ` · ${servicoPorId(estado.servicoId)?.resumo || ''}`),
             SecaoAdicionais(),
             QuemVaiFazer(),
             ...(usaTamanho(estado.servicoId) ? [Secao('Tamanho do imóvel'),
             h(
               'div',
-              { class: 'lista' },
+              { class: 'grade-opcoes', role: 'radiogroup', 'aria-label': 'Tamanho do imóvel' },
               ...TAMANHOS.map((t) =>
                 Opcao({
                   nome: 'tamanho',
@@ -5468,7 +5586,7 @@ function TelaNovoPedido(app, ctx) {
             Secao('Extras'),
             h(
               'div',
-              { class: 'lista' },
+              { class: 'lista lista--agrupada' },
               ...extrasDoServico(estado.servicoId).map((e) =>
                 Opcao({
                   nome: 'extras',
@@ -5630,7 +5748,7 @@ function TelaNovoPedido(app, ctx) {
   }
 
   function SecaoTarefas() {
-    const lista = h('div', { class: 'lista' });
+    const lista = h('div', { class: 'lista lista--agrupada' });
     const nova = h('input', {
       class: 'entrada',
       maxlength: 80,
@@ -5701,15 +5819,13 @@ function TelaNovoPedido(app, ctx) {
       atualizarRodape();
     };
 
-    return Cartao(
-      { variante: 'suave' },
-      h(
-        'div',
-        { class: 'linha linha--entre' },
-        Botao({ variante: 'contorno', icone: 'seta_esq', onClick: () => mudar(-1), 'aria-label': 'Menos uma hora' }),
-        h('div', { class: 'cresce centro' }, mostrar, h('div', { class: 't-xs texto-3' }, 'duração estimada')),
-        Botao({ variante: 'contorno', icone: 'seta_dir', onClick: () => mudar(1), 'aria-label': 'Mais uma hora' }),
-      ),
+    mostrar.className = 'contador__valor num';
+    return h(
+      'div',
+      { class: 'contador' },
+      h('div', { class: 'cresce' }, mostrar, h('div', { class: 't-xs texto-3' }, 'estimada pelo tamanho')),
+      h('button', { class: 'contador__botao', type: 'button', onClick: () => mudar(-1), 'aria-label': 'Menos uma hora' }, '−'),
+      h('button', { class: 'contador__botao', type: 'button', onClick: () => mudar(1), 'aria-label': 'Mais uma hora' }, '+'),
     );
   }
 
@@ -5725,12 +5841,69 @@ function TelaNovoPedido(app, ctx) {
           aoEscolher: (d) => {
             estado.data = d;
             desenharCalendario(d);
+            verCalendario = false;
+            desenharDias();
             atualizarRodape();
           },
           aoTrocarMes: (m) => desenharCalendario(m),
         }),
       );
     desenharCalendario(estado.data);
+
+    const SEMANA = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'];
+    const MESES = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+    const proximos = Array.from({ length: 14 }, (_, i) => somaDias(new Date(), i));
+    const naFaixa = () => proximos.some((d) => isoData(d) === isoData(estado.data));
+    let verCalendario = !naFaixa();
+    const areaDias = h('div');
+    const desenharDias = () =>
+      montar(
+        areaDias,
+        h(
+          'div',
+          { class: 'dias', role: 'group', 'aria-label': 'Data' },
+          ...proximos.map((d, i) => {
+            const escolhido = isoData(d) === isoData(estado.data);
+            return h(
+              'button',
+              {
+                class: ['dia-chip', escolhido && 'dia-chip--escolhido'],
+                type: 'button',
+                'aria-pressed': String(escolhido),
+                'aria-label': dataAmigavel(d),
+                onClick: () => {
+                  estado.data = d;
+                  verCalendario = false;
+                  desenharDias();
+                  desenharCalendario(d);
+                  atualizarRodape();
+                },
+              },
+              h('span', { class: 'dia-chip__semana' }, i === 0 ? 'hoje' : i === 1 ? 'amanhã' : SEMANA[d.getDay()]),
+              h('b', { class: 'dia-chip__numero num' }, String(d.getDate())),
+              h('span', { class: 'dia-chip__mes' }, MESES[d.getMonth()]),
+            );
+          }),
+          h(
+            'button',
+            {
+              class: ['dia-chip', 'dia-chip--outra', !naFaixa() && 'dia-chip--escolhido'],
+              type: 'button',
+              'aria-expanded': String(verCalendario),
+              onClick: () => {
+                verCalendario = !verCalendario;
+                desenharDias();
+              },
+            },
+            icone('calendario'),
+            naFaixa()
+              ? [h('span', { class: 'dia-chip__semana' }, 'outra'), h('span', { class: 'dia-chip__mes' }, 'data')]
+              : [h('b', { class: 'dia-chip__numero num' }, String(estado.data.getDate())), h('span', { class: 'dia-chip__mes' }, MESES[estado.data.getMonth()])],
+          ),
+        ),
+        verCalendario ? Cartao({ class: 'entra' }, calendario) : null,
+      );
+    desenharDias();
 
     const areaHoras = h('div', { class: 'fichas', role: 'group', 'aria-label': 'Hora de chegada' });
     const desenharHoras = () =>
@@ -5780,17 +5953,16 @@ function TelaNovoPedido(app, ctx) {
         : Destaque({ tom: 'alerta' }, 'Cadastre um endereço para continuar. ', h('a', { href: '#/enderecos?voltar=/novo' }, 'Cadastrar agora')),
 
       Secao('Data'),
-      Cartao(null, calendario),
+      areaDias,
 
       Secao('Período'),
       h(
         'div',
-        { class: 'lista' },
+        { class: 'ladrilhos ladrilhos--texto', role: 'radiogroup', 'aria-label': 'Período' },
         ...PERIODOS.map((p) =>
           Opcao({
             nome: 'periodo',
             valor: p.id,
-            icone: 'relogio',
             titulo: p.nome,
             resumo: p.janela,
             marcado: estado.periodoId === p.id,
@@ -6187,9 +6359,9 @@ function TelaNovoPedido(app, ctx) {
         h(
           'button',
           {
-            class: 'ficha',
+            class: ['passo-pedido', i === estado.passo && 'passo-pedido--atual', i < estado.passo && 'passo-pedido--feita'],
             type: 'button',
-            'aria-pressed': i === estado.passo ? 'true' : 'false',
+            'aria-current': i === estado.passo ? 'step' : null,
             'aria-label': `${i + 1}. ${nome}${i < estado.passo ? ' (feito)' : ''}`,
             disabled: i > estado.passo || null,
             onClick: () => {
@@ -6197,8 +6369,8 @@ function TelaNovoPedido(app, ctx) {
               desenhar();
             },
           },
-          i < estado.passo ? icone('check') : null,
-          i < estado.passo ? `${i + 1}` : `${i + 1}. ${nome}`,
+          h('span', { class: 'passo-pedido__barra' }),
+          h('span', { class: 'passo-pedido__nome' }, i < estado.passo ? icone('check') : null, nome),
         ),
       ),
     );
@@ -6664,6 +6836,7 @@ function TelaPedido(app, ctx) {
       texto: `${p.servico?.nome} ${dataAmigavel(p.dataHora)} às ${hora(p.dataHora)}${p.diaristaNome ? `, com ${nomeCurto(p.diaristaNome)}` : ''}.`,
     });
     if (r === 'copiado') avisar('Texto copiado. Cole na conversa.', 'sucesso');
+    else if (r === false) avisar('Não consegui compartilhar por aqui. Mande para quem mora com você pelo WhatsApp.', 'alerta');
   }
 
   function CartaoProblema(p) {
@@ -7206,7 +7379,7 @@ function TelaProfissionais(app, ctx) {
     montar(
       resumo,
       h('span', { class: 'texto-2' }, `${encontrados.length} profissiona${encontrados.length === 1 ? 'l' : 'is'} · ${ORDENS.find((o) => o.id === filtros.ordenar)?.rotulo.toLowerCase()}`),
-      h('a', { href: '#/ranking', class: 'negrito' }, 'Ver o ranking'),
+      h('a', { href: '#/ranking', class: 'negrito link-alvo' }, 'Ver o ranking'),
     );
     montar(
       lista,
@@ -15643,7 +15816,7 @@ __def("packages/core/env.js", function (__e) {
 
 const APP = {
   nome: 'DiaristaExpress',
-  versao: '2.14.2',
+  versao: '2.14.3',
   storagePrefix: 'dx:',
   schemaVersion: 7,
 };
@@ -15679,6 +15852,16 @@ __e["DEBUG"] = DEBUG;
 __def("packages/core/novidades.js", function (__e) {
 
 const NOVIDADES = [
+  {
+    versao: '2.14.3',
+    data: '21/11/2026',
+    titulo: 'Pedir ficou mais leve',
+    itens: [
+      'Novo pedido redesenhado: os serviços aparecem em quadros com desenho, os serviços a mais numa faixa que rola de lado, e extras e tarefas numa lista só. Muito menos rolagem até o botão Continuar.',
+      'Data em um toque: os próximos 14 dias aparecem numa faixa (hoje, amanhã, sábado...). Para outra data, toque em "outra data" e o calendário abre.',
+      'Letra grande e celular pequeno: nada mais corta ou sai da tela - nomes de serviço, botões do rodapé, abas, código de check-in e o cupom das ofertas.',
+    ],
+  },
   {
     versao: '2.14.2',
     data: '20/11/2026',
@@ -16693,10 +16876,24 @@ async function compartilhar({ titulo, texto, url }) {
       return false; // usuario cancelou
     }
   }
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(`${texto || ''} ${url || ''}`.trim());
-    return 'copiado';
-  }
+  const conteudo = `${texto || ''} ${url || ''}`.trim();
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(conteudo);
+      return 'copiado';
+    }
+  } catch { /* tenta o jeito antigo */ }
+  try {
+    const area = document.createElement('textarea');
+    area.value = conteudo;
+    area.setAttribute('readonly', '');
+    area.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none';
+    document.body.append(area);
+    area.select();
+    const ok = document.execCommand('copy');
+    area.remove();
+    if (ok) return 'copiado';
+  } catch { /* sem como copiar */ }
   return false;
 }
 
@@ -17297,7 +17494,7 @@ function TelaChat(app, ctx, { papel, voltarPara, rotaPedido = '/pedido' }) {
 
   function enviar(texto) {
     const conteudo = texto ?? entrada.value;
-    if (!conteudo.trim()) return;
+    if (!conteudo.trim()) return entrada.focus();
     const r = api.chat.enviarMensagem(pedidoId, conteudo);
     if (!r.ok) {
       avisar(r.erro, 'erro');
@@ -18413,6 +18610,7 @@ function TelaDuvidas(app, { papel, voltarPara }) {
     enterkeyhint: 'send',
   });
   const enviar = () => {
+    if (!entrada.value.trim()) return entrada.focus(); // vazio: leva ao campo
     perguntar(entrada.value);
     entrada.value = '';
   };
@@ -19005,7 +19203,7 @@ function TelaProposta(app, ctx, { papel, voltarPara }) {
   });
 
   function enviar() {
-    if (!entrada.value.trim()) return;
+    if (!entrada.value.trim()) return entrada.focus();
     const r = api.propostas.responderProposta(pedidoId, dados.proposta.id, entrada.value);
     if (!r.ok) {
       avisar(r.erro, 'erro');
